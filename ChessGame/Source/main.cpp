@@ -25,6 +25,8 @@
 // #include "SingleAxisScan.h"
 // #include "DualAxisScan.h"
 
+// Uncomment the line below to run unit tests
+// #define RUN_UNIT_TESTS
 
 using namespace std;
 
@@ -68,8 +70,10 @@ Chess::Board * gameBoard;
 int main( int argc, char ** argv )
 {
 
+  #ifdef RUN_UNIT_TESTS
   ::testing::InitGoogleMock ( & argc, argv ) ;
   RUN_ALL_TESTS ( ) ;
+  #endif /* RUN_UNIT_TESTS */
 
   gameBoard = new Chess::Board ( ) ;
 
