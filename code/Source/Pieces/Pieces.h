@@ -12,8 +12,6 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-// #include "Interface.h"
-
 
 
 using namespace std;
@@ -21,12 +19,14 @@ using namespace std;
 namespace Chess
 {
 
+    class Scanner ;
 
     class Pieces
     {
 
       friend class Board ;
       friend class Motion ;
+      
 
     protected:
 
@@ -41,7 +41,7 @@ namespace Chess
       string name;
       string type;
       Pieces * prevPiecePointer;
-
+      typedef shared_ptr<Scanner> scan ;
       
 
       void clrLocation ( ) ;

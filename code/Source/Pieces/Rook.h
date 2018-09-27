@@ -23,8 +23,7 @@ namespace Chess
 {
 
     class Rook 
-    : public Pieces,
-      public SingleAxisScan
+    : public Pieces
     {
     protected:
 

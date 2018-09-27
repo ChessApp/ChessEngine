@@ -23,8 +23,7 @@ namespace Chess
 {
 
     class Bishop 
-    : public Pieces,
-      public DualAxisScan
+    : public Pieces
     {
     protected:
 

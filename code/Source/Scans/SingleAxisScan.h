@@ -27,11 +27,13 @@ namespace Chess
 
     friend class Board ;
 
-  protected:
-
     SingleAxisScan ( Board * board ) ;
 
-    //virtual void runValidityChecks ( ) = 0 ;
+  protected:
+
+    
+
+    virtual void executeScans ( int sourceRow, int sourceCol ) ;
 
     virtual ScanResult leftScan ( int sourceRow, int sourceCol ) ;
 

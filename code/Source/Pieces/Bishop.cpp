@@ -11,10 +11,9 @@ namespace Chess
   
     
   Bishop::Bishop( const string name, Board * board )
-    : Pieces( name, "B" ),
-      DualAxisScan( board )
+    : Pieces( name, "B" )
   {
-    
+    scan ( new DualAxisScan ( board ) ) ;
   }
 
   bool Bishop::validDirection ( int destRow, int destCol )
@@ -27,19 +26,6 @@ namespace Chess
     {
       return false ;
     }
-  }
-
-  void Bishop::printUpLeftScan ( )
-  {
-    ScanResult scanResult = upLeftScan ( row, col ) ;
-    cout << scanResult.detection << endl ;
-    if (scanResult.detection)
-    {
-      cout << scanResult.row << endl ;
-      cout << scanResult.col << endl ;
-      cout << scanResult.detectedPiece->getName() << endl ;
-    }
-    
   }
 
 }

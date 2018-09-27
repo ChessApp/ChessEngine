@@ -11,10 +11,9 @@ namespace Chess
 
     
   Rook::Rook( const string name, Board * board )
-  	: Pieces( name, "R" ),
-      SingleAxisScan( board )
+  	: Pieces( name, "R" )
   {
-  	
+  	scan ( new SingleAxisScan ( board ) ) ;
   }
 
   bool Rook::validDirection ( int destRow, int destCol )
@@ -30,17 +29,5 @@ namespace Chess
     }
   }
 
-  void Rook::printLeftScan ( )
-  {
-    ScanResult scanResult = leftScan ( row, col ) ;
-    cout << scanResult.col << endl ;
-    if (scanResult.detection)
-    {
-      cout << scanResult.detection << endl ;
-      cout << scanResult.row << endl ;
-      cout << scanResult.detectedPiece->getName() << endl ;
-    }
-    
-  }
   
 }

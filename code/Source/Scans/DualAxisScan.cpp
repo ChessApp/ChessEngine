@@ -9,6 +9,14 @@ namespace Chess
 
   }
 
+  void DualAxisScan::executeScans ( int sourceRow, int sourceCol )
+  {
+    upLeftScan( sourceRow, sourceCol ) ;
+    upRightScan( sourceRow, sourceCol ) ;
+    downLeftScan( sourceRow, sourceCol ) ;
+    downRightScan( sourceRow, sourceCol ) ;
+  }
+
   DualAxisScan::ScanResult DualAxisScan::upLeftScan ( int sourceRow, int sourceCol )
   {
     ScanResult scanResult ;

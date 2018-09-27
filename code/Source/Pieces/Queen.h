@@ -24,9 +24,7 @@ namespace Chess
 {
 
     class Queen 
-    : public Pieces,
-      public SingleAxisScan,
-      public DualAxisScan
+    : public Pieces
     {
     protected:
 

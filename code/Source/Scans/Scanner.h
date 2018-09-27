@@ -33,12 +33,16 @@ namespace Chess
 
     Board * board ;
 
+    virtual void executeScans ( int sourceRow, int sourceCol ) = 0 ;
+
   public:
 
     typedef Chess::Board Board ;
     typedef Chess::Status Status ;
 
     Scanner ( Board * board ) ;
+
+
 
     // bool rightRadar(Pieces & king);
 
