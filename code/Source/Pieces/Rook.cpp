@@ -13,7 +13,7 @@ namespace Chess
   Rook::Rook( const string name, Board * board )
   	: Pieces( name, "R" )
   {
-  	scan ( new SingleAxisScan ( board ) ) ;
+  	scan = new SingleAxisScan ( board ) ;
   }
 
   bool Rook::validDirection ( int destRow, int destCol )

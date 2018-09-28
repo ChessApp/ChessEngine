@@ -1,6 +1,6 @@
 
-#ifndef DUALAXISSCAN_H_
-#define DUALAXISSCAN_H_
+#ifndef COMPOUNDAXISSCAN_H_
+#define COMPOUNDAXISSCAN_H_
 
 #include <string>
 #include <sstream>
@@ -15,7 +15,7 @@ using namespace std;
 namespace Chess
 {
 
-  class DualAxisScan
+  class CompoundAxisScan
     : public Scanner
   {
 
@@ -27,14 +27,17 @@ namespace Chess
 
     friend class Board ;
 
-    DualAxisScan ( Board * board ) ;
+    CompoundAxisScan ( Board * board ) ;
 
     virtual void executeScans ( int sourceRow, int sourceCol ) ;
 
-  protected:    
+  protected:
+
+    
+   
 
   };
 
 }
 
-#endif /* DUALAXISSCAN_H_ */
+#endif /* COMPOUNDAXISSCAN_H_ */

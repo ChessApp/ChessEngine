@@ -41,7 +41,7 @@ namespace Chess
       string name;
       string type;
       Pieces * prevPiecePointer;
-      typedef shared_ptr<Scanner> scan ;
+      Scanner * scan ;
       
 
       void clrLocation ( ) ;

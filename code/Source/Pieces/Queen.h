@@ -15,8 +15,7 @@
 #include <sstream>
 // #include "Interface.h"
 #include "Pieces.h"
-#include "../Scans/SingleAxisScan.h"
-#include "../Scans/DualAxisScan.h"
+#include "../Scans/CompoundAxisScan.h"
 
 using namespace std;
 

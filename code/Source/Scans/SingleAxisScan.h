@@ -29,19 +29,9 @@ namespace Chess
 
     SingleAxisScan ( Board * board ) ;
 
-  protected:
-
-    
-
     virtual void executeScans ( int sourceRow, int sourceCol ) ;
 
-    virtual ScanResult leftScan ( int sourceRow, int sourceCol ) ;
-
-    virtual ScanResult rightScan ( int sourceRow, int sourceCol ) ;
-
-    virtual ScanResult upScan ( int sourceRow, int sourceCol ) ;
-
-    virtual ScanResult downScan ( int sourceRow, int sourceCol ) ;
+  protected:
 
     
 

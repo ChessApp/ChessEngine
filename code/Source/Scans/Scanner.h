@@ -21,6 +21,18 @@ namespace Chess
 
   protected:
 
+    
+    
+
+  public:
+
+    typedef Chess::Board Board ;
+    typedef Chess::Status Status ;
+
+    Scanner ( Board * board ) ;
+
+    virtual void executeScans ( int sourceRow, int sourceCol ) = 0 ;
+
     typedef struct ScanResult
     {
       bool detection = false ;
@@ -33,14 +45,23 @@ namespace Chess
 
     Board * board ;
 
-    virtual void executeScans ( int sourceRow, int sourceCol ) = 0 ;
+    ScanResult leftScan ( int sourceRow, int sourceCol ) ;
 
-  public:
+    ScanResult rightScan ( int sourceRow, int sourceCol ) ;
 
-    typedef Chess::Board Board ;
-    typedef Chess::Status Status ;
+    ScanResult upScan ( int sourceRow, int sourceCol ) ;
 
-    Scanner ( Board * board ) ;
+    ScanResult downScan ( int sourceRow, int sourceCol ) ;
+
+    ScanResult upLeftScan ( int sourceRow, int sourceCol ) ;
+
+    ScanResult upRightScan ( int sourceRow, int sourceCol ) ;
+
+    ScanResult downLeftScan ( int sourceRow, int sourceCol ) ;
+
+    ScanResult downRightScan ( int sourceRow, int sourceCol ) ;
+
+    
 
 
 

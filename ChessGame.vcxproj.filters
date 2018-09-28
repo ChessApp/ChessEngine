@@ -72,6 +72,9 @@
     <ClCompile Include="code\Tests\SingleAxisScanTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="code\Source\Scans\CompoundAxisScan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\Source\Pieces\Bishop.h">
@@ -123,6 +126,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="code\Tests\Mocks\MockBoard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Source\Scans\CompoundAxisScan.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
