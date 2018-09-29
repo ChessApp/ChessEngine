@@ -13,10 +13,10 @@
 
 using namespace std;
 
-#define MIN_COLUMN = 0 
-#define MAX_COLUMN = 7 
-#define MIN_ROW = 0 
-#define MAX_ROW = 7 
+#define MIN_COLUMN 0 
+#define MAX_COLUMN 7 
+#define MIN_ROW 0 
+#define MAX_ROW 7 
 
 
 namespace Chess
@@ -34,7 +34,7 @@ namespace Chess
 
     Pieces * board[8][8] ;
     Pieces * nullpiece_ ;
-    vector< Pieces  * > * pieceList_ ;
+    vector< Pieces  * > pieceList_ ;
 
 
   public:

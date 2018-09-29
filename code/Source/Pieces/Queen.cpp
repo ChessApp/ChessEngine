@@ -10,8 +10,8 @@ namespace Chess
 {
   
     
-  Queen::Queen( const string name, Board * board )
-    : Pieces( name, "Q" )
+  Queen::Queen( const string name, Board * board, int initRow, int initCol )
+    : Pieces( name, "Q", initRow, initCol )
   {
     scan = new CompoundAxisScan( board ) ;
   }

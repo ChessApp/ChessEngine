@@ -10,8 +10,8 @@ namespace Chess
 {
 
     
-  Rook::Rook( const string name, Board * board )
-  	: Pieces( name, "R" )
+  Rook::Rook( const string name, Board * board, int initRow, int initCol )
+  	: Pieces( name, "R", initRow, initCol )
   {
   	scan = new SingleAxisScan ( board ) ;
   }

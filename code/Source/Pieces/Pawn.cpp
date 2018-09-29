@@ -10,8 +10,8 @@ namespace Chess
 {
 
     
-  Pawn::Pawn( const string name, Board * board )
-    : Pieces( name, "P" )
+  Pawn::Pawn( const string name, Board * board, int initRow, int initCol )
+    : Pieces( name, "P", initRow, initCol )
   {
     
   }

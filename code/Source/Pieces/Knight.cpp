@@ -10,8 +10,8 @@ namespace Chess
 {
   
     
-  Knight::Knight( const string name, Board * board )
-    : Pieces( name, "KN" )
+  Knight::Knight( const string name, Board * board, int initRow, int initCol )
+    : Pieces( name, "KN", initRow, initCol )
   {
     
   }

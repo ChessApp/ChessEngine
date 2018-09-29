@@ -54,6 +54,8 @@ namespace Chess
       // arguments.
       Pieces( const string name, string type );
 
+      Pieces( const string name, string type, int initRow, int initCol );
+
       Pieces() = default;
 
       void setLocation ( int row, int col ) ;

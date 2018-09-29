@@ -31,7 +31,7 @@ namespace Chess
       // Contructs piece objects which take the interface object,
       // a specified name, and specified initial coordinates as
       // arguments.
-      Pawn( const string name, Board * board );
+      Pawn( const string name, Board * board, int initRow, int initCol );
       
     };
 

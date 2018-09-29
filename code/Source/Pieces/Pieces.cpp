@@ -35,6 +35,28 @@ namespace Chess
 
   }
 
+  Pieces::Pieces( string name, string type, int initRow, int initCol )
+    : name(name), type(type), in_check(false),
+      prev_in_check(false), pinned(false), captured(false),
+      color(name[0])
+  {
+    
+    if (color == 'W')
+    {
+      opponent = 'B';
+    }
+    if (color == 'B')
+    {
+      opponent = 'W';
+    }
+
+    setLocation( initRow, initCol ) ;
+
+    prevPiecePointer = lastCreatedPiecePointer ;
+    lastCreatedPiecePointer = this ;
+
+  }
+
   string Pieces::getType ( )
   {
     return type ;

@@ -11,7 +11,7 @@ class RookTests
 public:
   inline RookTests ( )
   {
-    tr_ = new Chess::Rook ( "testRook", & mb_ ) ;
+    tr_ = new Chess::Rook ( "testRook", & mb_, NULL, NULL ) ;
   }
 
 protected:

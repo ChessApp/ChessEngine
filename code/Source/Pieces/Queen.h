@@ -35,7 +35,7 @@ namespace Chess
       // Contructs piece objects which take the interface object,
       // a specified name, and specified initial coordinates as
       // arguments.
-      Queen ( const string name, Board * board ) ;
+      Queen ( const string name, Board * board, int initRow, int initCol ) ;
 
       void printUpLeftScan ( ) ;
 

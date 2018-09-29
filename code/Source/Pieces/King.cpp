@@ -10,8 +10,8 @@ namespace Chess
 {
 
     
-  King::King( const string name, Board * board )
-    : Pieces( name, "K" )
+  King::King( const string name, Board * board, int initRow, int initCol )
+    : Pieces( name, "K", initRow, initCol )
   {
     
   }
