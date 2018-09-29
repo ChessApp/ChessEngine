@@ -6,13 +6,20 @@ namespace Chess
 
   Board::Board ( )
   {
-    Chess::NullPiece * nullpiece = new Chess::NullPiece ( ".. ", this ) ;
+    // Chess::NullPiece * nullpiece = new Chess::NullPiece ( ".. ", this ) ;
+ 
+  }
+
+  void Board::init ( vector< Pieces * > & pieceList, Pieces * nullpiece )
+  {
+    pieceList_ = & pieceList ;
+    nullpiece_ = nullpiece ;
 
     for ( int i = 0; i < 8; i++)
     {
       for ( int j = 0; j < 8; j++)
       {
-        board[j][i] = nullpiece ;
+        board[j][i] = pieceList[0] ;
       }
     }
   }
@@ -20,7 +27,7 @@ namespace Chess
   void Board::setPiece ( Pieces * setPiece, int row, int col )
   {
     board[row][col] = setPiece ;
-    setPiece->setLocation( row, col ) ;
+    // setPiece->setLocation( row, col ) ;
   }
 
   void Board::clrPiece ( int row, int col )
@@ -28,7 +35,7 @@ namespace Chess
     Pieces * pieceToClr = board[row][col] ;
     if ( pieceToClr != NULL )
     {
-      pieceToClr->clrLocation() ;
+      // pieceToClr->clrLocation() ;
       board[row][col] = NULL ;
     }
     

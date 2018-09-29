@@ -120,6 +120,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="code\Source\Board.cpp" />
+    <ClCompile Include="code\Source\GameProtocolDriver.cpp" />
     <ClCompile Include="code\Source\Interface.cpp" />
     <ClCompile Include="code\Source\main.cpp" />
     <ClCompile Include="code\Source\Mastermind.cpp">
@@ -144,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\Source\Board.h" />
+    <ClInclude Include="code\Source\GameProtocolDriver.h" />
     <ClInclude Include="code\Source\Interface.h" />
     <ClInclude Include="code\Source\Mastermind.h" />
     <ClInclude Include="code\Source\Motion.h" />

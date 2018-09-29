@@ -6,8 +6,8 @@
 #include <sstream>
 #include <vector>
 
-#include "Pieces/Pieces.h"
-#include "Pieces/NullPiece.h"
+// #include "Pieces/Pieces.h"
+
 #include "Interface.h"
 #include "Motion.h"
 
@@ -22,6 +22,10 @@ using namespace std;
 namespace Chess
 {
 
+  class Pieces ;
+  //class Rook ;
+  class NullPiece ;
+
   class Board
   {
 
@@ -29,11 +33,15 @@ namespace Chess
   protected:
 
     Pieces * board[8][8] ;
-    
+    Pieces * nullpiece_ ;
+    vector< Pieces  * > * pieceList_ ;
+
 
   public:
 
     Board ( ) ;
+
+    void init ( vector< Pieces * > & pieceList, Pieces * nullpiece ) ;
 
     void setPiece ( Pieces * setPiece, int row, int col ) ;
 
@@ -42,6 +50,8 @@ namespace Chess
     Pieces * getPiece ( int row, int col ) ;
 
     virtual string getPieceName ( int row, int col ) ;
+
+    
 
   };
 
