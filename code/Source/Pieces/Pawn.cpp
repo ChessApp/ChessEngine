@@ -16,5 +16,11 @@ namespace Chess
     
   }
 
+  Pawn::Pawn( const string name, Board * board )
+    : Pieces( name, "P" )
+  {
+    
+  }
+
 
 }

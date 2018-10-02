@@ -10,48 +10,15 @@ namespace Chess
  
   }
 
-  void Board::init ( vector< Pieces * > & pieceList, Pieces * nullpiece )
+  void Board::init ( Pieces * nullpiece )
   {
-    pieceList_ = pieceList ;
     nullpiece_ = nullpiece ;
 
-    for ( int j = 6; j <= MAX_ROW; j++ )
+    for ( int j = 0; j <= 7; j++ )
     {
-      for ( int i = 0; i <= MAX_COLUMN; i++ )
+      for ( int i = 0; i <= 7; i++ )
       {
-        
-        if( pieceList.size() )
-        {
-          board[j][i] = pieceList.back( ) ;
-          pieceList.pop_back( ) ;
-        }
-        
-      }
-    }
-
-    if ( pieceList.size() )
-    {
-      for ( int j = 2; j <= 5; j++ )
-      {
-        for ( int i = 0; i <= MAX_COLUMN; i++ )
-        {
-          board[j][i] = pieceList.back( ) ;
-        }
-      }
-      pieceList.pop_back( ) ;
-    }
-
-    for ( int j = 0; j <= 1; j++ )
-    {
-      for ( int i = 0; i <= MAX_COLUMN; i++ )
-      {
-        
-        if( pieceList.size() )
-        {
-          board[j][i] = pieceList.back( ) ;
-          pieceList.pop_back( ) ;
-        }
-        
+        board[j][i] = nullpiece ;
       }
     }
 

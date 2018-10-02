@@ -9,38 +9,84 @@ namespace Chess
     {
       std::cout << "Init state" << std::endl ;
 
-      for ( int i = 7; i >= 0; i-- )
-      {
-        pieceList.push_back( new Pawn( "BP ", board_, BP_ROW, i ) ) ;
-      }
-      pieceList.push_back( new Rook( "BR ", board_, BR2_ROW, BR2_COL ) ) ;
-      pieceList.push_back( new Knight( "BR ", board_, BN2_ROW, BN2_COL ) ) ;
-      pieceList.push_back( new Bishop( "BB ", board_, BB2_ROW, BB2_COL ) ) ;
-      pieceList.push_back( new King( "BK ", board_, BK_ROW, BK_COL ) ) ;
-      pieceList.push_back( new Queen( "BQ ", board_, BQ_ROW, BQ_COL ) ) ;
-      pieceList.push_back( new Bishop( "BB ", board_, BB1_ROW, BB1_COL ) ) ;
-      pieceList.push_back( new Knight( "BN ", board_, BN1_ROW, BN1_COL ) ) ;
-      pieceList.push_back( new Rook( "BR ", board_, BR1_ROW, BR1_COL ) ) ;
+      Pieces * wr1 = new Chess::Rook ( "WR ", board_ ) ;
+      Pieces * wr2 = new Chess::Rook ( "WR ", board_ ) ;
+      Pieces * br1 = new Chess::Rook ( "BR ", board_ ) ;
+      Pieces * br2 = new Chess::Rook ( "BR ", board_ ) ;
+      Pieces * wb1 = new Chess::Bishop ( "WB ", board_ ) ;
+      Pieces * wb2 = new Chess::Bishop ( "WB ", board_ ) ;
+      Pieces * bb1 = new Chess::Bishop ( "BB ", board_ ) ;
+      Pieces * bb2 = new Chess::Bishop ( "BB ", board_ ) ;
+      Pieces * wn1 = new Chess::Knight ( "WN ", board_ ) ;
+      Pieces * wn2 = new Chess::Knight ( "WN ", board_ ) ;
+      Pieces * bn1 = new Chess::Knight ( "BN ", board_ ) ;
+      Pieces * bn2 = new Chess::Knight ( "BN ", board_ ) ;
+      Pieces * wp1 = new Chess::Pawn ( "WP ", board_ ) ;
+      Pieces * wp2 = new Chess::Pawn ( "WP ", board_ ) ;
+      Pieces * wp3 = new Chess::Pawn ( "WP ", board_ ) ;
+      Pieces * wp4 = new Chess::Pawn ( "WP ", board_ ) ;
+      Pieces * wp5 = new Chess::Pawn ( "WP ", board_ ) ;
+      Pieces * wp6 = new Chess::Pawn ( "WP ", board_ ) ;
+      Pieces * wp7 = new Chess::Pawn ( "WP ", board_ ) ;
+      Pieces * wp8 = new Chess::Pawn ( "WP ", board_ ) ;
+      Pieces * bp1 = new Chess::Pawn ( "BP ", board_ ) ;
+      Pieces * bp2 = new Chess::Pawn ( "BP ", board_ ) ;
+      Pieces * bp3 = new Chess::Pawn ( "BP ", board_ ) ;
+      Pieces * bp4 = new Chess::Pawn ( "BP ", board_ ) ;
+      Pieces * bp5 = new Chess::Pawn ( "BP ", board_ ) ;
+      Pieces * bp6 = new Chess::Pawn ( "BP ", board_ ) ;
+      Pieces * bp7 = new Chess::Pawn ( "BP ", board_ ) ;
+      Pieces * bp8 = new Chess::Pawn ( "BP ", board_ ) ;
+      Pieces * wq  = new Chess::Queen ( "WQ ", board_ ) ;
+      Pieces * bq  = new Chess::Queen ( "BQ ", board_ ) ;
+      Pieces * wk  = new Chess::King ( "WK ", board_ ) ;
+      Pieces * bk  = new Chess::King ( "BK ", board_ ) ;
+
+      board_->init( new NullPiece( ".. ", board_ ) ) ;
+
+      setPiece (wr1, 7, 0) ;
+      setPiece (wr2, 7, 7) ;
+      setPiece (br1, 0, 0) ;
+      setPiece (br2, 0, 7) ;
+      setPiece (wb1, 7, 2) ;
+      setPiece (wb2, 7, 5) ;
+      setPiece (bb1, 0, 2) ;
+      setPiece (bb2, 0, 5) ;
+      setPiece (wn1, 7, 1) ;
+      setPiece (wn2, 7, 6) ;
+      setPiece (bn1, 0, 1) ;
+      setPiece (bn2, 0, 6) ;
+      setPiece (wp1, 6, 0) ;
+      setPiece (wp2, 6, 1) ;
+      setPiece (wp3, 6, 2) ;
+      setPiece (wp4, 6, 3) ;
+      setPiece (wp5, 6, 4) ;
+      setPiece (wp6, 6, 5) ;
+      setPiece (wp7, 6, 6) ;
+      setPiece (wp8, 6, 7) ;
+      setPiece (bp1, 1, 0) ;
+      setPiece (bp2, 1, 1) ;
+      setPiece (bp3, 1, 2) ;
+      setPiece (bp4, 1, 3) ;
+      setPiece (bp5, 1, 4) ;
+      setPiece (bp6, 1, 5) ;
+      setPiece (bp7, 1, 6) ;
+      setPiece (bp8, 1, 7) ;
+      setPiece (wq , 7, 3) ;
+      setPiece (bq , 0, 3) ;
+      setPiece (wk , 7, 4) ;
+      setPiece (bk , 0, 4) ;
+
       
-      pieceList.push_back( new NullPiece( ".. ", board_ ) ) ;
-
-      pieceList.push_back( new Rook( "WR ", board_, WR2_ROW, WR2_COL ) ) ;
-      pieceList.push_back( new Knight( "WR ", board_, WN2_ROW, WN2_COL ) ) ;
-      pieceList.push_back( new Bishop( "WB ", board_, WB2_ROW, WB2_COL ) ) ;
-      pieceList.push_back( new King( "WK ", board_, WK_ROW, WK_COL ) ) ;
-      pieceList.push_back( new Queen( "WQ ", board_, WQ_ROW, WQ_COL ) ) ;
-      pieceList.push_back( new Bishop( "WB ", board_, WB1_ROW, WB1_COL ) ) ;
-      pieceList.push_back( new Knight( "WN ", board_, WN1_ROW, WN1_COL ) ) ;
-      pieceList.push_back( new Rook( "WR ", board_, WR1_ROW, WR1_COL ) ) ;
-      for ( int i = 7; i >= 0; i-- )
-      {
-        pieceList.push_back( new Pawn( "WP ", board_, WP_ROW, i ) ) ;
-      }
-
-      board_->init( pieceList, new NullPiece( ".. ", board_ ) ) ;
       interface_->printBoard( ) ;
 
       return nextState_ ;
+    }
+
+    void InitState::setPiece( Pieces * pieceToSet, int rowToSet, int colToSet )
+    {
+      pieceToSet->setLocation( rowToSet, colToSet ) ;
+      board_->setPiece( pieceToSet, rowToSet, colToSet ) ;
     }
 
   }

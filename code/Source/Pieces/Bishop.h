@@ -34,6 +34,7 @@ namespace Chess
       // a specified name, and specified initial coordinates as
       // arguments.
       Bishop ( const string name, Board * board, int initRow, int initCol ) ;
+      Bishop ( const string name, Board * board ) ;
 
       bool validDirection ( int destRow, int destCol ) ;
 

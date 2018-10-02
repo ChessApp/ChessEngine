@@ -9,7 +9,6 @@
 // #include "Pieces/Pieces.h"
 
 #include "Interface.h"
-#include "Motion.h"
 
 using namespace std;
 
@@ -34,14 +33,13 @@ namespace Chess
 
     Pieces * board[8][8] ;
     Pieces * nullpiece_ ;
-    vector< Pieces  * > pieceList_ ;
 
 
   public:
 
     Board ( ) ;
 
-    void init ( vector< Pieces * > & pieceList, Pieces * nullpiece ) ;
+    void init ( Pieces * nullpiece ) ;
 
     void setPiece ( Pieces * setPiece, int row, int col ) ;
 

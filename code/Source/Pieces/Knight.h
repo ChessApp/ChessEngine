@@ -36,6 +36,7 @@ namespace Chess
       // a specified name, and specified initial coordinates as
       // arguments.
       Knight ( const string name, Board * board, int initRow, int initCol ) ;
+      Knight ( const string name, Board * board ) ;
       
     };
 

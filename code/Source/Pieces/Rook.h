@@ -34,6 +34,7 @@ namespace Chess
       // a specified name, and specified initial coordinates as
       // arguments.
       Rook( const string name, Board * board, int initRow, int initCol );
+      Rook( const string name, Board * board );
 
       bool validDirection ( int destRow, int destCol ) ;
 

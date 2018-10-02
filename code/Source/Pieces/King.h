@@ -31,7 +31,8 @@ namespace Chess
       // Contructs piece objects which take the interface object,
       // a specified name, and specified initial coordinates as
       // arguments.
-      King( const string name, Board * board, int initRow, int initCol );
+      King( const string name, Board * board, int initRow, int initCol ) ;
+      King( const string name, Board * board ) ;
       
     };
 

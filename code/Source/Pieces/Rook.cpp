@@ -16,6 +16,12 @@ namespace Chess
   	scan = new SingleAxisScan ( board ) ;
   }
 
+  Rook::Rook( const string name, Board * board )
+    : Pieces( name, "R" )
+  {
+    scan = new SingleAxisScan ( board ) ;
+  }
+
   bool Rook::validDirection ( int destRow, int destCol )
   {
     if ( row == destRow || col == destCol )

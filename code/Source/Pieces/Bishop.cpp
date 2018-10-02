@@ -16,6 +16,12 @@ namespace Chess
     scan = new DualAxisScan ( board ) ;
   }
 
+  Bishop::Bishop( const string name, Board * board )
+    : Pieces( name, "B" )
+  {
+    scan = new DualAxisScan ( board ) ;
+  }
+
   bool Bishop::validDirection ( int destRow, int destCol )
   {
     if ( abs(row - destRow) == abs(col - destCol) )

@@ -16,6 +16,12 @@ namespace Chess
     
   }
 
+  Knight::Knight( const string name, Board * board )
+    : Pieces( name, "KN" )
+  {
+    
+  }
+
 
 
 }

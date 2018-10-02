@@ -36,6 +36,7 @@ namespace Chess
       // a specified name, and specified initial coordinates as
       // arguments.
       Queen ( const string name, Board * board, int initRow, int initCol ) ;
+      Queen ( const string name, Board * board ) ;
 
       void printUpLeftScan ( ) ;
 

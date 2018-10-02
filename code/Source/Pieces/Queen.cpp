@@ -16,4 +16,10 @@ namespace Chess
     scan = new CompoundAxisScan( board ) ;
   }
 
+  Queen::Queen( const string name, Board * board )
+    : Pieces( name, "Q" )
+  {
+    scan = new CompoundAxisScan( board ) ;
+  }
+
 }
