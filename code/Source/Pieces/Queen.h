@@ -37,6 +37,7 @@ namespace Chess
       // arguments.
       Queen ( const string name, Board * board, int initRow, int initCol ) ;
       Queen ( const string name, Board * board ) ;
+      bool validDirection( int destRow, int destCol ) ;
 
       void printUpLeftScan ( ) ;
 

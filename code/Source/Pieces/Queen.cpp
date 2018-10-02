@@ -22,4 +22,21 @@ namespace Chess
     scan = new CompoundAxisScan( board ) ;
   }
 
+  bool Queen::validDirection( int destRow, int destCol )
+  {
+    if ( row == destRow || col == destCol )
+    {
+      return true ;
+    }
+    else if ( abs(row - destRow) == abs(col - destCol) )
+    {
+      return true ;
+    }
+    else
+    {
+      // throw "That move is invalid." ;
+      return false ;
+    }
+  }
+
 }

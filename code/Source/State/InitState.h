@@ -16,7 +16,8 @@
 #include "../Pieces/Bishop.h"
 #include "../Pieces/Queen.h"
 #include "../Pieces/King.h"
-#include "../Pieces/Pawn.h"
+#include "../Pieces/WhitePawn.h"
+#include "../Pieces/BlackPawn.h"
 #include "../StandardInitialPieceLocations.h"
 
 

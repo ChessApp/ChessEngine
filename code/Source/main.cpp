@@ -10,18 +10,18 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-#include "Interface.h"
-#include "Pieces/Pieces.h"
-#include "Pieces/NullPiece.h"
+// #include "Interface.h"
+// #include "Pieces/Pieces.h"
+// #include "Pieces/NullPiece.h"
 // #include "Mastermind.h"
-#include "Pieces/Rook.h"
-#include "Pieces/Bishop.h"
-#include "Pieces/Pawn.h"
-#include "Pieces/Knight.h"
-#include "Pieces/Queen.h"
-#include "Pieces/King.h"
-#include "Board.h"
-#include "Scans/Scanner.h"
+// #include "Pieces/Rook.h"
+// #include "Pieces/Bishop.h"
+// #include "Pieces/Pawn.h"
+// #include "Pieces/Knight.h"
+// #include "Pieces/Queen.h"
+// #include "Pieces/King.h"
+// #include "Board.h"
+// #include "Scans/Scanner.h"
 // #include "SingleAxisScan.h"
 // #include "DualAxisScan.h"
 #include "GameProtocolDriver.h"
@@ -31,42 +31,42 @@
 
 using namespace std;
 
-Chess::Interface * interface = NULL ;
+// Chess::Interface * interface = NULL ;
 
-Chess::Rook * wr1 = NULL ;
-Chess::Rook * wr2 = NULL ;
-Chess::Rook * br1 = NULL ;
-Chess::Rook * br2 = NULL ;
-Chess::Bishop * wb1 = NULL ;
-Chess::Bishop * wb2 = NULL ;
-Chess::Bishop * bb1 = NULL ;
-Chess::Bishop * bb2 = NULL ;
-Chess::Knight * wn1 = NULL ;
-Chess::Knight * wn2 = NULL ;
-Chess::Knight * bn1 = NULL ;
-Chess::Knight * bn2 = NULL ;
-Chess::Pawn * wp1 = NULL ;
-Chess::Pawn * wp2 = NULL ;
-Chess::Pawn * wp3 = NULL ;
-Chess::Pawn * wp4 = NULL ;
-Chess::Pawn * wp5 = NULL ;
-Chess::Pawn * wp6 = NULL ;
-Chess::Pawn * wp7 = NULL ;
-Chess::Pawn * wp8 = NULL ;
-Chess::Pawn * bp1 = NULL ;
-Chess::Pawn * bp2 = NULL ;
-Chess::Pawn * bp3 = NULL ;
-Chess::Pawn * bp4 = NULL ;
-Chess::Pawn * bp5 = NULL ;
-Chess::Pawn * bp6 = NULL ;
-Chess::Pawn * bp7 = NULL ;
-Chess::Pawn * bp8 = NULL ;
-Chess::Queen * wq = NULL ;
-Chess::Queen * bq = NULL ;
-Chess::King * wk  = NULL ;
-Chess::King * bk  = NULL ;
+// Chess::Rook * wr1 = NULL ;
+// Chess::Rook * wr2 = NULL ;
+// Chess::Rook * br1 = NULL ;
+// Chess::Rook * br2 = NULL ;
+// Chess::Bishop * wb1 = NULL ;
+// Chess::Bishop * wb2 = NULL ;
+// Chess::Bishop * bb1 = NULL ;
+// Chess::Bishop * bb2 = NULL ;
+// Chess::Knight * wn1 = NULL ;
+// Chess::Knight * wn2 = NULL ;
+// Chess::Knight * bn1 = NULL ;
+// Chess::Knight * bn2 = NULL ;
+// Chess::Pawn * wp1 = NULL ;
+// Chess::Pawn * wp2 = NULL ;
+// Chess::Pawn * wp3 = NULL ;
+// Chess::Pawn * wp4 = NULL ;
+// Chess::Pawn * wp5 = NULL ;
+// Chess::Pawn * wp6 = NULL ;
+// Chess::Pawn * wp7 = NULL ;
+// Chess::Pawn * wp8 = NULL ;
+// Chess::Pawn * bp1 = NULL ;
+// Chess::Pawn * bp2 = NULL ;
+// Chess::Pawn * bp3 = NULL ;
+// Chess::Pawn * bp4 = NULL ;
+// Chess::Pawn * bp5 = NULL ;
+// Chess::Pawn * bp6 = NULL ;
+// Chess::Pawn * bp7 = NULL ;
+// Chess::Pawn * bp8 = NULL ;
+// Chess::Queen * wq = NULL ;
+// Chess::Queen * bq = NULL ;
+// Chess::King * wk  = NULL ;
+// Chess::King * bk  = NULL ;
 
-Chess::Board * gameBoard;
+// Chess::Board * gameBoard;
 
 int main( int argc, char ** argv )
 {

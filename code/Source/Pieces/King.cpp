@@ -22,5 +22,18 @@ namespace Chess
     
   }
 
+  bool King::validDirection( int destRow, int destCol )
+  {
+    if ( abs( destCol - col ) <= 1 &&
+         abs( destRow - row ) <= 1 )
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
 
 }

@@ -1,13 +1,13 @@
 // This header file houses all of the data
-// that composes the Knight 
+// that composes the Pawn 
 // class. This class serves to characterize
 // each piece with specific data, along with
 // data inherited from the Pieces class, which is 
 // analyzed by the Mastermind files.
 
 
-#ifndef KNIGHT_H_
-#define KNIGHT_H_
+#ifndef BLACKPAWN_H_
+#define BLACKPAWN_H_
 
 #include <stdio.h>
 #include <iostream>
@@ -21,22 +21,18 @@ using namespace std;
 namespace Chess
 {
 
-    class Knight 
+    class BlackPawn 
     : public Pieces
-      
     {
     protected:
-
-      typedef Chess::Pieces Pieces ;
-
 
     public:
 
       // Contructs piece objects which take the interface object,
       // a specified name, and specified initial coordinates as
       // arguments.
-      Knight ( const string name, Board * board, int initRow, int initCol ) ;
-      Knight ( const string name, Board * board ) ;
+      BlackPawn( const string name, Board * board, int initRow, int initCol );
+      BlackPawn( const string name, Board * board );
       bool validDirection( int destRow, int destCol ) ;
       
     };
@@ -47,4 +43,4 @@ namespace Chess
 
 
 
-#endif /* KNIGHT_H_ */
+#endif /* BLACKPAWN_H_ */

@@ -6,8 +6,8 @@
 // analyzed by the Mastermind files.
 
 
-#ifndef PAWN_H_
-#define PAWN_H_
+#ifndef WHITEPAWN_H_
+#define WHITEPAWN_H_
 
 #include <stdio.h>
 #include <iostream>
@@ -21,7 +21,7 @@ using namespace std;
 namespace Chess
 {
 
-    class Pawn 
+    class WhitePawn 
     : public Pieces
     {
     protected:
@@ -31,8 +31,10 @@ namespace Chess
       // Contructs piece objects which take the interface object,
       // a specified name, and specified initial coordinates as
       // arguments.
-      Pawn( const string name, Board * board, int initRow, int initCol );
-      Pawn( const string name, Board * board );
+      WhitePawn( const string name, Board * board, int initRow, int initCol );
+      WhitePawn( const string name, Board * board );
+      bool validDirection( int destRow, int destCol ) ;
+      Pieces * executeScan( )
       
     };
 
@@ -42,4 +44,4 @@ namespace Chess
 
 
 
-#endif /* PAWN_H_ */
+#endif /* WHITEPAWN_H_ */

@@ -22,6 +22,24 @@ namespace Chess
     
   }
 
+  bool Knight::validDirection( int destRow, int destCol )
+  {
+    int rowDiff = abs( destRow - row ) ;
+    int colDiff = abs( destCol - col ) ;
+    if ( rowDiff == 2 && colDiff == 1 )
+    {
+      return true ;
+    }
+    else if ( rowDiff == 1 && colDiff == 2 )
+    {
+      return true ;
+    }
+    else
+    {
+      return false ;
+    }
+  }
+
 
 
 }

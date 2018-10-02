@@ -128,13 +128,14 @@
     </ClCompile>
     <ClCompile Include="code\Source\Motion.cpp" />
     <ClCompile Include="code\Source\Pieces\Bishop.cpp" />
+    <ClCompile Include="code\Source\Pieces\BlackPawn.cpp" />
     <ClCompile Include="code\Source\Pieces\King.cpp" />
     <ClCompile Include="code\Source\Pieces\Knight.cpp" />
     <ClCompile Include="code\Source\Pieces\NullPiece.cpp" />
-    <ClCompile Include="code\Source\Pieces\Pawn.cpp" />
     <ClCompile Include="code\Source\Pieces\Pieces.cpp" />
     <ClCompile Include="code\Source\Pieces\Queen.cpp" />
     <ClCompile Include="code\Source\Pieces\Rook.cpp" />
+    <ClCompile Include="code\Source\Pieces\WhitePawn.cpp" />
     <ClCompile Include="code\Source\Scans\CompoundAxisScan.cpp" />
     <ClCompile Include="code\Source\Scans\DualAxisScan.cpp" />
     <ClCompile Include="code\Source\Scans\Scanner.cpp" />
@@ -157,13 +158,14 @@
     <ClInclude Include="code\Source\Mastermind.h" />
     <ClInclude Include="code\Source\Motion.h" />
     <ClInclude Include="code\Source\Pieces\Bishop.h" />
+    <ClInclude Include="code\Source\Pieces\BlackPawn.h" />
     <ClInclude Include="code\Source\Pieces\King.h" />
     <ClInclude Include="code\Source\Pieces\Knight.h" />
     <ClInclude Include="code\Source\Pieces\NullPiece.h" />
-    <ClInclude Include="code\Source\Pieces\Pawn.h" />
     <ClInclude Include="code\Source\Pieces\Pieces.h" />
     <ClInclude Include="code\Source\Pieces\Queen.h" />
     <ClInclude Include="code\Source\Pieces\Rook.h" />
+    <ClInclude Include="code\Source\Pieces\WhitePawn.h" />
     <ClInclude Include="code\Source\Scans\CompoundAxisScan.h" />
     <ClInclude Include="code\Source\Scans\DualAxisScan.h" />
     <ClInclude Include="code\Source\Scans\Scanner.h" />

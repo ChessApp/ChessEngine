@@ -11,8 +11,10 @@ namespace Chess
 
       int sourceRow = interface_->sourceRow ;
       int sourceCol = interface_->sourceCol ;
+      int destRow = interface_->destRow ;
+      int destCol = interface_->destCol ;
       Pieces * currentPiece = board_->getPiece( sourceRow, sourceCol ) ;
-      if ( currentPiece->validDirection( sourceRow, sourceCol ) )
+      if ( currentPiece->validDirection( destRow, destCol ) )
       {
       	return nextState_ ;
       }
