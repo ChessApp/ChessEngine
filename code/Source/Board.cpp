@@ -29,6 +29,18 @@ namespace Chess
       }
     }
 
+    if ( pieceList.size() )
+    {
+      for ( int j = 2; j <= 5; j++ )
+      {
+        for ( int i = 0; i <= MAX_COLUMN; i++ )
+        {
+          pieceList.back( ) ;
+        }
+      }
+      pieceList.pop_back( ) ;
+    }
+
     for ( int j = 0; j <= 1; j++ )
     {
       for ( int i = 0; i <= MAX_COLUMN; i++ )
