@@ -143,6 +143,8 @@
     <ClCompile Include="code\Source\State\CheckmateState.cpp" />
     <ClCompile Include="code\Source\State\InitState.cpp" />
     <ClCompile Include="code\Source\State\InputState.cpp" />
+    <ClCompile Include="code\Source\State\MoveValidityState.cpp" />
+    <ClCompile Include="code\Source\State\PathScanState.cpp" />
     <ClCompile Include="code\Source\State\RelevancyState.cpp" />
     <ClCompile Include="code\Source\Status.cpp" />
     <ClCompile Include="code\Tests\RookTests.cpp" />
@@ -170,6 +172,8 @@
     <ClInclude Include="code\Source\State\CheckmateState.h" />
     <ClInclude Include="code\Source\State\InitState.h" />
     <ClInclude Include="code\Source\State\InputState.h" />
+    <ClInclude Include="code\Source\State\MoveValidityState.h" />
+    <ClInclude Include="code\Source\State\PathScanState.h" />
     <ClInclude Include="code\Source\State\RelevancyState.h" />
     <ClInclude Include="code\Source\Status.h" />
     <ClInclude Include="code\Tests\Mocks\MockBoard.h" />

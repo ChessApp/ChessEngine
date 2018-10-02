@@ -72,6 +72,8 @@ namespace Chess
 
       virtual bool executeScan ( ) { return true ; }
 
+      virtual bool validDirection( int destRow, int destCol ) { return false ; }
+
       //virtual bool validDirection ( int destRow, int destCol ) ;
 
       
