@@ -8,8 +8,8 @@
 
 #include "State/InitState.h"
 #include "State/InputState.h"
+#include "State/RelevancyState.h"
 #include "State/CheckmateState.h"
-
 
 
 using namespace std;
@@ -36,10 +36,11 @@ namespace Chess
     Interface * interface_ ;
     Board * board_ ;
 
-    State::BaseState * state_ ;
+    State::BaseState * currentState_ ;
     State::BaseState * checkmate_ ;
     State::BaseState * init_ ;
     State::BaseState * input_ ;
+    State::BaseState * relevancy_ ;
 
 
   };

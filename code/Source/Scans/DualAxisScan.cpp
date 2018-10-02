@@ -9,12 +9,14 @@ namespace Chess
 
   }
 
-  void DualAxisScan::executeScans ( int sourceRow, int sourceCol )
+  bool DualAxisScan::executeScans ( int sourceRow, int sourceCol )
   {
     upLeftScan( sourceRow, sourceCol ) ;
     upRightScan( sourceRow, sourceCol ) ;
     downLeftScan( sourceRow, sourceCol ) ;
     downRightScan( sourceRow, sourceCol ) ;
+
+    return true ;
   }
 
 }

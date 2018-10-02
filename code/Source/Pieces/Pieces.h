@@ -70,6 +70,8 @@ namespace Chess
 
       string getName ( ) ;
 
+      virtual bool executeScan ( ) { return true ; }
+
       //virtual bool validDirection ( int destRow, int destCol ) ;
 
       

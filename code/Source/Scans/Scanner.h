@@ -31,7 +31,7 @@ namespace Chess
 
     Scanner ( Board * board ) ;
 
-    virtual void executeScans ( int sourceRow, int sourceCol ) = 0 ;
+    virtual bool executeScans ( int sourceRow, int sourceCol ) = 0 ;
 
     typedef struct ScanResult
     {

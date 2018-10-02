@@ -29,7 +29,7 @@ namespace Chess
 
     SingleAxisScan ( Board * board ) ;
 
-    virtual void executeScans ( int sourceRow, int sourceCol ) ;
+    virtual bool executeScans ( int sourceRow, int sourceCol ) ;
 
   protected:
 

@@ -35,7 +35,7 @@ namespace Chess
       {
         for ( int i = 0; i <= MAX_COLUMN; i++ )
         {
-          pieceList.back( ) ;
+          board[j][i] = pieceList.back( ) ;
         }
       }
       pieceList.pop_back( ) ;

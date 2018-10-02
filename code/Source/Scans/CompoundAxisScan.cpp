@@ -9,7 +9,7 @@ namespace Chess
 
   }
 
-  void CompoundAxisScan::executeScans ( int sourceRow, int sourceCol )
+  bool CompoundAxisScan::executeScans ( int sourceRow, int sourceCol )
   {
     upLeftScan( sourceRow, sourceCol ) ;
     upRightScan( sourceRow, sourceCol ) ;
@@ -19,6 +19,8 @@ namespace Chess
     rightScan( sourceRow, sourceCol ) ;
     downScan( sourceRow, sourceCol ) ;
     upScan( sourceRow, sourceCol ) ;
+
+    return true ;
   }
 
 }

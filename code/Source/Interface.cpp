@@ -179,7 +179,6 @@ namespace Chess
     destPiece = board->getPiece ( destRow, destCol ) ;
 
     if ( inputContent() &&
-      inputSize() &&
       inputDiffSqr() &&
       inputSqrAvailable() &&
       inputPieceOwner() )

@@ -11,7 +11,7 @@ namespace Chess
       
       interface_->printGameConds( ) ;
       interface_->getInput( ) ;
-
+      
       return nextState_ ;
     }
 

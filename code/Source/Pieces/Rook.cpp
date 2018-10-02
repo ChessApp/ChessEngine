@@ -29,5 +29,17 @@ namespace Chess
     }
   }
 
+  // bool Rook::executeScan ( )
+  // {
+  //   if( scan->executeScans( ) )
+  //   {
+  //     return true ;
+  //   }
+  //   else
+  //   {
+  //     return false ;
+  //   }
+  // }
+
   
 }

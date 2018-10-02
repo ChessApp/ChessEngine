@@ -96,6 +96,9 @@
     <ClCompile Include="code\Source\State\CheckmateState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="code\Source\State\RelevancyState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\Source\Pieces\Bishop.h">
@@ -165,6 +168,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="code\Source\State\CheckmateState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Source\State\RelevancyState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
