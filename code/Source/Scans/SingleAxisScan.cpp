@@ -15,19 +15,19 @@ namespace Chess
     int colDiff = destCol - sourceCol ;
     if ( rowDiff > 0 )
     {
-      scan_ = new DownScan( board, sourceRow, sourceCol ) ;
+      scan_ = new DownScan( board_, sourceRow, sourceCol, destRow, destCol ) ;
     }
     else if ( rowDiff < 0 )
     {
-      scan_ = new UpScan( board, sourceRow, sourceCol ) ;
+      scan_ = new UpScan( board_, sourceRow, sourceCol, destRow, destCol ) ;
     }
     else if ( colDiff > 0 )
     {
-      scan_ = new RightScan( board, sourceRow, sourceCol ) ;
+      scan_ = new RightScan( board_, sourceRow, sourceCol, destRow, destCol ) ;
     }
     else if ( colDiff < 0 )
     {
-      scan_ = new LeftScan( board, sourceRow, sourceCol ) ;
+      scan_ = new LeftScan( board_, sourceRow, sourceCol, destRow, destCol ) ;
     }
     else
     {

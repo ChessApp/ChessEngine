@@ -15,7 +15,7 @@ namespace Chess
     int colDiff = destCol - sourceCol ;
     if ( rowDiff > 0 )
     {
-      scan_ = new DownLeftScan( board, sourceRow, sourceCol ) ;
+      scan_ = new DownLeftScan( board_, sourceRow, sourceCol, destRow, destCol ) ;
     }
   }
 

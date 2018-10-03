@@ -18,12 +18,14 @@ namespace Chess
   {
   public:
 
-    Scanner ( Board * board ) ;
+    inline Scanner ( Board * board )
+      : board_(board)
+    { }
 
     virtual Pieces * execute ( ) = 0 ;
     virtual void identifyScan ( int sourceRow, int sourceCol, int destRow, int destCol ) { } ;
 
-    Board * board ;
+    Board * board_ ;
     BaseScan * scan_ ;
 
 
@@ -34,16 +36,10 @@ namespace Chess
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
       virtual Pieces * execute ( ) ;
 
-      inline LeftScan ( Board * board, int sourceRow, int sourceCol )
-        : BaseScan( board ),
-          sourceRow_( sourceRow ),
-          sourceCol_( sourceCol )
+      inline LeftScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
       ~LeftScan( ) ;
-
-    protected:
-      int sourceRow_ ;
-      int sourceCol_ ;
 
     };
 
@@ -54,16 +50,10 @@ namespace Chess
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
       virtual Pieces * execute ( ) ;
 
-      inline RightScan ( Board * board, int sourceRow, int sourceCol )
-        : BaseScan( board ),
-          sourceRow_( sourceRow ),
-          sourceCol_( sourceCol )
+      inline RightScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
       ~RightScan( ) ;
-
-    protected:
-      int sourceRow_ ;
-      int sourceCol_ ;
 
     };
 
@@ -74,16 +64,10 @@ namespace Chess
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
       virtual Pieces * execute ( ) ;
 
-      inline UpScan ( Board * board, int sourceRow, int sourceCol )
-        : BaseScan( board ),
-          sourceRow_( sourceRow ),
-          sourceCol_( sourceCol )
+      inline UpScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
       ~UpScan( ) ;
-
-    protected:
-      int sourceRow_ ;
-      int sourceCol_ ;
 
     };
 
@@ -94,16 +78,10 @@ namespace Chess
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
       virtual Pieces * execute ( ) ;
 
-      inline DownScan ( Board * board, int sourceRow, int sourceCol )
-        : BaseScan( board ),
-          sourceRow_( sourceRow ),
-          sourceCol_( sourceCol )
+      inline DownScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
       ~DownScan( ) ;
-
-    protected:
-      int sourceRow_ ;
-      int sourceCol_ ;
 
     };
 
@@ -114,16 +92,10 @@ namespace Chess
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
       virtual Pieces * execute ( ) ;
 
-      inline UpLeftScan ( Board * board, int sourceRow, int sourceCol )
-        : BaseScan( board ),
-          sourceRow_( sourceRow ),
-          sourceCol_( sourceCol )
+      inline UpLeftScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
       ~UpLeftScan( ) ;
-
-    protected:
-      int sourceRow_ ;
-      int sourceCol_ ;
 
     };
 
@@ -134,16 +106,10 @@ namespace Chess
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
       virtual Pieces * execute ( ) ;
 
-      inline UpRightScan ( Board * board, int sourceRow, int sourceCol )
-        : BaseScan( board ),
-          sourceRow_( sourceRow ),
-          sourceCol_( sourceCol )
+      inline UpRightScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
       ~UpRightScan( ) ;
-
-    protected:
-      int sourceRow_ ;
-      int sourceCol_ ;
 
     };
 
@@ -154,16 +120,10 @@ namespace Chess
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
       virtual Pieces * execute ( ) ;
 
-      inline DownLeftScan ( Board * board, int sourceRow, int sourceCol )
-        : BaseScan( board ),
-          sourceRow_( sourceRow ),
-          sourceCol_( sourceCol )
+      inline DownLeftScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
       ~DownLeftScan( ) ;
-
-    protected:
-      int sourceRow_ ;
-      int sourceCol_ ;
 
     };
 
@@ -174,16 +134,10 @@ namespace Chess
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
       virtual Pieces * execute ( ) ;
 
-      inline DownRightScan ( Board * board, int sourceRow, int sourceCol )
-        : BaseScan( board ),
-          sourceRow_( sourceRow ),
-          sourceCol_( sourceCol )
+      inline DownRightScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
       ~DownRightScan( ) ;
-
-    protected:
-      int sourceRow_ ;
-      int sourceCol_ ;
 
     };  
 

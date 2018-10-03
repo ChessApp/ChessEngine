@@ -39,7 +39,7 @@ namespace Chess
 
     Board ( ) ;
 
-    void init ( Pieces * nullpiece ) ;
+    void init ( vector< Pieces * > & nullPieceList ) ;
 
     void setPiece ( Pieces * setPiece, int row, int col ) ;
 

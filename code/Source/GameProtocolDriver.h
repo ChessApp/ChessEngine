@@ -11,6 +11,8 @@
 #include "State/RelevancyState.h"
 #include "State/MoveValidityState.h"
 #include "State/PathScanState.h"
+#include "State/MoveState.h"
+#include "State/DefensiveCheckScanState.h"
 #include "State/CheckmateState.h"
 
 
@@ -45,6 +47,8 @@ namespace Chess
     State::BaseState * relevancy_ ;
     State::BaseState * moveValidity_ ;
     State::BaseState * pathscan_ ;
+    State::BaseState * move_ ;
+    State::BaseState * defensiveCheckScan_ ;
 
 
   };

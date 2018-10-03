@@ -3,24 +3,17 @@
 namespace Chess
 {
 
-  Scanner::Scanner ( Board * board )
-    : board(board)
-  {
-
-  }
-
   Pieces * Scanner::LeftScan::execute ( )
   {
-    // ScanResult scanResult ;
     int i = sourceCol_ - 1 ;
-    while ( i >= 0 )
+    while ( i >= destCol_ )
     {
-      if ( board->getPiece( sourceRow_, i ) != NULL && board->getPieceName( sourceRow_, i ) != ".. " )
+      result.detectedPiece = board_->getPiece( sourceRow_, i ) ;
+      if ( board_->getPiece( sourceRow_, i ) != NULL && board_->getPieceName( sourceRow_, i ) != ".. " )
       {
         result.detection = true ;
         result.row = sourceRow_ ;
         result.col = i ;
-        result.detectedPiece = board->getPiece( sourceRow_, i ) ;
         break ;
       }
       i-- ;
@@ -30,143 +23,143 @@ namespace Chess
 
   Pieces * Scanner::RightScan::execute ( )
   {
-    ScanResult scanResult ;
     int i = sourceCol_ + 1 ;
-    while ( i <= 7 )
+    while ( i <= destCol_ )
     {
-      if ( board->getPiece( sourceRow_, i ) != NULL && board->getPieceName( sourceRow_, i ) != ".. " )
+      result.detectedPiece = board_->getPiece( sourceRow_, i ) ;
+      if ( board_->getPiece( sourceRow_, i ) != NULL && board_->getPieceName( sourceRow_, i ) != ".. " )
       {
-        scanResult.detection = true ;
-        scanResult.row = sourceRow_ ;
-        scanResult.col = i ;
-        scanResult.detectedPiece = board->getPiece( sourceRow_, i ) ;
+        result.detection = true ;
+        result.row = sourceRow_ ;
+        result.col = i ;
+        result.detectedPiece = board_->getPiece( sourceRow_, i ) ;
         break ;
       }
       i++ ;
     }
-    return scanResult.detectedPiece ;
+    return result.detectedPiece ;
   }
 
   Pieces * Scanner::UpScan::execute ( )
   {
-    ScanResult scanResult ;
     int j = sourceRow_ - 1 ;
-    while ( j >= 0 )
+    while ( j >= destRow_ )
     {
-      if ( board->getPiece( j, sourceCol_ ) != NULL && board->getPieceName( j, sourceCol_ ) != ".. " )
+      result.detectedPiece = board_->getPiece( j, sourceCol_ ) ;
+      if ( board_->getPiece( j, sourceCol_ ) != NULL && board_->getPieceName( j, sourceCol_ ) != ".. " )
       {
-        scanResult.detection = true ;
-        scanResult.row = j ;
-        scanResult.col = sourceCol_ ;
-        scanResult.detectedPiece = board->getPiece( j, sourceCol_ ) ;
+        result.detection = true ;
+        result.row = j ;
+        result.col = sourceCol_ ;
+        result.detectedPiece = board_->getPiece( j, sourceCol_ ) ;
         break ;
       }
       j-- ;
     }
-    return scanResult.detectedPiece ;
+    return result.detectedPiece ;
   }
 
   Pieces * Scanner::DownScan::execute ( )
   {
-    ScanResult scanResult ;
     int j = sourceRow_ + 1 ;
-    while ( j <= 7 )
+    while ( j <= destRow_ )
     {
-      if ( board->getPiece( j, sourceCol_ ) != NULL && board->getPieceName( j, sourceCol_ ) != ".. " )
+      result.detectedPiece = board_->getPiece( j, sourceCol_ ) ;
+      if ( board_->getPiece( j, sourceCol_ ) != NULL && board_->getPieceName( j, sourceCol_ ) != ".. " )
       {
-        scanResult.detection = true ;
-        scanResult.row = j ;
-        scanResult.col = sourceCol_ ;
-        scanResult.detectedPiece = board->getPiece( j, sourceCol_ ) ;
+        result.detection = true ;
+        result.row = j ;
+        result.col = sourceCol_ ;
+        result.detectedPiece = board_->getPiece( j, sourceCol_ ) ;
         break ;
       }
       j++ ;
     }
-    return scanResult.detectedPiece ;
+    return result.detectedPiece ;
   }
 
   Pieces * Scanner::UpLeftScan::execute ( )
   {
-    ScanResult scanResult ;
     int i = sourceCol_ - 1 ;
     int j = sourceRow_ - 1 ;
-    while ( i >= 0 && j >= 0)
+    while ( i >= destCol_ && j >= destRow_ )
     {
-      if ( board->getPiece( j, i ) != NULL && board->getPieceName( j, i ) != ".. " )
+      result.detectedPiece = board_->getPiece( j, i ) ;
+      if ( board_->getPiece( j, i ) != NULL && board_->getPieceName( j, i ) != ".. " )
       {
-        scanResult.detection = true ;
-        scanResult.row = j ;
-        scanResult.col = i ;
-        scanResult.detectedPiece = board->getPiece( j, i ) ;
+        result.detection = true ;
+        result.row = j ;
+        result.col = i ;
+        result.detectedPiece = board_->getPiece( j, i ) ;
         break ;
       }
       i-- ;
       j-- ;
     }
-    return scanResult.detectedPiece ;
+    return result.detectedPiece ;
   }
 
   Pieces * Scanner::UpRightScan::execute ( )
   {
-    ScanResult scanResult ;
     int i = sourceCol_ + 1 ;
     int j = sourceRow_ - 1 ;
-    while ( i <= 7 && j >= 0)
+    while ( i <= destCol_ && j >= destRow_ )
     {
-      if ( board->getPiece( j, i ) != NULL && board->getPieceName( j, i ) != ".. " )
+      result.detectedPiece = board_->getPiece( j, i ) ;
+      if ( board_->getPiece( j, i ) != NULL && board_->getPieceName( j, i ) != ".. " )
       {
-        scanResult.detection = true ;
-        scanResult.row = j ;
-        scanResult.col = i ;
-        scanResult.detectedPiece = board->getPiece( j, i ) ;
+        result.detection = true ;
+        result.row = j ;
+        result.col = i ;
+        result.detectedPiece = board_->getPiece( j, i ) ;
         break ;
       }
       i++ ;
       j-- ;
     }
-    return scanResult.detectedPiece ;
+    return result.detectedPiece ;
   }
 
   Pieces * Scanner::DownLeftScan::execute ( )
   {
-    ScanResult scanResult ;
     int i = sourceCol_ - 1 ;
     int j = sourceRow_ + 1 ;
-    while ( i >= 0 && j <= 7)
+    while ( i >= destCol_ && j <= destRow_ )
     {
-      if ( board->getPiece( j, i ) != NULL && board->getPieceName( j, i ) != ".. " )
+      result.detectedPiece = board_->getPiece( j, i ) ;
+      if ( board_->getPiece( j, i ) != NULL && board_->getPieceName( j, i ) != ".. " )
       {
-        scanResult.detection = true ;
-        scanResult.row = j ;
-        scanResult.col = i ;
-        scanResult.detectedPiece = board->getPiece( j, i ) ;
+        result.detection = true ;
+        result.row = j ;
+        result.col = i ;
+        result.detectedPiece = board_->getPiece( j, i ) ;
         break ;
       }
       i-- ;
       j++ ;
     }
-    return scanResult.detectedPiece ;
+    return result.detectedPiece ;
   }
 
   Pieces * Scanner::DownRightScan::execute ( )
   {
-    ScanResult scanResult ;
     int i = sourceCol_ + 1 ;
     int j = sourceRow_ + 1 ;
-    while ( i <= 7 && j <= 7)
+    while ( i <= destCol_ && j <= destRow_ )
     {
-      if ( board->getPiece( j, i ) != NULL && board->getPieceName( j, i ) != ".. " )
+      result.detectedPiece = board_->getPiece( j, i ) ;
+      if ( board_->getPiece( j, i ) != NULL && board_->getPieceName( j, i ) != ".. " )
       {
-        scanResult.detection = true ;
-        scanResult.row = j ;
-        scanResult.col = i ;
-        scanResult.detectedPiece = board->getPiece( j, i ) ;
+        result.detection = true ;
+        result.row = j ;
+        result.col = i ;
+        result.detectedPiece = board_->getPiece( j, i ) ;
         break ;
       }
       i++ ;
       j++ ;
     }
-    return scanResult.detectedPiece ;
+    return result.detectedPiece ;
   }
 
 }

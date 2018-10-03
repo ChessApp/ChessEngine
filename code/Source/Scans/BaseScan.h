@@ -18,9 +18,16 @@ namespace Chess
   public:
 
     inline BaseScan ( Board * board )
-      : board(board)
+      : board_(board)
     { }
-
+    inline BaseScan ( Board * board, int sourceRow, int sourceCol,
+        int destRow, int destCol )
+      : board_(board),
+        sourceRow_(sourceRow),
+        sourceCol_(sourceCol),
+        destRow_(destRow),
+        destCol_(destCol)
+    { }
     // virtual ScanResult execute ( int sourceRow, int sourceCol ) = 0 ;
     virtual Pieces * execute ( ) = 0 ;
 
@@ -32,9 +39,15 @@ namespace Chess
       Pieces * detectedPiece = NULL ;
     } ;
 
+  protected:
+
     ScanResult result ;
 
-    Board * board ;
+    Board * board_ ;
+    int sourceRow_ ;
+    int sourceCol_ ;
+    int destRow_ ;
+    int destCol_ ;
 
   };
 

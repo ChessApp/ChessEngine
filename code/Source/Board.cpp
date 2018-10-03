@@ -10,15 +10,23 @@ namespace Chess
  
   }
 
-  void Board::init ( Pieces * nullpiece )
+  void Board::init ( vector< Pieces * > & nullPieceList )
   {
-    nullpiece_ = nullpiece ;
 
     for ( int j = 0; j <= 7; j++ )
     {
       for ( int i = 0; i <= 7; i++ )
       {
-        board[j][i] = nullpiece ;
+        if ( nullPieceList.size( ) )
+        {
+          board[j][i] = nullPieceList.back( ) ;
+          (board[j][i])->setLocation( j, i ) ;
+          nullPieceList.pop_back( ) ;
+        }
+        else
+        {
+          std::cout << "Error initializing board." << std::endl ;
+        }
       }
     }
 

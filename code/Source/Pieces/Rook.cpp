@@ -44,8 +44,8 @@ namespace Chess
     {
       return false ;
     }
-    else if ( detectedPiece->getRow( ) != getRow( ) || 
-              detectedPiece->getCol( ) != getCol( ) )
+    else if ( detectedPiece->getRow( ) != destRow || 
+              detectedPiece->getCol( ) != destCol )
     {
       return false ;
     }

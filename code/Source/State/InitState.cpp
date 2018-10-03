@@ -9,6 +9,19 @@ namespace Chess
     {
       std::cout << "Init state" << std::endl ;
 
+      vector< Pieces * > nullPieceList ;
+      for ( int j = 0; j < 8; j++ )
+      {
+        for ( int i = 0; i < 8; i++ )
+        {
+          Pieces * np = new NullPiece( ".. ", board_ ) ;
+          setPiece( np, j, i ) ;
+          nullPieceList.push_back( np ) ;
+        }  
+      }
+
+      board_->init( nullPieceList ) ;
+
       Pieces * wr1 = new Chess::Rook ( "WR ", board_ ) ;
       Pieces * wr2 = new Chess::Rook ( "WR ", board_ ) ;
       Pieces * br1 = new Chess::Rook ( "BR ", board_ ) ;
@@ -42,7 +55,7 @@ namespace Chess
       Pieces * wk  = new Chess::King ( "WK ", board_ ) ;
       Pieces * bk  = new Chess::King ( "BK ", board_ ) ;
 
-      board_->init( new NullPiece( ".. ", board_ ) ) ;
+      
 
       setPiece (wr1, 7, 0) ;
       setPiece (wr2, 7, 7) ;
