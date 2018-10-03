@@ -56,7 +56,7 @@ namespace Chess
       setPiece (wn2, 7, 6) ;
       setPiece (bn1, 0, 1) ;
       setPiece (bn2, 0, 6) ;
-      setPiece (wp1, 6, 0) ;
+      // setPiece (wp1, 6, 0) ;
       setPiece (wp2, 6, 1) ;
       setPiece (wp3, 6, 2) ;
       setPiece (wp4, 6, 3) ;

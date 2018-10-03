@@ -40,7 +40,7 @@ namespace Chess
 
       void printLeftScan ( ) ;
 
-      virtual bool pathScan ( ) ;
+      virtual bool pathScan ( int destRow, int destCol ) ;
 
       //virtual bool checkValidity ( ) ;
 

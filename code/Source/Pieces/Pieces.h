@@ -60,6 +60,9 @@ namespace Chess
 
       void setLocation ( int row, int col ) ;
 
+      int getCol ( ) { return col ; }
+      int getRow ( ) { return row ; }
+
       virtual string getType ( ) ;
 
       char getColor ( ) ;
@@ -70,7 +73,7 @@ namespace Chess
 
       string getName ( ) ;
 
-      virtual bool pathScan ( ) { return true ; }
+      virtual bool pathScan ( int destRow, int destCol ) { return true ; }
 
       virtual bool validDirection( int destRow, int destCol ) { return false ; }
 

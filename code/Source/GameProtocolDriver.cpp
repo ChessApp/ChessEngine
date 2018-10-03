@@ -20,13 +20,14 @@ namespace Chess
     input_ = new State::InputState( interface_ ) ;
     relevancy_ = new State::RelevancyState( interface_ ) ;
     moveValidity_ = new State::MoveValidityState( interface_, board_ ) ;
-    // pathscan_ = new State::PathScanState( interface_, board_ ) ;
+    pathscan_ = new State::PathScanState( interface_, board_ ) ;
     checkmate_ = new State::CheckmateState( interface_ ) ;
 
     init_->setTransitionStates( input_, input_ ) ;
     input_->setTransitionStates( relevancy_, input_ ) ;
     relevancy_->setTransitionStates( moveValidity_, input_ ) ;
-    moveValidity_->setTransitionStates( checkmate_, input_ ) ;
+    moveValidity_->setTransitionStates( pathscan_, input_ ) ;
+    pathscan_->setTransitionStates( checkmate_, input_ ) ;
 
   }
 

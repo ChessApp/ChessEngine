@@ -10,6 +10,7 @@
 #include "State/InputState.h"
 #include "State/RelevancyState.h"
 #include "State/MoveValidityState.h"
+#include "State/PathScanState.h"
 #include "State/CheckmateState.h"
 
 
@@ -43,6 +44,7 @@ namespace Chess
     State::BaseState * input_ ;
     State::BaseState * relevancy_ ;
     State::BaseState * moveValidity_ ;
+    State::BaseState * pathscan_ ;
 
 
   };

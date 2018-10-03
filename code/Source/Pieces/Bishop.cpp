@@ -13,13 +13,13 @@ namespace Chess
   Bishop::Bishop( const string name, Board * board, int initRow, int initCol )
     : Pieces( name, "B", initRow, initCol )
   {
-    scan = new DualAxisScan ( board ) ;
+    scanner_ = new DualAxisScan ( board ) ;
   }
 
   Bishop::Bishop( const string name, Board * board )
     : Pieces( name, "B" )
   {
-    scan = new DualAxisScan ( board ) ;
+    scanner_ = new DualAxisScan ( board ) ;
   }
 
   bool Bishop::validDirection ( int destRow, int destCol )
