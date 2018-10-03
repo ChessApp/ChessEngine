@@ -20,16 +20,14 @@ namespace Chess
   {
 
   public:
-
-    typedef Chess::Pieces Pieces ;
-    typedef Chess::Board Board ;
-    typedef Chess::Status Status ;  
+ 
 
     friend class Board ;
 
     CompoundAxisScan ( Board * board ) ;
+    virtual void identifyScan ( int sourceRow, int sourceCol, int destRow, int destCol ) ;
 
-    virtual bool executeScans ( int sourceRow, int sourceCol ) ;
+    virtual Pieces * execute ( ) ;
 
   protected:
 

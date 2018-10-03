@@ -27,9 +27,6 @@
     <ClCompile Include="code\Source\Pieces\NullPiece.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="code\Source\Pieces\Pawn.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="code\Source\Pieces\Pieces.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -111,6 +108,9 @@
     <ClCompile Include="code\Source\Pieces\WhitePawn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="code\Source\Scans\BaseScan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\Source\Pieces\Bishop.h">
@@ -123,9 +123,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="code\Source\Pieces\NullPiece.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="code\Source\Pieces\Pawn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="code\Source\Pieces\Pieces.h">
@@ -195,6 +192,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="code\Source\Pieces\WhitePawn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Source\Scans\BaseScan.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

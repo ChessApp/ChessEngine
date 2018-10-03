@@ -9,14 +9,19 @@ namespace Chess
 
   }
 
-  bool SingleAxisScan::executeScans ( int sourceRow, int sourceCol )
+  void SingleAxisScan::identifyScan ( int sourceRow, int sourceCol, int destRow, int destCol )
   {
-    upScan( sourceRow, sourceCol ) ;
-    rightScan( sourceRow, sourceCol ) ;
-    leftScan( sourceRow, sourceCol ) ;
-    downScan( sourceRow, sourceCol ) ;
+    int rowDiff = destRow - sourceRow ;
+    int colDiff = destCol - sourceCol ;
+    if ( rowDiff > 0 )
+    {
+      scan_ = new DownScan( board, sourceRow, sourceCol ) ;
+    }
+  }
 
-    return true ;
+  Pieces * SingleAxisScan::execute ( )
+  {
+    return scan_->execute( ) ;
   }
 
 }

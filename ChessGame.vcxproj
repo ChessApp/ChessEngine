@@ -136,6 +136,7 @@
     <ClCompile Include="code\Source\Pieces\Queen.cpp" />
     <ClCompile Include="code\Source\Pieces\Rook.cpp" />
     <ClCompile Include="code\Source\Pieces\WhitePawn.cpp" />
+    <ClCompile Include="code\Source\Scans\BaseScan.cpp" />
     <ClCompile Include="code\Source\Scans\CompoundAxisScan.cpp" />
     <ClCompile Include="code\Source\Scans\DualAxisScan.cpp" />
     <ClCompile Include="code\Source\Scans\Scanner.cpp" />
@@ -148,8 +149,12 @@
     <ClCompile Include="code\Source\State\PathScanState.cpp" />
     <ClCompile Include="code\Source\State\RelevancyState.cpp" />
     <ClCompile Include="code\Source\Status.cpp" />
-    <ClCompile Include="code\Tests\RookTests.cpp" />
-    <ClCompile Include="code\Tests\SingleAxisScanTests.cpp" />
+    <ClCompile Include="code\Tests\RookTests.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="code\Tests\SingleAxisScanTests.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\Source\Board.h" />
@@ -166,6 +171,7 @@
     <ClInclude Include="code\Source\Pieces\Queen.h" />
     <ClInclude Include="code\Source\Pieces\Rook.h" />
     <ClInclude Include="code\Source\Pieces\WhitePawn.h" />
+    <ClInclude Include="code\Source\Scans\BaseScan.h" />
     <ClInclude Include="code\Source\Scans\CompoundAxisScan.h" />
     <ClInclude Include="code\Source\Scans\DualAxisScan.h" />
     <ClInclude Include="code\Source\Scans\Scanner.h" />

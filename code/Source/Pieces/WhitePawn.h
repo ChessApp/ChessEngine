@@ -34,7 +34,6 @@ namespace Chess
       WhitePawn( const string name, Board * board, int initRow, int initCol );
       WhitePawn( const string name, Board * board );
       bool validDirection( int destRow, int destCol ) ;
-      Pieces * executeScan( )
       
     };
 

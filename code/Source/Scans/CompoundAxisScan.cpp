@@ -9,18 +9,19 @@ namespace Chess
 
   }
 
-  bool CompoundAxisScan::executeScans ( int sourceRow, int sourceCol )
+  void CompoundAxisScan::identifyScan ( int sourceRow, int sourceCol, int destRow, int destCol )
   {
-    upLeftScan( sourceRow, sourceCol ) ;
-    upRightScan( sourceRow, sourceCol ) ;
-    downLeftScan( sourceRow, sourceCol ) ;
-    downRightScan( sourceRow, sourceCol ) ;
-    leftScan( sourceRow, sourceCol ) ;
-    rightScan( sourceRow, sourceCol ) ;
-    downScan( sourceRow, sourceCol ) ;
-    upScan( sourceRow, sourceCol ) ;
+    int rowDiff = destRow - sourceRow ;
+    int colDiff = destCol - sourceCol ;
+    if ( rowDiff > 0 )
+    {
+      scan_ = new DownLeftScan( board, sourceRow, sourceCol ) ;
+    }
+  }
 
-    return true ;
+  Pieces * CompoundAxisScan::execute ( )
+  {
+    return scan_->execute( ) ;
   }
 
 }
