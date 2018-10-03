@@ -17,6 +17,22 @@ namespace Chess
     {
       scan_ = new DownScan( board, sourceRow, sourceCol ) ;
     }
+    else if ( rowDiff < 0 )
+    {
+      scan_ = new UpScan( board, sourceRow, sourceCol ) ;
+    }
+    else if ( colDiff > 0 )
+    {
+      scan_ = new RightScan( board, sourceRow, sourceCol ) ;
+    }
+    else if ( colDiff < 0 )
+    {
+      scan_ = new LeftScan( board, sourceRow, sourceCol ) ;
+    }
+    else
+    {
+      cout << "Error: No scan identified." << endl ;
+    }
   }
 
   Pieces * SingleAxisScan::execute ( )
