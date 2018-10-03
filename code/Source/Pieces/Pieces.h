@@ -74,6 +74,7 @@ namespace Chess
       string getName ( ) ;
 
       virtual bool pathScan ( int destRow, int destCol ) { return true ; }
+=======
 
       virtual bool validDirection( int destRow, int destCol ) { return false ; }
 
