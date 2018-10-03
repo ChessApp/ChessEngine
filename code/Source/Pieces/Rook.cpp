@@ -35,17 +35,12 @@ namespace Chess
     }
   }
 
-  // bool Rook::executeScan ( )
-  // {
-  //   if( scan->executeScans( ) )
-  //   {
-  //     return true ;
-  //   }
-  //   else
-  //   {
-  //     return false ;
-  //   }
-  // }
+  bool Rook::pathScan ( int destRow, int destCol )
+  {
+    scanner_->identifyScan( row, col, destRow, destCol ) ;
+    Pieces * detectedPiece = scanner_->execute( ) ;
+    if ( detectedPiece.getColor)
+  }
 
   
 }

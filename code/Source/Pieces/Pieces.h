@@ -41,7 +41,7 @@ namespace Chess
       string name;
       string type;
       Pieces * prevPiecePointer;
-      Scanner * scan ;
+      Scanner * scanner_ ;
       
 
       void clrLocation ( ) ;
@@ -70,7 +70,7 @@ namespace Chess
 
       string getName ( ) ;
 
-      virtual bool executeScan ( ) { return true ; }
+      virtual bool pathScan ( ) { return true ; }
 
       virtual bool validDirection( int destRow, int destCol ) { return false ; }
 
