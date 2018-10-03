@@ -39,6 +39,7 @@ namespace Chess
   {
     scanner_->identifyScan( row, col, destRow, destCol ) ;
     Pieces * detectedPiece = scanner_->execute( ) ;
+    
     if ( detectedPiece->getColor( ) == getColor( ) )
     {
       return false ;
@@ -52,6 +53,7 @@ namespace Chess
     {
       return true ;
     }
+
   }
 
   
