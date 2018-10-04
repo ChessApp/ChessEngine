@@ -5,6 +5,7 @@
 #include <sstream>
 
 #include "../Pieces/Pieces.h"
+#include "../Pieces/NullPiece.h"
 #include "../Board.h"
 #include "../Interface.h"
 #include "BaseScan.h"

@@ -34,6 +34,7 @@ namespace Chess
       // a specified name, and specified initial coordinates as
       // arguments.
       NullPiece( const string name, Board * board );
+      ~NullPiece( ) { }
 
       bool validDirection ( int destRow, int destCol ) ;
       

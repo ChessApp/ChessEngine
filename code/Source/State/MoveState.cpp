@@ -22,6 +22,9 @@ namespace Chess
     {
       pieceToSet->setLocation( rowToSet, colToSet ) ;
       board_->setPiece( pieceToSet, rowToSet, colToSet ) ;
+      Pieces * np = new NullPiece( ".. ", board_ ) ;
+      np->setLocation( rowToSet, colToSet ) ;
+      board_->setPiece( np, rowToSet, colToSet ) ;
     }
 
   }

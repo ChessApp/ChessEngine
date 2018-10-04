@@ -90,9 +90,9 @@ namespace Chess
 
       
 
-      setPiece (wr1, 7, 0) ;
+      setPiece (wr1, 6, 4) ;
       setPiece (wr2, 7, 7) ;
-      setPiece (br1, 0, 0) ;
+      setPiece (br1, 0, 4) ;
       setPiece (br2, 0, 7) ;
       setPiece (wb1, 7, 2) ;
       setPiece (wb2, 7, 5) ;
@@ -103,25 +103,25 @@ namespace Chess
       setPiece (bn1, 0, 1) ;
       setPiece (bn2, 0, 6) ;
       // setPiece (wp1, 6, 0) ;
-      setPiece (wp2, 6, 1) ;
-      setPiece (wp3, 6, 2) ;
-      setPiece (wp4, 6, 3) ;
-      setPiece (wp5, 6, 4) ;
-      setPiece (wp6, 6, 5) ;
-      setPiece (wp7, 6, 6) ;
-      setPiece (wp8, 6, 7) ;
-      setPiece (bp1, 1, 0) ;
-      setPiece (bp2, 1, 1) ;
-      setPiece (bp3, 1, 2) ;
-      setPiece (bp4, 1, 3) ;
-      setPiece (bp5, 1, 4) ;
-      setPiece (bp6, 1, 5) ;
-      setPiece (bp7, 1, 6) ;
-      setPiece (bp8, 1, 7) ;
+      // setPiece (wp2, 6, 1) ;
+      // setPiece (wp3, 6, 2) ;
+      // setPiece (wp4, 6, 3) ;
+      // setPiece (wp5, 6, 4) ;
+      // setPiece (wp6, 6, 5) ;
+      // setPiece (wp7, 6, 6) ;
+      // setPiece (wp8, 6, 7) ;
+      // setPiece (bp1, 1, 0) ;
+      // setPiece (bp2, 1, 1) ;
+      // setPiece (bp3, 1, 2) ;
+      // setPiece (bp4, 1, 3) ;
+      // setPiece (bp5, 1, 4) ;
+      // setPiece (bp6, 1, 5) ;
+      // setPiece (bp7, 1, 6) ;
+      // setPiece (bp8, 1, 7) ;
       setPiece (wq , 7, 3) ;
       setPiece (bq , 0, 3) ;
       setPiece (wk , 7, 4) ;
-      setPiece (bk , 0, 4) ;
+      // setPiece (bk , 0, 4) ;
 
       
       interface_->printBoard( ) ;

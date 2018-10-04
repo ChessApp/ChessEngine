@@ -5,6 +5,7 @@ namespace Chess
 
   Pieces * Scanner::LeftScan::execute ( )
   {
+    result.detectedPiece = board_->getPiece( sourceRow_, sourceCol_ ) ;
     int i = sourceCol_ - 1 ;
     while ( i >= destCol_ )
     {
@@ -23,6 +24,7 @@ namespace Chess
 
   Pieces * Scanner::RightScan::execute ( )
   {
+    result.detectedPiece = board_->getPiece( sourceRow_, sourceCol_ ) ;
     int i = sourceCol_ + 1 ;
     while ( i <= destCol_ )
     {
@@ -42,6 +44,7 @@ namespace Chess
 
   Pieces * Scanner::UpScan::execute ( )
   {
+    result.detectedPiece = board_->getPiece( sourceRow_, sourceCol_ ) ;
     int j = sourceRow_ - 1 ;
     while ( j >= destRow_ )
     {
@@ -61,6 +64,7 @@ namespace Chess
 
   Pieces * Scanner::DownScan::execute ( )
   {
+    result.detectedPiece = board_->getPiece( sourceRow_, sourceCol_ ) ;
     int j = sourceRow_ + 1 ;
     while ( j <= destRow_ )
     {
@@ -80,6 +84,7 @@ namespace Chess
 
   Pieces * Scanner::UpLeftScan::execute ( )
   {
+    result.detectedPiece = board_->getPiece( sourceRow_, sourceCol_ ) ;
     int i = sourceCol_ - 1 ;
     int j = sourceRow_ - 1 ;
     while ( i >= destCol_ && j >= destRow_ )
@@ -101,6 +106,7 @@ namespace Chess
 
   Pieces * Scanner::UpRightScan::execute ( )
   {
+    result.detectedPiece = board_->getPiece( sourceRow_, sourceCol_ ) ;
     int i = sourceCol_ + 1 ;
     int j = sourceRow_ - 1 ;
     while ( i <= destCol_ && j >= destRow_ )
@@ -122,6 +128,7 @@ namespace Chess
 
   Pieces * Scanner::DownLeftScan::execute ( )
   {
+    result.detectedPiece = board_->getPiece( sourceRow_, sourceCol_ ) ;
     int i = sourceCol_ - 1 ;
     int j = sourceRow_ + 1 ;
     while ( i >= destCol_ && j <= destRow_ )
@@ -143,6 +150,7 @@ namespace Chess
 
   Pieces * Scanner::DownRightScan::execute ( )
   {
+    result.detectedPiece = board_->getPiece( sourceRow_, sourceCol_ ) ;
     int i = sourceCol_ + 1 ;
     int j = sourceRow_ + 1 ;
     while ( i <= destCol_ && j <= destRow_ )

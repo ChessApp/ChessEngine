@@ -22,8 +22,11 @@ namespace Chess
         detectedPiece = currentScan->execute( ) ;
         if ( detectedPiece->validDirection( kingToScan->getRow( ), kingToScan->getCol( ) ) )
         {
-          status_ = true ;
-          break ;
+          if ( detectedPiece->getColor( ) != kingToScan->getColor( ) )
+          {
+            status_ = true ;
+            break ;
+          } 
         }
       }
       scanList_.erase( scanList_.begin( ), scanList_.end( ) ) ;

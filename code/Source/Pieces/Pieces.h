@@ -80,6 +80,7 @@ namespace Chess
 
       virtual void setKing( Pieces * king ) { king_ = king ; }
       virtual Pieces * getKing( ) { return king_ ; }
+      ~Pieces( ) { }
 
 
       //virtual bool validDirection ( int destRow, int destCol ) ;
