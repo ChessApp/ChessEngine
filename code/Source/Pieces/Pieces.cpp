@@ -101,24 +101,6 @@ namespace Chess
     col = NULL ;
   }
 
-  // bool Pieces::pathScan ( int destRow, int destCol )
-  // {
-  //   scanner_->identifyScan( row, col, destRow, destCol ) ;
-  //   Pieces * detectedPiece = scanner_->execute( ) ;
-  //   if ( detectedPiece->getColor( ) == getColor( ) )
-  //   {
-  //     return false ;
-  //   }
-  //   else if ( detectedPiece->getRow( ) != getRow( ) || 
-  //             detectedPiece->getCol( ) != getCol( ) )
-  //   {
-  //     return false ;
-  //   }
-  //   else
-  //   {
-  //     return true ;
-  //   }
-  // }
 
 
 

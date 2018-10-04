@@ -33,7 +33,7 @@ namespace Chess
       // arguments.
       King( const string name, Board * board, int initRow, int initCol ) ;
       King( const string name, Board * board ) ;
-      bool validDirection( int destRow, int destCol ) ;      
+      bool validDirection( int destRow, int destCol ) ;    
       
     };
 

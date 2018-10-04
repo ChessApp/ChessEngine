@@ -9,6 +9,9 @@ namespace Chess
     {
       std::cout << "Move validity state" << std::endl ;
 
+      nextState_->setWhiteKing( whiteKing_ ) ;
+      nextState_->setBlackKing( blackKing_ ) ;
+
       int sourceRow = interface_->sourceRow ;
       int sourceCol = interface_->sourceCol ;
       int destRow = interface_->destRow ;

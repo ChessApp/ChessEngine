@@ -42,6 +42,7 @@ namespace Chess
       string type;
       Pieces * prevPiecePointer;
       Scanner * scanner_ ;
+      Pieces * king_ ;
       
 
       void clrLocation ( ) ;
@@ -76,6 +77,10 @@ namespace Chess
       virtual bool pathScan ( int destRow, int destCol ) { return true ; }
 
       virtual bool validDirection( int destRow, int destCol ) { return false ; }
+
+      virtual void setKing( Pieces * king ) { king_ = king ; }
+      virtual Pieces * getKing( ) { return king_ ; }
+
 
       //virtual bool validDirection ( int destRow, int destCol ) ;
 

@@ -27,7 +27,7 @@ namespace Chess
 
     Board * board_ ;
     BaseScan * scan_ ;
-
+    
 
     class LeftScan
       : public BaseScan

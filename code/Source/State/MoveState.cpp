@@ -9,6 +9,9 @@ namespace Chess
     {
       std::cout << "Move state" << std::endl ;
       
+      nextState_->setWhiteKing( whiteKing_ ) ;
+      nextState_->setBlackKing( blackKing_ ) ;
+      
       Pieces * pieceToMove = board_->getPiece( interface_->sourceRow, interface_->sourceCol ) ;
       board_->setPiece( pieceToMove, interface_->destRow, interface_->destCol ) ;
 

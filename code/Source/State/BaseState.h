@@ -6,7 +6,7 @@
 #include <vector>
 #include <iostream>
 
-// #include "../Interface.h"
+#include "../Pieces/Pieces.h"
 
 namespace Chess
 {
@@ -22,12 +22,16 @@ namespace Chess
 
       virtual void setTransitionStates ( BaseState * nextState, BaseState * returnState ) ;
       virtual BaseState * execute( ) = 0 ;
+      void setWhiteKing( Pieces * whiteKing ) { whiteKing_ = whiteKing ; }
+      void setBlackKing( Pieces * blackKing ) { blackKing_ = blackKing ; }
       // virtual void updateDiagnostics( ) ;
 
     protected:
 
       BaseState * nextState_ ;
       BaseState * returnState_ ;
+      Pieces * whiteKing_ ;
+      Pieces * blackKing_ ;
       bool active_ ;
       int runs_ ;
       int returns_ ;

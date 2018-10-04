@@ -13,13 +13,13 @@ namespace Chess
   King::King( const string name, Board * board, int initRow, int initCol )
     : Pieces( name, "K", initRow, initCol )
   {
-    
+    setKing( this ) ;
   }
 
   King::King( const string name, Board * board )
     : Pieces( name, "K" )
   {
-    
+    setKing( this ) ;
   }
 
   bool King::validDirection( int destRow, int destCol )

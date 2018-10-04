@@ -9,6 +9,9 @@ namespace Chess
     {
       std::cout << "Relevancy state" << std::endl ;
 
+      nextState_->setWhiteKing( whiteKing_ ) ;
+      nextState_->setBlackKing( blackKing_ ) ;
+      
       if( !interface_->inputSize( ) )
       {
         return returnState_ ;
