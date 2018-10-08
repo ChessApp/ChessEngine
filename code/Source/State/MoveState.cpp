@@ -13,7 +13,7 @@ namespace Chess
       nextState_->setBlackKing( blackKing_ ) ;
       
       Pieces * pieceToMove = board_->getPiece( interface_->sourceRow, interface_->sourceCol ) ;
-      board_->setPiece( pieceToMove, interface_->destRow, interface_->destCol ) ;
+      setPiece( pieceToMove, interface_->destRow, interface_->destCol ) ;
 
       return nextState_ ;
     }
@@ -23,8 +23,8 @@ namespace Chess
       pieceToSet->setLocation( rowToSet, colToSet ) ;
       board_->setPiece( pieceToSet, rowToSet, colToSet ) ;
       Pieces * np = new NullPiece( ".. ", board_ ) ;
-      np->setLocation( rowToSet, colToSet ) ;
-      board_->setPiece( np, rowToSet, colToSet ) ;
+      np->setLocation( interface_->sourceRow, interface_->sourceCol ) ;
+      board_->setPiece( np, interface_->sourceRow, interface_->sourceCol ) ;
     }
 
   }

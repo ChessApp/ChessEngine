@@ -13,6 +13,7 @@
 #include "State/PathScanState.h"
 #include "State/MoveState.h"
 #include "State/DefensiveCheckScanState.h"
+#include "State/ReturnPieceState.h"
 #include "State/CheckmateState.h"
 
 
@@ -49,6 +50,7 @@ namespace Chess
     State::BaseState * pathscan_ ;
     State::BaseState * move_ ;
     State::BaseState * defensiveCheckScan_ ;
+    State::BaseState * returnPiece_ ;
 
 
   };

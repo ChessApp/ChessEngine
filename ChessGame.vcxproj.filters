@@ -117,6 +117,9 @@
     <ClCompile Include="code\Source\State\DefensiveCheckScanState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="code\Source\State\ReturnPieceState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\Source\Pieces\Bishop.h">
@@ -207,6 +210,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="code\Source\State\DefensiveCheckScanState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Source\State\ReturnPieceState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

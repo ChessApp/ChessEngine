@@ -23,6 +23,7 @@ namespace Chess
     pathscan_ = new State::PathScanState( interface_, board_ ) ;
     move_ = new State::MoveState( interface_, board_ ) ;
     defensiveCheckScan_ = new State::DefensiveCheckScanState( interface_, board_ ) ;
+    returnPiece_ = new State::ReturnPieceState( interface_, board_ ) ;
     checkmate_ = new State::CheckmateState( interface_ ) ;
 
     init_->setTransitionStates( input_, input_ ) ;
@@ -31,7 +32,8 @@ namespace Chess
     moveValidity_->setTransitionStates( pathscan_, input_ ) ;
     pathscan_->setTransitionStates( move_, input_ ) ;
     move_->setTransitionStates( defensiveCheckScan_, input_ ) ;
-    defensiveCheckScan_->setTransitionStates( checkmate_, input_ ) ;
+    defensiveCheckScan_->setTransitionStates( checkmate_, returnPiece_ ) ;
+    returnPiece_->setTransitionStates( input_, input_ ) ;
 
   }
 

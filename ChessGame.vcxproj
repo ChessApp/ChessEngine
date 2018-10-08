@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{E8FDA359-4928-48C0-8EA6-70AD151F031B}</ProjectGuid>
     <RootNamespace>ChessGame</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -150,6 +150,7 @@
     <ClCompile Include="code\Source\State\MoveValidityState.cpp" />
     <ClCompile Include="code\Source\State\PathScanState.cpp" />
     <ClCompile Include="code\Source\State\RelevancyState.cpp" />
+    <ClCompile Include="code\Source\State\ReturnPieceState.cpp" />
     <ClCompile Include="code\Source\Status.cpp" />
     <ClCompile Include="code\Tests\RookTests.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -187,6 +188,7 @@
     <ClInclude Include="code\Source\State\MoveValidityState.h" />
     <ClInclude Include="code\Source\State\PathScanState.h" />
     <ClInclude Include="code\Source\State\RelevancyState.h" />
+    <ClInclude Include="code\Source\State\ReturnPieceState.h" />
     <ClInclude Include="code\Source\Status.h" />
     <ClInclude Include="code\Tests\Mocks\MockBoard.h" />
   </ItemGroup>
