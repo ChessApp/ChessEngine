@@ -8,6 +8,8 @@ namespace Chess
     : board_( new Board( ) )
   {
     interface_ = new Interface( board_ ) ;
+    whiteTurn_ = new BaseTurn( 'W' ) ;
+    blackTurn_ = new BaseTurn( 'B' ) ;
 
     createStateMachine( ) ;
     runStateMachine( ) ;
@@ -16,13 +18,13 @@ namespace Chess
 
   void GameProtocolDriver::createStateMachine ( )
   {
-    init_ = new State::InitState( interface_, board_ ) ;
+    init_ = new State::InitState( interface_, board_, whiteTurn_, blackTurn_, currentTurn_ ) ;
     input_ = new State::InputState( interface_ ) ;
     relevancy_ = new State::RelevancyState( interface_ ) ;
     moveValidity_ = new State::MoveValidityState( interface_, board_ ) ;
     pathscan_ = new State::PathScanState( interface_, board_ ) ;
     move_ = new State::MoveState( interface_, board_ ) ;
-    defensiveCheckScan_ = new State::DefensiveCheckScanState( interface_, board_ ) ;
+    defensiveCheckScan_ = new State::DefensiveCheckScanState( interface_, board_, currentTurn_ ) ;
     returnPiece_ = new State::ReturnPieceState( interface_, board_ ) ;
     checkmate_ = new State::CheckmateState( interface_ ) ;
 

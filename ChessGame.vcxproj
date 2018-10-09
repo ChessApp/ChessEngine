@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{E8FDA359-4928-48C0-8EA6-70AD151F031B}</ProjectGuid>
     <RootNamespace>ChessGame</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="code\Source\BaseTurn.cpp" />
     <ClCompile Include="code\Source\Board.cpp" />
     <ClCompile Include="code\Source\GameProtocolDriver.cpp" />
     <ClCompile Include="code\Source\Interface.cpp" />
@@ -148,6 +149,7 @@
     <ClCompile Include="code\Source\State\InputState.cpp" />
     <ClCompile Include="code\Source\State\MoveState.cpp" />
     <ClCompile Include="code\Source\State\MoveValidityState.cpp" />
+    <ClCompile Include="code\Source\State\OffensiveCheckScanState.cpp" />
     <ClCompile Include="code\Source\State\PathScanState.cpp" />
     <ClCompile Include="code\Source\State\RelevancyState.cpp" />
     <ClCompile Include="code\Source\State\ReturnPieceState.cpp" />
@@ -160,6 +162,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="code\Source\BaseTurn.h" />
     <ClInclude Include="code\Source\Board.h" />
     <ClInclude Include="code\Source\GameProtocolDriver.h" />
     <ClInclude Include="code\Source\Interface.h" />
@@ -179,6 +182,7 @@
     <ClInclude Include="code\Source\Scans\DualAxisScan.h" />
     <ClInclude Include="code\Source\Scans\Scanner.h" />
     <ClInclude Include="code\Source\Scans\SingleAxisScan.h" />
+    <ClInclude Include="code\Source\StandardInitialPieceLocations.h" />
     <ClInclude Include="code\Source\State\BaseState.h" />
     <ClInclude Include="code\Source\State\CheckmateState.h" />
     <ClInclude Include="code\Source\State\DefensiveCheckScanState.h" />
@@ -186,6 +190,7 @@
     <ClInclude Include="code\Source\State\InputState.h" />
     <ClInclude Include="code\Source\State\MoveState.h" />
     <ClInclude Include="code\Source\State\MoveValidityState.h" />
+    <ClInclude Include="code\Source\State\OffensiveCheckScanState.h" />
     <ClInclude Include="code\Source\State\PathScanState.h" />
     <ClInclude Include="code\Source\State\RelevancyState.h" />
     <ClInclude Include="code\Source\State\ReturnPieceState.h" />

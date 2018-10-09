@@ -1,12 +1,11 @@
-#ifndef DEFENSIVECHECKSCANSTATE_H_
-#define DEFENSIVECHECKSCANSTATE_H_
+#ifndef OFFENSIVECHECKSCANSTATE_H_
+#define OFFENSIVECHECKSCANSTATE_H_
 
 #include <string>
 #include <sstream>
 #include <vector>
 
 #include "BaseState.h"
-#include "../BaseTurn.h"
 #include "../Scans/Scanner.h"
 #include "../Interface.h"
 #include "../Board.h"
@@ -17,26 +16,21 @@ namespace Chess
   namespace State
   {
 
-    class DefensiveCheckScanState
+    class OffensiveCheckScanState
       : public BaseState
     {
     public:
       virtual BaseState * execute( ) ;
 
-      inline DefensiveCheckScanState ( 
-        Interface * interface, 
-        Board * board, 
-        BaseTurn *& currentTurn ) 
+      inline OffensiveCheckScanState ( Interface * interface, Board * board ) 
         : interface_(interface),
-          board_(board),
-          currentTurn_(currentTurn)
+          board_(board)
       { }
       void configureScans( Pieces * kingToScan ) ;
       
     protected:
       Interface * interface_ ;
       Board *     board_ ;
-      BaseTurn *& currentTurn_ ;
       vector< BaseScan * > scanList_ ;
       Scanner::LeftScan * ls_ ;
       Scanner::RightScan * rs_ ;
@@ -53,4 +47,4 @@ namespace Chess
   }
 }
 
-#endif /* DEFENSIVECHECKSCANSTATE_H_ */
+#endif /* OFFENSIVECHECKSCANSTATE_H_ */

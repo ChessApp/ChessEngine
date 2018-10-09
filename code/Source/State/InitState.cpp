@@ -85,6 +85,12 @@ namespace Chess
       Pieces * bq  = new Chess::Queen ( "BQ ", board_ ) ;
       bq->setKing( bk ) ;
       
+      whiteTurn_->setDefensiveKing( wk ) ;
+      whiteTurn_->setOffensiveKing( bk ) ;
+      blackTurn_->setDefensiveKing( bk ) ;
+      blackTurn_->setOffensiveKing( wk ) ;
+      currentTurn_ = whiteTurn_ ;
+
       nextState_->setWhiteKing( wk ) ;
       nextState_->setBlackKing( bk ) ;
 

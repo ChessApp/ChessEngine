@@ -6,6 +6,8 @@
 #include <sstream>
 #include <vector>
 
+#include "BaseTurn.h"
+
 #include "State/InitState.h"
 #include "State/InputState.h"
 #include "State/RelevancyState.h"
@@ -40,6 +42,9 @@ namespace Chess
   protected:
     Interface * interface_ ;
     Board * board_ ;
+    BaseTurn * whiteTurn_ ;
+    BaseTurn * blackTurn_ ;
+    BaseTurn * currentTurn_ ;
 
     State::BaseState * currentState_ ;
     State::BaseState * checkmate_ ;

@@ -8,6 +8,7 @@
 #include "BaseState.h"
 #include "../Board.h"
 #include "../Interface.h"
+#include "../BaseTurn.h"
 
 #include "../Pieces/Pieces.h"
 #include "../Pieces/NullPiece.h"
@@ -34,9 +35,15 @@ namespace Chess
 
       inline InitState ( 
         Interface * interface,
-        Board * board )
+        Board * board,
+        BaseTurn * whiteTurn,
+        BaseTurn * blackTurn,
+        BaseTurn *& currentTurn )
         : interface_(interface),
-          board_(board)
+          board_(board),
+          whiteTurn_(whiteTurn),
+          blackTurn_(blackTurn),
+          currentTurn_(currentTurn)
       { }
       // inline InitState ( BaseState * nextState )
       //   : BaseState( nextState )
@@ -49,6 +56,9 @@ namespace Chess
 
         Interface * interface_ ;
         Board * board_ ;
+        BaseTurn * whiteTurn_ ;
+        BaseTurn * blackTurn_ ;
+        BaseTurn *& currentTurn_ ;
 
     };
 
