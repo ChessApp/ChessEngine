@@ -236,6 +236,12 @@
     <ClInclude Include="code\Source\State\SwitchTurnState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="code\Source\PotentialPin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Source\State\PinScanState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
