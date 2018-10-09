@@ -3,6 +3,7 @@
 
 #include <string>
 #include <sstream>
+#include <vector>
 
 #include "Pieces/Pieces.h"
 
@@ -11,16 +12,22 @@ using namespace std;
 namespace Chess
 {
 
+  class PotentialPin ;
+
   class BaseTurn
   {
 
-    typedef Chess::Pieces Pieces;
-
   protected:
+
+    typedef vector< PotentialPin * > PotentialPinList ;
+    typedef vector< Pieces * > PinList ;
 
     Pieces * defensiveKing_ ;
     Pieces * offensiveKing_ ;
     char turn_ ;
+    PotentialPinList potentialPinList_ ;
+    PinList pinList_ ;
+
 
   public:
 
@@ -33,6 +40,8 @@ namespace Chess
     virtual void setDefensiveKing( Pieces * kingToSet ) { defensiveKing_ = kingToSet ; } 
     virtual void setOffensiveKing( Pieces * kingToSet ) { offensiveKing_ = kingToSet ; }
     char getTurn( ) { return turn_ ; }
+    PotentialPinList & getPotentialPinList( ) { return potentialPinList_ ; }
+    PinList & getPinList( ) { return pinList_ ; }
 
   };
 
