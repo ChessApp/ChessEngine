@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "BaseState.h"
+#include "../PotentialPin.h"
 #include "../BaseTurn.h"
 #include "../Scans/Scanner.h"
 #include "../Interface.h"
@@ -21,6 +22,10 @@ namespace Chess
       : public BaseState
     {
     public:
+
+      typedef vector< PotentialPin * > & PotentialPinList ;
+      typedef vector< Pieces * > & PinList ;
+
       virtual BaseState * execute( ) ;
 
       inline OffensiveCheckScanState ( 

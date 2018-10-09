@@ -10,6 +10,7 @@ namespace Chess
       std::cout << "Offensive check scan state" << std::endl ;
       
       status_ = false ;
+      PotentialPinList potentialPinList = currentTurn_->getPotentialPinList( ) ;
       Pieces * kingToScan = currentTurn_->getOffensiveKing( ) ;
       configureScans( kingToScan ) ;
       Pieces * detectedPiece ;
@@ -19,15 +20,16 @@ namespace Chess
         currentScan = scanList_.back( ) ;
         scanList_.pop_back( ) ;
         detectedPiece = currentScan->execute( ) ;
-        if ( detectedPiece->validDirection( kingToScan->getRow( ), kingToScan->getCol( ) ) )
+        if ( detectedPiece->getColor( ) == kingToScan->getColor( ) )
         {
-          if ( detectedPiece->getColor( ) != kingToScan->getColor( ) )
-          {
-            status_ = true ;
-            break ;
-          } 
+          potentialPinList.push_back( new PotentialPin( detectedPiece, currentScan ) ) ;
+        }
+        else if ( detectedPiece->validDirection( kingToScan->getRow( ), kingToScan->getCol( ) ) )
+        {        
+          status_ = true ; 
         }
       }
+
       scanList_.erase( scanList_.begin( ), scanList_.end( ) ) ;
 
       if ( status_ )
