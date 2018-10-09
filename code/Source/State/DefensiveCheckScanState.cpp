@@ -10,8 +10,7 @@ namespace Chess
       std::cout << "Defensive check scan state" << std::endl ;
       
       status_ = false ;
-      Pieces * currentPiece = board_->getPiece( interface_->destRow, interface_->destCol ) ;
-      Pieces * kingToScan = currentPiece->getKing( ) ;
+      Pieces * kingToScan = currentTurn_->getDefensiveKing( ) ;
       configureScans( kingToScan ) ;
       Pieces * detectedPiece ;
       BaseScan * currentScan ;

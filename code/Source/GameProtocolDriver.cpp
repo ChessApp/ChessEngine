@@ -7,7 +7,7 @@ namespace Chess
   GameProtocolDriver::GameProtocolDriver ( )
     : board_( new Board( ) )
   {
-    interface_ = new Interface( board_ ) ;
+    interface_ = new Interface( board_, currentTurn_ ) ;
     whiteTurn_ = new BaseTurn( 'W' ) ;
     blackTurn_ = new BaseTurn( 'B' ) ;
 
@@ -26,6 +26,8 @@ namespace Chess
     move_ = new State::MoveState( interface_, board_ ) ;
     defensiveCheckScan_ = new State::DefensiveCheckScanState( interface_, board_, currentTurn_ ) ;
     returnPiece_ = new State::ReturnPieceState( interface_, board_ ) ;
+    offensiveCheckScan_ = new State::OffensiveCheckScanState( interface_, board_, currentTurn_ ) ;
+    switchTurn_ = new State::SwitchTurnState( interface_, whiteTurn_, blackTurn_, currentTurn_ ) ;
     checkmate_ = new State::CheckmateState( interface_ ) ;
 
     init_->setTransitionStates( input_, input_ ) ;
@@ -34,8 +36,10 @@ namespace Chess
     moveValidity_->setTransitionStates( pathscan_, input_ ) ;
     pathscan_->setTransitionStates( move_, input_ ) ;
     move_->setTransitionStates( defensiveCheckScan_, input_ ) ;
-    defensiveCheckScan_->setTransitionStates( checkmate_, returnPiece_ ) ;
+    defensiveCheckScan_->setTransitionStates( offensiveCheckScan_, returnPiece_ ) ;
     returnPiece_->setTransitionStates( input_, input_ ) ;
+    offensiveCheckScan_->setTransitionStates( checkmate_, switchTurn_ ) ;
+    switchTurn_->setTransitionStates( input_, input_ ) ;
 
   }
 

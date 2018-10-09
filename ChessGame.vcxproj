@@ -153,6 +153,7 @@
     <ClCompile Include="code\Source\State\PathScanState.cpp" />
     <ClCompile Include="code\Source\State\RelevancyState.cpp" />
     <ClCompile Include="code\Source\State\ReturnPieceState.cpp" />
+    <ClCompile Include="code\Source\State\SwitchTurnState.cpp" />
     <ClCompile Include="code\Source\Status.cpp" />
     <ClCompile Include="code\Tests\RookTests.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -194,6 +195,7 @@
     <ClInclude Include="code\Source\State\PathScanState.h" />
     <ClInclude Include="code\Source\State\RelevancyState.h" />
     <ClInclude Include="code\Source\State\ReturnPieceState.h" />
+    <ClInclude Include="code\Source\State\SwitchTurnState.h" />
     <ClInclude Include="code\Source\Status.h" />
     <ClInclude Include="code\Tests\Mocks\MockBoard.h" />
   </ItemGroup>

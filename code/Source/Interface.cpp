@@ -10,8 +10,9 @@
 namespace Chess
 {
 
-  Interface::Interface( Board * board )
-   : board(board)
+  Interface::Interface( Board * board, BaseTurn *& currentTurn )
+   : board(board),
+     currentTurn_(currentTurn)
   {
   	// set initial turn to White
   	turn = 'W';
@@ -209,7 +210,7 @@ namespace Chess
   {
   	//print game conditions
   	cout << "In check: " << check_status << endl;
-  	cout << "Move: " << turn << endl;
+  	cout << "Move: " << currentTurn_->getTurn( ) << endl;
   	cout << "Please enter your next move in the following format: source,destination\nExample: A2,A4 (Capital letters)" << endl;
   }
 

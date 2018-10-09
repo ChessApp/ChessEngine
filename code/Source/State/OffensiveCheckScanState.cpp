@@ -7,11 +7,10 @@ namespace Chess
 
     BaseState * OffensiveCheckScanState::execute ( )
     {
-      std::cout << "Defensive check scan state" << std::endl ;
+      std::cout << "Offensive check scan state" << std::endl ;
       
       status_ = false ;
-      Pieces * currentPiece = board_->getPiece( interface_->destRow, interface_->destCol ) ;
-      Pieces * kingToScan = currentPiece->getKing( ) ;
+      Pieces * kingToScan = currentTurn_->getOffensiveKing( ) ;
       configureScans( kingToScan ) ;
       Pieces * detectedPiece ;
       BaseScan * currentScan ;
@@ -33,12 +32,11 @@ namespace Chess
 
       if ( status_ )
       {
-        cout << "This move will put you in check." << endl ;
-        return returnState_ ;
+        return nextState_ ;
       }
       else
       {
-        return nextState_ ;
+        return returnState_ ;
       }
       
     }

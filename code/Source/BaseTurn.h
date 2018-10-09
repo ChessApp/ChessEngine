@@ -5,8 +5,6 @@
 #include <sstream>
 
 #include "Pieces/Pieces.h"
-#include "Board.h"
-#include "Interface.h"
 
 using namespace std;
 
@@ -34,6 +32,7 @@ namespace Chess
     virtual Pieces * getOffensiveKing( ) { return offensiveKing_ ; } 
     virtual void setDefensiveKing( Pieces * kingToSet ) { defensiveKing_ = kingToSet ; } 
     virtual void setOffensiveKing( Pieces * kingToSet ) { offensiveKing_ = kingToSet ; }
+    char getTurn( ) { return turn_ ; }
 
   };
 

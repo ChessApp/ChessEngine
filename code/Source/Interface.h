@@ -13,6 +13,7 @@
 #include <sstream>
 
 #include "Board.h"
+#include "BaseTurn.h"
 #include "Pieces/Pieces.h"
 
 using namespace std;
@@ -45,10 +46,13 @@ namespace Chess
 
   	char check_status;
   	char turn;
+    BaseTurn *& currentTurn_ ;
 
   	// Constructs the interface object, with all of
   	// its initial conditions set.
-  	Interface( Board * board );
+  	Interface( 
+      Board * board, 
+      BaseTurn *& currentTurn ) ;
 
     void updateUserBoard ( ) ; 
 

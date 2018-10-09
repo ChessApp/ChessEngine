@@ -127,7 +127,7 @@ namespace Chess
       setPiece (wq , 7, 3) ;
       setPiece (bq , 0, 3) ;
       setPiece (wk , 7, 4) ;
-      // setPiece (bk , 0, 4) ;
+      setPiece (bk , 6, 0) ;
 
       
       interface_->printBoard( ) ;

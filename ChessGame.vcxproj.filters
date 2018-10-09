@@ -126,6 +126,9 @@
     <ClCompile Include="code\Source\BaseTurn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="code\Source\State\SwitchTurnState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\Source\Pieces\Bishop.h">
@@ -228,6 +231,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="code\Source\StandardInitialPieceLocations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Source\State\SwitchTurnState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
