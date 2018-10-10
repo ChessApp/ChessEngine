@@ -151,6 +151,7 @@
     <ClCompile Include="code\Source\State\MoveValidityState.cpp" />
     <ClCompile Include="code\Source\State\OffensiveCheckScanState.cpp" />
     <ClCompile Include="code\Source\State\PathScanState.cpp" />
+    <ClCompile Include="code\Source\State\PinScanState.cpp" />
     <ClCompile Include="code\Source\State\RelevancyState.cpp" />
     <ClCompile Include="code\Source\State\ReturnPieceState.cpp" />
     <ClCompile Include="code\Source\State\SwitchTurnState.cpp" />
