@@ -98,7 +98,7 @@ namespace Chess
 
       setPiece (wr1, 6, 4) ;
       setPiece (wr2, 7, 7) ;
-      setPiece (br1, 0, 4) ;
+      setPiece (br1, 6, 1) ;
       setPiece (br2, 0, 7) ;
       setPiece (wb1, 7, 2) ;
       setPiece (wb2, 7, 5) ;

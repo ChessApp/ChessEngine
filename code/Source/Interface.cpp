@@ -87,6 +87,18 @@ namespace Chess
 
   }
 
+  void Interface::printPinListDiagnostics( )
+  {
+    PinList pinList = currentTurn_->getPinList( ) ;
+    for ( int i = 0; i < pinList.size( ); i++ )
+    {
+      Pieces * pinnedPiece = pinList[i] ;
+      cout << "Name: " << pinnedPiece->getName( ) << endl ;
+      cout << "Row: " << pinnedPiece->getRow( ) << endl ;
+      cout << "Col: " << pinnedPiece->getCol( ) << endl ;
+    }
+  }
+
   void Interface::updateUserBoard ( )
   {
     for ( int y = 1; y <= 8; y++ )

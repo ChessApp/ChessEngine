@@ -18,6 +18,7 @@
 #include "State/ReturnPieceState.h"
 #include "State/OffensiveCheckScanState.h"
 #include "State/SwitchTurnState.h"
+#include "State/PinScanState.h"
 #include "State/CheckmateState.h"
 
 
@@ -60,6 +61,7 @@ namespace Chess
     State::BaseState * offensiveCheckScan_ ;
     State::BaseState * returnPiece_ ;
     State::BaseState * switchTurn_ ;
+    State::BaseState * pinScan_ ;
 
 
   };

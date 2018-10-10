@@ -24,8 +24,7 @@ namespace Chess
   class Interface
   {
 
-    typedef Chess::Board Board ;
-    typedef Chess::Pieces Pieces ;
+    typedef vector< Pieces * > PinList ;
 
   public:
 
@@ -53,6 +52,8 @@ namespace Chess
   	Interface( 
       Board * board, 
       BaseTurn *& currentTurn ) ;
+
+    void printPinListDiagnostics( ) ;
 
     void updateUserBoard ( ) ; 
 

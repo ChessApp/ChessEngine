@@ -22,6 +22,8 @@ namespace Chess
       //     break ;
       // }
 
+      interface_->printPinListDiagnostics( ) ;
+
       if ( currentTurn_ == whiteTurn_ )
       {
         currentTurn_ = blackTurn_ ;

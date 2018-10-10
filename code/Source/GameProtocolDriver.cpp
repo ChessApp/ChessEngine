@@ -28,6 +28,7 @@ namespace Chess
     returnPiece_ = new State::ReturnPieceState( interface_, board_ ) ;
     offensiveCheckScan_ = new State::OffensiveCheckScanState( interface_, board_, currentTurn_ ) ;
     switchTurn_ = new State::SwitchTurnState( interface_, whiteTurn_, blackTurn_, currentTurn_ ) ;
+    pinScan_ = new State::PinScanState( interface_, board_, currentTurn_ ) ;
     checkmate_ = new State::CheckmateState( interface_ ) ;
 
     init_->setTransitionStates( input_, input_ ) ;
@@ -38,7 +39,8 @@ namespace Chess
     move_->setTransitionStates( defensiveCheckScan_, input_ ) ;
     defensiveCheckScan_->setTransitionStates( offensiveCheckScan_, returnPiece_ ) ;
     returnPiece_->setTransitionStates( input_, input_ ) ;
-    offensiveCheckScan_->setTransitionStates( checkmate_, switchTurn_ ) ;
+    offensiveCheckScan_->setTransitionStates( pinScan_, pinScan_ ) ;
+    pinScan_->setTransitionStates( switchTurn_, switchTurn_ ) ;
     switchTurn_->setTransitionStates( input_, input_ ) ;
 
   }
