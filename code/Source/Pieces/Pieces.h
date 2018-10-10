@@ -63,6 +63,9 @@ namespace Chess
 
       int getCol ( ) { return col ; }
       int getRow ( ) { return row ; }
+      void setPinned( ) { pinned = true ; }
+      void clrPinned( ) { pinned = false ; }
+      bool getPinnedStatus( ) { return pinned ; }
 
       virtual string getType ( ) ;
 

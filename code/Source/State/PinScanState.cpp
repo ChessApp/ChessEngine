@@ -8,6 +8,31 @@ namespace Chess
     BaseState * PinScanState::execute ( )
     {
       std::cout << "Pin scan state" << std::endl ;
+
+      Pieces * kingToScan = currentTurn_->getOffensiveKing( ) ;
+      PotentialPinList potentialPinList = currentTurn_->getPotentialPinList( ) ;
+      PinList pinList = currentTurn_->getPinList( ) ;
+
+      while ( potentialPinList.size( ) )
+      {
+        PotentialPin * potentialPin = potentialPinList.back( ) ;
+        Pieces * pinnedPiece = potentialPin->getPotentialPin( ) ;
+        BaseScan * scanToExecute = potentialPin->getScanToExecute( ) ;
+
+        removePiece( pinnedPiece ) ;
+        Pieces * detectedPiece = scanToExecute->execute( ) ;
+        if ( detectedPiece->getColor( ) == kingToScan->getColor( ) )
+        {      
+        }
+        else if ( detectedPiece->validDirection( kingToScan->getRow( ), kingToScan->getCol( ) ) )
+        {        
+          pinList.push_back( pinnedPiece ) ;
+          pinnedPiece->setPinned( ) ; 
+        }
+        returnPiece( pinnedPiece ) ;
+        potentialPinList.pop_back( ) ;
+      }
+
       return nextState_ ;
     }
 
@@ -15,6 +40,11 @@ namespace Chess
     {
       Pieces * np = new NullPiece( ".. ", board_ ) ;
       board_->setPiece( np, pieceToRemove->getRow( ), pieceToRemove->getCol( ) ) ;
+    }
+
+    void PinScanState::returnPiece( Pieces * pieceToReturn )
+    {
+      board_->setPiece( pieceToReturn, pieceToReturn->getRow( ), pieceToReturn->getCol( ) ) ;
     }
 
   }
