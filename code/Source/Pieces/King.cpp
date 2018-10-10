@@ -13,6 +13,7 @@ namespace Chess
   King::King( const string name, Board * board, int initRow, int initCol )
     : Pieces( name, "K", initRow, initCol )
   {
+    scanner_ = new CompoundAxisScan( board ) ;
     setKing( this ) ;
   }
 
@@ -25,13 +26,29 @@ namespace Chess
   bool King::validDirection( int destRow, int destCol )
   {
     if ( abs( destCol - col ) <= 1 &&
-         abs( destRow - row ) <= 1 )
+         abs( destRow - row ) <= 1 &&
+         pieceMoved( destRow, destCol ) &&
+         destinationOnBoard( destRow, destCol ) )
     {
-      return true;
+      return true ;
     }
     else
     {
-      return false;
+      return false ;
+    }
+  }
+
+  bool King::pathScan( int destRow, int destCol )
+  {
+    scanner_->identifyScan( row, col, destRow, destCol ) ;
+    Pieces * detectedPiece = scanner_->execute( ) ;
+    if ( detectedPiece->getColor( ) == getColor( ) )
+    {
+      return false ;
+    }
+    else
+    {
+      return true ;
     }
   }
 

@@ -132,6 +132,9 @@
     <ClCompile Include="code\Source\State\PinScanState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="code\Source\State\EscapeRouteState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\Source\Pieces\Bishop.h">
@@ -243,6 +246,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="code\Source\State\PinScanState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Source\State\EscapeRouteState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

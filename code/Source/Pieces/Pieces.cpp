@@ -57,6 +57,31 @@ namespace Chess
 
   }
 
+  bool Pieces::pieceMoved( int destRow, int destCol )
+  {
+    if ( destRow != row || destCol != col )
+    {
+      return true ;
+    }
+    else
+    {
+      return false ;
+    }
+  }
+
+  bool Pieces::destinationOnBoard( int destRow, int destCol )
+  {
+    if ( destRow < 0 || destRow > 7 ||
+         destCol < 0 || destCol > 7 )
+    {
+      return false ;
+    }
+    else
+    {
+      return true ;
+    }
+  }
+
   string Pieces::getType ( )
   {
     return type ;

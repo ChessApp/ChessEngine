@@ -29,9 +29,7 @@ namespace Chess
           status_ = true ; 
         }
       }
-
-      scanList_.erase( scanList_.begin( ), scanList_.end( ) ) ;
-
+      
       if ( status_ )
       {
         return nextState_ ;

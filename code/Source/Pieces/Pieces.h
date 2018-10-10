@@ -76,6 +76,8 @@ namespace Chess
       string getPrevPiecePointerName ( ) ;
 
       string getName ( ) ;
+      bool pieceMoved( int destRow, int destCol ) ;
+      bool destinationOnBoard( int destRow, int destCol ) ;
 
       virtual bool pathScan ( int destRow, int destCol ) { return true ; }
 
