@@ -20,6 +20,7 @@ namespace Chess
   King::King( const string name, Board * board )
     : Pieces( name, "K" )
   {
+    scanner_ = new CompoundAxisScan( board ) ;
     setKing( this ) ;
   }
 

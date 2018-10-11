@@ -29,7 +29,8 @@ namespace Chess
         }
         else if ( detectedPiece->validDirection( kingToScan->getRow( ), kingToScan->getCol( ) ) )
         {
-          causingCheckList.push_back( detectedPiece ) ;        
+          causingCheckList.push_back( detectedPiece ) ; 
+          currentTurn_->addCheckScanData( scanResult ) ;       
           status_ = true ; 
         }
       }

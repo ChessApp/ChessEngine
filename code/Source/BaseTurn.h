@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "Pieces/Pieces.h"
+#include "Scans/ScanResult.h"
 
 using namespace std;
 
@@ -21,6 +22,7 @@ namespace Chess
 
     typedef vector< PotentialPin * > PotentialPinList ;
     typedef vector< Pieces * > PieceList ;
+    typedef vector< ScanResult * > ScanResultList ;
 
     class PendingRemovedPiece
     {
@@ -45,8 +47,8 @@ namespace Chess
     PieceList pinList_ ;
     PieceList causingCheckList_ ;
     PieceList activeList_ ;
-    // PendingRemovedPiece * pendingRemovedPiece_ ;
     Pieces * pendingRemovedPiece_ ;
+    ScanResultList checkScanData_ ;
 
     void updatePieceIndices( ) ;
 
@@ -72,6 +74,9 @@ namespace Chess
     void setPendingRemovedPiece( Pieces * piece ) { pendingRemovedPiece_ = piece ; }
     int getActiveListSize( ) { return activeList_.size( ) ; }
     int getCausingCheckListSize( ) { return causingCheckList_.size( ) ; }
+    void addCheckScanData( ScanResult * data ) { checkScanData_.push_back( data ) ; }
+    ScanResult * getCheckScanData( ) { return checkScanData_[0] ; }
+    int getCheckScanDataSize( ) { return checkScanData_.size( ) ; }
 
   };
 

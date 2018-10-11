@@ -6,7 +6,6 @@
 #include <vector>
 
 #include "../Pieces/Pieces.h"
-#include "../Board.h"
 
 using namespace std;
 

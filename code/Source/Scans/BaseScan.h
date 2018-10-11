@@ -28,7 +28,8 @@ namespace Chess
         sourceRow_(sourceRow),
         sourceCol_(sourceCol),
         destRow_(destRow),
-        destCol_(destCol)
+        destCol_(destCol),
+        result_( new ScanResult( ) )
     { }
     // virtual ScanResult execute ( int sourceRow, int sourceCol ) = 0 ;
     virtual ScanResult * execute ( ) = 0 ;
