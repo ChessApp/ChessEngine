@@ -43,6 +43,7 @@ namespace Chess
       Pieces * prevPiecePointer;
       Scanner * scanner_ ;
       Pieces * king_ ;
+      int activeListIndex_ ;
       
 
       void clrLocation ( ) ;
@@ -66,6 +67,9 @@ namespace Chess
       void setPinned( ) { pinned = true ; }
       void clrPinned( ) { pinned = false ; }
       bool getPinnedStatus( ) { return pinned ; }
+      void setActiveListIndex( int index) { activeListIndex_ = index ; }
+      int getActiveListIndex( ) const { return activeListIndex_ ; }
+      void clrActiveListIndex( ) { activeListIndex_ = NULL ; }
 
       virtual string getType ( ) ;
 

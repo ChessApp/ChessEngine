@@ -22,13 +22,33 @@ namespace Chess
     typedef vector< PotentialPin * > PotentialPinList ;
     typedef vector< Pieces * > PieceList ;
 
+    class PendingRemovedPiece
+    {
+    public:
+      inline PendingRemovedPiece( Pieces * piece, int index )
+        : piece_(piece),
+          index_(index)
+      { }
+      ~PendingRemovedPiece( ) ;
+      Pieces * getPiece( ) { return piece_ ; }
+      int getIndex( ) { return index_ ; }
+
+    protected:
+      Pieces * piece_ ;
+      int index_ ;
+    };
+
     Pieces * defensiveKing_ ;
     Pieces * offensiveKing_ ;
     char turn_ ;
     PotentialPinList potentialPinList_ ;
     PieceList pinList_ ;
     PieceList causingCheckList_ ;
+    PieceList activeList_ ;
+    // PendingRemovedPiece * pendingRemovedPiece_ ;
+    Pieces * pendingRemovedPiece_ ;
 
+    void updatePieceIndices( ) ;
 
   public:
 
@@ -44,6 +64,12 @@ namespace Chess
     PotentialPinList & getPotentialPinList( ) { return potentialPinList_ ; }
     PieceList & getPinList( ) { return pinList_ ; }
     PieceList & getCausingCheckList( ) { return causingCheckList_ ; }
+    PieceList & getActiveList( ) { return activeList_ ; }
+    void deactivatePiece( ) ;
+    Pieces * getActivePiece( int index ) { return activeList_.at( index ) ; }
+    void setActivePiece( Pieces * activePiece ) ;
+    void setPendingRemovedPiece( Pieces * piece ) { pendingRemovedPiece_ = piece ; }
+
 
   };
 
