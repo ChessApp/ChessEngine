@@ -24,7 +24,7 @@ namespace Chess
     public:
 
       typedef vector< PotentialPin * > & PotentialPinList ;
-      typedef vector< Pieces * > & PinList ;
+      typedef vector< Pieces * > & PieceList ;
 
       virtual BaseState * execute( ) ;
 

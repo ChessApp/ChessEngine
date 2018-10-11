@@ -20,13 +20,14 @@ namespace Chess
   protected:
 
     typedef vector< PotentialPin * > PotentialPinList ;
-    typedef vector< Pieces * > PinList ;
+    typedef vector< Pieces * > PieceList ;
 
     Pieces * defensiveKing_ ;
     Pieces * offensiveKing_ ;
     char turn_ ;
     PotentialPinList potentialPinList_ ;
-    PinList pinList_ ;
+    PieceList pinList_ ;
+    PieceList causingCheckList_ ;
 
 
   public:
@@ -41,7 +42,8 @@ namespace Chess
     virtual void setOffensiveKing( Pieces * kingToSet ) { offensiveKing_ = kingToSet ; }
     char getTurn( ) { return turn_ ; }
     PotentialPinList & getPotentialPinList( ) { return potentialPinList_ ; }
-    PinList & getPinList( ) { return pinList_ ; }
+    PieceList & getPinList( ) { return pinList_ ; }
+    PieceList & getCausingCheckList( ) { return causingCheckList_ ; }
 
   };
 

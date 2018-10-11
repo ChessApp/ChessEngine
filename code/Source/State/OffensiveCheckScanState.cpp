@@ -11,6 +11,7 @@ namespace Chess
       
       status_ = false ;
       PotentialPinList potentialPinList = currentTurn_->getPotentialPinList( ) ;
+      PieceList causingCheckList = currentTurn_->getCausingCheckList( ) ;
       Pieces * kingToScan = currentTurn_->getOffensiveKing( ) ;
       configureScans( kingToScan ) ;
       Pieces * detectedPiece ;
@@ -25,7 +26,8 @@ namespace Chess
           potentialPinList.push_back( new PotentialPin( detectedPiece, currentScan ) ) ;
         }
         else if ( detectedPiece->validDirection( kingToScan->getRow( ), kingToScan->getCol( ) ) )
-        {        
+        {
+          causingCheckList.push_back( detectedPiece ) ;        
           status_ = true ; 
         }
       }

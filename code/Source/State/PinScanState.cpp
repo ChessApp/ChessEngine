@@ -11,7 +11,7 @@ namespace Chess
 
       Pieces * kingToScan = currentTurn_->getOffensiveKing( ) ;
       PotentialPinList potentialPinList = currentTurn_->getPotentialPinList( ) ;
-      PinList pinList = currentTurn_->getPinList( ) ;
+      PieceList pinList = currentTurn_->getPinList( ) ;
 
       while ( potentialPinList.size( ) )
       {
