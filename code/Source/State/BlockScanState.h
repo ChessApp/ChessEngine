@@ -23,7 +23,6 @@ namespace Chess
     {
     public:
 
-      typedef vector< PotentialPin * > & PotentialPinList ;
       typedef vector< Pieces * > & PieceList ;
 
       virtual BaseState * execute( ) ;
@@ -36,22 +35,14 @@ namespace Chess
           board_(board),
           currentTurn_(currentTurn)
       { }
-      void configureScans( Pieces * kingToScan ) ;
       
     protected:
       Interface * interface_ ;
       Board *     board_ ;
       BaseTurn *& currentTurn_ ;
-      vector< BaseScan * > scanList_ ;
-      Scanner::LeftScan * ls_ ;
-      Scanner::RightScan * rs_ ;
-      Scanner::UpScan * us_ ;
-      Scanner::DownScan * ds_ ;
-      Scanner::UpLeftScan * uls_ ;
-      Scanner::UpRightScan * urs_ ;
-      Scanner::DownLeftScan * dls_ ;
-      Scanner::DownRightScan * drs_ ;
+
       bool status_ ;
+      ScanResult result_ ;
 
     };
 

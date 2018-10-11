@@ -9,6 +9,7 @@
 #include "../Board.h"
 #include "../Interface.h"
 #include "BaseScan.h"
+#include "ScanResult.h"
 
 using namespace std;
 

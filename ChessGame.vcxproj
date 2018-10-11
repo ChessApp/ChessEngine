@@ -143,6 +143,7 @@
     <ClCompile Include="code\Source\Scans\Scanner.cpp" />
     <ClCompile Include="code\Source\Scans\SingleAxisScan.cpp" />
     <ClCompile Include="code\Source\State\BaseState.cpp" />
+    <ClCompile Include="code\Source\State\BlockScanState.cpp" />
     <ClCompile Include="code\Source\State\CheckmateState.cpp" />
     <ClCompile Include="code\Source\State\DefensiveCheckScanState.cpp" />
     <ClCompile Include="code\Source\State\EscapeRouteState.cpp" />
@@ -185,9 +186,11 @@
     <ClInclude Include="code\Source\Scans\CompoundAxisScan.h" />
     <ClInclude Include="code\Source\Scans\DualAxisScan.h" />
     <ClInclude Include="code\Source\Scans\Scanner.h" />
+    <ClInclude Include="code\Source\Scans\ScanResult.h" />
     <ClInclude Include="code\Source\Scans\SingleAxisScan.h" />
     <ClInclude Include="code\Source\StandardInitialPieceLocations.h" />
     <ClInclude Include="code\Source\State\BaseState.h" />
+    <ClInclude Include="code\Source\State\BlockScanState.h" />
     <ClInclude Include="code\Source\State\CheckmateState.h" />
     <ClInclude Include="code\Source\State\DefensiveCheckScanState.h" />
     <ClInclude Include="code\Source\State\EscapeRouteState.h" />

@@ -23,7 +23,9 @@ namespace Chess
       board_->init( nullPieceList ) ;
 
       Pieces * wk  = new Chess::King ( "WK ", board_ ) ;
+      whiteTurn_->setActivePiece( wk ) ;
       Pieces * bk  = new Chess::King ( "BK ", board_ ) ;
+      blackTurn_->setActivePiece( bk ) ;
       Pieces * wr1 = new Chess::Rook ( "WR ", board_ ) ;
       wr1->setKing( wk ) ;
       whiteTurn_->setActivePiece( wr1 ) ;

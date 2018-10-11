@@ -67,9 +67,11 @@ namespace Chess
     PieceList & getActiveList( ) { return activeList_ ; }
     void deactivatePiece( ) ;
     Pieces * getActivePiece( int index ) { return activeList_.at( index ) ; }
+    Pieces * getCausingCheckPiece( int index ) { return causingCheckList_.at( index ) ; }
     void setActivePiece( Pieces * activePiece ) ;
     void setPendingRemovedPiece( Pieces * piece ) { pendingRemovedPiece_ = piece ; }
-
+    int getActiveListSize( ) { return activeList_.size( ) ; }
+    int getCausingCheckListSize( ) { return causingCheckList_.size( ) ; }
 
   };
 

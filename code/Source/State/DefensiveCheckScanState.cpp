@@ -37,6 +37,7 @@ namespace Chess
       }
       else
       {
+        currentTurn_->deactivatePiece( ) ;
         return nextState_ ;
       }
       
