@@ -12,13 +12,15 @@ namespace Chess
       status_ = false ;
       Pieces * kingToScan = currentTurn_->getDefensiveKing( ) ;
       configureScans( kingToScan ) ;
+      ScanResult * scanResult ;
       Pieces * detectedPiece ;
       BaseScan * currentScan ;
       while ( scanList_.size( ) )
       {
         currentScan = scanList_.back( ) ;
         scanList_.pop_back( ) ;
-        detectedPiece = currentScan->execute( ) ;
+        scanResult = currentScan->execute( ) ;
+        detectedPiece = scanResult->detectedPiece ;
         if ( detectedPiece->validDirection( kingToScan->getRow( ), kingToScan->getCol( ) ) )
         {
           if ( detectedPiece->getColor( ) != kingToScan->getColor( ) )

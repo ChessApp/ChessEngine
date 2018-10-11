@@ -50,7 +50,8 @@ namespace Chess
       {
         BaseScan * currentScan = scanList_.back( ) ;
         scanList_.pop_back( ) ;
-        Pieces * detectedPiece = currentScan->execute( ) ;
+        ScanResult * scanResult = currentScan->execute( ) ;
+        Pieces * detectedPiece = scanResult->detectedPiece ;
         if ( detectedPiece->getColor( ) == kingToEscape->getColor( ) )
         {
         }

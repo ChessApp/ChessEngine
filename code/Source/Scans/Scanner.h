@@ -24,7 +24,7 @@ namespace Chess
       : board_(board)
     { }
 
-    virtual Pieces * execute ( ) = 0 ;
+    virtual ScanResult * execute ( ) = 0 ;
     virtual void identifyScan ( int sourceRow, int sourceCol, int destRow, int destCol ) { } ;
 
     Board * board_ ;
@@ -36,7 +36,7 @@ namespace Chess
     {
     public:
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual Pieces * execute ( ) ;
+      virtual ScanResult * execute ( ) ;
 
       inline LeftScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
@@ -50,7 +50,7 @@ namespace Chess
     {
     public:
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual Pieces * execute ( ) ;
+      virtual ScanResult * execute ( ) ;
 
       inline RightScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
@@ -64,7 +64,7 @@ namespace Chess
     {
     public:
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual Pieces * execute ( ) ;
+      virtual ScanResult * execute ( ) ;
 
       inline UpScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
@@ -78,7 +78,7 @@ namespace Chess
     {
     public:
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual Pieces * execute ( ) ;
+      virtual ScanResult * execute ( ) ;
 
       inline DownScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
@@ -92,7 +92,7 @@ namespace Chess
     {
     public:
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual Pieces * execute ( ) ;
+      virtual ScanResult * execute ( ) ;
 
       inline UpLeftScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
@@ -106,7 +106,7 @@ namespace Chess
     {
     public:
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual Pieces * execute ( ) ;
+      virtual ScanResult * execute ( ) ;
 
       inline UpRightScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
@@ -120,7 +120,7 @@ namespace Chess
     {
     public:
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual Pieces * execute ( ) ;
+      virtual ScanResult * execute ( ) ;
 
       inline DownLeftScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
@@ -134,7 +134,7 @@ namespace Chess
     {
     public:
       // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual Pieces * execute ( ) ;
+      virtual ScanResult * execute ( ) ;
 
       inline DownRightScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )

@@ -14,13 +14,15 @@ namespace Chess
       PieceList causingCheckList = currentTurn_->getCausingCheckList( ) ;
       Pieces * kingToScan = currentTurn_->getOffensiveKing( ) ;
       configureScans( kingToScan ) ;
+      ScanResult * scanResult ;
       Pieces * detectedPiece ;
       BaseScan * currentScan ;
       while ( scanList_.size( ) )
       {
         currentScan = scanList_.back( ) ;
         scanList_.pop_back( ) ;
-        detectedPiece = currentScan->execute( ) ;
+        scanResult = currentScan->execute( ) ;
+        detectedPiece = scanResult->detectedPiece ;
         if ( detectedPiece->getColor( ) == kingToScan->getColor( ) )
         {
           potentialPinList.push_back( new PotentialPin( detectedPiece, currentScan ) ) ;

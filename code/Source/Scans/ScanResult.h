@@ -19,15 +19,17 @@ namespace Chess
     typedef vector< int > IntList ;
     inline ScanResult( ) { }
     ~ScanResult( ) ;
-    void addRow( int row ) { rowList_.push_back( row ) ; }
-    void addCol( int col ) { colList_.push_back( col ) ; }
+    void addSquare( int row, int col ) { rowList_.push_back( row ) ; colList_.push_back( col ) ; }
     IntList getRowList( ) { return rowList_ ; }
     IntList getColList( ) { return colList_ ; }
+
+    bool detection ;
+    int row ;
+    int col ;
+    Pieces * detectedPiece ;
+
   protected:
-    bool detection_ ;
-    int row_ ;
-    int col_ ;
-    Pieces * detectedPiece_ ;
+    
     IntList rowList_ ;
     IntList colList_ ;
   } ;

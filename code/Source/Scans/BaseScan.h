@@ -6,6 +6,7 @@
 
 #include "../Pieces/Pieces.h"
 #include "../Board.h"
+#include "ScanResult.h"
 
 using namespace std;
 
@@ -18,7 +19,8 @@ namespace Chess
   public:
 
     inline BaseScan ( Board * board )
-      : board_(board)
+      : board_(board),
+        result_( new ScanResult( ) )
     { }
     inline BaseScan ( Board * board, int sourceRow, int sourceCol,
         int destRow, int destCol )
@@ -29,19 +31,11 @@ namespace Chess
         destCol_(destCol)
     { }
     // virtual ScanResult execute ( int sourceRow, int sourceCol ) = 0 ;
-    virtual Pieces * execute ( ) = 0 ;
-
-    typedef struct ScanResult
-    {
-      bool detection = false ;
-      int row = NULL ;
-      int col = NULL ;
-      Pieces * detectedPiece = NULL ;
-    } ;
+    virtual ScanResult * execute ( ) = 0 ;
 
   protected:
 
-    ScanResult result ;
+    ScanResult * result_ ;
 
     Board * board_ ;
     int sourceRow_ ;

@@ -20,7 +20,8 @@ namespace Chess
         BaseScan * scanToExecute = potentialPin->getScanToExecute( ) ;
 
         removePiece( pinnedPiece ) ;
-        Pieces * detectedPiece = scanToExecute->execute( ) ;
+        ScanResult * scanResult = scanToExecute->execute( ) ;
+        Pieces * detectedPiece = scanResult->detectedPiece ;
         if ( detectedPiece->getColor( ) == kingToScan->getColor( ) )
         {      
         }

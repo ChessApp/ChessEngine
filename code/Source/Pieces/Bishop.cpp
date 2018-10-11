@@ -45,7 +45,8 @@ namespace Chess
   bool Bishop::pathScan ( int destRow, int destCol )
   {
     scanner_->identifyScan( row, col, destRow, destCol ) ;
-    Pieces * detectedPiece = scanner_->execute( ) ;
+    ScanResult * scanResult = scanner_->execute( ) ;
+    Pieces * detectedPiece = scanResult->detectedPiece ;
     
     if ( detectedPiece->getColor( ) == getColor( ) )
     {

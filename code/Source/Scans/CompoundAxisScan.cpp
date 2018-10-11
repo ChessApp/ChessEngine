@@ -51,7 +51,7 @@ namespace Chess
     }
   }
 
-  Pieces * CompoundAxisScan::execute ( )
+  ScanResult * CompoundAxisScan::execute ( )
   {
     return scan_->execute( ) ;
   }

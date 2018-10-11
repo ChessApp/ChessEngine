@@ -35,7 +35,7 @@ namespace Chess
     }
   }
 
-  Pieces * DualAxisScan::execute ( )
+  ScanResult * DualAxisScan::execute ( )
   {
     return scan_->execute( ) ;
   }
