@@ -24,14 +24,43 @@ namespace Chess
 
   bool Bishop::validDirection ( int destRow, int destCol )
   {
-    if ( abs(row - destRow) == abs(col - destCol) )
+    if ( pieceMoved( destRow, destCol ) )
     {
-      return true ;
+      if ( abs(row - destRow) == abs(col - destCol) )
+      {
+        return true ;
+      }
+      else
+      {
+        return false ;
+      }
     }
     else
     {
       return false ;
     }
+    
+  }
+
+  bool Bishop::pathScan ( int destRow, int destCol )
+  {
+    scanner_->identifyScan( row, col, destRow, destCol ) ;
+    Pieces * detectedPiece = scanner_->execute( ) ;
+    
+    if ( detectedPiece->getColor( ) == getColor( ) )
+    {
+      return false ;
+    }
+    else if ( detectedPiece->getRow( ) != destRow || 
+              detectedPiece->getCol( ) != destCol )
+    {
+      return false ;
+    }
+    else
+    {
+      return true ;
+    }
+
   }
 
 }

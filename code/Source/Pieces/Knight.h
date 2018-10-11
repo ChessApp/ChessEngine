@@ -38,6 +38,7 @@ namespace Chess
       Knight ( const string name, Board * board, int initRow, int initCol ) ;
       Knight ( const string name, Board * board ) ;
       bool validDirection( int destRow, int destCol ) ;
+      virtual bool pathScan( int destRow, int destCol ) ;  
       
     };
 

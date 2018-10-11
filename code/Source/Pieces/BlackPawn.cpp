@@ -24,24 +24,37 @@ namespace Chess
 
   bool BlackPawn::validDirection( int destRow, int destCol )
   {
-    if ( destCol == col && destRow == row + 2 && row == 1 )
+    if ( pieceMoved( destRow, destCol ) )
     {
-      return true;
-    }
-    //move forward one square if that square is empty.
-    else if ( destCol == col && destRow == row + 1 )
-    {
-      return true;
-    }
-    //move diagonally as long as there is an opposing piece to capture
-    else if ( ( destCol == col + 1 || destCol == col - 1 ) && destRow == row + 1 )
-    {
-      return true;
+      if ( destCol == col && destRow == row + 2 && row == 1 )
+      {
+        return true;
+      }
+      //move forward one square if that square is empty.
+      else if ( destCol == col && destRow == row + 1 )
+      {
+        return true;
+      }
+      //move diagonally as long as there is an opposing piece to capture
+      else if ( ( destCol == col + 1 || destCol == col - 1 ) && destRow == row + 1 )
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
     }
     else
     {
-      return false;
-    }
+      return false ;
+    }  
+  }
+
+  bool BlackPawn::pathScan ( int destRow, int destCol )
+  {
+    return true ;
+
   }
 
 

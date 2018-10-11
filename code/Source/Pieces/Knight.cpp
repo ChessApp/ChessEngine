@@ -40,6 +40,9 @@ namespace Chess
     }
   }
 
-
+  bool Knight::pathScan ( int destRow, int destCol )
+  {
+    return true ;
+  }
 
 }

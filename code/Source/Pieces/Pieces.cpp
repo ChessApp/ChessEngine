@@ -82,6 +82,7 @@ namespace Chess
     }
   }
 
+
   string Pieces::getType ( )
   {
     return type ;

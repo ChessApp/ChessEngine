@@ -35,10 +35,8 @@ namespace Chess
       // arguments.
       Bishop ( const string name, Board * board, int initRow, int initCol ) ;
       Bishop ( const string name, Board * board ) ;
-
       bool validDirection ( int destRow, int destCol ) ;
-
-      void printUpLeftScan ( ) ;
+      virtual bool pathScan( int destRow, int destCol ) ;
 
       
     };

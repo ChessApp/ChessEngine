@@ -34,6 +34,7 @@ namespace Chess
       BlackPawn( const string name, Board * board, int initRow, int initCol );
       BlackPawn( const string name, Board * board );
       bool validDirection( int destRow, int destCol ) ;
+      virtual bool pathScan( int destRow, int destCol ) ;  
       
     };
 

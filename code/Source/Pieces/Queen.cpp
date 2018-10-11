@@ -24,19 +24,47 @@ namespace Chess
 
   bool Queen::validDirection( int destRow, int destCol )
   {
-    if ( row == destRow || col == destCol )
+    if ( pieceMoved( destRow, destCol ) )
     {
-      return true ;
-    }
-    else if ( abs(row - destRow) == abs(col - destCol) )
-    {
-      return true ;
+      if ( row == destRow || col == destCol )
+      {
+        return true ;
+      }
+      else if ( abs(row - destRow) == abs(col - destCol) )
+      {
+        return true ;
+      }
+      else
+      {
+        return false ;
+      }
     }
     else
     {
-      // throw "That move is invalid." ;
       return false ;
     }
+    
+  }
+
+  bool Queen::pathScan ( int destRow, int destCol )
+  {
+    scanner_->identifyScan( row, col, destRow, destCol ) ;
+    Pieces * detectedPiece = scanner_->execute( ) ;
+    
+    if ( detectedPiece->getColor( ) == getColor( ) )
+    {
+      return false ;
+    }
+    else if ( detectedPiece->getRow( ) != destRow || 
+              detectedPiece->getCol( ) != destCol )
+    {
+      return false ;
+    }
+    else
+    {
+      return true ;
+    }
+
   }
 
 }

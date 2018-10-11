@@ -24,15 +24,21 @@ namespace Chess
 
   bool Rook::validDirection ( int destRow, int destCol )
   {
-    if ( row == destRow || col == destCol )
+    if ( pieceMoved( destRow, destCol ) )
     {
-      return true ;
+      if ( row == destRow || col == destCol )
+      {
+        return true ;
+      }
+      else
+      {
+        return false ;
+      }
     }
     else
     {
-      // throw "That move is invalid." ;
       return false ;
-    }
+    }  
   }
 
   bool Rook::pathScan ( int destRow, int destCol )
