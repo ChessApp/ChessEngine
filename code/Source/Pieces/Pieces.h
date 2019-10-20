@@ -24,7 +24,6 @@ namespace Chess
     class Pieces
     {
 
-      friend class Board ;
       friend class Motion ;
       
 
@@ -69,7 +68,7 @@ namespace Chess
       bool getPinnedStatus( ) { return pinned ; }
       void setActiveListIndex( int index) { activeListIndex_ = index ; }
       int getActiveListIndex( ) const { return activeListIndex_ ; }
-      void clrActiveListIndex( ) { activeListIndex_ = NULL ; }
+      void clrActiveListIndex( ) { activeListIndex_ = 0 ; }
 
       virtual string getType ( ) ;
 

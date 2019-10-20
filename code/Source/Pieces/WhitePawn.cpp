@@ -10,13 +10,13 @@ namespace Chess
 {
 
     
-  WhitePawn::WhitePawn( const string name, Board * board, int initRow, int initCol )
+  WhitePawn::WhitePawn( const string name, int initRow, int initCol )
     : Pieces( name, "P", initRow, initCol )
   {
     
   }
 
-  WhitePawn::WhitePawn( const string name, Board * board )
+  WhitePawn::WhitePawn( const string name )
     : Pieces( name, "P" )
   {
     

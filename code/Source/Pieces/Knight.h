@@ -35,8 +35,8 @@ namespace Chess
       // Contructs piece objects which take the interface object,
       // a specified name, and specified initial coordinates as
       // arguments.
-      Knight ( const string name, Board * board, int initRow, int initCol ) ;
-      Knight ( const string name, Board * board ) ;
+      Knight ( const string name, int initRow, int initCol ) ;
+      Knight ( const string name ) ;
       bool validDirection( int destRow, int destCol ) ;
       virtual bool pathScan( int destRow, int destCol ) ;  
       

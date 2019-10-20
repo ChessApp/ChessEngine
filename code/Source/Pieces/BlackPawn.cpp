@@ -10,13 +10,13 @@ namespace Chess
 {
 
     
-  BlackPawn::BlackPawn( const string name, Board * board, int initRow, int initCol )
+  BlackPawn::BlackPawn( const string name, int initRow, int initCol )
     : Pieces( name, "P", initRow, initCol )
   {
     
   }
 
-  BlackPawn::BlackPawn( const string name, Board * board )
+  BlackPawn::BlackPawn( const string name )
     : Pieces( name, "P" )
   {
     

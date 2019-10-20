@@ -19,7 +19,7 @@ namespace Chess
     {
       pieceToReturn->setLocation( rowToReturn, colToReturn ) ;
       board_->setPiece( pieceToReturn, rowToReturn, colToReturn ) ;
-      Pieces * np = new NullPiece( ".. ", board_ ) ;
+      Pieces * np = new NullPiece( ".. " ) ;
       np->setLocation( interface_->destRow, interface_->destCol ) ;
       board_->setPiece( np, interface_->destRow, interface_->destCol ) ;
     }

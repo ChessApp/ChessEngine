@@ -6,9 +6,7 @@
 #include <sstream>
 #include <vector>
 
-// #include "Pieces/Pieces.h"
-
-#include "Interface.h"
+#include "Pieces/Pieces.h"
 
 using namespace std;
 

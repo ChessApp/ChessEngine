@@ -27,8 +27,8 @@ namespace Chess
       opponent = 'W';
     }
 
-    row = NULL ;
-    col = NULL ;
+    row = 0 ;
+    col = 0 ;
 
     prevPiecePointer = lastCreatedPiecePointer ;
     lastCreatedPiecePointer = this ;
@@ -123,8 +123,8 @@ namespace Chess
 
   void Pieces::clrLocation ( )
   {
-    row = NULL ;
-    col = NULL ;
+    row = 0 ;
+    col = 0 ;
   }
 
 

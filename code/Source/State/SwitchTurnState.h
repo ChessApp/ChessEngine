@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "BaseState.h"
-#include "../Baseturn.h"
+#include "../BaseTurn.h"
 #include "../Interface.h"
 #include "../Board.h"
 #include "../Pieces/Pieces.h"

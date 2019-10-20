@@ -10,7 +10,7 @@ namespace Chess
 {
   
     
-  NullPiece::NullPiece( const string name, Board * board )
+  NullPiece::NullPiece( const string name )
     : Pieces( name, "" )
   {
     

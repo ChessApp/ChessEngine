@@ -33,7 +33,7 @@ namespace Chess
       // Contructs piece objects which take the interface object,
       // a specified name, and specified initial coordinates as
       // arguments.
-      NullPiece( const string name, Board * board );
+      NullPiece( const string name );
       ~NullPiece( ) { }
 
       bool validDirection ( int destRow, int destCol ) ;

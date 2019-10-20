@@ -39,7 +39,7 @@ namespace Chess
 
     void PinScanState::removePiece( Pieces * pieceToRemove )
     {
-      Pieces * np = new NullPiece( ".. ", board_ ) ;
+      Pieces * np = new NullPiece( ".. " ) ;
       board_->setPiece( np, pieceToRemove->getRow( ), pieceToRemove->getCol( ) ) ;
     }
 
