@@ -262,3 +262,6 @@ __pycache__/
 
 # C++ object files
 *.cpp.o
+
+# Executable binary output
+chess-all
