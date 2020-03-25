@@ -31,9 +31,11 @@ namespace Chess
       : public BaseState
     {
     public:
+
       virtual BaseState * execute( ) ;
 
       inline InitState ( 
+        const char * configFileName,
         Interface * interface,
         Board * board,
         BaseTurn * whiteTurn,
@@ -43,7 +45,8 @@ namespace Chess
           board_(board),
           whiteTurn_(whiteTurn),
           blackTurn_(blackTurn),
-          currentTurn_(currentTurn)
+          currentTurn_(currentTurn),
+          configFileName_(configFileName)
       { }
       // inline InitState ( BaseState * nextState )
       //   : BaseState( nextState )
@@ -52,13 +55,16 @@ namespace Chess
       // virtual void updateDiagnostics( ) ;
 
       protected:
-        void setPiece( Pieces * pieceToSet, int rowToSet, int colToSet ) ;
+        //-- protected methods
+        void setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet ) ;
+        void parseXMLFile();
 
         Interface * interface_ ;
         Board * board_ ;
         BaseTurn * whiteTurn_ ;
         BaseTurn * blackTurn_ ;
         BaseTurn *& currentTurn_ ;
+        const char * configFileName_;
 
     };
 

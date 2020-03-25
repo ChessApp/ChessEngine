@@ -4,6 +4,9 @@
 namespace Chess
 {
 
+  // Used to set the InitState
+  static const char * stateConfigFile("/home/developer/personal/ChessGame/config/DefaultInitialState.xml");
+
   GameProtocolDriver::GameProtocolDriver ( )
     : board_( new Board( ) )
   {
@@ -18,7 +21,7 @@ namespace Chess
 
   void GameProtocolDriver::createStateMachine ( )
   {
-    init_ = new State::InitState( interface_, board_, whiteTurn_, blackTurn_, currentTurn_ ) ;
+    init_ = new State::InitState( stateConfigFile, interface_, board_, whiteTurn_, blackTurn_, currentTurn_ ) ;
     input_ = new State::InputState( interface_ ) ;
     relevancy_ = new State::RelevancyState( interface_ ) ;
     moveValidity_ = new State::MoveValidityState( interface_, board_ ) ;

@@ -16,7 +16,9 @@ namespace Chess
     class BaseState
     {
     public:
-
+      //-- types
+      typedef Pieces * PiecePtr;
+      
       inline BaseState ( )
       { }
 
