@@ -1,14 +1,9 @@
-
 #ifndef BOARD_H_
 #define BOARD_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
-
+#include "Chess.h"
 #include "Pieces/Pieces.h"
 
-using namespace std;
 
 #define MIN_COLUMN 0 
 #define MAX_COLUMN 7 

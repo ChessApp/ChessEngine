@@ -1,15 +1,13 @@
 #ifndef MOVESTATE_H_
 #define MOVESTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "Interface.h"
+#include "Board.h"
+#include "Pieces/Pieces.h"
+#include "Pieces/NullPiece.h"
 
-#include "BaseState.h"
-#include "../Interface.h"
-#include "../Board.h"
-#include "../Pieces/Pieces.h"
-#include "../Pieces/NullPiece.h"
 
 namespace Chess
 {

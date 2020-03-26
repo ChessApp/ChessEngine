@@ -9,15 +9,10 @@
 #ifndef ROOK_H_
 #define ROOK_H_
 
-#include <stdio.h>
-#include <iostream>
-#include <string>
-#include <sstream>
-// #include "Interface.h"
-#include "Pieces.h"
-#include "../Scans/SingleAxisScan.h"
+#include "Chess.h"
+#include "Pieces/Pieces.h"
+#include "Scans/SingleAxisScan.h"
 
-using namespace std;
 
 namespace Chess
 {

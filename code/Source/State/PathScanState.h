@@ -1,14 +1,15 @@
 #ifndef PATHSCANSTATE_H_
 #define PATHSCANSTATE_H_
 
-#include <string>
 #include <sstream>
 #include <vector>
 
-#include "BaseState.h"
-#include "../Interface.h"
-#include "../Board.h"
-#include "../Pieces/Pieces.h"
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "Interface.h"
+#include "Board.h"
+#include "Pieces/Pieces.h"
+
 
 namespace Chess
 {

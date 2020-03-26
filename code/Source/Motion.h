@@ -1,16 +1,11 @@
-
 #ifndef MOTION_H_
 #define MOTION_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
-
+#include "Chess.h"
 #include "Pieces/Pieces.h"
 #include "Interface.h"
 #include "Board.h"
 
-using namespace std;
 
 namespace Chess
 {

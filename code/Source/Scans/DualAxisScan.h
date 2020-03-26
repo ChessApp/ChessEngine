@@ -1,16 +1,10 @@
-
 #ifndef DUALAXISSCAN_H_
 #define DUALAXISSCAN_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
+#include "Chess.h"
+#include "Scans/Scanner.h"
+#include "Pieces/Pieces.h"
 
-#include "Scanner.h"
-#include "../Pieces/Pieces.h"
-
-
-using namespace std;
 
 namespace Chess
 {

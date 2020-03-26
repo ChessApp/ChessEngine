@@ -1,17 +1,14 @@
 #ifndef SCANNER_H_
 #define SCANNER_H_
 
-#include <string>
-#include <sstream>
+#include "Chess.h"
+#include "Pieces/Pieces.h"
+#include "Pieces/NullPiece.h"
+#include "Board.h"
+#include "Interface.h"
+#include "Scans/BaseScan.h"
+#include "Scans/ScanResult.h"
 
-#include "../Pieces/Pieces.h"
-#include "../Pieces/NullPiece.h"
-#include "../Board.h"
-#include "../Interface.h"
-#include "BaseScan.h"
-#include "ScanResult.h"
-
-using namespace std;
 
 namespace Chess
 {

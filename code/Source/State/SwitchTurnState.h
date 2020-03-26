@@ -1,16 +1,14 @@
 #ifndef SWITCHTURNSTATE_H_
 #define SWITCHTURNSTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "BaseTurn.h"
+#include "Interface.h"
+#include "Board.h"
+#include "Pieces/Pieces.h"
+#include "Pieces/NullPiece.h"
 
-#include "BaseState.h"
-#include "../BaseTurn.h"
-#include "../Interface.h"
-#include "../Board.h"
-#include "../Pieces/Pieces.h"
-#include "../Pieces/NullPiece.h"
 
 namespace Chess
 {

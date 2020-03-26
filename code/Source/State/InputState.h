@@ -1,12 +1,10 @@
 #ifndef INPUTSTATE_H_
 #define INPUTSTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "Interface.h"
 
-#include "BaseState.h"
-#include "../Interface.h"
 
 namespace Chess
 {

@@ -5,13 +5,14 @@
 #include <sstream>
 #include <vector>
 
-#include "BaseState.h"
-#include "../PotentialPin.h"
-#include "../BaseTurn.h"
-#include "../Scans/Scanner.h"
-#include "../Interface.h"
-#include "../Board.h"
-#include "../Pieces/Pieces.h"
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "PotentialPin.h"
+#include "BaseTurn.h"
+#include "Scans/Scanner.h"
+#include "Interface.h"
+#include "Board.h"
+#include "Pieces/Pieces.h"
 
 namespace Chess
 {

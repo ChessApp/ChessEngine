@@ -1,14 +1,11 @@
 #ifndef STATUS_H_
 #define STATUS_H_
 
-#include <string>
-#include <sstream>
-
+#include "Chess.h"
 #include "Pieces/Pieces.h"
 #include "Board.h"
 #include "Interface.h"
 
-using namespace std;
 
 namespace Chess
 {

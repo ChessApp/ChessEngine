@@ -8,13 +8,8 @@
 #ifndef PIECES_H_
 #define PIECES_H_
 
-#include <stdio.h>
-#include <iostream>
-#include <string>
-#include <sstream>
+#include "Chess.h"
 
-
-using namespace std;
 
 namespace Chess
 {

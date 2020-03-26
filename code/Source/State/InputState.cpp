@@ -1,4 +1,4 @@
-#include "InputState.h"
+#include "State/InputState.h"
 
 namespace Chess
 {

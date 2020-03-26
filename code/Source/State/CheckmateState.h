@@ -1,12 +1,9 @@
 #ifndef CHECKMATESTATE_H_
 #define CHECKMATESTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
-
-#include "BaseState.h"
-#include "../Interface.h"
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "Interface.h"
 
 namespace Chess
 {

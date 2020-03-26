@@ -1,4 +1,4 @@
-#include "DefensiveCheckScanState.h"
+#include "State/DefensiveCheckScanState.h"
 
 namespace Chess
 {

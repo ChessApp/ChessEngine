@@ -1,25 +1,22 @@
 #ifndef INITSTATE_H_
 #define INITSTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "Board.h"
+#include "Interface.h"
+#include "BaseTurn.h"
 
-#include "BaseState.h"
-#include "../Board.h"
-#include "../Interface.h"
-#include "../BaseTurn.h"
-
-#include "../Pieces/Pieces.h"
-#include "../Pieces/NullPiece.h"
-#include "../Pieces/Rook.h"
-#include "../Pieces/Knight.h"
-#include "../Pieces/Bishop.h"
-#include "../Pieces/Queen.h"
-#include "../Pieces/King.h"
-#include "../Pieces/WhitePawn.h"
-#include "../Pieces/BlackPawn.h"
-#include "../StandardInitialPieceLocations.h"
+#include "Pieces/Pieces.h"
+#include "Pieces/NullPiece.h"
+#include "Pieces/Rook.h"
+#include "Pieces/Knight.h"
+#include "Pieces/Bishop.h"
+#include "Pieces/Queen.h"
+#include "Pieces/King.h"
+#include "Pieces/WhitePawn.h"
+#include "Pieces/BlackPawn.h"
+#include "StandardInitialPieceLocations.h"
 
 
 namespace Chess

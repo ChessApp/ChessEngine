@@ -1,4 +1,4 @@
-#include "DualAxisScan.h"
+#include "Scans/DualAxisScan.h"
 
 namespace Chess
 {

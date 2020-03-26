@@ -1,14 +1,12 @@
 #ifndef MOVEVALIDITYSTATE_H_
 #define MOVEVALIDITYSTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "Interface.h"
+#include "Board.h"
+#include "Pieces/Pieces.h"
 
-#include "BaseState.h"
-#include "../Interface.h"
-#include "../Board.h"
-#include "../Pieces/Pieces.h"
 
 namespace Chess
 {

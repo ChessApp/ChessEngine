@@ -1,17 +1,15 @@
 #ifndef OFFENSIVECHECKSCANSTATE_H_
 #define OFFENSIVECHECKSCANSTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "PotentialPin.h"
+#include "BaseTurn.h"
+#include "Scans/Scanner.h"
+#include "Interface.h"
+#include "Board.h"
+#include "Pieces/Pieces.h"
 
-#include "BaseState.h"
-#include "../PotentialPin.h"
-#include "../BaseTurn.h"
-#include "../Scans/Scanner.h"
-#include "../Interface.h"
-#include "../Board.h"
-#include "../Pieces/Pieces.h"
 
 namespace Chess
 {

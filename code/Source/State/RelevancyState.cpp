@@ -1,4 +1,4 @@
-#include "RelevancyState.h"
+#include "State/RelevancyState.h"
 
 namespace Chess
 {

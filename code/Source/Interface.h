@@ -2,21 +2,14 @@
 // and functions that compose the Interface 
 // class. The main service of this class is
 // to drive the user interface.
-
-
 #ifndef INTERFACE_H_
 #define INTERFACE_H_
 
-#include <stdio.h>
-#include <iostream>
-#include <string>
-#include <sstream>
-
+#include "Chess.h"
 #include "Board.h"
 #include "BaseTurn.h"
 #include "Pieces/Pieces.h"
 
-using namespace std;
 
 namespace Chess
 {

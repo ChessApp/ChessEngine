@@ -4,7 +4,7 @@
 // the game.
 
 
-#include "King.h"
+#include "Pieces/King.h"
 
 namespace Chess
 {

@@ -1,4 +1,4 @@
-#include "CheckmateState.h"
+#include "State/CheckmateState.h"
 
 namespace Chess
 {

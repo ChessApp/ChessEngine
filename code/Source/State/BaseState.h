@@ -1,12 +1,9 @@
 #ifndef BASESTATE_H_
 #define BASESTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
-#include <iostream>
+#include "Chess.h"
+#include "Pieces/Pieces.h"
 
-#include "../Pieces/Pieces.h"
 
 namespace Chess
 {

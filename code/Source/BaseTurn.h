@@ -1,14 +1,10 @@
 #ifndef BASETURN_H_
 #define BASETURN_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
-
+#include "Chess.h"
 #include "Pieces/Pieces.h"
 #include "Scans/ScanResult.h"
 
-using namespace std;
 
 namespace Chess
 {

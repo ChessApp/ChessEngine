@@ -1,4 +1,4 @@
-#include "PathScanState.h"
+#include "State/PathScanState.h"
 
 namespace Chess
 {

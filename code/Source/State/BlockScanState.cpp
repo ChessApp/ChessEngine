@@ -1,4 +1,4 @@
-#include "BlockScanState.h"
+#include "State/BlockScanState.h"
 
 namespace Chess
 {

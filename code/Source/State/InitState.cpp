@@ -1,6 +1,6 @@
-#include "InitState.h"
+#include "State/InitState.h"
 
-#include "../Tools/pugixml/pugixml.hpp"
+#include "Tools/pugixml/pugixml.hpp"
 
 namespace Chess
 {

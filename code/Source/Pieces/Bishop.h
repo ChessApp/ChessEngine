@@ -9,15 +9,10 @@
 #ifndef BISHOP_H_
 #define BISHOP_H_
 
-#include <stdio.h>
-#include <iostream>
-#include <string>
-#include <sstream>
-// #include "Interface.h"
-#include "Pieces.h"
-#include "../Scans/DualAxisScan.h"
+#include "Chess.h"
+#include "Pieces/Pieces.h"
+#include "Scans/DualAxisScan.h"
 
-using namespace std;
 
 namespace Chess
 {

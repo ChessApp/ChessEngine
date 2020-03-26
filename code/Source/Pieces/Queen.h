@@ -9,15 +9,10 @@
 #ifndef QUEEN_H_
 #define QUEEN_H_
 
-#include <stdio.h>
-#include <iostream>
-#include <string>
-#include <sstream>
-// #include "Interface.h"
-#include "Pieces.h"
-#include "../Scans/CompoundAxisScan.h"
+#include "Chess.h"
+#include "Pieces/Pieces.h"
+#include "Scans/CompoundAxisScan.h"
 
-using namespace std;
 
 namespace Chess
 {

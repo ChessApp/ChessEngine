@@ -4,7 +4,7 @@
 // the game.
 
 
-#include "Bishop.h"
+#include "Pieces/Bishop.h"
 
 namespace Chess
 {

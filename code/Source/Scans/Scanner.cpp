@@ -1,4 +1,4 @@
-#include "Scanner.h"    
+#include "Scans/Scanner.h"    
 
 namespace Chess
 {

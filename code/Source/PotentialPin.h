@@ -1,13 +1,10 @@
 #ifndef POTENTIALPIN_H_
 #define POTENTIALPIN_H_
 
-#include <string>
-#include <sstream>
-
+#include "Chess.h"
 #include "Pieces/Pieces.h"
 #include "Scans/BaseScan.h"
 
-using namespace std;
 
 namespace Chess
 {

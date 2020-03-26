@@ -1,4 +1,4 @@
-#include "PinScanState.h"
+#include "State/PinScanState.h"
 
 namespace Chess
 {

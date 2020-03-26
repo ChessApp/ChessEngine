@@ -9,14 +9,9 @@
 #ifndef KNIGHT_H_
 #define KNIGHT_H_
 
-#include <stdio.h>
-#include <iostream>
-#include <string>
-#include <sstream>
-// #include "Interface.h"
-#include "Pieces.h"
+#include "Chess.h"
+#include "Pieces/Pieces.h"
 
-using namespace std;
 
 namespace Chess
 {

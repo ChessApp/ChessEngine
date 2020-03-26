@@ -1,10 +1,5 @@
-
 #ifndef GAMEPROTOCOLDRIVER_H_
 #define GAMEPROTOCOLDRIVER_H_
-
-#include <string>
-#include <sstream>
-#include <vector>
 
 #include "BaseTurn.h"
 
@@ -22,8 +17,6 @@
 #include "State/EscapeRouteState.h"
 #include "State/CheckmateState.h"
 
-
-using namespace std;
 
 namespace Chess
 {

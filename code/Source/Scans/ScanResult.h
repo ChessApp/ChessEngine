@@ -1,13 +1,9 @@
 #ifndef SCANRESULT_H_
 #define SCANRESULT_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
+#include "Chess.h"
+#include "Pieces/Pieces.h"
 
-#include "../Pieces/Pieces.h"
-
-using namespace std;
 
 namespace Chess
 {

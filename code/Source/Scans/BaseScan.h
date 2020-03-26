@@ -1,14 +1,11 @@
 #ifndef BASESCAN_H_
 #define BASESCAN_H_
 
-#include <string>
-#include <sstream>
+#include "Chess.h"
+#include "Pieces/Pieces.h"
+#include "Board.h"
+#include "Scans/ScanResult.h"
 
-#include "../Pieces/Pieces.h"
-#include "../Board.h"
-#include "ScanResult.h"
-
-using namespace std;
 
 namespace Chess
 {

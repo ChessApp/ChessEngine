@@ -4,7 +4,7 @@
 // the game.
 
 
-#include "NullPiece.h"
+#include "Pieces/NullPiece.h"
 
 namespace Chess
 {
