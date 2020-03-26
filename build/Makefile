@@ -24,7 +24,8 @@ DEPS := $(OBJS:.o=.d)
 CPPFLAGS := 
 # .cpp flags
 CXXFLAGS := \
-	-std=c++11
+	-std=c++11 \
+	-I ../code/Source
 # linker flags
 LDLIBS := 
 
