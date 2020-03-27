@@ -5,7 +5,7 @@ namespace Chess
   namespace State
   {
 
-    BaseState * EscapeRouteState::execute ( )
+    BaseState::StatePtr EscapeRouteState::execute ( )
     {
       std::cout << "Escape route state" << std::endl ;
 

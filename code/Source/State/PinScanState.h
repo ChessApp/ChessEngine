@@ -24,7 +24,7 @@ namespace Chess
       typedef vector< PotentialPin * > & PotentialPinList ;
       typedef vector< Pieces * > & PieceList ;
 
-      virtual BaseState * execute( ) ;
+      virtual StatePtr execute( ) ;
 
       inline PinScanState ( 
         Interface * interface, 

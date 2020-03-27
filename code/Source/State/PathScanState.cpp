@@ -5,7 +5,7 @@ namespace Chess
   namespace State
   {
 
-    BaseState * PathScanState::execute ( )
+    BaseState::StatePtr PathScanState::execute ( )
     {
       std::cout << "Path scan state" << std::endl ;
       

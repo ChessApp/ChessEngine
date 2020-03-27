@@ -17,7 +17,7 @@ namespace Chess
       : public BaseState
     {
     public:
-      virtual BaseState * execute( ) ;
+      virtual StatePtr execute( ) ;
 
       inline MoveValidityState ( Interface * interface, Board * board ) 
         : interface_(interface),

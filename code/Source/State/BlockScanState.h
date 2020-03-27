@@ -26,7 +26,7 @@ namespace Chess
 
       typedef vector< Pieces * > & PieceList ;
 
-      virtual BaseState * execute( ) ;
+      StatePtr execute( ) ;
 
       inline BlockScanState ( 
         Interface * interface, 

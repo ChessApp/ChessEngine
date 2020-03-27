@@ -5,7 +5,7 @@ namespace Chess
   namespace State
   {
 
-    BaseState * CheckmateState::execute ( )
+    BaseState::StatePtr CheckmateState::execute ( )
     {
       interface_->printBoard( ) ;
       std::cout << "Checkmate!" << std::endl ;

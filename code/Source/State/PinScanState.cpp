@@ -5,7 +5,7 @@ namespace Chess
   namespace State
   {
 
-    BaseState * PinScanState::execute ( )
+    BaseState::StatePtr PinScanState::execute ( )
     {
       std::cout << "Pin scan state" << std::endl ;
 

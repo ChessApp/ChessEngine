@@ -19,7 +19,7 @@ namespace Chess
       : public BaseState
     {
     public:
-      virtual BaseState * execute( ) ;
+      virtual StatePtr execute( ) ;
 
       inline DefensiveCheckScanState ( 
         Interface * interface, 

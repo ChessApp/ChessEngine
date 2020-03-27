@@ -5,7 +5,7 @@ namespace Chess
   namespace State
   {
 
-    BaseState * MoveValidityState::execute ( )
+    BaseState::StatePtr MoveValidityState::execute ( )
     {
       std::cout << "Move validity state" << std::endl ;
 

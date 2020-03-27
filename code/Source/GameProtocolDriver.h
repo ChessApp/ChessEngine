@@ -3,6 +3,7 @@
 
 #include "BaseTurn.h"
 
+#include "State/BaseState.h"
 #include "State/InitState.h"
 #include "State/InputState.h"
 #include "State/RelevancyState.h"
@@ -25,7 +26,7 @@ namespace Chess
   {
 
   public:
-
+    typedef State::BaseState::StatePtr StatePtr;
    GameProtocolDriver ( ) ;
    // ~GameProtocolDriver( ) ;
 
@@ -43,20 +44,20 @@ namespace Chess
     BaseTurn * blackTurn_ ;
     BaseTurn * currentTurn_ ;
 
-    State::BaseState * currentState_ ;
-    State::BaseState * checkmate_ ;
-    State::BaseState * init_ ;
-    State::BaseState * input_ ;
-    State::BaseState * relevancy_ ;
-    State::BaseState * moveValidity_ ;
-    State::BaseState * pathscan_ ;
-    State::BaseState * move_ ;
-    State::BaseState * defensiveCheckScan_ ;
-    State::BaseState * offensiveCheckScan_ ;
-    State::BaseState * returnPiece_ ;
-    State::BaseState * switchTurn_ ;
-    State::BaseState * pinScan_ ;
-    State::BaseState * escapeRoute_ ;
+    StatePtr currentState_ ;
+    StatePtr checkmate_ ;
+    StatePtr init_ ;
+    StatePtr input_ ;
+    StatePtr relevancy_ ;
+    StatePtr moveValidity_ ;
+    StatePtr pathscan_ ;
+    StatePtr move_ ;
+    StatePtr defensiveCheckScan_ ;
+    StatePtr offensiveCheckScan_ ;
+    StatePtr returnPiece_ ;
+    StatePtr switchTurn_ ;
+    StatePtr pinScan_ ;
+    StatePtr escapeRoute_ ;
 
 
   };

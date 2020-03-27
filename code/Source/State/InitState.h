@@ -29,7 +29,7 @@ namespace Chess
     {
     public:
 
-      virtual BaseState * execute( ) ;
+      virtual StatePtr execute( ) ;
 
       inline InitState ( 
         const char * configFileName,

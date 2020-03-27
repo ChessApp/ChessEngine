@@ -21,19 +21,19 @@ namespace Chess
 
   void GameProtocolDriver::createStateMachine ( )
   {
-    init_ = new State::InitState( stateConfigFile, interface_, board_, whiteTurn_, blackTurn_, currentTurn_ ) ;
-    input_ = new State::InputState( interface_ ) ;
-    relevancy_ = new State::RelevancyState( interface_ ) ;
-    moveValidity_ = new State::MoveValidityState( interface_, board_ ) ;
-    pathscan_ = new State::PathScanState( interface_, board_ ) ;
-    move_ = new State::MoveState( interface_, board_ ) ;
-    defensiveCheckScan_ = new State::DefensiveCheckScanState( interface_, board_, currentTurn_ ) ;
-    returnPiece_ = new State::ReturnPieceState( interface_, board_ ) ;
-    offensiveCheckScan_ = new State::OffensiveCheckScanState( interface_, board_, currentTurn_ ) ;
-    switchTurn_ = new State::SwitchTurnState( interface_, whiteTurn_, blackTurn_, currentTurn_ ) ;
-    pinScan_ = new State::PinScanState( interface_, board_, currentTurn_ ) ;
-    escapeRoute_ = new State::EscapeRouteState( interface_, board_, currentTurn_ ) ;
-    checkmate_ = new State::CheckmateState( interface_ ) ;
+    init_.reset( new State::InitState( stateConfigFile, interface_, board_, whiteTurn_, blackTurn_, currentTurn_ ) );
+    input_.reset( new State::InputState( interface_ ) );
+    relevancy_.reset( new State::RelevancyState( interface_ ) );
+    moveValidity_.reset( new State::MoveValidityState( interface_, board_ ) );
+    pathscan_.reset( new State::PathScanState( interface_, board_ ) );
+    move_.reset( new State::MoveState( interface_, board_ ) );
+    defensiveCheckScan_.reset( new State::DefensiveCheckScanState( interface_, board_, currentTurn_ ) );
+    returnPiece_.reset( new State::ReturnPieceState( interface_, board_ ) );
+    offensiveCheckScan_.reset( new State::OffensiveCheckScanState( interface_, board_, currentTurn_ ) );
+    switchTurn_.reset( new State::SwitchTurnState( interface_, whiteTurn_, blackTurn_, currentTurn_ ) );
+    pinScan_.reset( new State::PinScanState( interface_, board_, currentTurn_ ) );
+    escapeRoute_.reset( new State::EscapeRouteState( interface_, board_, currentTurn_ ) );
+    checkmate_.reset( new State::CheckmateState( interface_ ) );
 
     init_->setTransitionStates( input_, input_ ) ;
     input_->setTransitionStates( relevancy_, input_ ) ;

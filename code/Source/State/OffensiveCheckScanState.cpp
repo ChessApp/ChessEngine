@@ -5,7 +5,7 @@ namespace Chess
   namespace State
   {
 
-    BaseState * OffensiveCheckScanState::execute ( )
+    BaseState::StatePtr OffensiveCheckScanState::execute ( )
     {
       std::cout << "Offensive check scan state" << std::endl ;
       

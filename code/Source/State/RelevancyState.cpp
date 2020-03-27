@@ -5,7 +5,7 @@ namespace Chess
   namespace State
   {
 
-    BaseState * RelevancyState::execute ( )
+    BaseState::StatePtr RelevancyState::execute ( )
     {
       std::cout << "Relevancy state" << std::endl ;
 

@@ -22,7 +22,7 @@ namespace Chess
 
       typedef vector< Pieces * > & PinList ;
 
-      virtual BaseState * execute( ) ;
+      virtual StatePtr execute( ) ;
 
       inline EscapeRouteState ( 
         Interface * interface, 

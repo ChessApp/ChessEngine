@@ -5,7 +5,7 @@ namespace Chess
   namespace State
   {
 
-    void BaseState::setTransitionStates ( BaseState * nextState, BaseState * returnState )
+    void BaseState::setTransitionStates ( StatePtr nextState, StatePtr returnState )
     {
       nextState_ = nextState ;
       returnState_ = returnState ;

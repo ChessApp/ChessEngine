@@ -7,7 +7,7 @@ namespace Chess
   namespace State
   {
 
-    BaseState * InitState::execute ( )
+    BaseState::StatePtr InitState::execute ( )
     {
       std::cout << "Init state" << std::endl ;
 

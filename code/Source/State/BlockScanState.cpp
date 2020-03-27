@@ -5,7 +5,7 @@ namespace Chess
   namespace State
   {
 
-    BaseState * BlockScanState::execute ( )
+    BaseState::StatePtr BlockScanState::execute ( )
     {
       std::cout << "Block scan state" << std::endl ;
 
