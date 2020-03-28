@@ -1,5 +1,5 @@
-#ifndef SCANRESULT_H_
-#define SCANRESULT_H_
+#ifndef CHESS_SCANRESULT_H_
+#define CHESS_SCANRESULT_H_
 
 #include "Chess.h"
 #include "Pieces/Pieces.h"
@@ -11,24 +11,29 @@ namespace Chess
   class ScanResult
   {
   public:
-    typedef vector< int > IntList ;
-    inline ScanResult( ) { }
-    ~ScanResult( ) ;
-    void addSquare( int row, int col ) { rowList_.push_back( row ) ; colList_.push_back( col ) ; }
-    IntList getRowList( ) { return rowList_ ; }
-    IntList getColList( ) { return colList_ ; }
+    //-- types
+    typedef vector<int> IntList;
 
-    bool detection ;
-    int row ;
-    int col ;
-    Pieces * detectedPiece ;
+    //-- construction
+    inline ScanResult( ) { }
+
+    //-- methods
+    inline void    addSquare( int row, int col ) { rowList_.push_back( row ); colList_.push_back( col ); }
+    inline IntList getRowList( ) { return rowList_; }
+    inline IntList getColList( ) { return colList_; }
+
+    //-- public members
+    bool     detection;
+    int      row;
+    int      col;
+    Pieces * detectedPiece;
 
   protected:
-    
+    //-- protected members
     IntList rowList_ ;
     IntList colList_ ;
-  } ;
+  };
 
 }
 
-#endif /* SCANRESULT_H_ */
+#endif /* CHESS_SCANRESULT_H_ */

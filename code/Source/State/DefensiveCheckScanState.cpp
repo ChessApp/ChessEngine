@@ -1,5 +1,8 @@
 #include "State/DefensiveCheckScanState.h"
 
+#include "Pieces/Pieces.h"
+
+
 namespace Chess
 {
   namespace State

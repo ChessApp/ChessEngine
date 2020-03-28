@@ -4,42 +4,37 @@
 // each piece with specific data, along with
 // data inherited from the Pieces class, which is 
 // analyzed by the Mastermind files.
-
-
-#ifndef BISHOP_H_
-#define BISHOP_H_
+#ifndef CHESS_BISHOP_H_
+#define CHESS_BISHOP_H_
 
 #include "Chess.h"
 #include "Pieces/Pieces.h"
-#include "Scans/DualAxisScan.h"
+#include "Scans/Scanner.h"
 
 
 namespace Chess
 {
 
-    class Bishop 
+  class Bishop 
     : public Pieces
-    {
-    protected:
+  {
+  public:
+    //-- construction
+    Bishop( const string name, Board * board, int initRow, int initCol );
+    Bishop( const string name, Board * board );
 
+    //-- Piece interface
+    virtual bool pathScan( int destRow, int destCol );
+    virtual bool validDirection( int destRow, int destCol );
 
-    public:
+  protected:
+    //-- protected types
+    typedef shared_ptr<Scanner> ScannerPtr;
 
-      // Contructs piece objects which take the interface object,
-      // a specified name, and specified initial coordinates as
-      // arguments.
-      Bishop ( const string name, Board * board, int initRow, int initCol ) ;
-      Bishop ( const string name, Board * board ) ;
-      bool validDirection ( int destRow, int destCol ) ;
-      virtual bool pathScan( int destRow, int destCol ) ;
-
-      
-    };
-
+    //-- protected members
+    ScannerPtr scanner_;
+  };
 
 }
 
-
-
-
-#endif /* BISHOP_H_ */
+#endif /* CHESS_BISHOP_H_ */

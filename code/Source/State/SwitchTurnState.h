@@ -1,13 +1,10 @@
-#ifndef SWITCHTURNSTATE_H_
-#define SWITCHTURNSTATE_H_
+#ifndef CHESS_STATE_SWITCHTURNSTATE_H_
+#define CHESS_STATE_SWITCHTURNSTATE_H_
 
 #include "Chess.h"
 #include "State/BaseState.h"
 #include "BaseTurn.h"
 #include "Interface.h"
-#include "Board.h"
-#include "Pieces/Pieces.h"
-#include "Pieces/NullPiece.h"
 
 
 namespace Chess
@@ -19,9 +16,8 @@ namespace Chess
       : public BaseState
     {
     public:
-      virtual StatePtr execute( ) ;
-
-      inline SwitchTurnState ( 
+      //-- construction
+      inline SwitchTurnState( 
         Interface * interface,
         BaseTurn * whiteTurn,
         BaseTurn * blackTurn,
@@ -31,16 +27,19 @@ namespace Chess
           blackTurn_(blackTurn),
           currentTurn_(currentTurn)      
       { }
+
+      //-- BaseState interface
+      virtual StatePtr execute( );
       
     protected:
-      Interface * interface_ ;
-      BaseTurn *& currentTurn_ ;
-      BaseTurn * whiteTurn_ ;
-      BaseTurn * blackTurn_ ;
-
+      //-- protected members
+      Interface * interface_;
+      BaseTurn *& currentTurn_;
+      BaseTurn *  whiteTurn_;
+      BaseTurn *  blackTurn_;
     };
 
   }
 }
 
-#endif /* SWITCHTURNSTATE_H_ */
+#endif /* CHESS_STATE_SWITCHTURNSTATE_H_ */

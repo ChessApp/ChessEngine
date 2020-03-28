@@ -1,5 +1,5 @@
-#ifndef SCANNER_H_
-#define SCANNER_H_
+#ifndef CHESS_SCANNER_H_
+#define CHESS_SCANNER_H_
 
 #include "Chess.h"
 #include "Pieces/Pieces.h"
@@ -16,133 +16,128 @@ namespace Chess
   class Scanner
   {
   public:
-
-    inline Scanner ( Board * board )
-      : board_(board)
-    { }
-
-    virtual ScanResult * execute ( ) = 0 ;
-    virtual void identifyScan ( int sourceRow, int sourceCol, int destRow, int destCol ) { } ;
-
-    Board * board_ ;
-    BaseScan * scan_ ;
-    
+    //-- types
+    typedef shared_ptr<ScanResult> ScanResultPtr;
 
     class LeftScan
       : public BaseScan
     {
     public:
-      // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual ScanResult * execute ( ) ;
-
-      inline LeftScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      //-- construction
+      inline LeftScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
-      ~LeftScan( ) ;
 
+      //-- BaseScan interface
+      virtual ScanResult * execute( );
     };
 
     class RightScan
       : public BaseScan
     {
     public:
-      // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual ScanResult * execute ( ) ;
-
-      inline RightScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      //-- construction
+      inline RightScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
-      ~RightScan( ) ;
 
+      //-- BaseScan interface
+      virtual ScanResult * execute( );
     };
 
     class UpScan
       : public BaseScan
     {
     public:
-      // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual ScanResult * execute ( ) ;
-
-      inline UpScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      //-- construction
+      inline UpScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
-      ~UpScan( ) ;
 
+      //-- BaseScan interface
+      virtual ScanResult * execute( );
     };
 
     class DownScan
       : public BaseScan
     {
     public:
-      // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual ScanResult * execute ( ) ;
-
-      inline DownScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      //-- construction
+      inline DownScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
-      ~DownScan( ) ;
 
+      //-- BaseScan interface
+      virtual ScanResult * execute( );
     };
 
     class UpLeftScan
       : public BaseScan
     {
     public:
-      // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual ScanResult * execute ( ) ;
-
-      inline UpLeftScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      //-- construction
+      inline UpLeftScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
-      ~UpLeftScan( ) ;
 
+      //-- BaseScan interface
+      virtual ScanResult * execute( );
     };
 
     class UpRightScan
       : public BaseScan
     {
     public:
-      // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual ScanResult * execute ( ) ;
-
-      inline UpRightScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      //-- construction
+      inline UpRightScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
-      ~UpRightScan( ) ;
 
+      //-- BaseScan interface
+      virtual ScanResult * execute( );
     };
 
     class DownLeftScan
       : public BaseScan
     {
     public:
-      // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual ScanResult * execute ( ) ;
-
-      inline DownLeftScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      //-- construction
+      inline DownLeftScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
-      ~DownLeftScan( ) ;
 
+      //-- BaseScan interface
+      virtual ScanResult * execute( );
     };
 
     class DownRightScan
       : public BaseScan
     {
     public:
-      // virtual ScanResult execute ( int sourceRow, int sourceCol ) ;
-      virtual ScanResult * execute ( ) ;
-
-      inline DownRightScan ( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      //-- construction
+      inline DownRightScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
-      ~DownRightScan( ) ;
 
-    };  
+      //-- BaseScan interface
+      virtual ScanResult * execute( );
+    }; 
 
+    //-- construction
+    inline Scanner ( Board * board )
+      : board_(board)
+    { }
 
+    //-- interface methods
+    virtual ScanResult * execute ( ) = 0;
+    virtual void         identifyScan( int sourceRow, int sourceCol, int destRow, int destCol ) = 0;
+
+  protected:
+    //-- protected members
+    Board *    board_ ;
+    BaseScan * scan_ ;
   };
 
 }
 
-#endif /* SCANNER_H_ */
+#endif /* CHESS_SCANNER_H_ */

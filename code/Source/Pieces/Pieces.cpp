@@ -2,135 +2,112 @@
 // which instantiates all of the piece objects and
 // sets their initial data for the beginning of 
 // the game.
-
-
 #include "Pieces/Pieces.h"
+
 
 namespace Chess
 {
 
   Pieces * lastCreatedPiecePointer = NULL ;
 
-
   Pieces::Pieces( string name, string type )
-    : name(name), type(type), in_check(false),
-      prev_in_check(false), pinned(false), captured(false),
+    : name(name), 
+      type(type), 
+      in_check(false),
+      prev_in_check(false), 
+      pinned(false), 
+      captured(false),
       color(name[0])
   {
-    
     if (color == 'W')
-    {
       opponent = 'B';
-    }
+
     if (color == 'B')
-    {
       opponent = 'W';
-    }
 
-    row = 0 ;
-    col = 0 ;
+    row = 0;
+    col = 0;
 
-    prevPiecePointer = lastCreatedPiecePointer ;
-    lastCreatedPiecePointer = this ;
-
+    prevPiecePointer = lastCreatedPiecePointer;
+    lastCreatedPiecePointer = this;
   }
 
   Pieces::Pieces( string name, string type, int initRow, int initCol )
-    : name(name), type(type), in_check(false),
-      prev_in_check(false), pinned(false), captured(false),
+    : name(name), 
+      type(type), 
+      in_check(false),
+      prev_in_check(false), 
+      pinned(false), 
+      captured(false),
       color(name[0])
   {
-    
     if (color == 'W')
-    {
       opponent = 'B';
-    }
+
     if (color == 'B')
-    {
       opponent = 'W';
-    }
 
-    setLocation( initRow, initCol ) ;
+    setLocation( initRow, initCol );
 
-    prevPiecePointer = lastCreatedPiecePointer ;
-    lastCreatedPiecePointer = this ;
-
+    prevPiecePointer = lastCreatedPiecePointer;
+    lastCreatedPiecePointer = this;
   }
 
   bool Pieces::pieceMoved( int destRow, int destCol )
   {
-    if ( destRow != row || destCol != col )
-    {
-      return true ;
-    }
+    if( (destRow != row) || (destCol != col) )
+      return true;
     else
-    {
-      return false ;
-    }
+      return false;
   }
 
   bool Pieces::destinationOnBoard( int destRow, int destCol )
   {
-    if ( destRow < 0 || destRow > 7 ||
-         destCol < 0 || destCol > 7 )
-    {
-      return false ;
-    }
+    if( destRow < 0 || destRow > 7 ||
+        destCol < 0 || destCol > 7 )
+      return false;
     else
-    {
-      return true ;
-    }
+      return true;
   }
 
-
-  string Pieces::getType ( )
+  string Pieces::getType( )
   {
-    return type ;
+    return type;
   }
 
-  char Pieces::getColor ( )
+  char Pieces::getColor( )
   {
     return color;
   }
 
-  Pieces * Pieces::getPrevPiecePointer ( )
+  Pieces * Pieces::getPrevPiecePointer( )
   {
     return prevPiecePointer;
   }
 
-  string Pieces::getPrevPiecePointerName ( )
+  string Pieces::getPrevPiecePointerName( )
   {
     if ( prevPiecePointer != NULL )
-    {
       return prevPiecePointer->name;
-    }
     else
-    {
-      return "First piece created has been reached." ;
-    }
+      return "First piece created has been reached.";
   }
 
-  string Pieces::getName ( )
+  string Pieces::getName( )
   {
-    return name ;
+    return name;
   }
 
-  void Pieces::setLocation ( int rowToSet, int colToSet )
+  void Pieces::setLocation( int rowToSet, int colToSet )
   {
-    row = rowToSet ;
-    col = colToSet ;
+    row = rowToSet;
+    col = colToSet;
   }
 
-  void Pieces::clrLocation ( )
+  void Pieces::clrLocation( )
   {
-    row = 0 ;
-    col = 0 ;
+    row = 0;
+    col = 0;
   }
-
-
-
 
 }
-
-
-

@@ -4,43 +4,37 @@
 // each piece with specific data, along with
 // data inherited from the Pieces class, which is 
 // analyzed by the Mastermind files.
-
-
-#ifndef QUEEN_H_
-#define QUEEN_H_
+#ifndef CHESS_QUEEN_H_
+#define CHESS_QUEEN_H_
 
 #include "Chess.h"
 #include "Pieces/Pieces.h"
-#include "Scans/CompoundAxisScan.h"
+#include "Scans/Scanner.h"
 
 
 namespace Chess
 {
 
-    class Queen 
+  class Queen 
     : public Pieces
-    {
-    protected:
+  {
+  public:
+    //-- construction
+    Queen( const string name, Board * board, int initRow, int initCol );
+    Queen( const string name, Board * board );
 
-      typedef Chess::Board Board ;
-      typedef Chess::Pieces Pieces ;
+    //-- Piece interface
+    virtual bool pathScan( int destRow, int destCol );
+    virtual bool validDirection( int destRow, int destCol );
 
-    public:
+  protected:
+    //-- protected types
+    typedef shared_ptr<Scanner> ScannerPtr;
 
-      // Contructs piece objects which take the interface object,
-      // a specified name, and specified initial coordinates as
-      // arguments.
-      Queen ( const string name, Board * board, int initRow, int initCol ) ;
-      Queen ( const string name, Board * board ) ;
-      bool validDirection( int destRow, int destCol ) ;
-      virtual bool pathScan( int destRow, int destCol ) ; 
-      
-    };
-
+    //-- protected members
+    ScannerPtr scanner_;
+  };
 
 }
 
-
-
-
-#endif /* QUEEN_H_ */
+#endif /* CHESS_QUEEN_H_ */

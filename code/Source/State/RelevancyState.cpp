@@ -1,36 +1,32 @@
 #include "State/RelevancyState.h"
 
+
 namespace Chess
 {
   namespace State
   {
 
-    BaseState::StatePtr RelevancyState::execute ( )
+    BaseState::StatePtr RelevancyState::execute( )
     {
-      std::cout << "Relevancy state" << std::endl ;
+      std::cout << "Relevancy state" << std::endl;
 
-      nextState_->setWhiteKing( whiteKing_ ) ;
-      nextState_->setBlackKing( blackKing_ ) ;
+      nextState_->setWhiteKing(whiteKing_);
+      nextState_->setBlackKing(blackKing_);
       
-      if( !interface_->inputSize( ) )
+      if( !interface_->inputSize() )
+        return returnState_;
+      else
+        interface_->updateMoveSpecs();
+      
+      if( interface_->inputValidityChecks() )
       {
-        return returnState_ ;
+        return nextState_;
       }
       else
       {
-        interface_->updateMoveSpecs( ) ;
+        interface_->invalidMoveMessage();
+        return returnState_;
       }
-      
-      if( interface_->inputValidityChecks( ) )
-      {
-        return nextState_ ;
-      } 
-      else
-      {
-        interface_->invalidMoveMessage( ) ;
-        return returnState_ ;
-      }
-      
     }
 
   }

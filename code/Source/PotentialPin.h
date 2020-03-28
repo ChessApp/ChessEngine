@@ -1,5 +1,5 @@
-#ifndef POTENTIALPIN_H_
-#define POTENTIALPIN_H_
+#ifndef CHESS_POTENTIALPIN_H_
+#define CHESS_POTENTIALPIN_H_
 
 #include "Chess.h"
 #include "Pieces/Pieces.h"
@@ -11,26 +11,27 @@ namespace Chess
 
   class PotentialPin
   {
-
-  protected:
-
-    Pieces * potentialPin_ ;
-    BaseScan * scanToExecute_ ;
-
   public:
-
-    inline PotentialPin ( 
-      Pieces * potentialPin,
-      BaseScan * scanToExecute )
+    //-- types
+    typedef Pieces *   PiecePtr;
+    typedef BaseScan * BaseScanPtr;
+    
+    //-- construction
+    inline PotentialPin( PiecePtr potentialPin, BaseScanPtr scanToExecute )
       : potentialPin_(potentialPin),
         scanToExecute_(scanToExecute)
     { }
 
-    Pieces * getPotentialPin( ) const { return potentialPin_ ; }
-    BaseScan * getScanToExecute( ) const { return scanToExecute_ ; }
+    //-- public methods
+    PiecePtr    getPotentialPin( )  const { return potentialPin_; }
+    BaseScanPtr getScanToExecute( ) const { return scanToExecute_; }
 
+  protected:
+    //-- protected members
+    PiecePtr    potentialPin_;
+    BaseScanPtr scanToExecute_;
   };
 
 }
 
-#endif /* POTENTIALPIN_H_ */
+#endif /* CHESS_POTENTIALPIN_H_ */

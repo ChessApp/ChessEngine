@@ -1,9 +1,10 @@
-#ifndef CHECKMATESTATE_H_
-#define CHECKMATESTATE_H_
+#ifndef CHESS_STATE_CHECKMATESTATE_H_
+#define CHESS_STATE_CHECKMATESTATE_H_
 
 #include "Chess.h"
 #include "State/BaseState.h"
 #include "Interface.h"
+
 
 namespace Chess
 {
@@ -14,18 +15,20 @@ namespace Chess
       : public BaseState
     {
     public:
-      virtual StatePtr execute( ) ;
-
+      //-- construction
       inline CheckmateState ( Interface * interface ) 
         : interface_(interface)
       { }
-      
-    protected:
-      Interface * interface_ ;
 
+      //-- BaseState interface
+      virtual StatePtr execute( );
+ 
+    protected:
+      //-- protected types
+      Interface * interface_;
     };
 
   }
 }
 
-#endif /* CHECKMATESTATE_H_ */
+#endif /* CHESS_STATE_CHECKMATESTATE_H_ */

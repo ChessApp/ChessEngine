@@ -1,16 +1,17 @@
 #include "State/CheckmateState.h"
 
+
 namespace Chess
 {
   namespace State
   {
 
-    BaseState::StatePtr CheckmateState::execute ( )
+    BaseState::StatePtr CheckmateState::execute( )
     {
-      interface_->printBoard( ) ;
-      std::cout << "Checkmate!" << std::endl ;
+      std::cout << "Checkmate!" << std::endl;
 
-      return nextState_ ;
+      interface_->printBoard();
+      return nextState_;
     }
 
   }

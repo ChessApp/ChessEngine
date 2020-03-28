@@ -1,9 +1,8 @@
-#ifndef COMPOUNDAXISSCAN_H_
-#define COMPOUNDAXISSCAN_H_
+#ifndef CHESS_COMPOUNDAXISSCAN_H_
+#define CHESS_COMPOUNDAXISSCAN_H_
 
 #include "Chess.h"
 #include "Scans/Scanner.h"
-#include "Pieces/Pieces.h"
 
 
 namespace Chess
@@ -12,24 +11,17 @@ namespace Chess
   class CompoundAxisScan
     : public Scanner
   {
-
   public:
- 
+    friend class Board;
 
-    friend class Board ;
+    //-- construction
+    CompoundAxisScan( Board * board );
 
-    CompoundAxisScan ( Board * board ) ;
-    virtual void identifyScan ( int sourceRow, int sourceCol, int destRow, int destCol ) ;
-
-    virtual ScanResult * execute ( ) ;
-
-  protected:
-
-    
-   
-
+    //-- Scanner interface
+    virtual void identifyScan( int sourceRow, int sourceCol, int destRow, int destCol );
+    virtual ScanResult * execute( );
   };
 
 }
 
-#endif /* COMPOUNDAXISSCAN_H_ */
+#endif /* CHESS_COMPOUNDAXISSCAN_H_ */

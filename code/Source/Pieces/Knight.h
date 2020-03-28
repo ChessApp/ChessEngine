@@ -4,10 +4,8 @@
 // each piece with specific data, along with
 // data inherited from the Pieces class, which is 
 // analyzed by the Mastermind files.
-
-
-#ifndef KNIGHT_H_
-#define KNIGHT_H_
+#ifndef CHESS_KNIGHT_H_
+#define CHESS_KNIGHT_H_
 
 #include "Chess.h"
 #include "Pieces/Pieces.h"
@@ -16,31 +14,19 @@
 namespace Chess
 {
 
-    class Knight 
+  class Knight 
     : public Pieces
-      
-    {
-    protected:
+  {
+  public:
+    //-- construction
+    Knight ( const string name, int initRow, int initCol );
+    Knight ( const string name );
 
-      typedef Chess::Pieces Pieces ;
-
-
-    public:
-
-      // Contructs piece objects which take the interface object,
-      // a specified name, and specified initial coordinates as
-      // arguments.
-      Knight ( const string name, int initRow, int initCol ) ;
-      Knight ( const string name ) ;
-      bool validDirection( int destRow, int destCol ) ;
-      virtual bool pathScan( int destRow, int destCol ) ;  
-      
-    };
-
+    //-- Piece interface
+    virtual bool pathScan( int destRow, int destCol );
+    virtual bool validDirection( int destRow, int destCol );    
+  };
 
 }
 
-
-
-
-#endif /* KNIGHT_H_ */
+#endif /* CHESS_KNIGHT_H_ */

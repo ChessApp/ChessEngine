@@ -1,41 +1,31 @@
 #include "Scans/SingleAxisScan.h"
 
+
 namespace Chess
 {
 
-  SingleAxisScan::SingleAxisScan ( Board * board )
-    : Scanner ( board )
-  {
+  SingleAxisScan::SingleAxisScan( Board * board )
+    : Scanner(board)
+  { }
 
-  }
-
-  void SingleAxisScan::identifyScan ( int sourceRow, int sourceCol, int destRow, int destCol )
+  void SingleAxisScan::identifyScan( int sourceRow, int sourceCol, int destRow, int destCol )
   {
-    int rowDiff = destRow - sourceRow ;
-    int colDiff = destCol - sourceCol ;
+    int rowDiff = destRow - sourceRow;
+    int colDiff = destCol - sourceCol;
+
     if ( rowDiff > 0 )
-    {
-      scan_ = new DownScan( board_, sourceRow, sourceCol, destRow, destCol ) ;
-    }
+      scan_ = new DownScan( board_, sourceRow, sourceCol, destRow, destCol );
     else if ( rowDiff < 0 )
-    {
-      scan_ = new UpScan( board_, sourceRow, sourceCol, destRow, destCol ) ;
-    }
+      scan_ = new UpScan( board_, sourceRow, sourceCol, destRow, destCol );
     else if ( colDiff > 0 )
-    {
-      scan_ = new RightScan( board_, sourceRow, sourceCol, destRow, destCol ) ;
-    }
+      scan_ = new RightScan( board_, sourceRow, sourceCol, destRow, destCol );
     else if ( colDiff < 0 )
-    {
-      scan_ = new LeftScan( board_, sourceRow, sourceCol, destRow, destCol ) ;
-    }
+      scan_ = new LeftScan( board_, sourceRow, sourceCol, destRow, destCol );
     else
-    {
-      cout << "Error: No scan identified." << endl ;
-    }
+      cout << "Error: No scan identified." << endl;
   }
 
-  ScanResult * SingleAxisScan::execute ( )
+  ScanResult * SingleAxisScan::execute( )
   {
     return scan_->execute( ) ;
   }
