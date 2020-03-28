@@ -3,104 +3,68 @@
 // class. This class serves to characterize
 // each piece with specific data, which is 
 // analyzed by the Mastermind files.
+#ifndef CHESS_PIECES_H_
+#define CHESS_PIECES_H_
 
+#include "Chess.h"
 
-#ifndef PIECES_H_
-#define PIECES_H_
-
-#include <stdio.h>
-#include <iostream>
-#include <string>
-#include <sstream>
-
-
-using namespace std;
 
 namespace Chess
 {
 
-    class Scanner ;
+  class Pieces
+  {
+  public:
+    //-- construction
+    Pieces( const string name, string type );
+    Pieces( const string name, string type, int initRow, int initCol );
 
-    class Pieces
-    {
+    //-- interface methods
+    virtual bool pathScan( int destRow, int destCol )       { return false; }
+    virtual bool validDirection( int destRow, int destCol ) { return false; }
 
-      friend class Motion ;
-      
+    //-- accessors
+    void     setKing( Pieces * king ) { king_ = king; }
+    Pieces * getKing( )               { return king_; }
+    string   getType( );
+    char     getColor( );
+    Pieces * getPrevPiecePointer( );
+    string   getPrevPiecePointerName( );
+    string   getName( );
+    void setLocation( int row, int col );
+    int  getCol( )    { return col; }
+    int  getRow( )    { return row; }
+    void setPinned( ) { pinned = true; }
+    void clrPinned( ) { pinned = false; }
+    bool getPinnedStatus( ) { return pinned; }
+    void setActiveListIndex( int index ) { activeListIndex_ = index; }
+    int  getActiveListIndex( ) const { return activeListIndex_; }
+    void clrActiveListIndex( ) { activeListIndex_ = 0; }
 
-    protected:
+    //-- miscellaneous public methods
+    bool pieceMoved( int destRow, int destCol );
+    bool destinationOnBoard( int destRow, int destCol );
 
-      bool in_check;
-      bool prev_in_check;
-      bool pinned;
-      bool captured;
-      char color;
-      char opponent;
-      int col;
-      int row;
-      string name;
-      string type;
-      Pieces * prevPiecePointer;
-      Scanner * scanner_ ;
-      Pieces * king_ ;
-      int activeListIndex_ ;
-      
+  protected:
+    //-- protected methods
+    void clrLocation( );
 
-      void clrLocation ( ) ;
+    //-- protected members
+    bool      in_check;
+    bool      prev_in_check;
+    bool      pinned;
+    bool      captured;
+    char      color;
+    char      opponent;
+    int       col;
+    int       row;
+    string    name;
+    string    type;
+    Pieces *  prevPiecePointer;
+    Pieces *  king_;
+    int       activeListIndex_;
+  };
 
-
-    public:
-
-      // Contructs piece objects which take the interface object,
-      // a specified name, and specified initial coordinates as
-      // arguments.
-      Pieces( const string name, string type );
-
-      Pieces( const string name, string type, int initRow, int initCol );
-
-      Pieces() = default;
-
-      void setLocation ( int row, int col ) ;
-
-      int getCol ( ) { return col ; }
-      int getRow ( ) { return row ; }
-      void setPinned( ) { pinned = true ; }
-      void clrPinned( ) { pinned = false ; }
-      bool getPinnedStatus( ) { return pinned ; }
-      void setActiveListIndex( int index) { activeListIndex_ = index ; }
-      int getActiveListIndex( ) const { return activeListIndex_ ; }
-      void clrActiveListIndex( ) { activeListIndex_ = 0 ; }
-
-      virtual string getType ( ) ;
-
-      char getColor ( ) ;
-
-      Pieces * getPrevPiecePointer ( ) ;
-
-      string getPrevPiecePointerName ( ) ;
-
-      string getName ( ) ;
-      bool pieceMoved( int destRow, int destCol ) ;
-      bool destinationOnBoard( int destRow, int destCol ) ;
-
-      virtual bool pathScan ( int destRow, int destCol ) { return false ; }
-
-      virtual bool validDirection( int destRow, int destCol ) { return false ; }
-
-      virtual void setKing( Pieces * king ) { king_ = king ; }
-      virtual Pieces * getKing( ) { return king_ ; }
-      ~Pieces( ) { }
-
-
-      //virtual bool validDirection ( int destRow, int destCol ) ;
-
-      
-
-    };
-  
-  
 }
 
-
-
-
-#endif /* PIECES_H_ */
+#endif /* CHESS_PIECES_H_ */

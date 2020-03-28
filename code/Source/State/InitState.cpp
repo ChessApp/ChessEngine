@@ -1,24 +1,35 @@
-#include "InitState.h"
+#include "State/InitState.h"
 
-#include "../Tools/pugixml/pugixml.hpp"
+#include "Tools/pugixml/pugixml.hpp"
+
+#include "Pieces/Pieces.h"
+#include "Pieces/NullPiece.h"
+#include "Pieces/Rook.h"
+#include "Pieces/Knight.h"
+#include "Pieces/Bishop.h"
+#include "Pieces/Queen.h"
+#include "Pieces/King.h"
+#include "Pieces/WhitePawn.h"
+#include "Pieces/BlackPawn.h"
+
 
 namespace Chess
 {
   namespace State
   {
 
-    BaseState * InitState::execute ( )
+    BaseState::StatePtr InitState::execute( )
     {
-      std::cout << "Init state" << std::endl ;
+      std::cout << "Init state" << std::endl;
 
-      vector<PiecePtr> nullPieceList ;
-      for ( int j = 0; j < 8; j++ )
+      vector<PiecePtr> nullPieceList;
+      for( int j = 0; j < 8; j++ )
       {
-        for ( int i = 0; i < 8; i++ )
+        for( int i = 0; i < 8; i++ )
         {
-          PiecePtr np = new NullPiece( ".. " ) ;
-          setPiece( np, j, i ) ;
-          nullPieceList.push_back( np ) ;
+          PiecePtr np = new NullPiece(".. ");
+          setPiece(np, j, i);
+          nullPieceList.push_back(np);
         }  
       }
 
@@ -26,13 +37,13 @@ namespace Chess
       // file passed in during construction of this class.
       parseXMLFile();
 
-      board_->init( nullPieceList ) ;
+      board_->init(nullPieceList);
 
-      currentTurn_ = whiteTurn_ ;
+      currentTurn_ = whiteTurn_;
       
-      interface_->printBoard( ) ;
+      interface_->printBoard();
 
-      return nextState_ ;
+      return nextState_;
     }
 
     void InitState::parseXMLFile()
@@ -84,13 +95,13 @@ namespace Chess
           p = new Chess::Queen(symbol, board_);
           if( color == "W" )
           {
-            whiteTurn_->setDefensiveKing(p) ;
-            blackTurn_->setOffensiveKing(p) ;
+            whiteTurn_->setDefensiveKing(p);
+            blackTurn_->setOffensiveKing(p);
           }
           else
           {
-            whiteTurn_->setOffensiveKing(p) ;
-            blackTurn_->setDefensiveKing(p) ;
+            whiteTurn_->setOffensiveKing(p);
+            blackTurn_->setDefensiveKing(p);
           }
         }
 
@@ -105,8 +116,8 @@ namespace Chess
 
     void InitState::setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet )
     {
-      pieceToSet->setLocation( rowToSet, colToSet ) ;
-      board_->setPiece( pieceToSet, rowToSet, colToSet ) ;
+      pieceToSet->setLocation(rowToSet, colToSet );
+      board_->setPiece(pieceToSet, rowToSet, colToSet);
     }
 
   }

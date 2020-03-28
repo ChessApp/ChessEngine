@@ -1,12 +1,10 @@
-#ifndef RELEVANCYSTATE_H_
-#define RELEVANCYSTATE_H_
+#ifndef CHESS_STATE_RELEVANCYSTATE_H_
+#define CHESS_STATE_RELEVANCYSTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "Interface.h"
 
-#include "BaseState.h"
-#include "../Interface.h"
 
 namespace Chess
 {
@@ -17,18 +15,20 @@ namespace Chess
       : public BaseState
     {
     public:
-      virtual BaseState * execute( ) ;
-
-      inline RelevancyState ( Interface * interface ) 
+      //-- construction
+      inline RelevancyState( Interface * interface ) 
         : interface_(interface)
       { }
+
+      //-- BaseState interface
+      virtual StatePtr execute( );
       
     protected:
-      Interface * interface_ ;
-
+      //-- protected members
+      Interface * interface_;
     };
 
   }
 }
 
-#endif /* RELEVANCYSTATE_H_ */
+#endif /* CHESS_STATE_RELEVANCYSTATE_H_ */

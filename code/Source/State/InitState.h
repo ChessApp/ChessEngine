@@ -1,25 +1,11 @@
-#ifndef INITSTATE_H_
-#define INITSTATE_H_
+#ifndef CHESS_STATE_INITSTATE_H_
+#define CHESS_STATE_INITSTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
-
-#include "BaseState.h"
-#include "../Board.h"
-#include "../Interface.h"
-#include "../BaseTurn.h"
-
-#include "../Pieces/Pieces.h"
-#include "../Pieces/NullPiece.h"
-#include "../Pieces/Rook.h"
-#include "../Pieces/Knight.h"
-#include "../Pieces/Bishop.h"
-#include "../Pieces/Queen.h"
-#include "../Pieces/King.h"
-#include "../Pieces/WhitePawn.h"
-#include "../Pieces/BlackPawn.h"
-#include "../StandardInitialPieceLocations.h"
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "Board.h"
+#include "Interface.h"
+#include "BaseTurn.h"
 
 
 namespace Chess
@@ -31,9 +17,7 @@ namespace Chess
       : public BaseState
     {
     public:
-
-      virtual BaseState * execute( ) ;
-
+      //-- construction
       inline InitState ( 
         const char * configFileName,
         Interface * interface,
@@ -48,27 +32,25 @@ namespace Chess
           currentTurn_(currentTurn),
           configFileName_(configFileName)
       { }
-      // inline InitState ( BaseState * nextState )
-      //   : BaseState( nextState )
-      // { }
-      
-      // virtual void updateDiagnostics( ) ;
 
-      protected:
-        //-- protected methods
-        void setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet ) ;
-        void parseXMLFile();
+      //-- BaseState interface
+      virtual StatePtr execute( );
 
-        Interface * interface_ ;
-        Board * board_ ;
-        BaseTurn * whiteTurn_ ;
-        BaseTurn * blackTurn_ ;
-        BaseTurn *& currentTurn_ ;
-        const char * configFileName_;
+    protected:
+      //-- protected methods
+      void setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet );
+      void parseXMLFile( );
 
+      //-- protected members
+      Interface *   interface_;
+      Board *       board_;
+      BaseTurn *    whiteTurn_;
+      BaseTurn *    blackTurn_;
+      BaseTurn *&   currentTurn_;
+      const char *  configFileName_;
     };
 
   }
 }
 
-#endif /* INITSTATE_H_ */
+#endif /* CHESS_STATE_INITSTATE_H_ */

@@ -1,56 +1,35 @@
+#ifndef CHESS_BOARD_H_
+#define CHESS_BOARD_H_
 
-#ifndef BOARD_H_
-#define BOARD_H_
-
-#include <string>
-#include <sstream>
-#include <vector>
-
+#include "Chess.h"
 #include "Pieces/Pieces.h"
-
-using namespace std;
-
-#define MIN_COLUMN 0 
-#define MAX_COLUMN 7 
-#define MIN_ROW 0 
-#define MAX_ROW 7 
 
 
 namespace Chess
 {
 
-  class Pieces ;
-  //class Rook ;
-  class NullPiece ;
-
   class Board
   {
+  public:
+    //-- types
+    typedef Pieces *         PiecePtr;
+    typedef vector<PiecePtr> PieceList;
 
+    //-- construction
+    Board( );
+
+    //-- public methods
+    void     init( PieceList & nullPieceList );
+    void     setPiece( PiecePtr setPiece, int row, int col );
+    void     clrPiece( int row, int col );
+    PiecePtr getPiece( int row, int col );
+    string   getPieceName( int row, int col );
 
   protected:
-
-    Pieces * board[8][8] ;
-    Pieces * nullpiece_ ;
-
-
-  public:
-
-    Board ( ) ;
-
-    void init ( vector< Pieces * > & nullPieceList ) ;
-
-    void setPiece ( Pieces * setPiece, int row, int col ) ;
-
-    void clrPiece ( int row, int col ) ;
-
-    Pieces * getPiece ( int row, int col ) ;
-
-    virtual string getPieceName ( int row, int col ) ;
-
-    
-
+    //-- protected members
+    PiecePtr board[8][8];
   };
 
 }
 
-#endif /* BOARD_H_ */
+#endif /* CHESS_BOARD_H_ */

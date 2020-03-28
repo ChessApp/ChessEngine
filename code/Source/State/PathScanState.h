@@ -1,14 +1,11 @@
-#ifndef PATHSCANSTATE_H_
-#define PATHSCANSTATE_H_
+#ifndef CHESS_STATE_PATHSCANSTATE_H_
+#define CHESS_STATE_PATHSCANSTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "Interface.h"
+#include "Board.h"
 
-#include "BaseState.h"
-#include "../Interface.h"
-#include "../Board.h"
-#include "../Pieces/Pieces.h"
 
 namespace Chess
 {
@@ -19,20 +16,22 @@ namespace Chess
       : public BaseState
     {
     public:
-      virtual BaseState * execute( ) ;
-
-      inline PathScanState ( Interface * interface, Board * board ) 
+      //-- construction
+      inline PathScanState( Interface * interface, Board * board ) 
         : interface_(interface),
           board_(board)
       { }
+
+      //-- BaseState interface
+      virtual StatePtr execute( );
       
     protected:
-      Interface * interface_ ;
-      Board *     board_ ;
-
+      //-- protected members
+      Interface * interface_;
+      Board *     board_;
     };
 
   }
 }
 
-#endif /* PATHSCANSTATE_H_ */
+#endif /* CHESS_STATE_PATHSCANSTATE_H_ */

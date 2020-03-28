@@ -1,14 +1,11 @@
-#ifndef MOVEVALIDITYSTATE_H_
-#define MOVEVALIDITYSTATE_H_
+#ifndef CHESS_STATE_MOVEVALIDITYSTATE_H_
+#define CHESS_STATE_MOVEVALIDITYSTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "Board.h"
+#include "Interface.h"
 
-#include "BaseState.h"
-#include "../Interface.h"
-#include "../Board.h"
-#include "../Pieces/Pieces.h"
 
 namespace Chess
 {
@@ -19,20 +16,25 @@ namespace Chess
       : public BaseState
     {
     public:
-      virtual BaseState * execute( ) ;
+      //-- types
+      typedef Interface * InterfacePtr;
 
-      inline MoveValidityState ( Interface * interface, Board * board ) 
+      //-- construction
+      inline MoveValidityState( InterfacePtr interface, Board * board ) 
         : interface_(interface),
           board_(board)
       { }
+
+      //-- BaseState interface
+      virtual StatePtr execute( );
       
     protected:
-      Interface * interface_ ;
-      Board *     board_ ;
-
+      //-- protected members
+      Board *      board_;
+      InterfacePtr interface_;
     };
 
   }
 }
 
-#endif /* MOVEVALIDITYSTATE_H_ */
+#endif /* CHESS_STATE_MOVEVALIDITYSTATE_H_ */

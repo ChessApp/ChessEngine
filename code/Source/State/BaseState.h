@@ -1,12 +1,9 @@
-#ifndef BASESTATE_H_
-#define BASESTATE_H_
+#ifndef CHESS_STATE_BASESTATE_H_
+#define CHESS_STATE_BASESTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
-#include <iostream>
+#include "Chess.h"
+#include "Pieces/Pieces.h"
 
-#include "../Pieces/Pieces.h"
 
 namespace Chess
 {
@@ -17,30 +14,34 @@ namespace Chess
     {
     public:
       //-- types
-      typedef Pieces * PiecePtr;
+      typedef Pieces *              PiecePtr;
+      typedef shared_ptr<BaseState> StatePtr;
       
+      //-- construction
       inline BaseState ( )
       { }
 
-      virtual void setTransitionStates ( BaseState * nextState, BaseState * returnState ) ;
-      virtual BaseState * execute( ) = 0 ;
-      void setWhiteKing( Pieces * whiteKing ) { whiteKing_ = whiteKing ; }
-      void setBlackKing( Pieces * blackKing ) { blackKing_ = blackKing ; }
-      // virtual void updateDiagnostics( ) ;
+      //-- interface methods
+      virtual StatePtr execute( ) = 0;
+
+      //-- accessors
+      void setTransitionStates( StatePtr nextState, StatePtr returnState );
+      void setWhiteKing( Pieces * whiteKing ) { whiteKing_ = whiteKing; }
+      void setBlackKing( Pieces * blackKing ) { blackKing_ = blackKing; }
 
     protected:
-
-      BaseState * nextState_ ;
-      BaseState * returnState_ ;
-      Pieces * whiteKing_ ;
-      Pieces * blackKing_ ;
-      bool active_ ;
-      int runs_ ;
-      int returns_ ;
-      int nexts_ ;
+      //-- protected types
+      StatePtr nextState_ ;
+      StatePtr returnState_ ;
+      PiecePtr whiteKing_ ;
+      PiecePtr blackKing_ ;
+      bool     active_ ;
+      int      runs_ ;
+      int      returns_ ;
+      int      nexts_ ;
     };
 
   }
 }
 
-#endif /* BASESTATE_H_ */
+#endif /* CHESS_STATE_BASESTATE_H_ */

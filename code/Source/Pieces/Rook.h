@@ -4,53 +4,37 @@
 // each piece with specific data, along with
 // data inherited from the Pieces class, which is 
 // analyzed by the Mastermind files.
+#ifndef CHESS_ROOK_H_
+#define CHESS_ROOK_H_
 
+#include "Chess.h"
+#include "Pieces/Pieces.h"
+#include "Scans/Scanner.h"
 
-#ifndef ROOK_H_
-#define ROOK_H_
-
-#include <stdio.h>
-#include <iostream>
-#include <string>
-#include <sstream>
-// #include "Interface.h"
-#include "Pieces.h"
-#include "../Scans/SingleAxisScan.h"
-
-using namespace std;
 
 namespace Chess
 {
 
-    class Rook 
+  class Rook 
     : public Pieces
-    {
-    protected:
+  {
+  public:
+    //-- construction
+    Rook( const string name, Board * board, int initRow, int initCol );
+    Rook( const string name, Board * board );
 
+    //-- Piece interface
+    virtual bool pathScan( int destRow, int destCol );
+    virtual bool validDirection( int destRow, int destCol );
 
-    public:
+  protected:
+    //-- protected types
+    typedef shared_ptr<Scanner> ScannerPtr;
 
-      // Contructs piece objects which take the interface object,
-      // a specified name, and specified initial coordinates as
-      // arguments.
-      Rook( const string name, Board * board, int initRow, int initCol );
-      Rook( const string name, Board * board );
-
-      bool validDirection ( int destRow, int destCol ) ;
-
-      void printLeftScan ( ) ;
-
-      virtual bool pathScan ( int destRow, int destCol ) ;
-
-      //virtual bool checkValidity ( ) ;
-
-      
-    };
-
+    //-- protected members
+    ScannerPtr scanner_;
+  };
 
 }
 
-
-
-
-#endif /* ROOK_H_ */
+#endif /* CHESS_ROOK_H_ */

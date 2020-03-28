@@ -1,16 +1,9 @@
+#ifndef CHESS_SINGLEAXISSCAN_H_
+#define CHESS_SINGLEAXISSCAN_H_
 
-#ifndef SINGLEAXISSCAN_H_
-#define SINGLEAXISSCAN_H_
+#include "Chess.h"
+#include "Scans/Scanner.h"
 
-#include <string>
-#include <sstream>
-#include <vector>
-
-#include "Scanner.h"
-#include "../Pieces/Pieces.h"
-
-
-using namespace std;
 
 namespace Chess
 {
@@ -18,22 +11,17 @@ namespace Chess
   class SingleAxisScan
     : public Scanner
   {
-
   public:
+    friend class Board;
 
-    friend class Board ;
+    //-- construction
+    SingleAxisScan( Board * board );
 
-    SingleAxisScan ( Board * board ) ;
-    virtual void identifyScan ( int sourceRow, int sourceCol, int destRow, int destCol ) ;
-
-    virtual ScanResult * execute ( ) ;
-
-  protected:
-
-    
-
+    //-- Scanner interface
+    virtual ScanResult * execute( );
+    virtual void identifyScan( int sourceRow, int sourceCol, int destRow, int destCol );
   };
 
 }
 
-#endif /* SINGLEAXISSCAN_H_ */
+#endif /* CHESS_SINGLEAXISSCAN_H_ */

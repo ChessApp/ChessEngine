@@ -4,44 +4,29 @@
 // each piece with specific data, along with
 // data inherited from the Pieces class, which is 
 // analyzed by the Mastermind files.
+#ifndef CHESS_BLACKPAWN_H_
+#define CHESS_BLACKPAWN_H_
 
+#include "Chess.h"
+#include "Pieces/Pieces.h"
 
-#ifndef BLACKPAWN_H_
-#define BLACKPAWN_H_
-
-#include <stdio.h>
-#include <iostream>
-#include <string>
-#include <sstream>
-// #include "Interface.h"
-#include "Pieces.h"
-
-using namespace std;
 
 namespace Chess
 {
 
-    class BlackPawn 
+  class BlackPawn 
     : public Pieces
-    {
-    protected:
+  {
+  public:
+    //-- construction
+    BlackPawn( const string name, int initRow, int initCol );
+    BlackPawn( const string name );
 
-    public:
-
-      // Contructs piece objects which take the interface object,
-      // a specified name, and specified initial coordinates as
-      // arguments.
-      BlackPawn( const string name, int initRow, int initCol );
-      BlackPawn( const string name );
-      bool validDirection( int destRow, int destCol ) ;
-      virtual bool pathScan( int destRow, int destCol ) ;  
-      
-    };
-
+    //-- Piece interface
+    virtual bool pathScan( int destRow, int destCol );  
+    virtual bool validDirection( int destRow, int destCol );   
+  };
 
 }
 
-
-
-
-#endif /* BLACKPAWN_H_ */
+#endif /* CHESS_BLACKPAWN_H_ */

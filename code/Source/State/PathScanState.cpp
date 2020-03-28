@@ -1,25 +1,27 @@
-#include "PathScanState.h"
+#include "State/PathScanState.h"
+
+#include "Pieces/Pieces.h"
+
 
 namespace Chess
 {
   namespace State
   {
 
-    BaseState * PathScanState::execute ( )
+    BaseState::StatePtr PathScanState::execute( )
     {
-      std::cout << "Path scan state" << std::endl ;
+      std::cout << "Path scan state" << std::endl;
       
-      Pieces * currentPiece = board_->getPiece( interface_->sourceRow, interface_->sourceCol ) ;
-      if ( currentPiece->pathScan( interface_->destRow, interface_->destCol ) )
+      Pieces * currentPiece = board_->getPiece(interface_->sourceRow, interface_->sourceCol);
+      if ( currentPiece->pathScan(interface_->destRow, interface_->destCol) )
       {
-        return nextState_ ;
+        return nextState_;
       }
       else
       {
-        std::cout << "Path not clear" << std::endl ;
-        return returnState_ ;
+        std::cout << "Path not clear" << std::endl;
+        return returnState_;
       }
-
     }
 
   }

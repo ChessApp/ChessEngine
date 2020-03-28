@@ -1,49 +1,46 @@
 #include "Status.h"
 
+
 namespace Chess
 {
 
-  Status::Status ( )
-    : turn('W')
-  {}
+  Status::Status( )
+    : turn_('W')
+  { }
   
-  void Status::updateCurrentPiece ( Pieces * piece )
+  void Status::updateCurrentPiece( PiecePtr piece )
   {
-    currentPiece = piece;
+    currentPiece_ = piece;
   }
 
-  void Status::updateTurn ( )
+  void Status::updateTurn( )
   {
-    if ( 'W' == turn )
-    {
-		turn = 'B';
-    }
+    if( 'W' == turn_ )
+		  turn_ = 'B';
     else
-    {
-		turn = 'W';
-    }
+		  turn_ = 'W';
   }
 
-  void Status::updateCurrentLocation ( int row, int col )
+  void Status::updateCurrentLocation( int row, int col )
   {
-    currentRow = row;
-    currentCol = col;
+    currentRow_ = row;
+    currentCol_ = col;
   }
 
-  void Status::updateDestLocation ( int row, int col )
+  void Status::updateDestLocation( int row, int col )
   {
-    destRow = row;
-    destCol = col;
+    destRow_ = row;
+    destCol_ = col;
   }
 
-  Pieces * Status::getCurrentPiece ( )
+  Status::PiecePtr Status::getCurrentPiece( )
   {
-    return currentPiece;
+    return currentPiece_;
   }
 
-  char Status::getTurn ( )
+  char Status::getTurn( )
   {
-    return turn;
+    return turn_;
   }
 
 }

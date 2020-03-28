@@ -24,7 +24,8 @@ DEPS := $(OBJS:.o=.d)
 CPPFLAGS := 
 # .cpp flags
 CXXFLAGS := \
-	-std=c++11
+	-std=c++11 \
+	-I ../code/Source # sets the default directory root for all #include paths
 # linker flags
 LDLIBS := 
 

@@ -1,16 +1,12 @@
-#ifndef DEFENSIVECHECKSCANSTATE_H_
-#define DEFENSIVECHECKSCANSTATE_H_
+#ifndef CHESS_STATE_DEFENSIVECHECKSCANSTATE_H_
+#define CHESS_STATE_DEFENSIVECHECKSCANSTATE_H_
 
-#include <string>
-#include <sstream>
-#include <vector>
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "BaseTurn.h"
+#include "Scans/Scanner.h"
+#include "Board.h"
 
-#include "BaseState.h"
-#include "../BaseTurn.h"
-#include "../Scans/Scanner.h"
-#include "../Interface.h"
-#include "../Board.h"
-#include "../Pieces/Pieces.h"
 
 namespace Chess
 {
@@ -21,36 +17,35 @@ namespace Chess
       : public BaseState
     {
     public:
-      virtual BaseState * execute( ) ;
-
-      inline DefensiveCheckScanState ( 
-        Interface * interface, 
-        Board * board, 
-        BaseTurn *& currentTurn ) 
-        : interface_(interface),
-          board_(board),
+      //-- construction
+      inline DefensiveCheckScanState( Board * board, BaseTurn *& currentTurn ) 
+        : board_(board),
           currentTurn_(currentTurn)
       { }
-      void configureScans( Pieces * kingToScan ) ;
+
+      //-- BaseState interface
+      virtual StatePtr execute( );
       
     protected:
-      Interface * interface_ ;
-      Board *     board_ ;
-      BaseTurn *& currentTurn_ ;
-      vector< BaseScan * > scanList_ ;
-      Scanner::LeftScan * ls_ ;
-      Scanner::RightScan * rs_ ;
-      Scanner::UpScan * us_ ;
-      Scanner::DownScan * ds_ ;
-      Scanner::UpLeftScan * uls_ ;
-      Scanner::UpRightScan * urs_ ;
-      Scanner::DownLeftScan * dls_ ;
-      Scanner::DownRightScan * drs_ ;
-      bool status_ ;
+      //-- protected methods
+      void configureScans( Pieces * kingToScan );
 
+      //-- protected members
+      Board *                  board_;
+      BaseTurn *&              currentTurn_;
+      vector< BaseScan * >     scanList_;
+      Scanner::LeftScan *      ls_;
+      Scanner::RightScan *     rs_;
+      Scanner::UpScan *        us_;
+      Scanner::DownScan *      ds_;
+      Scanner::UpLeftScan *    uls_;
+      Scanner::UpRightScan *   urs_;
+      Scanner::DownLeftScan *  dls_;
+      Scanner::DownRightScan * drs_;
+      bool                     status_;
     };
 
   }
 }
 
-#endif /* DEFENSIVECHECKSCANSTATE_H_ */
+#endif /* CHESS_STATE_DEFENSIVECHECKSCANSTATE_H_ */

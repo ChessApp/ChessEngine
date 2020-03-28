@@ -1,27 +1,31 @@
-#include "ReturnPieceState.h"
+#include "State/ReturnPieceState.h"
+
+#include "Pieces/Pieces.h"
+#include "Pieces/NullPiece.h"
+
 
 namespace Chess
 {
   namespace State
   {
 
-    BaseState * ReturnPieceState::execute ( )
+    BaseState::StatePtr ReturnPieceState::execute( )
     {
-      std::cout << "Return piece state" << std::endl ;
+      std::cout << "Return piece state" << std::endl;
       
-      Pieces * pieceToReturn = board_->getPiece( interface_->destRow, interface_->destCol ) ;
-      returnPiece( pieceToReturn, interface_->sourceRow, interface_->sourceCol ) ;
+      Pieces * pieceToReturn = board_->getPiece(interface_->destRow, interface_->destCol);
+      returnPiece(pieceToReturn, interface_->sourceRow, interface_->sourceCol);
 
-      return nextState_ ;
+      return nextState_;
     }
 
     void ReturnPieceState::returnPiece( Pieces * pieceToReturn, int rowToReturn, int colToReturn )
     {
-      pieceToReturn->setLocation( rowToReturn, colToReturn ) ;
-      board_->setPiece( pieceToReturn, rowToReturn, colToReturn ) ;
-      Pieces * np = new NullPiece( ".. " ) ;
-      np->setLocation( interface_->destRow, interface_->destCol ) ;
-      board_->setPiece( np, interface_->destRow, interface_->destCol ) ;
+      pieceToReturn->setLocation(rowToReturn, colToReturn);
+      board_->setPiece(pieceToReturn, rowToReturn, colToReturn);
+      Pieces * np = new NullPiece(".. ");
+      np->setLocation(interface_->destRow, interface_->destCol);
+      board_->setPiece(np, interface_->destRow, interface_->destCol);
     }
 
   }

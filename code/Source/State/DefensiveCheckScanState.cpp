@@ -1,11 +1,14 @@
-#include "DefensiveCheckScanState.h"
+#include "State/DefensiveCheckScanState.h"
+
+#include "Pieces/Pieces.h"
+
 
 namespace Chess
 {
   namespace State
   {
 
-    BaseState * DefensiveCheckScanState::execute ( )
+    BaseState::StatePtr DefensiveCheckScanState::execute ( )
     {
       std::cout << "Defensive check scan state" << std::endl ;
       
