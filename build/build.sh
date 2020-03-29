@@ -73,6 +73,14 @@ if [ $RUN_CLEAN == true ]; then
     echo "done."
 fi;
 
+if [ $RUN_FILE_GEN == true ]; then
+    echo "generating list of sources to build..."
+    # find all .cpp files, then subtract away the exclude list, then add in the force include list to a get a list of all files to build
+    (find $SOURCE_DIR -name *.cpp) | sort > $SOURCE_FILES_LIST
+
+    echo "done."
+fi;
+
 if [ $RUN_BUILD == true ]; then
     echo "running make with $BUILD_JOBS jobs..."
 
