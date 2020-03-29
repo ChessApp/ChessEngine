@@ -3,7 +3,7 @@
 
 
 // Uncomment to enable debug printouts
-#define DEBUG
+// #define DEBUG
 
 #ifdef DEBUG
 

@@ -9,6 +9,7 @@ EXCLUDE_FILES_LIST="excludeFiles.list"
 FORCE_INCLUDE_FILES="forceIncludeFiles.list"
 EXCLUDE_FILES_FULL_LIST="excludeFilesFull.list"
 BUILD_OUTPUT_FILE=""
+TARGET_EXEC="chess-all"
 
 BUILD_JOBS=
 RUN_BUILD=false
@@ -65,15 +66,9 @@ done
 
 if [ $RUN_CLEAN == true ]; then
     echo "removing build output..."
-    make clean $TRACE_FLAG
-    rm -f $SOURCE_FILES_LIST $EXCLUDE_FILES_FULL_LIST
-    echo "done."
-fi;
 
-if [ $RUN_FILE_GEN == true ]; then
-    echo "generating list of sources to build..."
-    # find all .cpp files, then subtract away the exclude list, then add in the force include list to a get a list of all files to build
-    (find $SOURCE_DIR -name *.cpp) | sort > $SOURCE_FILES_LIST
+    # go to the Source dir and recursively delete all files with extension .cpp.o
+    find "../code/Source" -name "*.cpp.o" -type f -delete
 
     echo "done."
 fi;
@@ -98,6 +93,10 @@ if [ $RUN_BUILD == true ]; then
     fi;
     
     echo "done."
+fi;
+
+if [ $RUN_BUILD_OUTPUT == true ]; then
+    ./$TARGET_EXEC
 fi;
 
 # pass through the exit status of make for use with other scripts
