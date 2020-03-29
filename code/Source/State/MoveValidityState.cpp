@@ -8,7 +8,7 @@ namespace Chess
 
     BaseState::StatePtr MoveValidityState::execute( )
     {
-      std::cout << "Move validity state" << std::endl;
+      DEBUG_CONSOLE_1ARG("State: MOVE VALIDITY");
 
       nextState_->setWhiteKing(whiteKing_);
       nextState_->setBlackKing(blackKing_);

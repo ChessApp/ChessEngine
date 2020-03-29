@@ -10,7 +10,7 @@ namespace Chess
 
     BaseState::StatePtr MoveState::execute( )
     {
-      std::cout << "Move state" << std::endl;
+      DEBUG_CONSOLE_1ARG("State: MOVE");
       
       nextState_->setWhiteKing(whiteKing_);
       nextState_->setBlackKing(blackKing_);

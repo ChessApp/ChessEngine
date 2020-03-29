@@ -10,7 +10,7 @@ namespace Chess
 
     BaseState::StatePtr ReturnPieceState::execute( )
     {
-      std::cout << "Return piece state" << std::endl;
+      DEBUG_CONSOLE_1ARG("State: RETURN PIECE");
       
       PiecePtr pieceToReturn = board_->getPiece(interface_->destRow, interface_->destCol);
       returnPiece(pieceToReturn, interface_->sourceRow, interface_->sourceCol);

@@ -8,7 +8,7 @@ namespace Chess
 
     BaseState::StatePtr RelevancyState::execute( )
     {
-      std::cout << "Relevancy state" << std::endl;
+      DEBUG_CONSOLE_1ARG("State: RELEVANCY");
 
       nextState_->setWhiteKing(whiteKing_);
       nextState_->setBlackKing(blackKing_);

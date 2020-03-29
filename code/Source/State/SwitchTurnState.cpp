@@ -10,7 +10,7 @@ namespace Chess
 
     BaseState::StatePtr SwitchTurnState::execute( )
     {
-      std::cout << "Switch turn state" << std::endl;
+      DEBUG_CONSOLE_1ARG("State: SWITCH TURN");
 
       interface_->printPinListDiagnostics();
 

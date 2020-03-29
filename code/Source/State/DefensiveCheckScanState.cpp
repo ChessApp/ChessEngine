@@ -10,7 +10,7 @@ namespace Chess
 
     BaseState::StatePtr DefensiveCheckScanState::execute( )
     {
-      std::cout << "Defensive check scan state" << std::endl;
+      DEBUG_CONSOLE_1ARG("State: DEFENSIVE CHECK SCAN");
       
       status_ = false;
       PiecePtr kingToScan = currentTurn_->getDefensiveKing();

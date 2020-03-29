@@ -16,6 +16,4 @@ int main( int argc, char ** argv )
   #endif /* RUN_UNIT_TESTS */
 
   new Chess::GameProtocolDriver();
-
-  system("pause");
 }

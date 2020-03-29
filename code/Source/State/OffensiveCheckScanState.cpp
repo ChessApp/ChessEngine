@@ -12,7 +12,7 @@ namespace Chess
       typedef vector<PotentialPinPtr>   PotentialPinList;
       typedef vector<PiecePtr>          PieceList;
 
-      std::cout << "Offensive check scan state" << std::endl;
+      DEBUG_CONSOLE_1ARG("State: OFFENSIVE CHECK SCAN");
       
       status_ = false;
       PotentialPinList & potentialPinList = currentTurn_->getPotentialPinList();
