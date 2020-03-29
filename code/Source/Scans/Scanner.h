@@ -17,6 +17,7 @@ namespace Chess
   {
   public:
     //-- types
+    typedef shared_ptr<Board>      BoardPtr;
     typedef shared_ptr<ScanResult> ScanResultPtr;
 
     class LeftScan
@@ -24,12 +25,12 @@ namespace Chess
     {
     public:
       //-- construction
-      inline LeftScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline LeftScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
       //-- BaseScan interface
-      virtual ScanResult * execute( );
+      virtual ScanResultPtr execute( );
     };
 
     class RightScan
@@ -37,12 +38,12 @@ namespace Chess
     {
     public:
       //-- construction
-      inline RightScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline RightScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
       //-- BaseScan interface
-      virtual ScanResult * execute( );
+      virtual ScanResultPtr execute( );
     };
 
     class UpScan
@@ -50,12 +51,12 @@ namespace Chess
     {
     public:
       //-- construction
-      inline UpScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline UpScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
       //-- BaseScan interface
-      virtual ScanResult * execute( );
+      virtual ScanResultPtr execute( );
     };
 
     class DownScan
@@ -63,12 +64,12 @@ namespace Chess
     {
     public:
       //-- construction
-      inline DownScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline DownScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
       //-- BaseScan interface
-      virtual ScanResult * execute( );
+      virtual ScanResultPtr execute( );
     };
 
     class UpLeftScan
@@ -76,12 +77,12 @@ namespace Chess
     {
     public:
       //-- construction
-      inline UpLeftScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline UpLeftScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
       //-- BaseScan interface
-      virtual ScanResult * execute( );
+      virtual ScanResultPtr execute( );
     };
 
     class UpRightScan
@@ -89,12 +90,12 @@ namespace Chess
     {
     public:
       //-- construction
-      inline UpRightScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline UpRightScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
       //-- BaseScan interface
-      virtual ScanResult * execute( );
+      virtual ScanResultPtr execute( );
     };
 
     class DownLeftScan
@@ -102,12 +103,12 @@ namespace Chess
     {
     public:
       //-- construction
-      inline DownLeftScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline DownLeftScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
       //-- BaseScan interface
-      virtual ScanResult * execute( );
+      virtual ScanResultPtr execute( );
     };
 
     class DownRightScan
@@ -115,26 +116,26 @@ namespace Chess
     {
     public:
       //-- construction
-      inline DownRightScan( Board * board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline DownRightScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
       //-- BaseScan interface
-      virtual ScanResult * execute( );
+      virtual ScanResultPtr execute( );
     }; 
 
     //-- construction
-    inline Scanner ( Board * board )
+    inline Scanner( BoardPtr board )
       : board_(board)
     { }
 
     //-- interface methods
-    virtual ScanResult * execute ( ) = 0;
-    virtual void         identifyScan( int sourceRow, int sourceCol, int destRow, int destCol ) = 0;
+    virtual ScanResultPtr execute( ) = 0;
+    virtual void          identifyScan( int sourceRow, int sourceCol, int destRow, int destCol ) = 0;
 
   protected:
     //-- protected members
-    Board *    board_ ;
+    BoardPtr   board_ ;
     BaseScan * scan_ ;
   };
 

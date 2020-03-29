@@ -19,9 +19,12 @@ namespace Chess
     : public Pieces
   {
   public:
+    //-- types
+    typedef shared_ptr<Board> BoardPtr;
+    
     //-- construction
-    Rook( const string name, Board * board, int initRow, int initCol );
-    Rook( const string name, Board * board );
+    Rook( const string name, BoardPtr board, int initRow, int initCol );
+    Rook( const string name, BoardPtr board );
 
     //-- Piece interface
     virtual bool pathScan( int destRow, int destCol );

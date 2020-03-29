@@ -17,12 +17,13 @@ namespace Chess
     {
     public:
       //-- types
-      typedef Pieces * PiecePtr;
+      typedef shared_ptr<Board>     BoardPtr;
+      typedef shared_ptr<BaseTurn>  BaseTurnPtr;
 
       //-- construction
       inline PinScanState( 
-        Board * board, 
-        BaseTurn *& currentTurn ) 
+        BoardPtr board, 
+        BaseTurnPtr & currentTurn ) 
         : board_(board),
           currentTurn_(currentTurn)
       { }
@@ -36,8 +37,8 @@ namespace Chess
       void returnPiece( PiecePtr pieceToReturn );
 
       //-- protected members
-      Board *     board_;
-      BaseTurn *& currentTurn_;
+      BoardPtr      board_;
+      BaseTurnPtr & currentTurn_;
     };
 
   }

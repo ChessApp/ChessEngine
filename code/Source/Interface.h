@@ -18,8 +18,8 @@ namespace Chess
   {
   public:
     //-- types    
-    typedef BaseTurn * BaseTurnPtr;
-    typedef Board *    BoardPtr;
+    typedef shared_ptr<BaseTurn> BaseTurnPtr;
+    typedef shared_ptr<Board>    BoardPtr;
 
   	//-- construction
   	Interface( BoardPtr board, BaseTurnPtr & currentTurn );
@@ -51,7 +51,7 @@ namespace Chess
 
   protected:
     //-- protected types
-    typedef Pieces * PiecePtr;
+    typedef shared_ptr<Pieces> PiecePtr;
 
     //-- protected members
     BoardPtr      board_;

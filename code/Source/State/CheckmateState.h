@@ -15,8 +15,11 @@ namespace Chess
       : public BaseState
     {
     public:
+      //-- types
+      typedef shared_ptr<Interface> InterfacePtr;
+
       //-- construction
-      inline CheckmateState ( Interface * interface ) 
+      inline CheckmateState( InterfacePtr interface ) 
         : interface_(interface)
       { }
 
@@ -24,8 +27,8 @@ namespace Chess
       virtual StatePtr execute( );
  
     protected:
-      //-- protected types
-      Interface * interface_;
+      //-- protected members
+      InterfacePtr interface_;
     };
 
   }

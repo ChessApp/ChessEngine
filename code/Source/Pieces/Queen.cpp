@@ -10,12 +10,12 @@
 namespace Chess
 {
 
-  Queen::Queen( const string name, Board * board, int initRow, int initCol )
+  Queen::Queen( const string name, BoardPtr board, int initRow, int initCol )
     : Pieces(name, "Q", initRow, initCol),
       scanner_(new CompoundAxisScan(board))
   { }
 
-  Queen::Queen( const string name, Board * board )
+  Queen::Queen( const string name, BoardPtr board )
     : Pieces( name, "Q" ),
       scanner_(new CompoundAxisScan(board))
   { }
@@ -41,8 +41,8 @@ namespace Chess
   bool Queen::pathScan( int destRow, int destCol )
   {
     scanner_->identifyScan(row, col, destRow, destCol);
-    ScanResult * scanResult = scanner_->execute();
-    Pieces * detectedPiece  = scanResult->detectedPiece;
+    Scanner::ScanResultPtr scanResult = scanner_->execute();
+    PiecePtr detectedPiece  = scanResult->detectedPiece;
     
     if( detectedPiece->getColor( ) == getColor( ) )
       return false;

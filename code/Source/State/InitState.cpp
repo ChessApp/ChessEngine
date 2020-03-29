@@ -27,7 +27,7 @@ namespace Chess
       {
         for( int i = 0; i < 8; i++ )
         {
-          PiecePtr np = new NullPiece(".. ");
+          PiecePtr np( new NullPiece(".. ") );
           setPiece(np, j, i);
           nullPieceList.push_back(np);
         }  
@@ -70,29 +70,29 @@ namespace Chess
         if( type == "Pawn" )
         {
           if( color == "W" )
-            p = new Chess::WhitePawn(symbol);
+            p.reset( new Chess::WhitePawn(symbol) );
           else
-            p = new Chess::BlackPawn(symbol);
+            p.reset( new Chess::BlackPawn(symbol) );
         }
         else if( type == "Bishop" )
         {
-          p = new Chess::Bishop(symbol, board_);
+          p.reset( new Chess::Bishop(symbol, board_) );
         }
         else if( type == "Rook" )
         {
-          p = new Chess::Rook(symbol, board_);
+          p.reset( new Chess::Rook(symbol, board_) );
         }
         else if( type == "Knight" )
         {
-          p = new Chess::Knight(symbol);
+          p.reset( new Chess::Knight(symbol) );
         }
         else if( type == "Queen" )
         {
-          p = new Chess::Queen(symbol, board_);
+          p.reset( new Chess::Queen(symbol, board_) );
         }
         else if( type == "King" )
         {
-          p = new Chess::Queen(symbol, board_);
+          p.reset( new Chess::Queen(symbol, board_) );
           if( color == "W" )
           {
             whiteTurn_->setDefensiveKing(p);
@@ -116,7 +116,7 @@ namespace Chess
 
     void InitState::setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet )
     {
-      pieceToSet->setLocation(rowToSet, colToSet );
+      pieceToSet->setLocation(rowToSet, colToSet);
       board_->setPiece(pieceToSet, rowToSet, colToSet);
     }
 

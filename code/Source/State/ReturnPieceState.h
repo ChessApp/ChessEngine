@@ -16,8 +16,12 @@ namespace Chess
       : public BaseState
     {
     public:
+      //-- types
+      typedef shared_ptr<Interface> InterfacePtr;
+      typedef shared_ptr<Board>     BoardPtr;
+
       //-- construction
-      inline ReturnPieceState ( Interface * interface, Board * board ) 
+      inline ReturnPieceState( InterfacePtr interface, BoardPtr board ) 
         : interface_(interface),
           board_(board)
       { }
@@ -27,11 +31,11 @@ namespace Chess
 
     protected:
       //-- protected methods
-      void returnPiece( Pieces * pieceToReturn, int rowToReturn, int colToReturn );
+      void returnPiece( PiecePtr pieceToReturn, int rowToReturn, int colToReturn );
 
       //-- protected members
-      Interface * interface_;
-      Board *     board_;
+      InterfacePtr interface_;
+      BoardPtr     board_;
     };
 
   }

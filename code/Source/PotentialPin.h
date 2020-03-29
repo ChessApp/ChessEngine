@@ -13,8 +13,8 @@ namespace Chess
   {
   public:
     //-- types
-    typedef Pieces *   PiecePtr;
-    typedef BaseScan * BaseScanPtr;
+    typedef shared_ptr<Pieces>   PiecePtr;
+    typedef shared_ptr<BaseScan> BaseScanPtr;
     
     //-- construction
     inline PotentialPin( PiecePtr potentialPin, BaseScanPtr scanToExecute )

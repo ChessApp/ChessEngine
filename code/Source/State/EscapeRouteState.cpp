@@ -1,6 +1,7 @@
 #include "State/EscapeRouteState.h"
 
 #include "Pieces/Pieces.h"
+#include "Pieces/NullPiece.h"
 
 
 namespace Chess
@@ -13,7 +14,7 @@ namespace Chess
       std::cout << "Escape route state" << std::endl;
 
       status_ = false;
-      Pieces * kingToEscape = currentTurn_->getOffensiveKing();
+      PiecePtr kingToEscape = currentTurn_->getOffensiveKing();
       int originalKingRow = kingToEscape->getRow();
       int originalKingCol = kingToEscape->getCol();
       
@@ -42,14 +43,14 @@ namespace Chess
         return nextState_;
     }
 
-    bool EscapeRouteState::executeScans( Pieces * kingToEscape )
+    bool EscapeRouteState::executeScans( PiecePtr kingToEscape )
     {
       while( scanList_.size() )
       {
-        BaseScan * currentScan = scanList_.back();
+        BaseScanPtr currentScan = scanList_.back();
         scanList_.pop_back();
-        ScanResult * scanResult = currentScan->execute();
-        Pieces * detectedPiece = scanResult->detectedPiece;
+        Scanner::ScanResultPtr scanResult = currentScan->execute();
+        PiecePtr detectedPiece = scanResult->detectedPiece;
 
         if( detectedPiece->validDirection(kingToEscape->getRow(), kingToEscape->getCol()) )
           return true;
@@ -57,34 +58,34 @@ namespace Chess
       return false;
     }
 
-    void EscapeRouteState::setPiece( Pieces * pieceToSet, int rowToSet, int colToSet )
+    void EscapeRouteState::setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet )
     {
       pieceToSet->setLocation(rowToSet, colToSet);
       board_->setPiece(pieceToSet, rowToSet, colToSet);
-      Pieces * np = new NullPiece(".. ");
+      PiecePtr np( new NullPiece(".. ") );
       np->setLocation(interface_->sourceRow, interface_->sourceCol);
       board_->setPiece(np, interface_->sourceRow, interface_->sourceCol);
     }
 
-    void EscapeRouteState::returnPiece( Pieces * pieceToReturn, int rowToReturn, int colToReturn )
+    void EscapeRouteState::returnPiece( PiecePtr pieceToReturn, int rowToReturn, int colToReturn )
     {
       pieceToReturn->setLocation(rowToReturn, colToReturn);
       board_->setPiece(pieceToReturn, rowToReturn, colToReturn);
-      Pieces * np = new NullPiece(".. ");
+      PiecePtr np( new NullPiece(".. ") );
       np->setLocation(interface_->destRow, interface_->destCol);
       board_->setPiece(np, interface_->destRow, interface_->destCol);
     }
 
-    void EscapeRouteState::configureScans( Pieces * kingToScan )
+    void EscapeRouteState::configureScans( PiecePtr kingToScan )
     {
-      scanList_.push_back( new Scanner::LeftScan(      board_, kingToScan->getRow( ), kingToScan->getCol( ), kingToScan->getRow( ), 0 ) );
-      scanList_.push_back( new Scanner::RightScan(     board_, kingToScan->getRow( ), kingToScan->getCol( ), kingToScan->getRow( ), 7 ) );
-      scanList_.push_back( new Scanner::UpScan(        board_, kingToScan->getRow( ), kingToScan->getCol( ), 0, kingToScan->getCol( ) ) );
-      scanList_.push_back( new Scanner::DownScan(      board_, kingToScan->getRow( ), kingToScan->getCol( ), 7, kingToScan->getCol( ) ) );
-      scanList_.push_back( new Scanner::UpLeftScan(    board_, kingToScan->getRow( ), kingToScan->getCol( ), 0, 0 ) );
-      scanList_.push_back( new Scanner::DownLeftScan(  board_, kingToScan->getRow( ), kingToScan->getCol( ), 7, 0 ) );
-      scanList_.push_back( new Scanner::UpRightScan(   board_, kingToScan->getRow( ), kingToScan->getCol( ), 0, 7 ) );
-      scanList_.push_back( new Scanner::DownRightScan( board_, kingToScan->getRow( ), kingToScan->getCol( ), 7, 7 ) );
+      scanList_.push_back( BaseScanPtr( new Scanner::LeftScan(      board_, kingToScan->getRow( ), kingToScan->getCol( ), kingToScan->getRow( ), 0 ) ) );
+      scanList_.push_back( BaseScanPtr( new Scanner::RightScan(     board_, kingToScan->getRow( ), kingToScan->getCol( ), kingToScan->getRow( ), 7 ) ) );
+      scanList_.push_back( BaseScanPtr( new Scanner::UpScan(        board_, kingToScan->getRow( ), kingToScan->getCol( ), 0, kingToScan->getCol( ) ) ) );
+      scanList_.push_back( BaseScanPtr( new Scanner::DownScan(      board_, kingToScan->getRow( ), kingToScan->getCol( ), 7, kingToScan->getCol( ) ) ) );
+      scanList_.push_back( BaseScanPtr( new Scanner::UpLeftScan(    board_, kingToScan->getRow( ), kingToScan->getCol( ), 0, 0 ) ) );
+      scanList_.push_back( BaseScanPtr( new Scanner::DownLeftScan(  board_, kingToScan->getRow( ), kingToScan->getCol( ), 7, 0 ) ) );
+      scanList_.push_back( BaseScanPtr( new Scanner::UpRightScan(   board_, kingToScan->getRow( ), kingToScan->getCol( ), 0, 7 ) ) );
+      scanList_.push_back( BaseScanPtr( new Scanner::DownRightScan( board_, kingToScan->getRow( ), kingToScan->getCol( ), 7, 7 ) ) );
     }
 
   }

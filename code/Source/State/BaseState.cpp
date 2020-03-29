@@ -7,7 +7,7 @@ namespace Chess
 
     void BaseState::setTransitionStates( StatePtr nextState, StatePtr returnState )
     {
-      nextState_ = nextState;
+      nextState_   = nextState;
       returnState_ = returnState;
     }
 

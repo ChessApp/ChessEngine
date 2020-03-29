@@ -4,8 +4,8 @@
 namespace Chess
 {
 
-  CompoundAxisScan::CompoundAxisScan( Board * board )
-    : Scanner (board )
+  CompoundAxisScan::CompoundAxisScan( BoardPtr board )
+    : Scanner(board )
   { }
 
   void CompoundAxisScan::identifyScan( int sourceRow, int sourceCol, int destRow, int destCol )
@@ -33,7 +33,7 @@ namespace Chess
       std::cout << "Scan could not be identified because destination is invalid." << std::endl;
   }
 
-  ScanResult * CompoundAxisScan::execute( )
+  Scanner::ScanResultPtr CompoundAxisScan::execute( )
   {
     return scan_->execute( );
   }

@@ -1,7 +1,5 @@
 #include "State/MoveValidityState.h"
 
-#include "Pieces/Pieces.h"
-
 
 namespace Chess
 {
@@ -20,7 +18,7 @@ namespace Chess
       int destRow   = interface_->destRow;
       int destCol   = interface_->destCol;
 
-      Pieces * currentPiece = board_->getPiece( sourceRow, sourceCol );
+      PiecePtr currentPiece = board_->getPiece(sourceRow, sourceCol);
       if( currentPiece->validDirection(destRow, destCol) )
       	return nextState_;
       else

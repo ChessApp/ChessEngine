@@ -9,12 +9,12 @@
 namespace Chess
 {
 
-  Rook::Rook( const string name, Board * board, int initRow, int initCol )
+  Rook::Rook( const string name, BoardPtr board, int initRow, int initCol )
   	: Pieces(name, "R", initRow, initCol),
       scanner_(new SingleAxisScan(board))
   { }
 
-  Rook::Rook( const string name, Board * board )
+  Rook::Rook( const string name, BoardPtr board )
     : Pieces(name, "R"),
       scanner_(new SingleAxisScan(board))
   { }
@@ -41,8 +41,8 @@ namespace Chess
   bool Rook::pathScan ( int destRow, int destCol )
   {
     scanner_->identifyScan( row, col, destRow, destCol ) ;
-    ScanResult * scanResult = scanner_->execute( ) ;
-    Pieces * detectedPiece = scanResult->detectedPiece ;
+    Scanner::ScanResultPtr scanResult = scanner_->execute( ) ;
+    PiecePtr detectedPiece = scanResult->detectedPiece ;
     
     if ( detectedPiece->getColor( ) == getColor( ) )
     {

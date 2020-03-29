@@ -12,7 +12,8 @@ namespace Chess
   {
   public:
     //-- types
-    typedef vector<int> IntList;
+    typedef vector<int>        IntList;
+    typedef shared_ptr<Pieces> PiecePtr;
 
     //-- construction
     inline ScanResult( ) { }
@@ -26,7 +27,7 @@ namespace Chess
     bool     detection;
     int      row;
     int      col;
-    Pieces * detectedPiece;
+    PiecePtr detectedPiece;
 
   protected:
     //-- protected members

@@ -8,8 +8,6 @@
 namespace Chess
 {
 
-  Pieces * lastCreatedPiecePointer = NULL ;
-
   Pieces::Pieces( string name, string type )
     : name(name), 
       type(type), 
@@ -27,9 +25,6 @@ namespace Chess
 
     row = 0;
     col = 0;
-
-    prevPiecePointer = lastCreatedPiecePointer;
-    lastCreatedPiecePointer = this;
   }
 
   Pieces::Pieces( string name, string type, int initRow, int initCol )
@@ -48,9 +43,6 @@ namespace Chess
       opponent = 'W';
 
     setLocation( initRow, initCol );
-
-    prevPiecePointer = lastCreatedPiecePointer;
-    lastCreatedPiecePointer = this;
   }
 
   bool Pieces::pieceMoved( int destRow, int destCol )
@@ -78,19 +70,6 @@ namespace Chess
   char Pieces::getColor( )
   {
     return color;
-  }
-
-  Pieces * Pieces::getPrevPiecePointer( )
-  {
-    return prevPiecePointer;
-  }
-
-  string Pieces::getPrevPiecePointerName( )
-  {
-    if ( prevPiecePointer != NULL )
-      return prevPiecePointer->name;
-    else
-      return "First piece created has been reached.";
   }
 
   string Pieces::getName( )

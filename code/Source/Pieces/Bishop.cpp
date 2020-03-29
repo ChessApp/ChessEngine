@@ -10,12 +10,12 @@
 namespace Chess
 {
     
-  Bishop::Bishop( const string name, Board * board, int initRow, int initCol )
+  Bishop::Bishop( const string name, BoardPtr board, int initRow, int initCol )
     : Pieces(name, "B", initRow, initCol),
       scanner_(new DualAxisScan(board))
   { }
 
-  Bishop::Bishop( const string name, Board * board )
+  Bishop::Bishop( const string name, BoardPtr board )
     : Pieces(name, "B"),
       scanner_(new DualAxisScan(board))
   { }
@@ -38,8 +38,8 @@ namespace Chess
   bool Bishop::pathScan ( int destRow, int destCol )
   {
     scanner_->identifyScan(row, col, destRow, destCol);
-    ScanResult * scanResult = scanner_->execute();
-    Pieces * detectedPiece  = scanResult->detectedPiece;
+    Scanner::ScanResultPtr scanResult = scanner_->execute();
+    PiecePtr detectedPiece  = scanResult->detectedPiece;
     
     if( detectedPiece->getColor() == getColor() )
       return false ;

@@ -14,7 +14,7 @@ namespace Chess
     {
     public:
       //-- types
-      typedef Pieces *              PiecePtr;
+      typedef shared_ptr<Pieces>    PiecePtr;
       typedef shared_ptr<BaseState> StatePtr;
       
       //-- construction
@@ -26,8 +26,8 @@ namespace Chess
 
       //-- accessors
       void setTransitionStates( StatePtr nextState, StatePtr returnState );
-      void setWhiteKing( Pieces * whiteKing ) { whiteKing_ = whiteKing; }
-      void setBlackKing( Pieces * blackKing ) { blackKing_ = blackKing; }
+      void setWhiteKing( PiecePtr whiteKing ) { whiteKing_ = whiteKing; }
+      void setBlackKing( PiecePtr blackKing ) { blackKing_ = blackKing; }
 
     protected:
       //-- protected types

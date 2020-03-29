@@ -3,7 +3,6 @@
 
 #include "Chess.h"
 #include "Scans/Scanner.h"
-#include "Pieces/Pieces.h"
 
 
 namespace Chess
@@ -13,14 +12,12 @@ namespace Chess
     : public Scanner
   {
   public:
-    friend class Board ;
-
     //-- construction
-    DualAxisScan( Board * board );
+    DualAxisScan( BoardPtr board );
 
     //-- Scanner interface
     virtual void identifyScan( int sourceRow, int sourceCol, int destRow, int destCol );
-    virtual ScanResult * execute( );
+    virtual ScanResultPtr execute( );
   };
 
 }

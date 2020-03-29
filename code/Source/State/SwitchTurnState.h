@@ -16,12 +16,16 @@ namespace Chess
       : public BaseState
     {
     public:
+      //-- types
+      typedef shared_ptr<Interface> InterfacePtr;
+      typedef shared_ptr<BaseTurn>  BaseTurnPtr;
+
       //-- construction
       inline SwitchTurnState( 
-        Interface * interface,
-        BaseTurn * whiteTurn,
-        BaseTurn * blackTurn,
-        BaseTurn *& currentTurn ) 
+        InterfacePtr interface,
+        BaseTurnPtr whiteTurn,
+        BaseTurnPtr blackTurn,
+        BaseTurnPtr & currentTurn ) 
         : interface_(interface),
           whiteTurn_(whiteTurn),
           blackTurn_(blackTurn),
@@ -33,10 +37,10 @@ namespace Chess
       
     protected:
       //-- protected members
-      Interface * interface_;
-      BaseTurn *& currentTurn_;
-      BaseTurn *  whiteTurn_;
-      BaseTurn *  blackTurn_;
+      InterfacePtr  interface_;
+      BaseTurnPtr   whiteTurn_;
+      BaseTurnPtr   blackTurn_;
+      BaseTurnPtr & currentTurn_;
     };
 
   }

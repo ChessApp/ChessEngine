@@ -15,8 +15,11 @@ namespace Chess
       : public BaseState
     {
     public:
+      //-- types
+      typedef shared_ptr<Interface> InterfacePtr;
+
       //-- construction
-      inline InputState( Interface * interface ) 
+      inline InputState( InterfacePtr interface ) 
         : interface_(interface)
       { }
 
@@ -25,7 +28,7 @@ namespace Chess
       
     protected:
       //-- protected members
-      Interface * interface_;
+      InterfacePtr interface_;
     };
 
   }
