@@ -20,7 +20,7 @@ namespace Chess
 
     BaseState::StatePtr InitState::execute( )
     {
-      std::cout << "Init state" << std::endl;
+      DEBUG_CONSOLE_1ARG("State: INIT");
 
       vector<PiecePtr> nullPieceList;
       for( int j = 0; j < 8; j++ )
@@ -92,7 +92,7 @@ namespace Chess
         }
         else if( type == "King" )
         {
-          p.reset( new Chess::Queen(symbol, board_) );
+          p.reset( new Chess::King(symbol, board_) );
           if( color == "W" )
           {
             whiteTurn_->setDefensiveKing(p);

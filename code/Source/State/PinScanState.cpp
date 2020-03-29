@@ -19,7 +19,7 @@ namespace Chess
       typedef vector<BaseState::PiecePtr> PieceList;
       typedef shared_ptr<BaseScan>        BaseScanPtr;
 
-      std::cout << "Pin scan state" << std::endl;
+      DEBUG_CONSOLE_1ARG("State: PIN SCAN");
 
       PiecePtr kingToScan = currentTurn_->getOffensiveKing();
       PotentialPinList & potentialPinList = currentTurn_->getPotentialPinList();

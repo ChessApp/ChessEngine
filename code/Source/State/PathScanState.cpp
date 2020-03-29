@@ -8,7 +8,7 @@ namespace Chess
 
     BaseState::StatePtr PathScanState::execute( )
     {
-      std::cout << "Path scan state" << std::endl;
+      DEBUG_CONSOLE_1ARG("State: PATH SCAN");
       
       PiecePtr currentPiece = board_->getPiece(interface_->sourceRow, interface_->sourceCol);
       if( currentPiece->pathScan(interface_->destRow, interface_->destCol) )

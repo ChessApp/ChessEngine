@@ -11,7 +11,7 @@ namespace Chess
 
     BaseState::StatePtr EscapeRouteState::execute( )
     {
-      std::cout << "Escape route state" << std::endl;
+      DEBUG_CONSOLE_1ARG("State: ESCAPE ROUTE");
 
       status_ = false;
       PiecePtr kingToEscape = currentTurn_->getOffensiveKing();

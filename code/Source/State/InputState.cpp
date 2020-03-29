@@ -8,7 +8,7 @@ namespace Chess
 
     BaseState::StatePtr InputState::execute( )
     {
-      std::cout << "Input state" << std::endl;
+      DEBUG_CONSOLE_1ARG("State: INPUT");
       
       interface_->printGameConds();
       interface_->getInput();
