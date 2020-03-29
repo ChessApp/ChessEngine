@@ -12,13 +12,14 @@ namespace Chess
     : public Scanner
   {
   public:
-    friend class Board;
-
+    //-- types
+    typedef shared_ptr<Board> BoardPtr;
+    
     //-- construction
-    SingleAxisScan( Board * board );
+    SingleAxisScan( BoardPtr board );
 
     //-- Scanner interface
-    virtual ScanResult * execute( );
+    virtual ScanResultPtr execute( );
     virtual void identifyScan( int sourceRow, int sourceCol, int destRow, int destCol );
   };
 

@@ -4,7 +4,7 @@
 namespace Chess
 {
 
-  DualAxisScan::DualAxisScan( Board * board )
+  DualAxisScan::DualAxisScan( BoardPtr board )
     : Scanner(board)
   { }
 
@@ -25,7 +25,7 @@ namespace Chess
       std::cout << "Scan could not be identified because destination is invalid." << std::endl;
   }
 
-  ScanResult * DualAxisScan::execute( )
+  Scanner::ScanResultPtr DualAxisScan::execute( )
   {
     return scan_->execute();
   }

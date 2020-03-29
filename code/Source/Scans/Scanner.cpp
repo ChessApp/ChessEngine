@@ -4,7 +4,7 @@
 namespace Chess
 {
 
-  ScanResult * Scanner::LeftScan::execute( )
+  Scanner::ScanResultPtr Scanner::LeftScan::execute( )
   {
     result_->detectedPiece = board_->getPiece(sourceRow_, sourceCol_);
     int i = sourceCol_ - 1;
@@ -29,7 +29,7 @@ namespace Chess
     return result_;
   }
 
-  ScanResult * Scanner::RightScan::execute( )
+  Scanner::ScanResultPtr Scanner::RightScan::execute( )
   {
     result_->detectedPiece = board_->getPiece(sourceRow_, sourceCol_);
     int i = sourceCol_ + 1;
@@ -54,7 +54,7 @@ namespace Chess
     return result_;
   }
 
-  ScanResult * Scanner::UpScan::execute ( )
+  Scanner::ScanResultPtr Scanner::UpScan::execute ( )
   {
     result_->detectedPiece = board_->getPiece(sourceRow_, sourceCol_);
     int j = sourceRow_ - 1;
@@ -79,7 +79,7 @@ namespace Chess
     return result_;
   }
 
-  ScanResult * Scanner::DownScan::execute( )
+  Scanner::ScanResultPtr Scanner::DownScan::execute( )
   {
     result_->detectedPiece = board_->getPiece(sourceRow_, sourceCol_);
     int j = sourceRow_ + 1;
@@ -104,7 +104,7 @@ namespace Chess
     return result_;
   }
 
-  ScanResult * Scanner::UpLeftScan::execute( )
+  Scanner::ScanResultPtr Scanner::UpLeftScan::execute( )
   {
     result_->detectedPiece = board_->getPiece(sourceRow_, sourceCol_);
     int i = sourceCol_ - 1;
@@ -131,7 +131,7 @@ namespace Chess
     return result_;
   }
 
-  ScanResult * Scanner::UpRightScan::execute( )
+  Scanner::ScanResultPtr Scanner::UpRightScan::execute( )
   {
     result_->detectedPiece = board_->getPiece(sourceRow_, sourceCol_);
     int i = sourceCol_ + 1;
@@ -158,7 +158,7 @@ namespace Chess
     return result_;
   }
 
-  ScanResult * Scanner::DownLeftScan::execute( )
+  Scanner::ScanResultPtr Scanner::DownLeftScan::execute( )
   {
     result_->detectedPiece = board_->getPiece(sourceRow_, sourceCol_);
     int i = sourceCol_ - 1;
@@ -185,7 +185,7 @@ namespace Chess
     return result_ ;
   }
 
-  ScanResult * Scanner::DownRightScan::execute( )
+  Scanner::ScanResultPtr Scanner::DownRightScan::execute( )
   {
     result_->detectedPiece = board_->getPiece(sourceRow_, sourceCol_);
     int i = sourceCol_ + 1;

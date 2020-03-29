@@ -12,13 +12,13 @@ namespace Chess
   {
   public:
     //-- types
-    typedef Pieces * PiecePtr;
+    typedef shared_ptr<Pieces> PiecePtr;
 
     //-- construction
     Status( );
 
     //-- public methods
-    void     updateCurrentPiece( Pieces * piece );
+    void     updateCurrentPiece( PiecePtr piece );
     void     updateTurn( );
     void     updateCurrentLocation( int row, int col );
     void     updateDestLocation( int row, int col );

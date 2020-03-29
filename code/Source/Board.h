@@ -12,8 +12,8 @@ namespace Chess
   {
   public:
     //-- types
-    typedef Pieces *         PiecePtr;
-    typedef vector<PiecePtr> PieceList;
+    typedef shared_ptr<Pieces> PiecePtr;
+    typedef vector<PiecePtr>   PieceList;
 
     //-- construction
     Board( );

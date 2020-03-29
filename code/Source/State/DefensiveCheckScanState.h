@@ -4,6 +4,7 @@
 #include "Chess.h"
 #include "State/BaseState.h"
 #include "BaseTurn.h"
+#include "Scans/BaseScan.h"
 #include "Scans/Scanner.h"
 #include "Board.h"
 
@@ -17,8 +18,13 @@ namespace Chess
       : public BaseState
     {
     public:
+      //-- types
+      typedef shared_ptr<Board>     BoardPtr;
+      typedef shared_ptr<BaseTurn>  BaseTurnPtr;
+      typedef shared_ptr<BaseScan>  BaseScanPtr;
+
       //-- construction
-      inline DefensiveCheckScanState( Board * board, BaseTurn *& currentTurn ) 
+      inline DefensiveCheckScanState( BoardPtr board, BaseTurnPtr & currentTurn ) 
         : board_(board),
           currentTurn_(currentTurn)
       { }
@@ -28,21 +34,13 @@ namespace Chess
       
     protected:
       //-- protected methods
-      void configureScans( Pieces * kingToScan );
+      void configureScans( PiecePtr kingToScan );
 
       //-- protected members
-      Board *                  board_;
-      BaseTurn *&              currentTurn_;
-      vector< BaseScan * >     scanList_;
-      Scanner::LeftScan *      ls_;
-      Scanner::RightScan *     rs_;
-      Scanner::UpScan *        us_;
-      Scanner::DownScan *      ds_;
-      Scanner::UpLeftScan *    uls_;
-      Scanner::UpRightScan *   urs_;
-      Scanner::DownLeftScan *  dls_;
-      Scanner::DownRightScan * drs_;
-      bool                     status_;
+      BoardPtr             board_;
+      BaseTurnPtr &        currentTurn_;
+      vector<BaseScanPtr>  scanList_;
+      bool                 status_;
     };
 
   }

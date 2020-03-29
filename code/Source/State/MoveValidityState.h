@@ -17,10 +17,11 @@ namespace Chess
     {
     public:
       //-- types
-      typedef Interface * InterfacePtr;
+      typedef shared_ptr<Interface> InterfacePtr;
+      typedef shared_ptr<Board>     BoardPtr;
 
       //-- construction
-      inline MoveValidityState( InterfacePtr interface, Board * board ) 
+      inline MoveValidityState( InterfacePtr interface, BoardPtr board ) 
         : interface_(interface),
           board_(board)
       { }
@@ -30,8 +31,8 @@ namespace Chess
       
     protected:
       //-- protected members
-      Board *      board_;
       InterfacePtr interface_;
+      BoardPtr     board_;
     };
 
   }

@@ -1,8 +1,9 @@
 #include "State/PinScanState.h"
 
 #include "PotentialPin.h"
-#include "Pieces/Pieces.h"
 #include "Pieces/NullPiece.h"
+#include "Scans/BaseScan.h"
+#include "Scans/Scanner.h"
 
 
 namespace Chess
@@ -10,28 +11,29 @@ namespace Chess
   namespace State
   {
 
-    //-- local types
-    typedef PotentialPin *                 PotentialPinPtr;
-    typedef vector<PotentialPinPtr>        PotentialPinList;
-    typedef vector<PinScanState::PiecePtr> PieceList;
-
     BaseState::StatePtr PinScanState::execute( )
     {
+      //-- local types
+      typedef shared_ptr<PotentialPin>    PotentialPinPtr;
+      typedef vector<PotentialPinPtr>     PotentialPinList;
+      typedef vector<BaseState::PiecePtr> PieceList;
+      typedef shared_ptr<BaseScan>        BaseScanPtr;
+
       std::cout << "Pin scan state" << std::endl;
 
-      Pieces * kingToScan = currentTurn_->getOffensiveKing();
+      PiecePtr kingToScan = currentTurn_->getOffensiveKing();
       PotentialPinList & potentialPinList = currentTurn_->getPotentialPinList();
       PieceList & pinList = currentTurn_->getPinList();
 
       while( potentialPinList.size() )
       {
-        PotentialPin * potentialPin = potentialPinList.back();
-        Pieces * pinnedPiece = potentialPin->getPotentialPin();
-        BaseScan * scanToExecute = potentialPin->getScanToExecute();
+        PotentialPinPtr potentialPin = potentialPinList.back();
+        PiecePtr pinnedPiece = potentialPin->getPotentialPin();
+        BaseScanPtr scanToExecute = potentialPin->getScanToExecute();
 
         removePiece(pinnedPiece);
-        ScanResult * scanResult = scanToExecute->execute();
-        Pieces * detectedPiece = scanResult->detectedPiece;
+        Scanner::ScanResultPtr scanResult = scanToExecute->execute();
+        PiecePtr detectedPiece = scanResult->detectedPiece;
 
         if( detectedPiece->validDirection(kingToScan->getRow(), kingToScan->getCol()) )
         {        
@@ -46,13 +48,13 @@ namespace Chess
       return nextState_;
     }
 
-    void PinScanState::removePiece( Pieces * pieceToRemove )
+    void PinScanState::removePiece( PiecePtr pieceToRemove )
     {
-      Pieces * np = new NullPiece(".. ");
+      PiecePtr np( new NullPiece(".. ") );
       board_->setPiece(np, pieceToRemove->getRow(), pieceToRemove->getCol());
     }
 
-    void PinScanState::returnPiece( Pieces * pieceToReturn )
+    void PinScanState::returnPiece( PiecePtr pieceToReturn )
     {
       board_->setPiece(pieceToReturn, pieceToReturn->getRow(), pieceToReturn->getCol());
     }

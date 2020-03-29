@@ -12,14 +12,12 @@ namespace Chess
     : public Scanner
   {
   public:
-    friend class Board;
-
     //-- construction
-    CompoundAxisScan( Board * board );
+    CompoundAxisScan( BoardPtr board );
 
     //-- Scanner interface
     virtual void identifyScan( int sourceRow, int sourceCol, int destRow, int destCol );
-    virtual ScanResult * execute( );
+    virtual ScanResultPtr execute( );
   };
 
 }

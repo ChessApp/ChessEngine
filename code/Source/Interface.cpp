@@ -85,7 +85,7 @@ namespace Chess
     PinList pinList = currentTurn_->getPinList();
     for( int i = 0; i < pinList.size(); i++ )
     {
-      Pieces * pinnedPiece = pinList[i] ;
+      PiecePtr pinnedPiece = pinList[i] ;
       cout << "Name: " << pinnedPiece->getName() << endl;
       cout << "Row: "  << pinnedPiece->getRow()  << endl;
       cout << "Col: "  << pinnedPiece->getCol()  << endl;

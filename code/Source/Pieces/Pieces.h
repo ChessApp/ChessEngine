@@ -15,6 +15,9 @@ namespace Chess
   class Pieces
   {
   public:
+    //-- types
+    typedef shared_ptr<Pieces> PiecePtr;
+    
     //-- construction
     Pieces( const string name, string type );
     Pieces( const string name, string type, int initRow, int initCol );
@@ -28,18 +31,16 @@ namespace Chess
     Pieces * getKing( )               { return king_; }
     string   getType( );
     char     getColor( );
-    Pieces * getPrevPiecePointer( );
-    string   getPrevPiecePointerName( );
     string   getName( );
-    void setLocation( int row, int col );
-    int  getCol( )    { return col; }
-    int  getRow( )    { return row; }
-    void setPinned( ) { pinned = true; }
-    void clrPinned( ) { pinned = false; }
-    bool getPinnedStatus( ) { return pinned; }
-    void setActiveListIndex( int index ) { activeListIndex_ = index; }
-    int  getActiveListIndex( ) const { return activeListIndex_; }
-    void clrActiveListIndex( ) { activeListIndex_ = 0; }
+    void     setLocation( int row, int col );
+    int      getCol( )    { return col; }
+    int      getRow( )    { return row; }
+    void     setPinned( ) { pinned = true; }
+    void     clrPinned( ) { pinned = false; }
+    bool     getPinnedStatus( ) { return pinned; }
+    void     setActiveListIndex( int index ) { activeListIndex_ = index; }
+    int      getActiveListIndex( ) const { return activeListIndex_; }
+    void     clrActiveListIndex( ) { activeListIndex_ = 0; }
 
     //-- miscellaneous public methods
     bool pieceMoved( int destRow, int destCol );
@@ -60,7 +61,6 @@ namespace Chess
     int       row;
     string    name;
     string    type;
-    Pieces *  prevPiecePointer;
     Pieces *  king_;
     int       activeListIndex_;
   };

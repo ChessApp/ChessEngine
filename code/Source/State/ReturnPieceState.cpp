@@ -1,6 +1,5 @@
 #include "State/ReturnPieceState.h"
 
-#include "Pieces/Pieces.h"
 #include "Pieces/NullPiece.h"
 
 
@@ -13,17 +12,17 @@ namespace Chess
     {
       std::cout << "Return piece state" << std::endl;
       
-      Pieces * pieceToReturn = board_->getPiece(interface_->destRow, interface_->destCol);
+      PiecePtr pieceToReturn = board_->getPiece(interface_->destRow, interface_->destCol);
       returnPiece(pieceToReturn, interface_->sourceRow, interface_->sourceCol);
 
       return nextState_;
     }
 
-    void ReturnPieceState::returnPiece( Pieces * pieceToReturn, int rowToReturn, int colToReturn )
+    void ReturnPieceState::returnPiece( PiecePtr pieceToReturn, int rowToReturn, int colToReturn )
     {
       pieceToReturn->setLocation(rowToReturn, colToReturn);
       board_->setPiece(pieceToReturn, rowToReturn, colToReturn);
-      Pieces * np = new NullPiece(".. ");
+      PiecePtr np( new NullPiece(".. ") );
       np->setLocation(interface_->destRow, interface_->destCol);
       board_->setPiece(np, interface_->destRow, interface_->destCol);
     }

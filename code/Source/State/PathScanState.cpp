@@ -1,7 +1,5 @@
 #include "State/PathScanState.h"
 
-#include "Pieces/Pieces.h"
-
 
 namespace Chess
 {
@@ -12,8 +10,8 @@ namespace Chess
     {
       std::cout << "Path scan state" << std::endl;
       
-      Pieces * currentPiece = board_->getPiece(interface_->sourceRow, interface_->sourceCol);
-      if ( currentPiece->pathScan(interface_->destRow, interface_->destCol) )
+      PiecePtr currentPiece = board_->getPiece(interface_->sourceRow, interface_->sourceCol);
+      if( currentPiece->pathScan(interface_->destRow, interface_->destCol) )
       {
         return nextState_;
       }

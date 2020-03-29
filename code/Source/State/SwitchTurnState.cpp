@@ -1,6 +1,5 @@
 #include "State/SwitchTurnState.h"
 
-#include "Pieces/Pieces.h"
 #include "Pieces/NullPiece.h"
 
 

@@ -18,34 +18,35 @@ namespace Chess
 
   protected:
     //-- protected types
-    typedef BaseTurn *                   BaseTurnPtr;
+    typedef shared_ptr<Interface>        InterfacePtr;
+    typedef shared_ptr<BaseTurn>         BaseTurnPtr;
     typedef shared_ptr<State::BaseState> StatePtr;
-    typedef Board *                      BoardPtr;
+    typedef shared_ptr<Board>            BoardPtr;
 
     //-- protected methods
     void createStateMachine( );
     void runStateMachine( );
 
     //-- protected members
-    Interface * interface_;
-    BoardPtr    board_;
-    BaseTurnPtr whiteTurn_;
-    BaseTurnPtr blackTurn_;
-    BaseTurnPtr currentTurn_;
-    StatePtr    currentState_;
-    StatePtr    checkmate_;
-    StatePtr    init_;
-    StatePtr    input_;
-    StatePtr    relevancy_;
-    StatePtr    moveValidity_;
-    StatePtr    pathscan_;
-    StatePtr    move_;
-    StatePtr    defensiveCheckScan_;
-    StatePtr    offensiveCheckScan_;
-    StatePtr    returnPiece_;
-    StatePtr    switchTurn_;
-    StatePtr    pinScan_;
-    StatePtr    escapeRoute_;
+    BoardPtr     board_;
+    BaseTurnPtr  currentTurn_;
+    InterfacePtr interface_;
+    BaseTurnPtr  whiteTurn_;
+    BaseTurnPtr  blackTurn_;
+    StatePtr     currentState_;
+    StatePtr     checkmate_;
+    StatePtr     init_;
+    StatePtr     input_;
+    StatePtr     relevancy_;
+    StatePtr     moveValidity_;
+    StatePtr     pathscan_;
+    StatePtr     move_;
+    StatePtr     defensiveCheckScan_;
+    StatePtr     offensiveCheckScan_;
+    StatePtr     returnPiece_;
+    StatePtr     switchTurn_;
+    StatePtr     pinScan_;
+    StatePtr     escapeRoute_;
   };
 
 }

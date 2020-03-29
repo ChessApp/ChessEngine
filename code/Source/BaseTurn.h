@@ -14,11 +14,11 @@ namespace Chess
   {
   public:
     //-- types
-    typedef PotentialPin *          PotentialPinPtr;
-    typedef vector<PotentialPinPtr> PotentialPinList;
-    typedef Pieces *                PiecePtr;
-    typedef vector<PiecePtr>        PieceList;
-    typedef ScanResult *            ScanResultPtr;
+    typedef shared_ptr<PotentialPin> PotentialPinPtr;
+    typedef vector<PotentialPinPtr>  PotentialPinList;
+    typedef shared_ptr<Pieces>       PiecePtr;
+    typedef vector<PiecePtr>         PieceList;
+    typedef shared_ptr<ScanResult>   ScanResultPtr;
 
     //-- construction
     inline BaseTurn( char turn )

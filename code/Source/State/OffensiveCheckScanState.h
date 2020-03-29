@@ -5,9 +5,9 @@
 #include "State/BaseState.h"
 #include "PotentialPin.h"
 #include "BaseTurn.h"
+#include "Scans/BaseScan.h"
 #include "Scans/Scanner.h"
 #include "Board.h"
-#include "Pieces/Pieces.h"
 
 
 namespace Chess
@@ -20,15 +20,14 @@ namespace Chess
     {
     public:
       //-- types
-      typedef PotentialPin *            PotentialPinPtr;
-      typedef Pieces *                  PiecePtr;
-      typedef vector<PotentialPinPtr> & PotentialPinList;
-      typedef vector<PiecePtr> &        PieceList;
+      typedef shared_ptr<Board>     BoardPtr;
+      typedef shared_ptr<BaseTurn>  BaseTurnPtr;
+      typedef shared_ptr<BaseScan>  BaseScanPtr;
 
       //-- construction
       inline OffensiveCheckScanState( 
-        Board * board, 
-        BaseTurn *& currentTurn ) 
+        BoardPtr board, 
+        BaseTurnPtr & currentTurn ) 
         : board_(board),
           currentTurn_(currentTurn)
       { }
@@ -38,21 +37,13 @@ namespace Chess
       
     protected:
       //-- protected methods
-      void configureScans( Pieces * kingToScan );
+      void configureScans( PiecePtr kingToScan );
 
       //-- protected members
-      Board *     board_;
-      BaseTurn *& currentTurn_;
-      vector< BaseScan * > scanList_;
-      Scanner::LeftScan * ls_;
-      Scanner::RightScan * rs_;
-      Scanner::UpScan * us_;
-      Scanner::DownScan * ds_;
-      Scanner::UpLeftScan * uls_;
-      Scanner::UpRightScan * urs_;
-      Scanner::DownLeftScan * dls_;
-      Scanner::DownRightScan * drs_;
-      bool status_;
+      BoardPtr           board_;
+      BaseTurnPtr &      currentTurn_;
+      vector<BaseScanPtr> scanList_;
+      bool               status_;
     };
 
   }

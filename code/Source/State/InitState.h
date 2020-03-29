@@ -17,20 +17,25 @@ namespace Chess
       : public BaseState
     {
     public:
+      //-- types
+      typedef shared_ptr<Interface> InterfacePtr;
+      typedef shared_ptr<Board>     BoardPtr;
+      typedef shared_ptr<BaseTurn>  BaseTurnPtr;
+
       //-- construction
       inline InitState ( 
         const char * configFileName,
-        Interface * interface,
-        Board * board,
-        BaseTurn * whiteTurn,
-        BaseTurn * blackTurn,
-        BaseTurn *& currentTurn )
-        : interface_(interface),
+        InterfacePtr interface,
+        BoardPtr board,
+        BaseTurnPtr whiteTurn,
+        BaseTurnPtr blackTurn,
+        BaseTurnPtr & currentTurn )
+        : configFileName_(configFileName), 
+          interface_(interface),
           board_(board),
           whiteTurn_(whiteTurn),
           blackTurn_(blackTurn),
-          currentTurn_(currentTurn),
-          configFileName_(configFileName)
+          currentTurn_(currentTurn)
       { }
 
       //-- BaseState interface
@@ -42,12 +47,12 @@ namespace Chess
       void parseXMLFile( );
 
       //-- protected members
-      Interface *   interface_;
-      Board *       board_;
-      BaseTurn *    whiteTurn_;
-      BaseTurn *    blackTurn_;
-      BaseTurn *&   currentTurn_;
       const char *  configFileName_;
+      InterfacePtr  interface_;
+      BoardPtr      board_;
+      BaseTurnPtr   whiteTurn_;
+      BaseTurnPtr   blackTurn_;
+      BaseTurnPtr & currentTurn_;
     };
 
   }

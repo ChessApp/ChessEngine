@@ -4,7 +4,7 @@
 namespace Chess
 {
 
-  SingleAxisScan::SingleAxisScan( Board * board )
+  SingleAxisScan::SingleAxisScan( BoardPtr board )
     : Scanner(board)
   { }
 
@@ -25,7 +25,7 @@ namespace Chess
       cout << "Error: No scan identified." << endl;
   }
 
-  ScanResult * SingleAxisScan::execute( )
+  Scanner::ScanResultPtr SingleAxisScan::execute( )
   {
     return scan_->execute( ) ;
   }

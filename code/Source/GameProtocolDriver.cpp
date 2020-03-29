@@ -22,12 +22,12 @@ namespace Chess
   static const char * stateConfigFile("/home/developer/personal/ChessGame/config/DefaultInitialState.xml");
 
   GameProtocolDriver::GameProtocolDriver( )
-    : board_(new Board())
+    : board_(new Board),
+      currentTurn_(),
+      interface_(new Interface(board_, currentTurn_)),
+      whiteTurn_(new BaseTurn('W')),
+      blackTurn_(new BaseTurn('B'))
   {
-    interface_ = new Interface(board_, currentTurn_);
-    whiteTurn_ = new BaseTurn('W');
-    blackTurn_ = new BaseTurn('B');
-
     createStateMachine();
     runStateMachine();
   }
