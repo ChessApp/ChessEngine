@@ -19,16 +19,33 @@ SRCS := $(shell cat $(SOURCE_FILES_LIST))
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
 DEPS := $(OBJS:.o=.d)
 
-# release flags
-# C preprocessor flags
-CPPFLAGS := 
-# .cpp flags
-# -I sets the default directory root for all #include paths
-CXXFLAGS := \
-	-std=c++11 \
-	-I ../code/Source
-# linker flags
-LDLIBS := 
+ifeq ($(DEBUG_MODE),1) 
+	# debug flags
+	# C preprocessor flags
+	CPPFLAGS := 
+	# .cpp flags
+	# -I sets the default directory root for all #include paths
+	# -g enables debug symbols for use with gdb
+	# -D allows a macro to be defined (e.g. -DDEBUG defines the macro DEBUG, which enables the DEBUG_CONSOLE)
+	CXXFLAGS := \
+		-std=c++11 \
+		-I ../code/Source \
+		-g \
+		-DDEBUG
+	# linker flags
+	LDLIBS := 
+else
+	# release flags
+	# C preprocessor flags
+	CPPFLAGS := 
+	# .cpp flags
+	# -I sets the default directory root for all #include paths
+	CXXFLAGS := \
+		-std=c++11 \
+		-I ../code/Source
+	# linker flags
+	LDLIBS := 
+endif
 
 # build command for the target executable
 $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
