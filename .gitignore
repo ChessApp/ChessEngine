@@ -265,3 +265,5 @@ __pycache__/
 
 # Executable binary output
 chess-all
+
+*.list

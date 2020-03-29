@@ -27,13 +27,14 @@ else
     ENABLE_COLOR=false
 fi;
 
-SHORT=j:bcrtdxg
-LONG=jobs:,build,clean,rebuild,trace,debug,help,gen,no-color,run
+SHORT=j:bcitdxg
+LONG=jobs:,build,clean,incremental,trace,debug,help,gen,no-color,run
 OPTS=$(getopt --options $SHORT --long $LONG --name "$0" -- "$@")
 
 if [[ $# -eq 0 ]]; then
     echo "running default incremental build with all CPUs available..."
     RUN_BUILD=true
+    RUN_CLEAN=true
     RUN_FILE_GEN=true
 fi;
 
@@ -49,17 +50,17 @@ while (( "$#" )); do
         fi;
         shift;;
 
-     --build   | -b ) RUN_BUILD=true RUN_FILE_GEN=true;;
-     --clean   | -c ) RUN_CLEAN=true;;
-     --rebuild | -r ) RUN_BUILD=true RUN_CLEAN=true RUN_FILE_GEN=true;;
-     --trace   | -t ) TRACE_FLAG='TRACE=1' RUN_BUILD=true RUN_FILE_GEN=true;;
-     --debug   | -d ) DEBUG_BUILD=1 RUN_BUILD=true RUN_FILE_GEN=true;;
-     --gen     | -g ) RUN_FILE_GEN=true;;
-     --no-color     ) ENABLE_COLOR=false RUN_BUILD=true RUN_FILE_GEN=true;;
-     --run          ) RUN_BUILD_OUTPUT=true RUN_BUILD=true RUN_FILE_GEN=true;;
-     --help )         PRINT_HELP_CMD=true;;
-     -- )             shift; break;;
-     *)               echo "Unrecognized option: $1"; echo ""; PRINT_HELP_CMD=true;;
+     --build       | -b ) RUN_BUILD=true RUN_CLEAN=true RUN_FILE_GEN=true;;
+     --clean       | -c ) RUN_CLEAN=true;;
+     --incremental | -i ) RUN_BUILD=true RUN_FILE_GEN=true;;
+     --trace       | -t ) TRACE_FLAG='TRACE=1' RUN_BUILD=true RUN_FILE_GEN=true;;
+     --debug       | -d ) DEBUG_BUILD=1 RUN_BUILD=true RUN_FILE_GEN=true;;
+     --gen         | -g ) RUN_FILE_GEN=true;;
+     --no-color         ) ENABLE_COLOR=false RUN_BUILD=true RUN_FILE_GEN=true;;
+     --run              ) RUN_BUILD_OUTPUT=true RUN_BUILD=true RUN_FILE_GEN=true;;
+     --help )             PRINT_HELP_CMD=true;;
+     -- )                 shift; break;;
+     *)                   echo "Unrecognized option: $1"; echo ""; PRINT_HELP_CMD=true;;
   esac
   shift
 done
