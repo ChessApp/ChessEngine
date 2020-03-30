@@ -13,6 +13,7 @@ TARGET_EXEC="chess-all"
 
 BUILD_JOBS=
 RUN_BUILD=false
+RUN_INCREMENTAL=false
 RUN_CLEAN=false
 RUN_FILE_GEN=false
 RUN_BUILD_OUTPUT=false
@@ -27,7 +28,7 @@ else
     ENABLE_COLOR=false
 fi;
 
-SHORT=j:bcitdxg
+SHORT=j:bcitdxgr
 LONG=jobs:,build,clean,incremental,trace,debug,help,gen,no-color,run
 OPTS=$(getopt --options $SHORT --long $LONG --name "$0" -- "$@")
 
@@ -52,12 +53,12 @@ while (( "$#" )); do
 
      --build       | -b ) RUN_BUILD=true RUN_CLEAN=true RUN_FILE_GEN=true;;
      --clean       | -c ) RUN_CLEAN=true;;
-     --incremental | -i ) RUN_BUILD=true RUN_FILE_GEN=true;;
      --trace       | -t ) TRACE_FLAG='TRACE=1' RUN_BUILD=true RUN_FILE_GEN=true;;
-     --debug       | -d ) DEBUG_BUILD=1 RUN_BUILD=true RUN_FILE_GEN=true;;
+     --debug       | -d ) DEBUG_BUILD=1 RUN_CLEAN=true RUN_BUILD=true RUN_FILE_GEN=true;;
      --gen         | -g ) RUN_FILE_GEN=true;;
      --no-color         ) ENABLE_COLOR=false RUN_BUILD=true RUN_FILE_GEN=true;;
-     --run              ) RUN_BUILD_OUTPUT=true RUN_BUILD=true RUN_FILE_GEN=true;;
+     --run         | -r ) RUN_BUILD_OUTPUT=true RUN_BUILD=true RUN_CLEAN=true RUN_FILE_GEN=true;;
+     --incremental | -i ) RUN_BUILD=true RUN_CLEAN=false RUN_INCREMENTAL=true RUN_FILE_GEN=true;;
      --help )             PRINT_HELP_CMD=true;;
      -- )                 shift; break;;
      *)                   echo "Unrecognized option: $1"; echo ""; PRINT_HELP_CMD=true;;
@@ -65,7 +66,7 @@ while (( "$#" )); do
   shift
 done
 
-if [ $RUN_CLEAN == true ]; then
+if [ $RUN_INCREMENTAL == false ]; then
     echo "removing build output..."
 
     # go to the Source dir and recursively delete all files with extension .cpp.o
