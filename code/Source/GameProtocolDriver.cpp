@@ -58,7 +58,7 @@ namespace Chess
     move_->setTransitionStates(               defensiveCheckScan_, input_ );
     defensiveCheckScan_->setTransitionStates( offensiveCheckScan_, returnPiece_ );
     returnPiece_->setTransitionStates(        input_, input_ );
-    offensiveCheckScan_->setTransitionStates( pinScan_, pinScan_ );
+    offensiveCheckScan_->setTransitionStates( pinScan_, switchTurn_ );
     pinScan_->setTransitionStates(            escapeRoute_, switchTurn_ );
     escapeRoute_->setTransitionStates(        checkmate_, switchTurn_ );
     switchTurn_->setTransitionStates(         input_, input_ );

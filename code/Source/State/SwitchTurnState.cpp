@@ -13,6 +13,7 @@ namespace Chess
       DEBUG_CONSOLE_1ARG("State: SWITCH TURN");
 
       interface_->printPinListDiagnostics();
+      interface_->printBoard();
 
       if( currentTurn_ == whiteTurn_ )
         currentTurn_ = blackTurn_;

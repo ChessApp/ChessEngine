@@ -12,9 +12,6 @@ namespace Chess
    : board_(board),
      currentTurn_(currentTurn)
   {
-  	// set initial turn to White
-  	turn_ = 'W';
-
   	// set initial check status so that neither team 
   	// is in check
   	checkStatus_ = 'N';
@@ -158,7 +155,7 @@ namespace Chess
   // color of the given turn.
   bool Interface::inputPieceOwner( )
   {
-    if( turn_ == currentPiece_->getColor() )
+    if( currentTurn_->getTurn() == currentPiece_->getColor() )
       return true;
     else
       return false;
@@ -212,6 +209,7 @@ namespace Chess
   // where to move pieces.
   void Interface::getInput( )
   {
+    cout << currentTurn_->getTurn() << "'s move: ";
   	getline(cin, userInput_);
   }
 
@@ -273,9 +271,9 @@ namespace Chess
   {
   	printBoard();
 
-  	if (turn_ == 'W')
+  	if(currentTurn_->getTurn() == 'W')
   		cout << "Checkmate! Winner: W" << endl;
-  	if (turn_ == 'B')
+  	if(currentTurn_->getTurn() == 'B')
   		cout << "Checkmate! Winner: B" << endl;
   }
 
