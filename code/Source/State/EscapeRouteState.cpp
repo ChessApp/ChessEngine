@@ -13,7 +13,6 @@ namespace Chess
     {
       DEBUG_CONSOLE_1ARG("State: ESCAPE ROUTE");
 
-      bool escapeRoute = false;
       PiecePtr kingToEscape = currentTurn_->getOffensiveKing();
       int originalKingRow = kingToEscape->getRow();
       int originalKingCol = kingToEscape->getCol();
@@ -31,28 +30,34 @@ namespace Chess
             PiecePtr originalPiece = board_->getPiece(destRow, destCol);
 
             setPiece(kingToEscape, destRow, destCol);
+
+            DEBUG_CONSOLE_1ARG("Theoretical escape route:");
+            DEBUG_CONSOLE_PRINT_BOARD(interface_);
+
             configureScans(kingToEscape);
 
-            // Check if there are any valid escape routes.
-            if( !executeScans(kingToEscape) )
-              escapeRoute = true;
-
+            // Check if there are any pieces that can still attack on this
+            // attempted escape route.
+            bool escapeRoute = executeScans(kingToEscape);
+            // Perform clean-up, regardless of the result.
             returnPiece(kingToEscape, originalKingRow, originalKingCol, originalPiece);
+
+            // Transition to the ReturnState if there is an escape route.
+            // *sigh of relief*
+            if(escapeRoute)
+              return returnState_;
           }
         }
       }     
 
-      if(escapeRoute)
-        return returnState_;
-      else
-        return nextState_;
+      return nextState_;
     }
 
     /* Executes a scan in every direction from the location of the King
        that is attempting to escape. If another piece is detected on any
        of these scans, the piece will be checked to see if it can attack
        on the scan path, and that it is on the opposite team. This method
-       returns true if there are any valid escape routes.
+       returns true if the escape route cannot be attacked.
      */
     bool EscapeRouteState::executeScans( PiecePtr kingToEscape )
     {
@@ -65,21 +70,31 @@ namespace Chess
 
         // Verify that the detected piece can attack the king, and that they are on opposite
         // teams.
-        if( detectedPiece->validDirection(kingToEscape->getRow(), kingToEscape->getCol()) )
+        if( ( detectedPiece->validDirection(kingToEscape->getRow(), kingToEscape->getCol()) ) )
           if( kingToEscape->getColor() != detectedPiece->getColor() )
-            return true;
+          {
+            DEBUG_CONSOLE_2ARG("Escape attempt soiled by: ", detectedPiece->getType());
+#ifdef DEBUG
+            cout << "Escape attempt soiled by: " << detectedPiece->getType() << " at [" << detectedPiece->getRow() << "," << detectedPiece->getCol() << "]" << endl;
+#endif
+            return false;
+          }
       }
 
-      return false;
+      return true;
     }
 
     void EscapeRouteState::setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet )
     {
-      pieceToSet->setLocation(rowToSet, colToSet);
-      board_->setPiece(pieceToSet, rowToSet, colToSet);
+      // Create a NullPiece and set its location as the original location
+      // of the pieceToSet, before that piece gets its location updated.
       PiecePtr np( new NullPiece(".. ") );
-      np->setLocation(interface_->sourceRow, interface_->sourceCol);
-      board_->setPiece(np, interface_->sourceRow, interface_->sourceCol);
+      np->setLocation(pieceToSet->getRow(), pieceToSet->getCol());
+
+      pieceToSet->setLocation(rowToSet, colToSet);
+      // Update the board with the new locations of the 2 affected pieces.
+      board_->setPiece(pieceToSet, rowToSet, colToSet);
+      board_->setPiece(np, np->getRow(), np->getCol());
     }
 
     void EscapeRouteState::returnPiece( PiecePtr pieceToReturn, int rowToReturn, int colToReturn, PiecePtr originalPiece )
