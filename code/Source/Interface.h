@@ -60,7 +60,6 @@ namespace Chess
     string        userBoard_[11][11];
     string        userInput_;
     char          checkStatus_;
-    char          turn_;
     BaseTurnPtr & currentTurn_;
   };
 
