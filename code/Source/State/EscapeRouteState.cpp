@@ -13,7 +13,7 @@ namespace Chess
     {
       DEBUG_CONSOLE_1ARG("State: ESCAPE ROUTE");
 
-      status_ = false;
+      bool escapeRoute = false;
       PiecePtr kingToEscape = currentTurn_->getOffensiveKing();
       int originalKingRow = kingToEscape->getRow();
       int originalKingCol = kingToEscape->getCol();
@@ -26,23 +26,34 @@ namespace Chess
           int destCol = originalKingCol + i;
           if( kingToEscape->validDirection(destRow, destCol) && kingToEscape->pathScan(destRow, destCol) )
           {
+            // Stash the original piece at the destination location
+            // so we can return it after scan.
+            PiecePtr originalPiece = board_->getPiece(destRow, destCol);
+
             setPiece(kingToEscape, destRow, destCol);
             configureScans(kingToEscape);
-            
-            if( !executeScans(kingToEscape) )
-              status_ = true;
 
-            returnPiece(kingToEscape, originalKingRow, originalKingCol);
+            // Check if there are any valid escape routes.
+            if( !executeScans(kingToEscape) )
+              escapeRoute = true;
+
+            returnPiece(kingToEscape, originalKingRow, originalKingCol, originalPiece);
           }
         }
       }     
 
-      if(status_)
+      if(escapeRoute)
         return returnState_;
       else
         return nextState_;
     }
 
+    /* Executes a scan in every direction from the location of the King
+       that is attempting to escape. If another piece is detected on any
+       of these scans, the piece will be checked to see if it can attack
+       on the scan path, and that it is on the opposite team. This method
+       returns true if there are any valid escape routes.
+     */
     bool EscapeRouteState::executeScans( PiecePtr kingToEscape )
     {
       while( scanList_.size() )
@@ -52,9 +63,13 @@ namespace Chess
         Scanner::ScanResultPtr scanResult = currentScan->execute();
         PiecePtr detectedPiece = scanResult->detectedPiece;
 
+        // Verify that the detected piece can attack the king, and that they are on opposite
+        // teams.
         if( detectedPiece->validDirection(kingToEscape->getRow(), kingToEscape->getCol()) )
-          return true;
+          if( kingToEscape->getColor() != detectedPiece->getColor() )
+            return true;
       }
+
       return false;
     }
 
@@ -67,13 +82,14 @@ namespace Chess
       board_->setPiece(np, interface_->sourceRow, interface_->sourceCol);
     }
 
-    void EscapeRouteState::returnPiece( PiecePtr pieceToReturn, int rowToReturn, int colToReturn )
+    void EscapeRouteState::returnPiece( PiecePtr pieceToReturn, int rowToReturn, int colToReturn, PiecePtr originalPiece )
     {
+      // Reset the location of the pieceToReturn.
       pieceToReturn->setLocation(rowToReturn, colToReturn);
+
+      // Update the new piece locations on the board.
       board_->setPiece(pieceToReturn, rowToReturn, colToReturn);
-      PiecePtr np( new NullPiece(".. ") );
-      np->setLocation(interface_->destRow, interface_->destCol);
-      board_->setPiece(np, interface_->destRow, interface_->destCol);
+      board_->setPiece(originalPiece, originalPiece->getRow(), originalPiece->getCol());
     }
 
     void EscapeRouteState::configureScans( PiecePtr kingToScan )
