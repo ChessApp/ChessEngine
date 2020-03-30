@@ -41,7 +41,7 @@ namespace Chess
     protected:
       //-- protected methods
       void setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet );
-      void returnPiece( PiecePtr pieceToReturn, int rowToReturn, int colToReturn );
+      void returnPiece( PiecePtr pieceToReturn, int rowToReturn, int colToReturn, PiecePtr originalPiece );
       void configureScans( PiecePtr kingToScan );
       bool executeScans( PiecePtr kingToEscape );
 
@@ -50,7 +50,6 @@ namespace Chess
       BoardPtr             board_;
       BaseTurnPtr &        currentTurn_;
       vector<BaseScanPtr>  scanList_;
-      bool                 status_;
     };
 
   }

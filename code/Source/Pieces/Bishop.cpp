@@ -20,7 +20,7 @@ namespace Chess
       scanner_(new DualAxisScan(board))
   { }
 
-  bool Bishop::validDirection ( int destRow, int destCol )
+  bool Bishop::validDirection( int destRow, int destCol )
   {
     if( pieceMoved(destRow, destCol) )
     {
@@ -35,7 +35,7 @@ namespace Chess
     }   
   }
 
-  bool Bishop::pathScan ( int destRow, int destCol )
+  bool Bishop::pathScan( int destRow, int destCol )
   {
     scanner_->identifyScan(row, col, destRow, destCol);
     Scanner::ScanResultPtr scanResult = scanner_->execute();
