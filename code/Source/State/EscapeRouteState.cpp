@@ -71,14 +71,15 @@ namespace Chess
         // Verify that the detected piece can attack the king, and that they are on opposite
         // teams.
         if( ( detectedPiece->validDirection(kingToEscape->getRow(), kingToEscape->getCol()) ) )
+        {
           if( kingToEscape->getColor() != detectedPiece->getColor() )
           {
-            DEBUG_CONSOLE_2ARG("Escape attempt soiled by: ", detectedPiece->getType());
 #ifdef DEBUG
-            cout << "Escape attempt soiled by: " << detectedPiece->getType() << " at [" << detectedPiece->getRow() << "," << detectedPiece->getCol() << "]" << endl;
+            cout << "[***DEBUG CONSOLE***] " << "Escape attempt soiled by: " << detectedPiece->getType() << " at [" << detectedPiece->getRow() << "," << detectedPiece->getCol() << "]" << endl;
 #endif
             return false;
           }
+        }
       }
 
       return true;
