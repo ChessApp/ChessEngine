@@ -15,9 +15,14 @@ namespace Chess
       : public BaseState
     {
     public:
+      //-- types
+      typedef shared_ptr<BaseTurn> BaseTurnPtr;
+
       //-- construction
-      inline BlockScanState( BaseTurn *& currentTurn ) 
-        : currentTurn_(currentTurn)
+      inline BlockScanState( BaseTurnPtr & currentTurn, BaseTurnPtr whiteTurn, BaseTurnPtr blackTurn ) 
+        : currentTurn_(currentTurn),
+          whiteTurn_(whiteTurn),
+          blackTurn_(blackTurn)
       { }
 
       //-- BaseState interface
@@ -25,7 +30,9 @@ namespace Chess
 
     protected:
       //-- protected members
-      BaseTurn *& currentTurn_;
+      BaseTurnPtr & currentTurn_;
+      BaseTurnPtr   whiteTurn_;
+      BaseTurnPtr   blackTurn_;
     };
 
   }

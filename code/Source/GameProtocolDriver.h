@@ -46,6 +46,7 @@ namespace Chess
     StatePtr     returnPiece_;
     StatePtr     switchTurn_;
     StatePtr     pinScan_;
+    StatePtr     blockScan_;
     StatePtr     escapeRoute_;
   };
 

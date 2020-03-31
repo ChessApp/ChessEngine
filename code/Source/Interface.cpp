@@ -78,7 +78,7 @@ namespace Chess
   void Interface::printPinListDiagnostics( )
   {
     typedef vector<PiecePtr> PinList;
-
+    cout << "List of pinned pieces: " << endl;
     PinList pinList = currentTurn_->getPinList();
     for( int i = 0; i < pinList.size(); i++ )
     {
