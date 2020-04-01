@@ -19,5 +19,11 @@ int main( int argc, char ** argv )
   cout << "Firin' up the ol' war game" << endl;
   cout << "Courtesy of Booty and Sons" << endl << endl;
 
-  new Chess::GameProtocolDriver();
+  // new Chess::GameProtocolDriver();
+  // for( int it = 0; it < 3; it++) {
+  int v1, v2;
+  cin >> v1;
+  cin >> v2;
+  cout << "v1: " << v1 << " v2: " << v2 << endl;
+  return 0;
 }
