@@ -5,6 +5,7 @@
 #include "State/BaseState.h"
 #include "Interface.h"
 #include "Board.h"
+#include "BaseTurn.h"
 
 
 namespace Chess
@@ -19,11 +20,13 @@ namespace Chess
       //-- types
       typedef shared_ptr<Interface> InterfacePtr;
       typedef shared_ptr<Board>     BoardPtr;
+      typedef shared_ptr<BaseTurn>  BaseTurnPtr;
 
       //-- construction
-      inline ReturnPieceState( InterfacePtr interface, BoardPtr board ) 
+      inline ReturnPieceState( InterfacePtr interface, BoardPtr board, BaseTurnPtr & currentTurn ) 
         : interface_(interface),
-          board_(board)
+          board_(board),
+          currentTurn_(currentTurn)
       { }
 
       //-- BaseState interface
@@ -34,8 +37,9 @@ namespace Chess
       void returnPiece( PiecePtr pieceToReturn, int rowToReturn, int colToReturn );
 
       //-- protected members
-      InterfacePtr interface_;
-      BoardPtr     board_;
+      InterfacePtr  interface_;
+      BoardPtr      board_;
+      BaseTurnPtr & currentTurn_;
     };
 
   }

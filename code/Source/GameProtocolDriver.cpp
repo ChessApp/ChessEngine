@@ -58,9 +58,9 @@ namespace Chess
     relevancy_.reset(          new RelevancyState(interface_) );
     moveValidity_.reset(       new MoveValidityState(interface_, board_) );
     pathscan_.reset(           new PathScanState(interface_, board_) );
-    move_.reset(               new MoveState(interface_, board_) );
+    move_.reset(               new MoveState(interface_, board_, currentTurn_) );
     defensiveCheckScan_.reset( new DefensiveCheckScanState(board_, currentTurn_) );
-    returnPiece_.reset(        new ReturnPieceState(interface_, board_) );
+    returnPiece_.reset(        new ReturnPieceState(interface_, board_, currentTurn_) );
     offensiveCheckScan_.reset( new OffensiveCheckScanState(board_, currentTurn_) );
     switchTurn_.reset(         new SwitchTurnState(interface_, whiteTurn_, blackTurn_, currentTurn_) );
     pinScan_.reset(            new PinScanState(board_, currentTurn_) );
@@ -92,9 +92,9 @@ namespace Chess
     relevancy_.reset(          new RelevancyState(interface_) );
     moveValidity_.reset(       new MoveValidityState(interface_, board_) );
     pathscan_.reset(           new PathScanState(interface_, board_) );
-    move_.reset(               new MoveState(interface_, board_) );
+    move_.reset(               new MoveState(interface_, board_, currentTurn_) );
     defensiveCheckScan_.reset( new DefensiveCheckScanState(board_, currentTurn_) );
-    returnPiece_.reset(        new ReturnPieceState(interface_, board_) );
+    returnPiece_.reset(        new ReturnPieceState(interface_, board_, currentTurn_) );
     offensiveCheckScan_.reset( new OffensiveCheckScanState(board_, currentTurn_) );
     switchTurn_.reset(         new SwitchTurnState(interface_, whiteTurn_, blackTurn_, currentTurn_) );
     pinScan_.reset(            new PinScanState(board_, currentTurn_) );
@@ -122,7 +122,10 @@ namespace Chess
     currentState_ = init_->execute();
 
     while( currentState_ != checkmate_ )
+    {
+      DEBUG_CONSOLE_PRINT_BOARD(interface_);
       currentState_ = currentState_->execute();
+    }
 
     currentState_->execute();
     std::cout << "State machine done." << std::endl;

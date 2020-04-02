@@ -41,6 +41,7 @@ namespace Chess
     PiecePtr            getCausingCheckPiece( int index ) { return causingCheckList_.at(index); }
     void                setActivePiece( PiecePtr activePiece );
     void                setPendingRemovedPiece( PiecePtr piece ) { pendingRemovedPiece_ = piece; }
+    PiecePtr            getPendingRemovedPiece( ) const { return pendingRemovedPiece_; }
     int                 getActiveListSize( ) { return activeList_.size(); }
     int                 getCausingCheckListSize( ) { return causingCheckList_.size(); }
     void                addCheckScanData( ScanResultPtr data ) { checkScanData_.push_back(data) ; }

@@ -23,6 +23,10 @@ namespace Chess
 
     void MoveState::setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet )
     {
+      // Stash the original piece with the currentTurn_. This piece must be restored
+      // to this square if the DefensiveCheckScan fails.
+      currentTurn_->setPendingRemovedPiece( board_->getPiece(rowToSet, colToSet) );
+
       pieceToSet->setLocation(rowToSet, colToSet);
       board_->setPiece(pieceToSet, rowToSet, colToSet);
       PiecePtr np( new NullPiece(".. ") );
