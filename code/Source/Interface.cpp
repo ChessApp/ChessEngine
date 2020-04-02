@@ -211,6 +211,9 @@ namespace Chess
   {
     cout << currentTurn_->getTurn() << "'s move: ";
   	getline(cin, userInput_);
+    cout << userInput_ << endl;
+    if(userInput_ == "")
+      exit(0);
   }
 
   // Takes user input from the standard input

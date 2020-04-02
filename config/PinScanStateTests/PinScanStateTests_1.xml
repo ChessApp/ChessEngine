@@ -1,0 +1,26 @@
+<!--  -->
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <Piece type="Pawn" color="B" row="1" column="3" symbol="BP "></Piece>
+  <Piece type="Pawn" color="B" row="1" column="5" symbol="BP "></Piece>
+  <Piece type="Pawn" color="B" row="0" column="5" symbol="BP "></Piece>
+
+  <Piece type="Rook" color="W" row="4" column="4" symbol="WR "></Piece>
+  <Piece type="Rook" color="W" row="0" column="2" symbol="WR "></Piece>
+  <Piece type="Rook" color="B" row="3" column="0" symbol="BR "></Piece>
+  <Piece type="Rook" color="B" row="0" column="7" symbol="BR "></Piece>
+  
+  <Piece type="Bishop" color="W" row="7" column="2" symbol="WB "></Piece>
+  <Piece type="Bishop" color="W" row="7" column="5" symbol="WB "></Piece>
+
+  <Piece type="Knight" color="W" row="7" column="1" symbol="WN "></Piece>
+  <Piece type="Knight" color="W" row="7" column="6" symbol="WN "></Piece>
+  <Piece type="Knight" color="B" row="0" column="1" symbol="BN "></Piece>
+  <Piece type="Knight" color="B" row="0" column="6" symbol="BN "></Piece>
+
+  <Piece type="Queen" color="W" row="3" column="4" symbol="WQ "></Piece>
+  <Piece type="King"  color="W" row="7" column="4" symbol="WK "></Piece>
+
+  <Piece type="Queen" color="B" row="0" column="3" symbol="BQ "></Piece>
+  <Piece type="King"  color="B" row="0" column="4" symbol="BK "></Piece>
+</root>
