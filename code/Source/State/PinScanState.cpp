@@ -36,9 +36,13 @@ namespace Chess
         PiecePtr detectedPiece = scanResult->detectedPiece;
 
         if( detectedPiece->validDirection(kingToScan->getRow(), kingToScan->getCol()) )
-        {        
-          pinList.push_back(pinnedPiece);
-          pinnedPiece->setPinned(); 
+        {
+          // Only pieces from the offensive team can pin a defending piece.
+          if( detectedPiece->getColor() != kingToScan->getColor() )
+          {
+            pinList.push_back(pinnedPiece);
+            pinnedPiece->setPinned();
+          }
         }
 
         returnPiece(pinnedPiece);

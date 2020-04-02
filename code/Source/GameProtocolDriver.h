@@ -15,6 +15,7 @@ namespace Chess
   public:
     //-- construction
     GameProtocolDriver( );
+    GameProtocolDriver( char * configFileName );
 
   protected:
     //-- protected types
@@ -25,6 +26,7 @@ namespace Chess
 
     //-- protected methods
     void createStateMachine( );
+    void createStateMachine( const char * );
     void runStateMachine( );
 
     //-- protected members
@@ -46,6 +48,7 @@ namespace Chess
     StatePtr     returnPiece_;
     StatePtr     switchTurn_;
     StatePtr     pinScan_;
+    StatePtr     blockScan_;
     StatePtr     escapeRoute_;
   };
 

@@ -19,9 +19,9 @@ namespace Chess
     inline ScanResult( ) { }
 
     //-- methods
-    inline void    addSquare( int row, int col ) { rowList_.push_back( row ); colList_.push_back( col ); }
-    inline IntList getRowList( ) { return rowList_; }
-    inline IntList getColList( ) { return colList_; }
+    inline void    addSquare( int row, int col ) { rowList_.push_back(row); colList_.push_back(col); }
+    inline IntList & getRowList( ) { return rowList_; }
+    inline IntList & getColList( ) { return colList_; }
 
     //-- public members
     bool     detection;

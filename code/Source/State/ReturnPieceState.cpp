@@ -22,9 +22,10 @@ namespace Chess
     {
       pieceToReturn->setLocation(rowToReturn, colToReturn);
       board_->setPiece(pieceToReturn, rowToReturn, colToReturn);
-      PiecePtr np( new NullPiece(".. ") );
-      np->setLocation(interface_->destRow, interface_->destCol);
-      board_->setPiece(np, interface_->destRow, interface_->destCol);
+      // Restore the original piece back to its square on the board (stored
+      // in the currentTurn_ since the MoveState).
+      PiecePtr originalPiece = currentTurn_->getPendingRemovedPiece();
+      board_->setPiece(originalPiece, originalPiece->getRow(), originalPiece->getCol());
     }
 
   }

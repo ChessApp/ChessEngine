@@ -40,10 +40,10 @@ namespace Chess
       void configureScans( PiecePtr kingToScan );
 
       //-- protected members
-      BoardPtr           board_;
-      BaseTurnPtr &      currentTurn_;
+      BoardPtr            board_;
+      BaseTurnPtr &       currentTurn_;
       vector<BaseScanPtr> scanList_;
-      bool               status_;
+      bool                status_;
     };
 
   }

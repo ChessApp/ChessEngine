@@ -19,6 +19,7 @@ namespace Chess
     typedef shared_ptr<Pieces>       PiecePtr;
     typedef vector<PiecePtr>         PieceList;
     typedef shared_ptr<ScanResult>   ScanResultPtr;
+    typedef vector<ScanResultPtr>    ScanResultList;
 
     //-- construction
     inline BaseTurn( char turn )
@@ -40,10 +41,11 @@ namespace Chess
     PiecePtr            getCausingCheckPiece( int index ) { return causingCheckList_.at(index); }
     void                setActivePiece( PiecePtr activePiece );
     void                setPendingRemovedPiece( PiecePtr piece ) { pendingRemovedPiece_ = piece; }
+    PiecePtr            getPendingRemovedPiece( ) const { return pendingRemovedPiece_; }
     int                 getActiveListSize( ) { return activeList_.size(); }
     int                 getCausingCheckListSize( ) { return causingCheckList_.size(); }
     void                addCheckScanData( ScanResultPtr data ) { checkScanData_.push_back(data) ; }
-    ScanResultPtr       getCheckScanData( ) { return checkScanData_[0]; }
+    ScanResultList &    getCheckScanData( ) { return checkScanData_; }
     int                 getCheckScanDataSize( ) { return checkScanData_.size(); }
 
   protected:
@@ -66,8 +68,6 @@ namespace Chess
       PiecePtr piece_;
       int      index_;
     };
-
-    typedef vector<ScanResultPtr> ScanResultList;
 
     //-- protected methods
     void updatePieceIndices( );

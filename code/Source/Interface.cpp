@@ -78,7 +78,7 @@ namespace Chess
   void Interface::printPinListDiagnostics( )
   {
     typedef vector<PiecePtr> PinList;
-
+    cout << "List of pinned pieces: " << endl;
     PinList pinList = currentTurn_->getPinList();
     for( int i = 0; i < pinList.size(); i++ )
     {
@@ -211,6 +211,9 @@ namespace Chess
   {
     cout << currentTurn_->getTurn() << "'s move: ";
   	getline(cin, userInput_);
+    cout << userInput_ << endl;
+    if(userInput_ == "")
+      exit(0);
   }
 
   // Takes user input from the standard input

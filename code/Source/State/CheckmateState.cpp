@@ -10,6 +10,7 @@ namespace Chess
     {
       std::cout << "Checkmate!" << std::endl;
 
+      interface_->printPinListDiagnostics();
       interface_->printBoard();
       return nextState_;
     }

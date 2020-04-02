@@ -19,5 +19,8 @@ int main( int argc, char ** argv )
   cout << "Firin' up the ol' war game" << endl;
   cout << "Courtesy of Booty and Sons" << endl << endl;
 
-  new Chess::GameProtocolDriver();
+  if( argc == 2 )
+    new Chess::GameProtocolDriver(argv[1]);
+  else
+    new Chess::GameProtocolDriver();
 }
