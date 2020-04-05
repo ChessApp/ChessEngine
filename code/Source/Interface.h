@@ -6,6 +6,7 @@
 #define CHESS_INTERFACE_H_
 
 #include "Chess.h"
+
 #include "Board.h"
 #include "BaseTurn.h"
 #include "Pieces/Pieces.h"
@@ -24,6 +25,9 @@ namespace Chess
   	//-- construction
   	Interface( BoardPtr board, BaseTurnPtr & currentTurn );
 
+    //-- interface methods
+    virtual void getInput( );
+
     //-- public methods
     void printPinListDiagnostics( );
     void updateUserBoard( ); 
@@ -35,7 +39,6 @@ namespace Chess
     bool inputValidityChecks( );
   	void printBoard( );
   	void printGameConds( );
-  	void getInput( );
   	void updateMoveSpecs( );
   	void invalidMoveMessage( );
   	void inCheckMessage( );
