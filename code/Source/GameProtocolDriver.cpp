@@ -23,7 +23,7 @@ namespace Chess
 {
 
   // Used to set the InitState
-  static const char * stateConfigFile("/home/developer/personal/ChessGame/config/DefaultInitialState.xml");
+  static const char * stateConfigFile("/home/chess/dev/ChessGame/config/DefaultInitialState.xml");
 
   GameProtocolDriver::GameProtocolDriver( )
     : board_(new Board),
@@ -44,7 +44,7 @@ namespace Chess
       blackTurn_(new BaseTurn('B'))
   {
     string fileNameString(configFileName);
-    string rootDir  = "/home/developer/personal/ChessGame/config/";
+    string rootDir  = "/home/chess/dev/ChessGame/config/";
     string fullPath = rootDir + fileNameString;
     createStateMachine(fullPath.c_str());
     runStateMachine();
