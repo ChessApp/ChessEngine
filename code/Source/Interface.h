@@ -28,6 +28,10 @@ namespace Chess
     //-- interface methods
     virtual void getInput( );
     virtual void printBoard( );
+    virtual void printGameConds( );
+    virtual void invalidMoveMessage( );
+    virtual void inCheckMessage( );
+    virtual void checkmateStatus( );
 
     //-- public methods
     void printPinListDiagnostics( );
@@ -38,11 +42,7 @@ namespace Chess
     bool inputSqrAvailable( );
     bool inputPieceOwner( );
     bool inputValidityChecks( );
-  	void printGameConds( );
   	void updateMoveSpecs( );
-  	void invalidMoveMessage( );
-  	void inCheckMessage( );
-  	void checkmateStatus( );
     int  colLocation( char user_col );
     int  rowLocation( char user_row );
 

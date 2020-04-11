@@ -11,11 +11,12 @@ namespace Chess
   namespace Network
   {
 
-    WebServer::WebServer( boost::asio::io_service & ioService, bool & pendingUserInput, string & userInput )
+    WebServer::WebServer( boost::asio::io_service & ioService, bool & pendingUserInput, string & userInput, Buffer & os )
       : acceptor_(ioService, ip::tcp::endpoint(ip::tcp::v4(), 2345)),
         pendingUserInput_(pendingUserInput),
         userInput_(userInput),
-        connection_( ConnectionAgentPtr() )
+        connection_( ConnectionAgentPtr() ),
+        outStream_(os)
     {  
       startAccept(pendingUserInput, userInput);  
     }
@@ -30,9 +31,8 @@ namespace Chess
 
     void WebServer::startAccept( bool & pendingUserInput, string & userInput )
     {
-      cout << "startAccept" << endl;
       // socket  
-      connection_ = ConnectionAgent::create(acceptor_.get_io_service(), pendingUserInput, userInput);  
+      connection_ = ConnectionAgent::create(acceptor_.get_io_service(), pendingUserInput, userInput, outStream_);  
       // asynchronous accept operation and wait for a new connection.  
       acceptor_.async_accept(
         connection_->socket(),  

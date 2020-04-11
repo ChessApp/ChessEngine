@@ -8,6 +8,7 @@
 #include <boost/asio.hpp>
 
 #include "Network/WebServer.h"
+#include "Network/Buffer.h"
 
 
 namespace Chess
@@ -24,7 +25,11 @@ namespace Chess
 
       //-- Interface override
       virtual void getInput( );
-      // virtual void printBoard( );
+      virtual void printBoard( );
+      virtual void printGameConds( );
+      virtual void invalidMoveMessage( );
+      virtual void inCheckMessage( );
+      virtual void checkmateStatus( );
 
     protected:
       /* Defines an object function operator for starting and
@@ -61,9 +66,10 @@ namespace Chess
 
       typedef shared_ptr<WebServer> WebServerPtr;
 
-      void printBoard( string & output );
+      // void printBoard( string & output );
     
       //-- protected members
+      Buffer                    outStream_;
       bool                      pendingUserInput_;
       boost::asio::io_service   ioService_;
       WebServerPtr              webServer_;
