@@ -165,16 +165,18 @@ namespace Chess
   // if any of those functions return false.
   bool Interface::inputValidityChecks( )
   {
-    currentPiece_ = board_->getPiece(sourceRow, sourceCol);
-    destPiece_    = board_->getPiece(destRow, destCol);
+    if( inputContent() )
+    {
+      currentPiece_ = board_->getPiece(sourceRow, sourceCol);
+      destPiece_    = board_->getPiece(destRow, destCol);
 
-    if( inputContent() &&
-        inputDiffSqr() &&
-        inputSqrAvailable() &&
-        inputPieceOwner() )
-      return true;
-    else
-      return false;
+      if( inputDiffSqr() &&
+          inputSqrAvailable() &&
+          inputPieceOwner() )
+        return true;
+    }
+    
+    return false;
   }
 
   // Interacts with the standard output stream 
