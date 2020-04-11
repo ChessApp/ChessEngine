@@ -1,53 +1,18 @@
 #include "Network/NetworkInterface.h"
 
-#include <boost/asio.hpp>
-
-#include "Network/WebServer.h"
-
 
 namespace Chess
 {
   namespace Network
   {
 
-    /* Defines an object function operator for starting and
-     * running the the network thread. The implementation of
-     * the function operator defines the startup code for the
-     * asynchronous thread. The WebServer object is created and
-     * enables the IO Service, which ultimately listens to a TCP
-     * port and then updates memory shared between the network 
-     * thread and the game engine thread. Splitting networking
-     * into a separate thread allows the game engine to operate
-     * while the network thread can maintain a socket with the TCP
-     * port.
-     */
-    class NetworkThread
-    {
-    public:
-      //-- construction
-      inline NetworkThread( bool & pending, string & userInput )
-        : pending_(pending),
-          userInput_(userInput)
-      { }
-
-      //-- public methods
-      void operator() ( )
-      {
-        boost::asio::io_service ioService;
-        WebServer webServer(ioService, pending_, userInput_);
-        ioService.run();
-      }
-
-    protected:
-      //-- protected members
-      bool &   pending_;
-      string & userInput_;
-    };
-
     NetworkInterface::NetworkInterface( BoardPtr board, BaseTurnPtr & currentTurn )
       : Interface(board, currentTurn),
         pendingUserInput_(true),
-        networkHandle_(NetworkThread(pendingUserInput_, userInput_))
+        ioService_(),
+        webServer_(new WebServer(ioService_, pendingUserInput_, userInput_)),
+        networkThread_(ioService_),
+        networkHandle_(networkThread_)
     { }
 
     void NetworkInterface::getInput( )
@@ -64,10 +29,29 @@ namespace Chess
       // break the while loop again on the next iteration.
       pendingUserInput_ = true;
 
+      // string msg = "huncho";
+      // string & output = webServer_->getConnection()->getOutputBuffer();
+      string output = "";
+      printBoard(output);
+      webServer_->getConnection()->send(output);
+
       cout << userInput_ << endl;
 
       if(userInput_ == "")
         exit(0);
+    }
+
+    void NetworkInterface::printBoard( string & output )
+    {
+      updateUserBoard();
+
+      for( int y = 0; y<11; ++y )
+      {
+        for( int x = 0; x<11; ++x )
+          output.append(userBoard_[y][x]);
+
+        output.append("\n");
+      }
     }
 
   }

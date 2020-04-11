@@ -27,6 +27,7 @@ namespace Chess
 
     //-- interface methods
     virtual void getInput( );
+    virtual void printBoard( );
 
     //-- public methods
     void printPinListDiagnostics( );
@@ -37,7 +38,6 @@ namespace Chess
     bool inputSqrAvailable( );
     bool inputPieceOwner( );
     bool inputValidityChecks( );
-  	void printBoard( );
   	void printGameConds( );
   	void updateMoveSpecs( );
   	void invalidMoveMessage( );

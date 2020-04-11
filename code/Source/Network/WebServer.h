@@ -17,13 +17,15 @@ namespace Chess
     {
     public:
       //-- types
-      typedef boost::asio::ip::tcp::acceptor Acceptor;
+      typedef boost::asio::ip::tcp::acceptor      Acceptor;
+      typedef ConnectionAgent::ConnectionAgentPtr ConnectionAgentPtr;
 
       //-- construction 
       WebServer( boost::asio::io_service & ioService, bool & pendingUserInput, string & userInput );
       
       //-- public methods
       void handleAccept( ConnectionAgent::ConnectionAgentPtr connection, const boost::system::error_code & err );
+      inline ConnectionAgentPtr getConnection() const { return connection_; }
 
     protected:  
       //-- protected methods
@@ -33,6 +35,7 @@ namespace Chess
       Acceptor acceptor_;
       bool &   pendingUserInput_;
       string & userInput_;
+      ConnectionAgentPtr connection_;
     };  
 
   }

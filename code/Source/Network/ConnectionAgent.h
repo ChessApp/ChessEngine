@@ -33,6 +33,8 @@ namespace Chess
       void     start( );
       void     handleRead( const boost::system::error_code & err, size_t bytesTransferred );
       void     handleWrite( const boost::system::error_code & err, size_t bytesTransferred );
+      void     send( string outboundData );
+      // string & getOutputBuffer() const { return confirmationMsg_; }
 
     protected:  
       //-- protected members

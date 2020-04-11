@@ -42,6 +42,7 @@ namespace Chess
     {
       if(!err)
       {
+        send("\nyeeeeet");
         // copy the contents of the inputBuffer (char * buffer) to a temporary string...
         // This is a roundabout way to convert a char * type to a string using c++ string
         // constructor semantics
@@ -73,6 +74,16 @@ namespace Chess
         std::cerr << "error: " << err.message() << endl;  
         socket_.close();  
       }  
+    }
+
+    void ConnectionAgent::send( string outboundData )
+    {
+      socket_.async_write_some(
+        boost::asio::buffer(outboundData, bufferLength),  
+        boost::bind(&ConnectionAgent::handleWrite,  
+        shared_from_this(),  
+        boost::asio::placeholders::error,  
+        boost::asio::placeholders::bytes_transferred) );  
     }
 
   }
