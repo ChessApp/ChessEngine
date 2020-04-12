@@ -15,6 +15,8 @@ using std::endl;
 bool newInput;
 bool turn;
 std::mutex m;
+string ipAddress = "127.0.0.1";
+size_t port = 2346;
 
 /* Erase all Occurrences of given substring from main string.
  */
@@ -44,7 +46,7 @@ void pollingThread( )
       
       //socket creation  
       tcp::socket socket(io_service);
-      socket.connect( tcp::endpoint( boost::asio::ip::address::from_string("127.0.0.1"), 2346 ) );
+      socket.connect( tcp::endpoint( boost::asio::ip::address::from_string(ipAddress), port ) );
 
       // getting a response from the server
       boost::asio::read_until(socket, receive_buffer, "\r\n\r\n", error);
@@ -54,7 +56,6 @@ void pollingThread( )
       }
       else
       {
-        // cout << "buffer size: " << receive_buffer.size() << endl;
         if( receive_buffer.size() > 4 )
         {
           const char * data = boost::asio::buffer_cast<const char *>(receive_buffer.data());
@@ -106,7 +107,7 @@ int main()
         
       //socket creation  
       tcp::socket socket(io_service);
-      socket.connect( tcp::endpoint( boost::asio::ip::address::from_string("127.0.0.1"), 2346 ) );
+      socket.connect( tcp::endpoint( boost::asio::ip::address::from_string(ipAddress), port ) );
 
       const string msg = input;  
       boost::asio::write( socket, boost::asio::buffer(msg), error );
