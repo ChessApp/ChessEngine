@@ -1,0 +1,1 @@
+g++ -std=c++11 -o blackClient blackClient.cpp -lboost_system -pthread

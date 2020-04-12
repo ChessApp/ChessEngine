@@ -45,26 +45,29 @@ namespace Chess
     {
       if(!err)
       {
-        // copy the contents of the inputBuffer (char * buffer) to a temporary string...
-        // This is a roundabout way to convert a char * type to a string using c++ string
-        // constructor semantics
-        string temp(inputBuffer_);
-        // set the content of the temporary string equal to our shared memory address...
-        // updating this memory address affects the main game engine thread...
-        // this is not a thread-safe way of managing memory and should probably be fixed
-        // soon...
-        userInput_ = temp;
-        // clear the content of the input buffer to start fresh next time traffic
-        // enters the port
-        memset(inputBuffer_, 0, sizeof inputBuffer_);
-        // signal to the main game engine thread that user input is available...
-        // again, this is not thread-safe...we should probably use a semaphore or
-        // some other thread-safe construct here...
-        pendingUserInput_ = false;
+        if(pendingUserInput_)
+        {
+          // copy the contents of the inputBuffer (char * buffer) to a temporary string...
+          // This is a roundabout way to convert a char * type to a string using c++ string
+          // constructor semantics
+          string temp(inputBuffer_);
+          // set the content of the temporary string equal to our shared memory address...
+          // updating this memory address affects the main game engine thread...
+          // this is not a thread-safe way of managing memory and should probably be fixed
+          // soon...
+          userInput_ = temp;
+          // clear the content of the input buffer to start fresh next time traffic
+          // enters the port
+          memset(inputBuffer_, 0, sizeof inputBuffer_);
+          // signal to the main game engine thread that user input is available...
+          // again, this is not thread-safe...we should probably use a semaphore or
+          // some other thread-safe construct here...
+          pendingUserInput_ = false;
+        }
       }   
       else
-      {  
-        std::cerr << "error: " << err.message() << std::endl;  
+      {
+        // std::cerr << "error: " << err.message() << std::endl;  
         socket_.close();  
       }  
     }
@@ -73,6 +76,7 @@ namespace Chess
     {
       if(err)
       {
+        cout << "handleWrite" << endl;
         std::cerr << "error: " << err.message() << endl;  
         socket_.close();  
       }

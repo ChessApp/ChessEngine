@@ -70,11 +70,17 @@ namespace Chess
     
       //-- protected members
       Buffer                    outStream_;
+      Buffer                    outStreamBlack_;
       bool                      pendingUserInput_;
+      bool                      pendingUserInputBlack_;
       boost::asio::io_service   ioService_;
+      boost::asio::io_service   ioServiceBlack_;
       WebServerPtr              webServer_;
+      WebServerPtr              webServerBlack_;
       NetworkThread             networkThread_;
       std::thread               networkHandle_;
+      NetworkThread             networkThreadBlack_;
+      std::thread               networkHandleBlack_;
     };
 
   }

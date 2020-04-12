@@ -1,0 +1,1 @@
+g++ -std=c++11 -o whiteClient whiteClient.cpp -lboost_system -pthread

@@ -11,8 +11,8 @@ namespace Chess
   namespace Network
   {
 
-    WebServer::WebServer( boost::asio::io_service & ioService, bool & pendingUserInput, string & userInput, Buffer & os )
-      : acceptor_(ioService, ip::tcp::endpoint(ip::tcp::v4(), 2345)),
+    WebServer::WebServer( boost::asio::io_service & ioService, bool & pendingUserInput, string & userInput, Buffer & os, size_t port )
+      : acceptor_(ioService, ip::tcp::endpoint(ip::tcp::v4(), port)),
         pendingUserInput_(pendingUserInput),
         userInput_(userInput),
         connection_( ConnectionAgentPtr() ),
