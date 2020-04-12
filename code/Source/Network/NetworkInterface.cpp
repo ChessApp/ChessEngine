@@ -1,8 +1,5 @@
 #include "Network/NetworkInterface.h"
 
-#include <chrono>
-#include <thread>
-
 
 namespace Chess
 {
@@ -11,24 +8,24 @@ namespace Chess
 
     NetworkInterface::NetworkInterface( BoardPtr board, BaseTurnPtr & currentTurn )
       : Interface(board, currentTurn),
-        pendingUserInput_(true),
-        ioService_(),
-        ioServiceBlack_(),
-        outStream_(),
+        pendingWhiteUserInput_(true),
+        whiteIOService_(),
+        blackIOService_(),
+        outStreamWhite_(),
         outStreamBlack_(),
-        webServer_(new WebServer(ioService_, pendingUserInput_, userInput_, outStream_, 2346)),
-        webServerBlack_(new WebServer(ioServiceBlack_, pendingUserInputBlack_, userInput_, outStreamBlack_, 2347)),
-        networkThread_(ioService_),
-        networkThreadBlack_(ioServiceBlack_),
-        networkHandle_(networkThread_),
-        networkHandleBlack_(networkThreadBlack_)
+        whiteWebServer_(new WebServer(whiteIOService_, pendingWhiteUserInput_, userInput_, outStreamWhite_, 2346)),
+        blackWebServer_(new WebServer(blackIOService_, pendingBlackUserInput_, userInput_, outStreamBlack_, 2347)),
+        whiteNetworkThread_(whiteIOService_),
+        blackNetworkThread_(blackIOService_),
+        whiteNetworkHandle_(whiteNetworkThread_),
+        blackNetworkHandle_(blackNetworkThread_)
     { }
 
     void NetworkInterface::getInput( )
     {
-      outStream_ << currentTurn_->getTurn();
+      outStreamWhite_ << currentTurn_->getTurn();
       outStreamBlack_ << currentTurn_->getTurn();
-      outStream_ << "'s move: ";
+      outStreamWhite_ << "'s move: ";
       outStreamBlack_ << "'s move: ";
 
       // A blocking semaphore should probably be implemented here...
@@ -37,13 +34,13 @@ namespace Chess
       // it successfully reads any messages sent to its TCP port.
       if( (currentTurn_->getTurn() == 'W') )
       {
-        pendingUserInput_ = true;
-        while(pendingUserInput_) { }
+        pendingWhiteUserInput_ = true;
+        while(pendingWhiteUserInput_) { }
       }
       else if( currentTurn_->getTurn() == 'B' )
       {
-        pendingUserInputBlack_ = true;
-        while(pendingUserInputBlack_) { }
+        pendingBlackUserInput_ = true;
+        while(pendingBlackUserInput_) { }
       }
 
       cout << userInput_ << endl;
@@ -55,18 +52,18 @@ namespace Chess
     void NetworkInterface::printBoard( )
     {
       updateUserBoard();
-      outStream_.put("\n");
+      outStreamWhite_.put("\n");
       outStreamBlack_.put("\n");
       
       for( int y = 0; y<11; ++y )
       {
         for( int x = 0; x<11; ++x )
         {
-          outStream_.put(userBoard_[y][x]);
+          outStreamWhite_.put(userBoard_[y][x]);
           outStreamBlack_.put(userBoard_[y][x]);
         }
 
-        outStream_.put("\n");
+        outStreamWhite_.put("\n");
         outStreamBlack_.put("\n");
       }
     }
@@ -74,9 +71,9 @@ namespace Chess
     void NetworkInterface::printGameConds( )
     {
       // print game conditions
-      outStream_ << "In check: " << checkStatus_ << "\n";
-      outStream_ << "Move: " << currentTurn_->getTurn() << "\n";
-      outStream_ << "Please enter your next move in the following format: source,destination\nExample: A2,A4 (Capital letters)\n";
+      outStreamWhite_ << "In check: " << checkStatus_ << "\n";
+      outStreamWhite_ << "Move: " << currentTurn_->getTurn() << "\n";
+      outStreamWhite_ << "Please enter your next move in the following format: source,destination\nExample: A2,A4 (Capital letters)\n";
 
       outStreamBlack_ << "In check: " << checkStatus_ << "\n";
       outStreamBlack_ << "Move: " << currentTurn_->getTurn() << "\n";
@@ -87,8 +84,8 @@ namespace Chess
     // make an invalid move.
     void NetworkInterface::invalidMoveMessage( )
     {
-      outStream_ << "The move you entered was not valid." << "\n";
-      outStream_ << "Please enter a valid move in the format provided." << "\n";
+      outStreamWhite_ << "The move you entered was not valid." << "\n";
+      outStreamWhite_ << "Please enter a valid move in the format provided." << "\n";
 
       outStreamBlack_ << "The move you entered was not valid." << "\n";
       outStreamBlack_ << "Please enter a valid move in the format provided." << "\n";
@@ -98,8 +95,8 @@ namespace Chess
     // to make a move that leaves them in check.
     void NetworkInterface::inCheckMessage( )
     {
-      outStream_ << "You are, or will be, in check." << "\n";
-      outStream_ << "Please enter a move so you are not in check." << "\n";
+      outStreamWhite_ << "You are, or will be, in check." << "\n";
+      outStreamWhite_ << "Please enter a move so you are not in check." << "\n";
 
       outStreamBlack_ << "You are, or will be, in check." << "\n";
       outStreamBlack_ << "Please enter a move so you are not in check." << "\n";
@@ -112,9 +109,15 @@ namespace Chess
       printBoard();
 
       if(currentTurn_->getTurn() == 'W')
-        outStream_ << "Checkmate! Winner: W" << "\n";
+      {
+        outStreamWhite_ << "Checkmate! Winner: W" << "\n";
+        outStreamBlack_ << "Checkmate! Winner: W" << "\n";
+      }
       if(currentTurn_->getTurn() == 'B')
-        outStream_ << "Checkmate! Winner: B" << "\n";
+      {
+        outStreamWhite_ << "Checkmate! Winner: B" << "\n";
+        outStreamBlack_ << "Checkmate! Winner: B" << "\n";
+      }
     }
 
   }

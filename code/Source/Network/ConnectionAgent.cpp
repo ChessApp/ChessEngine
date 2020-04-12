@@ -45,6 +45,7 @@ namespace Chess
     {
       if(!err)
       {
+        // Only read the input stream if it is a valid time to be getting user input.
         if(pendingUserInput_)
         {
           // copy the contents of the inputBuffer (char * buffer) to a temporary string...
@@ -67,7 +68,6 @@ namespace Chess
       }   
       else
       {
-        // std::cerr << "error: " << err.message() << std::endl;  
         socket_.close();  
       }  
     }
@@ -82,6 +82,7 @@ namespace Chess
       }
       else
       {
+        // Add the delimiter signal to the end of the stream before sending it.
         outStream_.put("\r\n\r\n");
         boost::asio::write( socket_, boost::asio::buffer(outStream_.pop()) );
       }
