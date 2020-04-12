@@ -32,6 +32,7 @@ namespace Chess
     virtual void invalidMoveMessage( );
     virtual void inCheckMessage( );
     virtual void checkmateStatus( );
+    virtual void startupMessage( );
 
     //-- public methods
     void printPinListDiagnostics( );

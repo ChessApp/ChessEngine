@@ -120,5 +120,16 @@ namespace Chess
       }
     }
 
+    void NetworkInterface::startupMessage( )
+    {
+      outStreamWhite_ << "\n";
+      outStreamWhite_ << "Firin' up the ol' war game" << "\n";
+      outStreamWhite_ << "Courtesy of Booty and Sons" << "\n" << "\n";
+
+      outStreamBlack_ << "\n";
+      outStreamBlack_ << "Firin' up the ol' war game" << "\n";
+      outStreamBlack_ << "Courtesy of Booty and Sons" << "\n" << "\n";
+    }
+
   }
 }

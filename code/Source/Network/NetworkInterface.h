@@ -30,6 +30,7 @@ namespace Chess
       virtual void invalidMoveMessage( );
       virtual void inCheckMessage( );
       virtual void checkmateStatus( );
+      virtual void startupMessage( );
 
     protected:
       /* Defines an object function operator for starting and

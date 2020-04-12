@@ -282,4 +282,11 @@ namespace Chess
   		cout << "Checkmate! Winner: B" << endl;
   }
 
+  void Interface::startupMessage( )
+  {
+    cout << "\n";
+    cout << "Firin' up the ol' war game" << "\n";
+    cout << "Courtesy of Booty and Sons" << "\n" << "\n";
+  }
+
 }

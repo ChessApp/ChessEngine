@@ -15,10 +15,6 @@ int main( int argc, char ** argv )
   RUN_ALL_TESTS ( ) ;
   #endif /* RUN_UNIT_TESTS */
 
-  cout << endl;
-  cout << "Firin' up the ol' war game" << endl;
-  cout << "Courtesy of Booty and Sons" << endl << endl;
-
   if( argc == 2 )
     new Chess::GameProtocolDriver(argv[1]);
   else

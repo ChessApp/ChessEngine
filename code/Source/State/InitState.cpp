@@ -21,6 +21,7 @@ namespace Chess
     BaseState::StatePtr InitState::execute( )
     {
       DEBUG_CONSOLE_1ARG("State: INIT");
+      interface_->startupMessage();
 
       vector<PiecePtr> nullPieceList;
       for( int j = 0; j < 8; j++ )
