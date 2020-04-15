@@ -55,7 +55,7 @@ namespace Chess
     using namespace State;
 
     init_.reset(               new InitState(stateConfigFile, interface_, board_, whiteTurn_, blackTurn_, currentTurn_) );
-    input_.reset(              new InputState(interface_) );
+    input_.reset(              new InputState(interface_, board_, currentTurn_) );
     relevancy_.reset(          new RelevancyState(interface_) );
     moveValidity_.reset(       new MoveValidityState(interface_, board_) );
     pathscan_.reset(           new PathScanState(interface_, board_) );
@@ -67,7 +67,7 @@ namespace Chess
     pinScan_.reset(            new PinScanState(board_, currentTurn_) );
     blockScan_.reset(          new BlockScanState(currentTurn_, whiteTurn_, blackTurn_) );
     escapeRoute_.reset(        new EscapeRouteState(interface_, board_, currentTurn_) );
-    checkmate_.reset(          new CheckmateState(interface_) );
+    checkmate_.reset(          new CheckmateState(interface_, currentTurn_) );
 
     init_->setTransitionStates(               input_,               input_ );
     input_->setTransitionStates(              relevancy_,           input_ );
@@ -89,7 +89,7 @@ namespace Chess
     using namespace State;
 
     init_.reset(               new InitState(fileName, interface_, board_, whiteTurn_, blackTurn_, currentTurn_) );
-    input_.reset(              new InputState(interface_) );
+    input_.reset(              new InputState(interface_, board_, currentTurn_) );
     relevancy_.reset(          new RelevancyState(interface_) );
     moveValidity_.reset(       new MoveValidityState(interface_, board_) );
     pathscan_.reset(           new PathScanState(interface_, board_) );
@@ -101,7 +101,7 @@ namespace Chess
     pinScan_.reset(            new PinScanState(board_, currentTurn_) );
     blockScan_.reset(          new BlockScanState(currentTurn_, whiteTurn_, blackTurn_) );
     escapeRoute_.reset(        new EscapeRouteState(interface_, board_, currentTurn_) );
-    checkmate_.reset(          new CheckmateState(interface_) );
+    checkmate_.reset(          new CheckmateState(interface_, currentTurn_) );
 
     init_->setTransitionStates(               input_,               input_ );
     input_->setTransitionStates(              relevancy_,           input_ );

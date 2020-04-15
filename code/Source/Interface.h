@@ -45,6 +45,7 @@ namespace Chess
   	void checkmateStatus( );
     int  colLocation( char user_col );
     int  rowLocation( char user_row );
+    inline void setInput( string input ) { userInput_ = input; }
 
     //-- public members
     int sourceCol;
