@@ -40,8 +40,6 @@ namespace Chess
       board_->init(nullPieceList);
 
       currentTurn_ = whiteTurn_;
-      
-      interface_->printBoard();
 
       return nextState_;
     }
