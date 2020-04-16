@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root>
-	<Flags serverFresh="0" clientFresh="0" invalidMove="0" />
+	<Flags serverFresh="0" clientFresh="1" invalidMove="0" />
 	<Input content="" />
 	<Turn color="W" checkStatus="0" />
 	<Winner status="0" color="" />
