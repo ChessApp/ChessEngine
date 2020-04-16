@@ -8,13 +8,16 @@ function getInputValue(xml) {
   var inputVal = document.getElementById("input").value;
   xmlDoc.children[0].children[1].attributes[0].nodeValue = inputVal;
   
-  fetch("http://127.0.0.1:8080/GameState.xml", {
-    method: 'POST',
-    mode: 'no-cors',
-    body: xmlDoc,
-  }).then(response => {
-    console.log(response)
-  })
+  // fetch("http://ec2-3-22-116-6.us-east-2.compute.amazonaws.com/GameState.xml", {
+  //   method: 'POST',
+  //   mode: 'no-cors',
+  //   body: xmlDoc,
+  // }).then(response => {
+  //   console.log(response)
+  // })
+  xmlhttp.open("POST", "http://ec2-3-22-116-6.us-east-2.compute.amazonaws.com/GameState.xml", true);
+  // xmlhttp.open("GET", "http://localhost:8080/GameState.xml", true);
+  xmlhttp.send();
 
   // Displaying the value
   console.log(inputVal);
@@ -29,7 +32,7 @@ function loadXMLDoc() {
       return this;
     }
   };
-  xmlhttp.open("GET", "GameState.xml", true);
+  xmlhttp.open("POST", "GameState.xml", true);
   // xmlhttp.open("GET", "http://localhost:8080/GameState.xml", true);
   xmlhttp.send();
 }
