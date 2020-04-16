@@ -1,4 +1,4 @@
-
+http://ec2-3-22-116-6.us-east-2.compute.amazonaws.com/
 function getInputValue(xml) {
   var xmlDoc = xml.responseXML;
   var txt = xmlDoc.children[0].children[0].attributes[1].nodeValue;
@@ -15,9 +15,11 @@ function getInputValue(xml) {
   // }).then(response => {
   //   console.log(response)
   // })
-  xmlhttp.open("POST", "http://ec2-3-22-116-6.us-east-2.compute.amazonaws.com/GameState.xml", true);
-  // xmlhttp.open("GET", "http://localhost:8080/GameState.xml", true);
-  xmlhttp.send();
+  xml.open("POST", "http://ec2-3-22-116-6.us-east-2.compute.amazonaws.com/GameState.xml", true);
+  // xml.open("POST", "http://localhost:8080/GameState.xml", true);
+  new XMLSerializer().serializeToString(xmlDoc);
+  xml.setRequestHeader("Content-Type", "test/plain");
+  xml.send(xmlDoc);
 
   // Displaying the value
   console.log(inputVal);
@@ -32,7 +34,7 @@ function loadXMLDoc() {
       return this;
     }
   };
-  xmlhttp.open("POST", "GameState.xml", true);
+  xmlhttp.open("GET", "http://ec2-3-22-116-6.us-east-2.compute.amazonaws.com/GameState.xml", true);
   // xmlhttp.open("GET", "http://localhost:8080/GameState.xml", true);
   xmlhttp.send();
 }
