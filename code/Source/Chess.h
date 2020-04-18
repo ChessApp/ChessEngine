@@ -10,4 +10,6 @@
 
 using namespace std;
 
+static const char * gameStateFile("/home/chess/dev/ChessGame/code/Source/UI/www/GameState.xml");
+
 #endif /* CHESS_H_ */

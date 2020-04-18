@@ -2,8 +2,13 @@
 #define CHESS_STATE_INPUTSTATE_H_
 
 #include "Chess.h"
+
+#include "Tools/pugixml/pugixml.hpp"
+
 #include "State/BaseState.h"
 #include "Interface.h"
+#include "Board.h"
+#include "BaseTurn.h"
 
 
 namespace Chess
@@ -17,18 +22,30 @@ namespace Chess
     public:
       //-- types
       typedef shared_ptr<Interface> InterfacePtr;
+      typedef shared_ptr<Board>     BoardPtr;
+      typedef shared_ptr<BaseTurn>  BaseTurnPtr;
 
       //-- construction
-      inline InputState( InterfacePtr interface ) 
-        : interface_(interface)
+      inline InputState( InterfacePtr interface, BoardPtr board, BaseTurnPtr & currentTurn ) 
+        : interface_(interface),
+          board_(board),
+          currentTurn_(currentTurn)
       { }
 
       //-- BaseState interface
       virtual StatePtr execute( );
       
     protected:
+      //-- protected methods
+      bool freshInput( );
+      void clearServerFresh( pugi::xml_node & flagsNode );
+      void getInput( );
+      void updateGameState( );
+
       //-- protected members
-      InterfacePtr interface_;
+      InterfacePtr  interface_;
+      BoardPtr      board_;
+      BaseTurnPtr & currentTurn_;
     };
 
   }
