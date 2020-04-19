@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<root>
+	<Flags serverFresh="0" clientFresh="1" invalidMove="0" />
+	<Input content="" />
+	<Turn color="W" checkStatus="0" />
+	<Winner status="0" color="" />
+	<Board>
+		<Square row="7" col="7" type="R" color="W" />
+		<Square row="7" col="6" type="KN" color="W" />
+		<Square row="7" col="5" type="B" color="W" />
+		<Square row="7" col="4" type="K" color="W" />
+		<Square row="7" col="3" type="Q" color="W" />
+		<Square row="7" col="2" type="B" color="W" />
+		<Square row="7" col="1" type="KN" color="W" />
+		<Square row="7" col="0" type="R" color="W" />
+		<Square row="6" col="7" type="P" color="W" />
+		<Square row="6" col="6" type="P" color="W" />
+		<Square row="6" col="5" type="P" color="W" />
+		<Square row="6" col="4" type="P" color="W" />
+		<Square row="6" col="3" type="P" color="W" />
+		<Square row="6" col="2" type="P" color="W" />
+		<Square row="6" col="1" type="P" color="W" />
+		<Square row="6" col="0" type="P" color="W" />
+		<Square row="5" col="7" type="" color="." />
+		<Square row="5" col="6" type="" color="." />
+		<Square row="5" col="5" type="" color="." />
+		<Square row="5" col="4" type="" color="." />
+		<Square row="5" col="3" type="" color="." />
+		<Square row="5" col="2" type="" color="." />
+		<Square row="5" col="1" type="" color="." />
+		<Square row="5" col="0" type="" color="." />
+		<Square row="4" col="7" type="" color="." />
+		<Square row="4" col="6" type="" color="." />
+		<Square row="4" col="5" type="" color="." />
+		<Square row="4" col="4" type="" color="." />
+		<Square row="4" col="3" type="" color="." />
+		<Square row="4" col="2" type="" color="." />
+		<Square row="4" col="1" type="" color="." />
+		<Square row="4" col="0" type="" color="." />
+		<Square row="3" col="7" type="" color="." />
+		<Square row="3" col="6" type="" color="." />
+		<Square row="3" col="5" type="" color="." />
+		<Square row="3" col="4" type="" color="." />
+		<Square row="3" col="3" type="" color="." />
+		<Square row="3" col="2" type="" color="." />
+		<Square row="3" col="1" type="" color="." />
+		<Square row="3" col="0" type="" color="." />
+		<Square row="2" col="7" type="" color="." />
+		<Square row="2" col="6" type="" color="." />
+		<Square row="2" col="5" type="" color="." />
+		<Square row="2" col="4" type="" color="." />
+		<Square row="2" col="3" type="" color="." />
+		<Square row="2" col="2" type="" color="." />
+		<Square row="2" col="1" type="" color="." />
+		<Square row="2" col="0" type="" color="." />
+		<Square row="1" col="7" type="P" color="B" />
+		<Square row="1" col="6" type="P" color="B" />
+		<Square row="1" col="5" type="P" color="B" />
+		<Square row="1" col="4" type="P" color="B" />
+		<Square row="1" col="3" type="P" color="B" />
+		<Square row="1" col="2" type="P" color="B" />
+		<Square row="1" col="1" type="P" color="B" />
+		<Square row="1" col="0" type="P" color="B" />
+		<Square row="0" col="7" type="R" color="B" />
+		<Square row="0" col="6" type="KN" color="B" />
+		<Square row="0" col="5" type="B" color="B" />
+		<Square row="0" col="4" type="K" color="B" />
+		<Square row="0" col="3" type="Q" color="B" />
+		<Square row="0" col="2" type="B" color="B" />
+		<Square row="0" col="1" type="KN" color="B" />
+		<Square row="0" col="0" type="R" color="B" />
+	</Board>
+</root>

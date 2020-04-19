@@ -1,5 +1,7 @@
 #include "State/SwitchTurnState.h"
 
+#include "Tools/pugixml/pugixml.hpp"
+
 #include "Pieces/NullPiece.h"
 
 
@@ -12,8 +14,10 @@ namespace Chess
     {
       DEBUG_CONSOLE_1ARG("State: SWITCH TURN");
 
+      updateGameState();
+      currentTurn_->getCausingCheckList().clear();
+
       interface_->printPinListDiagnostics();
-      interface_->printBoard();
 
       if( currentTurn_ == whiteTurn_ )
         currentTurn_ = blackTurn_;
@@ -23,6 +27,22 @@ namespace Chess
         std::cout << "Error switching turns." << std::endl;
 
       return nextState_;
+    }
+
+    void SwitchTurnState::updateGameState()
+    {
+      // Setup the xml document structure and load the state initialization file
+      pugi::xml_document doc;
+      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+
+      // Grab the root node
+      pugi::xml_node root = doc.child("root");
+
+      pugi::xml_node flagsNode  = root.child("Flags");
+      pugi::xml_node turnNode   = root.child("Turn");
+      flagsNode.attribute("invalidMove").set_value(0);
+      turnNode.attribute("checkStatus").set_value(currentTurn_->getCausingCheckList().size());
+      doc.save_file(gameStateFile);
     }
 
   }

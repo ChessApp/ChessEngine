@@ -1,5 +1,8 @@
 #include "State/InputState.h"
 
+#include <chrono>
+#include <thread>
+
 
 namespace Chess
 {
@@ -10,12 +13,107 @@ namespace Chess
     {
       DEBUG_CONSOLE_1ARG("State: INPUT");
       
+      updateGameState();
+
+      interface_->printBoard();
       interface_->printGameConds();
-      interface_->getInput();
+
+      while( !freshInput() )
+      {
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+      }
+
+      getInput();
       
       nextState_->setWhiteKing(whiteKing_);
       nextState_->setBlackKing(blackKing_);
       return nextState_;
+    }
+
+    bool InputState::freshInput()
+    {
+      // Setup the xml document structure and load the state initialization file
+      pugi::xml_document doc;
+      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+
+      // Grab the root node
+      pugi::xml_node root = doc.child("root");
+
+      pugi::xml_node flagsNode = root.child("Flags");
+      int status = flagsNode.attribute("serverFresh").as_int();
+      if( status != 0 )
+      {
+        clearServerFresh(flagsNode);
+        doc.save_file(gameStateFile);
+        return true;
+      }
+      else
+      {
+        return false; 
+      }
+    }
+
+    void InputState::clearServerFresh( pugi::xml_node & flagsNode )
+    {
+      flagsNode.attribute("serverFresh").set_value(0);
+
+      // Pretty hacky, but mark the move as invalid here, only
+      // to be cleared if we get to the SwitchTurnState.
+      flagsNode.attribute("invalidMove").set_value(1);
+    }
+
+    void InputState::getInput( )
+    {
+      // Setup the xml document structure and load the state initialization file
+      pugi::xml_document doc;
+      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+
+      // Grab the root node
+      pugi::xml_node root = doc.child("root");
+
+      pugi::xml_node inputNode = root.child("Input");
+      interface_->setInput( inputNode.attribute("content").value() );
+    }
+
+    void InputState::updateGameState()
+    {
+      // Setup the xml document structure and load the state initialization file
+      pugi::xml_document doc;
+      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+
+      // Grab the root node
+      pugi::xml_node root = doc.child("root");
+
+      pugi::xml_node turnNode  = root.child("Turn");
+      pugi::xml_node boardNode = root.child("Board");
+      pugi::xml_node flagsNode = root.child("Flags");
+
+      string turn( 1, currentTurn_->getTurn() );
+      turnNode.attribute("color").set_value(turn.c_str());
+
+      std::vector<PiecePtr> pieceList(64);
+      for( int y = 0; y <= 7; y++ )
+      {
+        for( int x = 0; x <= 7; x++ )
+        {
+          pieceList.push_back( board_->getPiece(y, x) );
+        }
+      }
+
+      // Iterate through all of the children of the root node
+      for( pugi::xml_node_iterator s = boardNode.begin(); s != boardNode.end(); ++s )
+      {
+        PiecePtr piece = pieceList.back();
+        string color( 1, piece->getColor() );
+        s->attribute("row").set_value(piece->getRow());
+        s->attribute("col").set_value(piece->getCol());
+        s->attribute("type").set_value(piece->getType().c_str());
+        s->attribute("color").set_value(color.c_str());
+        pieceList.pop_back();
+      }
+
+      flagsNode.attribute("clientFresh").set_value(1);
+      doc.save_file(gameStateFile);
     }
 
   }
