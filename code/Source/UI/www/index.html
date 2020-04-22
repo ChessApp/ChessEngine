@@ -4,9 +4,15 @@
 <body>
 <h2>Chess</h2>
 
-<form action="loadXMLDoc()">
+<form name="form" method="post" action="index.php" enctype="multipart/form-data">
+  <input type="file" name="my_file" /><br /><br />
+  <input type="submit" name="submit" value="Upload"/>
+</form>
+
+<form name="form2" method="post" action="index.php" enctype="multipart/form-data">
   <label for="input">Enter move:</label><br>
   <input type="text" id="input" name="input" value=""><br>
+  <input type="submit" name="submit" value="Send move"/>
 </form>
 
 <button type="button" onclick="loadXMLDoc()">
