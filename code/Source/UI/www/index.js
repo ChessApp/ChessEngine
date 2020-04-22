@@ -39,28 +39,3 @@ function readFresh(xml) {
   txt = xmlDoc.children[0].children[0].attributes[1].nodeValue;
   console.log(txt);
 }
-
-// console.log("Chess");
-
-// function createCircle(radius) {
-//   return {
-//     radius,
-//     draw: function() {
-//       console.log('draw');
-//     }
-//   };
-// }
-
-// const circle = createCircle(1);
-
-// function Circle(radius) {
-//   console.log('this', this);
-//   this.radius = radius;
-//   this.draw = function() {
-//     console.log('draw');
-//   }
-// }
-
-// const another = new Circle(1);
-
-// var socket = new WebSocket('ws://ec2-3-22-95-184.us-east-2.compute.amazonaws.com');
