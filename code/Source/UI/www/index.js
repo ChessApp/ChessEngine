@@ -52,3 +52,5 @@ function updateBoard(xml) {
     document.getElementById(i.toString()).innerHTML = piece;
   }
 }
+
+loadXMLDoc();
