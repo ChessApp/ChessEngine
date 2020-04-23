@@ -51,6 +51,9 @@ function updateBoard(xml) {
                      xmlDoc.children[0].children[4].children[i].attributes[2].nodeValue);
     document.getElementById(i.toString()).innerHTML = piece;
   }
+
+  // Update whose turn it is
+  document.getElementById("turn").innerHTML = xmlDoc.children[0].children[2].attributes[0].nodeValue
 }
 
 loadXMLDoc();
