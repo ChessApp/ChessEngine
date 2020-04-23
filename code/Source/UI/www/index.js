@@ -20,7 +20,8 @@ function loadXMLDoc() {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       readFresh(this);
-      getInputValue(this)
+      // getInputValue(this)
+      updateBoard(this);
       return this;
     }
   };
@@ -38,4 +39,16 @@ function readFresh(xml) {
   xmlDoc.children[0].children[0].attributes[1].nodeValue = "0";
   txt = xmlDoc.children[0].children[0].attributes[1].nodeValue;
   console.log(txt);
+}
+
+function updateBoard(xml) {
+  xmlDoc = xml.responseXML;
+  
+  var i;
+  for(i=0; i<64; i++) {
+    var piece = "";
+    piece = piece.concat(xmlDoc.children[0].children[4].children[i].attributes[3].nodeValue,
+                     xmlDoc.children[0].children[4].children[i].attributes[2].nodeValue);
+    document.getElementById(i.toString()).innerHTML = piece;
+  }
 }
