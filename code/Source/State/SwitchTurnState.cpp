@@ -16,6 +16,8 @@ namespace Chess
 
       updateGameState();
       currentTurn_->getCausingCheckList().clear();
+      currentTurn_->getPotentialPinList().clear();
+      currentTurn_->getPinList().clear();
 
       interface_->printPinListDiagnostics();
 
