@@ -34,6 +34,7 @@ namespace Chess
       
     protected:
       //-- protected methods
+      void updateGameState();
       void configureScans( PiecePtr kingToScan );
 
       //-- protected members

@@ -44,7 +44,8 @@ namespace Chess
     protected:
       //-- protected methods
       void setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet );
-      void parseXMLFile( );
+      void parseInitialStateFile( );
+      void initializeGameStateFile();
 
       //-- protected members
       const char *  configFileName_;

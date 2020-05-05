@@ -2,6 +2,7 @@
 #define CHESS_STATE_MOVEVALIDITYSTATE_H_
 
 #include "Chess.h"
+
 #include "State/BaseState.h"
 #include "Board.h"
 #include "Interface.h"
@@ -30,6 +31,9 @@ namespace Chess
       virtual StatePtr execute( );
       
     protected:
+      //-- protected methods
+      void updateGameState();
+
       //-- protected members
       InterfacePtr interface_;
       BoardPtr     board_;

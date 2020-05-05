@@ -33,9 +33,12 @@ namespace Chess
         }  
       }
 
+      // Ensure that there is not stale data in GameState.xml
+      initializeGameStateFile();
+
       // Configure the state of the board from the xml
       // file passed in during construction of this class.
-      parseXMLFile();
+      parseInitialStateFile();
 
       board_->init(nullPieceList);
 
@@ -44,7 +47,7 @@ namespace Chess
       return nextState_;
     }
 
-    void InitState::parseXMLFile()
+    void InitState::parseInitialStateFile()
     {
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
@@ -116,6 +119,24 @@ namespace Chess
     {
       pieceToSet->setLocation(rowToSet, colToSet);
       board_->setPiece(pieceToSet, rowToSet, colToSet);
+    }
+
+    void InitState::initializeGameStateFile()
+    {
+      // Setup the xml document structure and load the state initialization file
+      pugi::xml_document doc;
+      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+
+      // Grab the root node
+      pugi::xml_node root = doc.child("root");
+
+      pugi::xml_node flagsNode    = root.child("Flags");
+      pugi::xml_node messagesNode = root.child("Messages");
+
+      flagsNode.attribute("invalidMove").set_value(0);
+      messagesNode.attribute("invalidMove").set_value("");
+
+      doc.save_file(gameStateFile);
     }
 
   }

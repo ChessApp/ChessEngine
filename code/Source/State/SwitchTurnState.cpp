@@ -40,10 +40,14 @@ namespace Chess
       // Grab the root node
       pugi::xml_node root = doc.child("root");
 
-      pugi::xml_node flagsNode  = root.child("Flags");
-      pugi::xml_node turnNode   = root.child("Turn");
+      pugi::xml_node flagsNode     = root.child("Flags");
+      pugi::xml_node turnNode      = root.child("Turn");
+      pugi::xml_node messagesNode  = root.child("Messages");
+
       flagsNode.attribute("invalidMove").set_value(0);
       turnNode.attribute("checkStatus").set_value(currentTurn_->getCausingCheckList().size());
+      messagesNode.attribute("invalidMove").set_value("");
+      
       doc.save_file(gameStateFile);
     }
 
