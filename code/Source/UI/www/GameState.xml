@@ -4,6 +4,7 @@
 	<Input content="" />
 	<Turn color="W" checkStatus="0" />
 	<Winner status="0" color="" />
+	<Messages invalidMove="" />
 	<Board>
 		<Square row="7" col="7" type="R" color="W" />
 		<Square row="7" col="6" type="KN" color="W" />
