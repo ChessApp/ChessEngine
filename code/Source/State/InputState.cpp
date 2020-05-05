@@ -1,7 +1,10 @@
 #include "State/InputState.h"
 
+#include <stdio.h>
+
 #include <chrono>
 #include <thread>
+#include <fstream>
 
 
 namespace Chess
@@ -20,7 +23,7 @@ namespace Chess
 
       while( !freshInput() )
       {
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
       }
 
       getInput();
@@ -32,25 +35,12 @@ namespace Chess
 
     bool InputState::freshInput()
     {
-      // Setup the xml document structure and load the state initialization file
-      pugi::xml_document doc;
-      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+      ifstream in(userInputFile);
 
-      // Grab the root node
-      pugi::xml_node root = doc.child("root");
-
-      pugi::xml_node flagsNode = root.child("Flags");
-      int status = flagsNode.attribute("serverFresh").as_int();
-      if( status != 0 )
-      {
-        clearServerFresh(flagsNode);
-        doc.save_file(gameStateFile);
+      if(in)
         return true;
-      }
       else
-      {
-        return false; 
-      }
+        return false;
     }
 
     void InputState::clearServerFresh( pugi::xml_node & flagsNode )
@@ -64,15 +54,17 @@ namespace Chess
 
     void InputState::getInput( )
     {
-      // Setup the xml document structure and load the state initialization file
-      pugi::xml_document doc;
-      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+      ifstream in(userInputFile);
 
-      // Grab the root node
-      pugi::xml_node root = doc.child("root");
+      if(!in)
+        return;
 
-      pugi::xml_node inputNode = root.child("Input");
-      interface_->setInput( inputNode.attribute("content").value() );
+      char input[10];
+      in.getline(input, 10);
+      cout << "Input: " << input << endl;
+      interface_->setInput(input);
+      in.close();
+      std::remove(userInputFile);
     }
 
     void InputState::updateGameState()
