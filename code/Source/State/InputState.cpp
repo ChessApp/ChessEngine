@@ -59,6 +59,20 @@ namespace Chess
       if(!in)
         return;
 
+      // Setup the xml document structure and load the state initialization file
+      pugi::xml_document doc;
+      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+
+      // Grab the root node
+      pugi::xml_node root = doc.child("root");
+
+      pugi::xml_node flagsNode = root.child("Flags");
+
+      // Pretty hacky, but mark the move as invalid here, only
+      // to be cleared if we get to the SwitchTurnState.
+      flagsNode.attribute("invalidMove").set_value(1);
+      doc.save_file(gameStateFile);
+
       char input[10];
       in.getline(input, 10);
       cout << "Input: " << input << endl;

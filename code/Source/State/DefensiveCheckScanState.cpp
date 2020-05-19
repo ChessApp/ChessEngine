@@ -1,5 +1,7 @@
 #include "State/DefensiveCheckScanState.h"
 
+#include "Tools/pugixml/pugixml.hpp"
+
 #include "Pieces/Pieces.h"
 
 
@@ -39,6 +41,7 @@ namespace Chess
       if(status_)
       {
         cout << "This move will put you in check." << endl;
+        updateGameState();
         return returnState_;
       }
       else
@@ -47,6 +50,20 @@ namespace Chess
         return nextState_;
       }
       
+    }
+
+    void DefensiveCheckScanState::updateGameState()
+    {
+      // Setup the xml document structure and load the state initialization file
+      pugi::xml_document doc;
+      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+
+      // Grab the root node
+      pugi::xml_node root = doc.child("root");
+
+      pugi::xml_node messagesNode  = root.child("Messages");
+      messagesNode.attribute("invalidMove").set_value("The move you entered was not valid - it will put you in check. Please enter a valid move in the format provided.");
+      doc.save_file(gameStateFile);
     }
 
     void DefensiveCheckScanState::configureScans( PiecePtr kingToScan )

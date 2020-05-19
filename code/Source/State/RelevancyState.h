@@ -27,6 +27,9 @@ namespace Chess
       virtual StatePtr execute( );
       
     protected:
+      //-- protected methods
+      void updateGameState();
+
       //-- protected members
       InterfacePtr interface_;
     };

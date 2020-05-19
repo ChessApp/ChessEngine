@@ -1,5 +1,7 @@
 #include "State/MoveValidityState.h"
 
+#include "Tools/pugixml/pugixml.hpp"
+
 
 namespace Chess
 {
@@ -20,9 +22,28 @@ namespace Chess
 
       PiecePtr currentPiece = board_->getPiece(sourceRow, sourceCol);
       if( currentPiece->validDirection(destRow, destCol) )
+      {
       	return nextState_;
+      }
       else
+      {
+        updateGameState();
       	return returnState_;
+      }
+    }
+
+    void MoveValidityState::updateGameState()
+    {
+      // Setup the xml document structure and load the state initialization file
+      pugi::xml_document doc;
+      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+
+      // Grab the root node
+      pugi::xml_node root = doc.child("root");
+
+      pugi::xml_node messageNode  = root.child("Messages");
+      messageNode.attribute("invalidMove").set_value("The move you entered was not valid. Please enter a valid move in the format provided.");
+      doc.save_file(gameStateFile);
     }
 
   }
