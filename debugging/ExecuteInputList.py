@@ -2,7 +2,7 @@ import os.path
 from os import path
 
 UserInputFilePath = "/home/chess/dev/ChessGame/code/Source/UI/www/UserInput.txt"
-UserInputListPath = "/home/chess/dev/ChessGame/build/InputFile.txt"
+UserInputListPath = "/home/chess/dev/ChessGame/debugging/InputFile.txt"
 
 listFile = open(UserInputListPath)
 lines = listFile.readlines()
