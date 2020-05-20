@@ -18,6 +18,10 @@ namespace Chess
       currentTurn_->getCausingCheckList().clear();
       currentTurn_->getPotentialPinList().clear();
       currentTurn_->getPinList().clear();
+      // Should not be needed, but for added protection we leave it in for now.
+      // This is worthy of reassessment during the next refactor.
+      whiteTurn_->setPendingRemovedPiece( PiecePtr() );
+      blackTurn_->setPendingRemovedPiece( PiecePtr() );
 
       interface_->printPinListDiagnostics();
 

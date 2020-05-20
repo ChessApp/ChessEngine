@@ -5,13 +5,14 @@ namespace Chess
 {
 
   void BaseTurn::deactivatePiece( ) 
-  { 
-    if(pendingRemovedPiece_) 
+  {
+    // Do not attempt to deactivate a Null Piece
+    if(pendingRemovedPiece_ && pendingRemovedPiece_->getName() != ".. ") 
     {
       int index = pendingRemovedPiece_->getActiveListIndex();
       pendingRemovedPiece_->clrActiveListIndex();
       activeList_.erase(activeList_.begin() + index);
-      pendingRemovedPiece_ = NULL;
+      pendingRemovedPiece_ = PiecePtr();
       updatePieceIndices();
     }
   }
