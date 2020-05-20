@@ -79,6 +79,8 @@ namespace Chess
       interface_->setInput(input);
       in.close();
       std::remove(userInputFile);
+
+      updateInputList(input);
     }
 
     void InputState::updateGameState()
@@ -120,6 +122,14 @@ namespace Chess
 
       flagsNode.attribute("clientFresh").set_value(1);
       doc.save_file(gameStateFile);
+    }
+
+    void InputState::updateInputList( std::string input )
+    {
+      std::ofstream fileStream;
+      fileStream.open(userInputList, std::ios::app);
+      fileStream << input << std::endl;
+      fileStream.close();
     }
 
   }

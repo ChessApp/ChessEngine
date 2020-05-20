@@ -41,6 +41,7 @@ namespace Chess
       void clearServerFresh( pugi::xml_node & flagsNode );
       void getInput( );
       void updateGameState( );
+      void updateInputList( std::string );
 
       //-- protected members
       InterfacePtr  interface_;
