@@ -40,10 +40,6 @@ namespace Chess
       // file passed in during construction of this class.
       parseInitialStateFile();
 
-      board_->init(nullPieceList);
-
-      currentTurn_ = whiteTurn_;
-
       return nextState_;
     }
 
@@ -54,44 +50,45 @@ namespace Chess
       pugi::xml_parse_result result = doc.load_file(configFileName_);
 
       // Grab the root node
-      pugi::xml_node root = doc.child("root");
+      pugi::xml_node root      = doc.child("root");
+      pugi::xml_node boardNode = root.child("Board");
 
-      // Iterate through all of the children of the root node
-      for( pugi::xml_node_iterator i = root.begin(); i != root.end(); ++i )
+      // Iterate through all of the children of the board node (each square/piece)
+      for( pugi::xml_node_iterator i = boardNode.begin(); i != boardNode.end(); ++i )
       {
         string type   = i->attribute("type").value();
         string color  = i->attribute("color").value();
         int    row    = i->attribute("row").as_int();
-        int    col    = i->attribute("column").as_int();
+        int    col    = i->attribute("col").as_int();
         string symbol = i->attribute("symbol").value();
 
         // Create pieces on the heap based on the configuration
         // read from the xml file
         PiecePtr p;
-        if( type == "Pawn" )
+        if( type == "P" )
         {
           if( color == "W" )
             p.reset( new Chess::WhitePawn(symbol) );
           else
             p.reset( new Chess::BlackPawn(symbol) );
         }
-        else if( type == "Bishop" )
+        else if( type == "B" )
         {
           p.reset( new Chess::Bishop(symbol, board_) );
         }
-        else if( type == "Rook" )
+        else if( type == "R" )
         {
           p.reset( new Chess::Rook(symbol, board_) );
         }
-        else if( type == "Knight" )
+        else if( type == "KN" )
         {
           p.reset( new Chess::Knight(symbol) );
         }
-        else if( type == "Queen" )
+        else if( type == "Q" )
         {
           p.reset( new Chess::Queen(symbol, board_) );
         }
-        else if( type == "King" )
+        else if( type == "K" )
         {
           p.reset( new Chess::King(symbol, board_) );
           if( color == "W" )
@@ -106,19 +103,38 @@ namespace Chess
           }
         }
 
-        setPiece(p,row,col);
+        // Don't bother setting Null Pieces - every square is initialized
+        // with a Null Piece set for it.
+        if( type != "" )
+        {
+          setPiece(p,row,col);
+        }
 
         if( color == "W" )
           whiteTurn_->setActivePiece(p);
-        else
+        else if( color == "B" )
           blackTurn_->setActivePiece(p);
       }
+
+      // Set which team is initially starting the game based on the
+      // config file.
+      pugi::xml_node turnNode = root.child("Turn");
+      string turn = turnNode.attribute("color").value();
+      if( turn == "W" )
+        currentTurn_ = whiteTurn_;
+      else if( turn == "B" )
+        currentTurn_ = blackTurn_;
+      else
+        cout << "Error initializing starting team turn." << endl;
     }
 
     void InitState::setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet )
     {
-      pieceToSet->setLocation(rowToSet, colToSet);
-      board_->setPiece(pieceToSet, rowToSet, colToSet);
+      if(pieceToSet)
+      {
+        pieceToSet->setLocation(rowToSet, colToSet);
+        board_->setPiece(pieceToSet, rowToSet, colToSet);
+      }
     }
 
     void InitState::initializeGameStateFile()
@@ -132,9 +148,15 @@ namespace Chess
 
       pugi::xml_node flagsNode    = root.child("Flags");
       pugi::xml_node messagesNode = root.child("Messages");
+      pugi::xml_node turnNode     = root.child("Turn");
+      pugi::xml_node winnerNode   = root.child("Winner");
+
 
       flagsNode.attribute("invalidMove").set_value(0);
       messagesNode.attribute("invalidMove").set_value("");
+      turnNode.attribute("checkStatus").set_value(0);
+      winnerNode.attribute("status").set_value(0);
+      winnerNode.attribute("color").set_value("");
 
       doc.save_file(gameStateFile);
     }

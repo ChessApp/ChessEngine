@@ -117,6 +117,7 @@ namespace Chess
         s->attribute("col").set_value(piece->getCol());
         s->attribute("type").set_value(piece->getType().c_str());
         s->attribute("color").set_value(color.c_str());
+        s->attribute("symbol").set_value(piece->getName().c_str());
         pieceList.pop_back();
       }
 

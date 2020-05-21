@@ -1,41 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <root>
-  <Piece type="Pawn" color="W" row="6" column="0" symbol="WP "></Piece>
-  <Piece type="Pawn" color="W" row="6" column="1" symbol="WP "></Piece>
-  <Piece type="Pawn" color="W" row="6" column="2" symbol="WP "></Piece>
-  <Piece type="Pawn" color="W" row="6" column="3" symbol="WP "></Piece>
-  <Piece type="Pawn" color="W" row="6" column="4" symbol="WP "></Piece>
-  <Piece type="Pawn" color="W" row="6" column="5" symbol="WP "></Piece>
-  <Piece type="Pawn" color="W" row="6" column="6" symbol="WP "></Piece>
-  <Piece type="Pawn" color="W" row="6" column="7" symbol="WP "></Piece>
-
-  <Piece type="Pawn" color="B" row="1" column="0" symbol="BP "></Piece>
-  <Piece type="Pawn" color="B" row="1" column="1" symbol="BP "></Piece>
-  <Piece type="Pawn" color="B" row="1" column="2" symbol="BP "></Piece>
-  <Piece type="Pawn" color="B" row="1" column="3" symbol="BP "></Piece>
-  <Piece type="Pawn" color="B" row="1" column="4" symbol="BP "></Piece>
-  <Piece type="Pawn" color="B" row="1" column="5" symbol="BP "></Piece>
-  <Piece type="Pawn" color="B" row="1" column="6" symbol="BP "></Piece>
-  <Piece type="Pawn" color="B" row="1" column="7" symbol="BP "></Piece>
-
-  <Piece type="Rook" color="W" row="7" column="0" symbol="WR "></Piece>
-  <Piece type="Rook" color="W" row="7" column="7" symbol="WR "></Piece>
-  <Piece type="Rook" color="B" row="0" column="0" symbol="BR "></Piece>
-  <Piece type="Rook" color="B" row="0" column="7" symbol="BR "></Piece>
-  
-  <Piece type="Bishop" color="W" row="7" column="2" symbol="WB "></Piece>
-  <Piece type="Bishop" color="W" row="7" column="5" symbol="WB "></Piece>
-  <Piece type="Bishop" color="B" row="0" column="2" symbol="BB "></Piece>
-  <Piece type="Bishop" color="B" row="0" column="5" symbol="BB "></Piece>
-
-  <Piece type="Knight" color="W" row="7" column="1" symbol="WN "></Piece>
-  <Piece type="Knight" color="W" row="7" column="6" symbol="WN "></Piece>
-  <Piece type="Knight" color="B" row="0" column="1" symbol="BN "></Piece>
-  <Piece type="Knight" color="B" row="0" column="6" symbol="BN "></Piece>
-
-  <Piece type="Queen" color="W" row="7" column="3" symbol="WQ "></Piece>
-  <Piece type="King"  color="W" row="7" column="4" symbol="WK "></Piece>
-
-  <Piece type="Queen" color="B" row="0" column="3" symbol="BQ "></Piece>
-  <Piece type="King"  color="B" row="0" column="4" symbol="BK "></Piece>
+  <Flags serverFresh="0" clientFresh="1" invalidMove="0" />
+  <Input content="" />
+  <Turn color="W" checkStatus="0" />
+  <Winner status="0" color="" />
+  <Messages invalidMove="" />
+  <Board>
+    <Square symbol="WR " row="7" col="7" type="R" color="W" />
+    <Square symbol="WN " row="7" col="6" type="KN" color="W" />
+    <Square symbol="WB " row="7" col="5" type="B" color="W" />
+    <Square symbol="WK " row="7" col="4" type="K" color="W" />
+    <Square symbol="WQ " row="7" col="3" type="Q" color="W" />
+    <Square symbol="WB " row="7" col="2" type="B" color="W" />
+    <Square symbol="WN " row="7" col="1" type="KN" color="W" />
+    <Square symbol="WR " row="7" col="0" type="R" color="W" />
+    <Square symbol="WP " row="6" col="7" type="P" color="W" />
+    <Square symbol="WP " row="6" col="6" type="P" color="W" />
+    <Square symbol="WP " row="6" col="5" type="P" color="W" />
+    <Square symbol="WP " row="6" col="4" type="P" color="W" />
+    <Square symbol="WP " row="6" col="3" type="P" color="W" />
+    <Square symbol="WP " row="6" col="2" type="P" color="W" />
+    <Square symbol="WP " row="6" col="1" type="P" color="W" />
+    <Square symbol="WP " row="6" col="0" type="P" color="W" />
+    
+    <Square symbol="BP " row="1" col="7" type="P" color="B" />
+    <Square symbol="BP " row="1" col="6" type="P" color="B" />
+    <Square symbol="BP " row="1" col="5" type="P" color="B" />
+    <Square symbol="BP " row="1" col="4" type="P" color="B" />
+    <Square symbol="BP " row="1" col="3" type="P" color="B" />
+    <Square symbol="BP " row="1" col="2" type="P" color="B" />
+    <Square symbol="BP " row="1" col="1" type="P" color="B" />
+    <Square symbol="BP " row="1" col="0" type="P" color="B" />
+    <Square symbol="BR " row="0" col="7" type="R" color="B" />
+    <Square symbol="BN " row="0" col="6" type="KN" color="B" />
+    <Square symbol="BB " row="0" col="5" type="B" color="B" />
+    <Square symbol="BK " row="0" col="4" type="K" color="B" />
+    <Square symbol="BQ " row="0" col="3" type="Q" color="B" />
+    <Square symbol="BB " row="0" col="2" type="B" color="B" />
+    <Square symbol="BN " row="0" col="1" type="KN" color="B" />
+    <Square symbol="BR " row="0" col="0" type="R" color="B" />
+  </Board>
 </root>
