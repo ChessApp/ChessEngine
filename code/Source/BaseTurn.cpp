@@ -7,7 +7,7 @@ namespace Chess
   void BaseTurn::deactivatePiece( ) 
   {
     // Do not attempt to deactivate a Null Piece
-    if(pendingRemovedPiece_ && pendingRemovedPiece_->getName() != ".. ") 
+    if(pendingRemovedPiece_ && pendingRemovedPiece_->getType() != "") 
     {
       int index = pendingRemovedPiece_->getActiveListIndex();
       pendingRemovedPiece_->clrActiveListIndex();
