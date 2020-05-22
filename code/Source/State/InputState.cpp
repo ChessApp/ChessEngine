@@ -35,7 +35,7 @@ namespace Chess
 
     bool InputState::freshInput()
     {
-      ifstream in(userInputFile);
+      ifstream in(FilePaths::userInputFile);
 
       if(in)
         return true;
@@ -54,14 +54,14 @@ namespace Chess
 
     void InputState::getInput( )
     {
-      ifstream in(userInputFile);
+      ifstream in(FilePaths::userInputFile);
 
       if(!in)
         return;
 
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
-      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+      pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile);
 
       // Grab the root node
       pugi::xml_node root = doc.child("root");
@@ -71,14 +71,14 @@ namespace Chess
       // Pretty hacky, but mark the move as invalid here, only
       // to be cleared if we get to the SwitchTurnState.
       flagsNode.attribute("invalidMove").set_value(1);
-      doc.save_file(gameStateFile);
+      doc.save_file(FilePaths::gameStateFile);
 
       char input[10];
       in.getline(input, 10);
       cout << "Input: " << input << endl;
       interface_->setInput(input);
       in.close();
-      std::remove(userInputFile);
+      std::remove(FilePaths::userInputFile);
 
       updateInputList(input);
     }
@@ -87,7 +87,7 @@ namespace Chess
     {
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
-      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+      pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile);
 
       // Grab the root node
       pugi::xml_node root = doc.child("root");
@@ -122,13 +122,13 @@ namespace Chess
       }
 
       flagsNode.attribute("clientFresh").set_value(1);
-      doc.save_file(gameStateFile);
+      doc.save_file(FilePaths::gameStateFile);
     }
 
     void InputState::updateInputList( std::string input )
     {
       std::ofstream fileStream;
-      fileStream.open(userInputList, std::ios::app);
+      fileStream.open(FilePaths::userInputList, std::ios::app);
       fileStream << input << std::endl;
       fileStream.close();
     }

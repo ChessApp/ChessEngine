@@ -39,7 +39,7 @@ namespace Chess
     {
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
-      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+      pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile);
 
       // Grab the root node
       pugi::xml_node root = doc.child("root");
@@ -52,7 +52,7 @@ namespace Chess
       turnNode.attribute("checkStatus").set_value(currentTurn_->getCausingCheckList().size());
       messagesNode.attribute("invalidMove").set_value("");
       
-      doc.save_file(gameStateFile);
+      doc.save_file(FilePaths::gameStateFile);
     }
 
   }

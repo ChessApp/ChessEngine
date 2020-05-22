@@ -56,14 +56,14 @@ namespace Chess
     {
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
-      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+      pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile);
 
       // Grab the root node
       pugi::xml_node root = doc.child("root");
 
       pugi::xml_node messagesNode  = root.child("Messages");
       messagesNode.attribute("invalidMove").set_value("The move you entered was not valid - it will put you in check. Please enter a valid move in the format provided.");
-      doc.save_file(gameStateFile);
+      doc.save_file(FilePaths::gameStateFile);
     }
 
     void DefensiveCheckScanState::configureScans( PiecePtr kingToScan )
