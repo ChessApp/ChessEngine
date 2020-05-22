@@ -1,5 +1,7 @@
 #include "State/InitState.h"
 
+#include <cstdio>
+
 #include "Tools/pugixml/pugixml.hpp"
 
 #include "Pieces/Pieces.h"
@@ -39,6 +41,8 @@ namespace Chess
       // Configure the state of the board from the xml
       // file passed in during construction of this class.
       parseInitialStateFile();
+
+      resetInputListFile();
 
       return nextState_;
     }
@@ -141,7 +145,7 @@ namespace Chess
     {
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
-      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+      pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile);
 
       // Grab the root node
       pugi::xml_node root = doc.child("root");
@@ -158,7 +162,15 @@ namespace Chess
       winnerNode.attribute("status").set_value(0);
       winnerNode.attribute("color").set_value("");
 
-      doc.save_file(gameStateFile);
+      doc.save_file(FilePaths::gameStateFile);
+    }
+
+    void InitState::resetInputListFile()
+    {
+      if( std::remove(FilePaths::userInputList) )
+      {
+        cout << "InitState::resetInputListFile: Failed to remove InputList.txt" << endl;
+      }
     }
 
   }
