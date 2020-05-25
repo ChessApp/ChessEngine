@@ -23,7 +23,7 @@ namespace Chess
     {
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
-      pugi::xml_parse_result result = doc.load_file(gameStateFile);
+      pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile);
 
       // Grab the root node
       pugi::xml_node root = doc.child("root");
@@ -32,7 +32,7 @@ namespace Chess
       winnerNode.attribute("status").set_value(1);
       string winner( 1, currentTurn_->getTurn() );
       winnerNode.attribute("color").set_value(winner.c_str());
-      doc.save_file(gameStateFile);
+      doc.save_file(FilePaths::gameStateFile);
     }
 
   }

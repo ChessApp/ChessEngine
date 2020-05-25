@@ -10,8 +10,11 @@
 
 using namespace std;
 
-static const char * gameStateFile("/home/chess/dev/ChessGame/code/Source/UI/www/GameState.xml");
-static const char * userInputFile("/home/chess/dev/ChessGame/code/Source/UI/www/UserInput.txt");
-static const char * userInputList("/home/chess/dev/ChessGame/build/InputList.txt");
+namespace FilePaths
+{
+  static const char * gameStateFile("/home/chess/dev/ChessGame/code/Source/UI/www/GameState.xml");
+  static const char * userInputFile("/home/chess/dev/ChessGame/code/Source/UI/www/UserInput.txt");
+  static const char * userInputList("/home/chess/dev/ChessGame/build/InputList.txt");
+}
 
 #endif /* CHESS_H_ */

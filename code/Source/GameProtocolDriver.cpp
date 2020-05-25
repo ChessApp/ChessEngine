@@ -16,7 +16,7 @@
 #include "State/BlockScanState.h"
 #include "State/EscapeRouteState.h"
 #include "State/CheckmateState.h"
-#include "Network/NetworkInterface.h"
+#include "Interface.h"
 
 
 namespace Chess
@@ -28,7 +28,7 @@ namespace Chess
   GameProtocolDriver::GameProtocolDriver( )
     : board_(new Board),
       currentTurn_(),
-      interface_(new Network::NetworkInterface(board_, currentTurn_)),
+      interface_(new Interface(board_, currentTurn_)),
       whiteTurn_(new BaseTurn('W')),
       blackTurn_(new BaseTurn('B'))
   {
@@ -39,7 +39,7 @@ namespace Chess
   GameProtocolDriver::GameProtocolDriver( char * configFileName )
     : board_(new Board),
       currentTurn_(),
-      interface_(new Network::NetworkInterface(board_, currentTurn_)),
+      interface_(new Interface(board_, currentTurn_)),
       whiteTurn_(new BaseTurn('W')),
       blackTurn_(new BaseTurn('B'))
   {

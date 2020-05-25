@@ -46,6 +46,7 @@ namespace Chess
       void setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet );
       void parseInitialStateFile( );
       void initializeGameStateFile();
+      void resetInputListFile();
 
       //-- protected members
       const char *  configFileName_;
