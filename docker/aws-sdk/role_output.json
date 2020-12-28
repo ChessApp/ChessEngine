@@ -1,0 +1,24 @@
+{
+    Role: {
+        Path: /,
+        RoleName: lambda-cpp-demo,
+        RoleId: AROASPTXX2BME42OJG4M5,
+        Arn: arn:aws:iam::170976071768:role/lambda-cpp-demo,
+        CreateDate: 2020-12-28T17:03:29Z,
+        AssumeRolePolicyDocument: {
+            Version: 2012-10-17,
+            Statement: [
+                {
+                    Effect: Allow,
+                    Principal: {
+                        Service: [
+                            lambda.amazonaws.com
+                        ]
+                    },
+                    Action: sts:AssumeRole
+                }
+            ]
+        }
+    }
+}
+

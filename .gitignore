@@ -265,5 +265,9 @@ __pycache__/
 
 # Executable binary output
 chess-all
+chess
 
 *.list
+
+code/build
+docker/aws-sdk/code/build

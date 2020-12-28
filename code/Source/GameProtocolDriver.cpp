@@ -44,7 +44,7 @@ namespace Chess
       blackTurn_(new BaseTurn('B'))
   {
     string fileNameString(configFileName);
-    string rootDir  = "/home/chess/dev/ChessGame/config/";
+    string rootDir  = "/chessengine/config/";
     string fullPath = rootDir + fileNameString;
     createStateMachine(fullPath.c_str());
     runStateMachine();

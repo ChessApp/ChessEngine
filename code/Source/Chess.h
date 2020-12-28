@@ -12,9 +12,9 @@ using namespace std;
 
 namespace FilePaths
 {
-  static const char * gameStateFile("/home/chess/dev/ChessGame/code/Source/UI/www/GameState.xml");
-  static const char * userInputFile("/home/chess/dev/ChessGame/code/Source/UI/www/UserInput.txt");
-  static const char * userInputList("/home/chess/dev/ChessGame/build/InputList.txt");
+  static const char * gameStateFile("/chessengine/code/Source/UI/www/GameState.xml");
+  static const char * userInputFile("/chessengine/code/Source/UI/www/UserInput.txt");
+  static const char * userInputList("/chessengine/build/InputList.txt");
 }
 
 #endif /* CHESS_H_ */

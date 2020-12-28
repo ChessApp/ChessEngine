@@ -1,8 +1,6 @@
-FROM ubuntu:18.04
-MAINTAINER Kevin Scott <kmscott27@gmail.com>
+FROM amazonlinux:latest
 
-COPY image-content.sh /root/image-content.sh
-RUN bash /root/image-content.sh
+MAINTAINER Kevin Scott <kevinscott.softwaredev@gmail.com>
 
-ENV HOME /root
-WORKDIR /root
+RUN yum -y groupinstall "Development tools" 
+RUN yum -y install gcc-c++ libcurl-devel cmake3 git
