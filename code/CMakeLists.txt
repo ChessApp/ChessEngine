@@ -6,6 +6,9 @@ include_directories(Source)
 
 file(GLOB_RECURSE SOURCES "Source/*.cpp" "Source/*.h" "Source/*.hpp")
 
-message(${SOURCES})
 
 add_executable(${PROJECT_NAME} ${SOURCES})
+
+find_package(aws-lambda-runtime REQUIRED)
+target_link_libraries(${PROJECT_NAME} PUBLIC AWS::aws-lambda-runtime)
+aws_lambda_package_target(${PROJECT_NAME})
