@@ -1,4 +1,5 @@
 #include <aws/lambda-runtime/runtime.h>
+#include <boost/filesystem.hpp>
 
 #include "Chess.h"
 #include "GameProtocolDriver.h"
@@ -12,8 +13,27 @@ const string gameState = "GameState";
 
 invocation_response my_handler(invocation_request const& request)
 {
-   std::cout << "request.payload: " << request.payload << std::endl;
-   return invocation_response::success(gameState, "application/json");
+  std::cout << "Current path is " << boost::filesystem::current_path() << '\n';
+  {
+    ofstream payloadFile;
+    payloadFile.open("/var/task/payloadFile.json", fstream::out);
+    cout << payloadFile.good() << endl;
+    payloadFile << request.payload << "\n";
+    payloadFile.close();
+    ifstream in("/var/task/payloadFile.json");
+    cout << in.good() << endl;
+  }
+  {
+    ifstream payloadFile("/var/task/payloadFile.json");
+    cout << "good: " << payloadFile.good() << endl;
+    char payload[5];
+    payloadFile.getline(payload, 5);
+    if(!payloadFile) cout << ":(\n" << endl;
+    payloadFile.close();
+    std::cout << "payload: " << payload << endl;
+  }
+  std::cout << "request.payload: " << request.payload << std::endl;
+  return invocation_response::success(gameState, "application/json");
 }
 
 

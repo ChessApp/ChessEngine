@@ -4,6 +4,7 @@ MAINTAINER Kevin Scott <kevinscott.softwaredev@gmail.com>
 
 RUN yum -y groupinstall "Development tools" 
 RUN yum -y install gcc-c++ libcurl-devel cmake3 git
+RUN yum -y install boost boost-devel
 RUN pip3 install awscli
 
 RUN git clone https://github.com/awslabs/aws-lambda-cpp.git && \

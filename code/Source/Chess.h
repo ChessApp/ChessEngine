@@ -5,6 +5,7 @@
 #include <memory>
 #include <string>
 #include <iostream>
+#include <fstream>
 
 #include "Tools/debugging/DebugConsole.h"
 
