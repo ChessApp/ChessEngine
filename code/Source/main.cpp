@@ -1,5 +1,5 @@
 #include <aws/lambda-runtime/runtime.h>
-#include <boost/filesystem.hpp>
+#include <bits/stdc++.h>
 
 #include "Chess.h"
 #include "GameProtocolDriver.h"
@@ -10,30 +10,26 @@
 using namespace aws::lambda_runtime;
 
 const string gameState = "GameState";
+const string payloadFilePath = "/tmp/DefaultInitialState.xml";
+
+bool copyFile(const char *SRC, const char* DEST)
+{
+  std::ifstream src(SRC, std::ios::binary);
+  std::ofstream dest(DEST, std::ios::binary);
+  dest << src.rdbuf();
+  return src && dest;
+}
 
 invocation_response my_handler(invocation_request const& request)
 {
-  std::cout << "Current path is " << boost::filesystem::current_path() << '\n';
-  {
-    ofstream payloadFile;
-    payloadFile.open("/var/task/payloadFile.json", fstream::out);
-    cout << payloadFile.good() << endl;
-    payloadFile << request.payload << "\n";
-    payloadFile.close();
-    ifstream in("/var/task/payloadFile.json");
-    cout << in.good() << endl;
-  }
-  {
-    ifstream payloadFile("/var/task/payloadFile.json");
-    cout << "good: " << payloadFile.good() << endl;
-    char payload[5];
-    payloadFile.getline(payload, 5);
-    if(!payloadFile) cout << ":(\n" << endl;
-    payloadFile.close();
-    std::cout << "payload: " << payload << endl;
-  }
   std::cout << "request.payload: " << request.payload << std::endl;
-  return invocation_response::success(gameState, "application/json");
+  copyFile("/var/task/config/DefaultInitialState.xml", "/tmp/DefaultInitialState.xml");
+  ifstream payloadFile(payloadFilePath);
+  std::string result((std::istreambuf_iterator<char>(payloadFile)),
+               std::istreambuf_iterator<char>());
+  result = result.append("\n");
+  cout << "result: " << result << endl;
+  return invocation_response::success(result, "application/xml");
 }
 
 

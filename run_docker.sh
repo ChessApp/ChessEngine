@@ -8,6 +8,7 @@ if [ -d "docker/mount" ]; then
   rm -rf "docker/mount"
 fi
 
-unzip ./code/build/chess.zip -d ./docker/mount
+unzip -qq ./code/build/chess.zip -d ./docker/mount
+mkdir -p docker/mount/config && cp config/DefaultInitialState.xml docker/mount/config/DefaultInitialState.xml
 
 (cd docker && ./runtime.sh)
