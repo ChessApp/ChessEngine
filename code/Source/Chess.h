@@ -13,8 +13,8 @@ using namespace std;
 
 namespace FilePaths
 {
-  static const char * gameStateFile("/chessengine/code/Source/UI/www/GameState.xml");
-  static const char * userInputFile("/chessengine/code/Source/UI/www/UserInput.txt");
+  static const char * gameStateFile("/tmp/GameState.xml");
+  static const char * userInputFile("/tmp/UserInput.txt");
   static const char * userInputList("/chessengine/build/InputList.txt");
 }
 

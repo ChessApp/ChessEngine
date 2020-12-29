@@ -23,7 +23,7 @@ namespace Chess
 {
 
   // Used to set the InitState
-  static const char * stateConfigFile("/home/chess/dev/ChessGame/config/DefaultInitialState.xml");
+  static const char * stateConfigFile("/tmp/DefaultInitialState.xml");
 
   GameProtocolDriver::GameProtocolDriver( )
     : board_(new Board),
@@ -44,7 +44,7 @@ namespace Chess
       blackTurn_(new BaseTurn('B'))
   {
     string fileNameString(configFileName);
-    string rootDir  = "/chessengine/config/";
+    string rootDir  = "/tmp/";
     string fullPath = rootDir + fileNameString;
     createStateMachine(fullPath.c_str());
     runStateMachine();
@@ -69,19 +69,19 @@ namespace Chess
     escapeRoute_.reset(        new EscapeRouteState(interface_, board_, currentTurn_) );
     checkmate_.reset(          new CheckmateState(interface_, currentTurn_) );
 
-    init_->setTransitionStates(               input_,               input_ );
-    input_->setTransitionStates(              relevancy_,           input_ );
-    relevancy_->setTransitionStates(          moveValidity_,        input_ );
-    moveValidity_->setTransitionStates(       pathscan_,            input_ );
-    pathscan_->setTransitionStates(           move_,                input_ );
-    move_->setTransitionStates(               defensiveCheckScan_,  input_ );
+    init_->setTransitionStates(               input_,               checkmate_ );
+    input_->setTransitionStates(              relevancy_,           checkmate_ );
+    relevancy_->setTransitionStates(          moveValidity_,        checkmate_ );
+    moveValidity_->setTransitionStates(       pathscan_,            checkmate_ );
+    pathscan_->setTransitionStates(           move_,                checkmate_ );
+    move_->setTransitionStates(               defensiveCheckScan_,  checkmate_ );
     defensiveCheckScan_->setTransitionStates( offensiveCheckScan_,  returnPiece_ );
-    returnPiece_->setTransitionStates(        input_,               input_ );
+    returnPiece_->setTransitionStates(        checkmate_,           checkmate_ );
     offensiveCheckScan_->setTransitionStates( pinScan_,             switchTurn_ );
     pinScan_->setTransitionStates(            blockScan_,           switchTurn_ );
     blockScan_->setTransitionStates(          escapeRoute_,         switchTurn_ );
     escapeRoute_->setTransitionStates(        checkmate_,           switchTurn_ );
-    switchTurn_->setTransitionStates(         input_,               input_ );
+    switchTurn_->setTransitionStates(         checkmate_,           checkmate_ );
   }
 
   void GameProtocolDriver::createStateMachine( const char * fileName )

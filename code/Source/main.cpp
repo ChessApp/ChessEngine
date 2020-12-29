@@ -23,8 +23,16 @@ bool copyFile(const char *SRC, const char* DEST)
 invocation_response my_handler(invocation_request const& request)
 {
   std::cout << "request.payload: " << request.payload << std::endl;
+  ofstream state;
+  state.open(FilePaths::userInputFile);
+  state << request.payload;
+  state.close();
+
   copyFile("/var/task/config/DefaultInitialState.xml", "/tmp/DefaultInitialState.xml");
-  ifstream payloadFile(payloadFilePath);
+
+  new Chess::GameProtocolDriver();
+
+  ifstream payloadFile(FilePaths::gameStateFile);
   std::string result((std::istreambuf_iterator<char>(payloadFile)),
                std::istreambuf_iterator<char>());
   result = result.append("\n");
