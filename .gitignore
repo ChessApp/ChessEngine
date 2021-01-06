@@ -273,3 +273,4 @@ code/build
 docker/mount
 docker/output.json
 docker/aws-sdk/code/build
+secrets/*
