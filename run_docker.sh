@@ -9,6 +9,7 @@ if [ -d "docker/mount" ]; then
 fi
 
 unzip -qq ./code/build/chess.zip -d ./docker/mount
-mkdir -p docker/mount/config && cp config/DefaultInitialState.xml docker/mount/config/DefaultInitialState.xml
+mkdir -p docker/mount/config && \
+cp config/DefaultInitialState.xml docker/mount/config/GameState.xml
 
 (cd docker && ./runtime.sh)
