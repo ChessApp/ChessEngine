@@ -25,10 +25,9 @@ namespace Chess
       DynamoDBAgent( string tableName, string region, string endpoint = "" );
       ~DynamoDBAgent();
 
-      //-- static interface
+      //-- interface
       const Aws::Map<Aws::String, Aws::DynamoDB::Model::AttributeValue> getItem( string hashKey, string hashValue );
       void putItem( const vector<pair<string, string>>& items );
-
 
     protected:
       //-- protected methods

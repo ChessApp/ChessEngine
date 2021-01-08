@@ -42,7 +42,6 @@ namespace Chess
         // Reference the retrieved fields/values
         const Aws::Map<Aws::String, Aws::DynamoDB::Model::AttributeValue>& item = result.GetResult().GetItem();
         return item;
-
       }
       else
       {
