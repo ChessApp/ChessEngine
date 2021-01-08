@@ -17,7 +17,6 @@ namespace Chess
   {
   public:
     //-- types
-    typedef shared_ptr<Board>      BoardPtr;
     typedef shared_ptr<ScanResult> ScanResultPtr;
 
     class LeftScan
@@ -25,7 +24,7 @@ namespace Chess
     {
     public:
       //-- construction
-      inline LeftScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline LeftScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
@@ -38,7 +37,7 @@ namespace Chess
     {
     public:
       //-- construction
-      inline RightScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline RightScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
@@ -51,7 +50,7 @@ namespace Chess
     {
     public:
       //-- construction
-      inline UpScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline UpScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
@@ -64,7 +63,7 @@ namespace Chess
     {
     public:
       //-- construction
-      inline DownScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline DownScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
@@ -77,7 +76,7 @@ namespace Chess
     {
     public:
       //-- construction
-      inline UpLeftScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline UpLeftScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
@@ -90,7 +89,7 @@ namespace Chess
     {
     public:
       //-- construction
-      inline UpRightScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline UpRightScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
@@ -103,7 +102,7 @@ namespace Chess
     {
     public:
       //-- construction
-      inline DownLeftScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline DownLeftScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
@@ -116,7 +115,7 @@ namespace Chess
     {
     public:
       //-- construction
-      inline DownRightScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
+      inline DownRightScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
         : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
       { }
 
@@ -125,7 +124,7 @@ namespace Chess
     }; 
 
     //-- construction
-    inline Scanner( BoardPtr board )
+    inline Scanner( Board& board )
       : board_(board)
     { }
 
@@ -135,7 +134,7 @@ namespace Chess
 
   protected:
     //-- protected members
-    BoardPtr   board_ ;
+    Board&      board_ ;
     BaseScan * scan_ ;
   };
 

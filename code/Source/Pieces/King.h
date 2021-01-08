@@ -20,11 +20,10 @@ namespace Chess
   {
   public:
     //-- types
-    typedef shared_ptr<Board> BoardPtr;
     
     //-- construction
-    King( const string name, BoardPtr board, int initRow, int initCol );
-    King( const string name, BoardPtr board );
+    King( const string name, Board& board, int initRow, int initCol );
+    King( const string name, Board& board );
 
     //-- Piece interface
     virtual bool pathScan( int destRow, int destCol );

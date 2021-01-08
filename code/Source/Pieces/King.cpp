@@ -10,14 +10,14 @@
 namespace Chess
 {
 
-  King::King( const string name, BoardPtr board, int initRow, int initCol )
+  King::King( const string name, Board& board, int initRow, int initCol )
     : Pieces(name, "K", initRow, initCol),
       scanner_(new CompoundAxisScan(board))
   {
     setKing(this);
   }
 
-  King::King( const string name, BoardPtr board )
+  King::King( const string name, Board& board )
     : Pieces(name, "K"),
       scanner_(new CompoundAxisScan(board))
   {

@@ -13,7 +13,7 @@ namespace Chess
   {
   public:
     //-- construction
-    DualAxisScan( BoardPtr board );
+    DualAxisScan( Board& board );
 
     //-- Scanner interface
     virtual void identifyScan( int sourceRow, int sourceCol, int destRow, int destCol );

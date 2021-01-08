@@ -4,7 +4,7 @@
 namespace Chess
 {
 
-  SingleAxisScan::SingleAxisScan( BoardPtr board )
+  SingleAxisScan::SingleAxisScan( Board& board )
     : Scanner(board)
   { }
 

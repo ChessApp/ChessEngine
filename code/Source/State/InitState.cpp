@@ -24,25 +24,7 @@ namespace Chess
     {
       DEBUG_CONSOLE_1ARG("State: INIT");
 
-      vector<PiecePtr> nullPieceList;
-      for( int j = 0; j < 8; j++ )
-      {
-        for( int i = 0; i < 8; i++ )
-        {
-          PiecePtr np( new NullPiece(".. ") );
-          setPiece(np, j, i);
-          nullPieceList.push_back(np);
-        }  
-      }
-
-      // Ensure that there is not stale data in GameState.xml
-      initializeGameStateFile();
-
-      // Configure the state of the board from the xml
-      // file passed in during construction of this class.
-      parseInitialStateFile();
-
-      resetInputListFile();
+      
 
       return nextState_;
     }
@@ -51,7 +33,7 @@ namespace Chess
     {
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
-      pugi::xml_parse_result result = doc.load_file(configFileName_);
+      pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile);
 
       // Grab the root node
       pugi::xml_node root      = doc.child("root");
@@ -78,11 +60,11 @@ namespace Chess
         }
         else if( type == "B" )
         {
-          p.reset( new Chess::Bishop(symbol, board_) );
+          p.reset( new Chess::Bishop(symbol, gameState_.board) );
         }
         else if( type == "R" )
         {
-          p.reset( new Chess::Rook(symbol, board_) );
+          p.reset( new Chess::Rook(symbol, gameState_.board) );
         }
         else if( type == "KN" )
         {
@@ -90,21 +72,11 @@ namespace Chess
         }
         else if( type == "Q" )
         {
-          p.reset( new Chess::Queen(symbol, board_) );
+          p.reset( new Chess::Queen(symbol, gameState_.board) );
         }
         else if( type == "K" )
         {
-          p.reset( new Chess::King(symbol, board_) );
-          if( color == "W" )
-          {
-            whiteTurn_->setDefensiveKing(p);
-            blackTurn_->setOffensiveKing(p);
-          }
-          else
-          {
-            whiteTurn_->setOffensiveKing(p);
-            blackTurn_->setDefensiveKing(p);
-          }
+          p.reset( new Chess::King(symbol, gameState_.board) );
         }
 
         // Don't bother setting Null Pieces - every square is initialized
@@ -113,23 +85,12 @@ namespace Chess
         {
           setPiece(p,row,col);
         }
-
-        if( color == "W" )
-          whiteTurn_->setActivePiece(p);
-        else if( color == "B" )
-          blackTurn_->setActivePiece(p);
       }
 
       // Set which team is initially starting the game based on the
       // config file.
       pugi::xml_node turnNode = root.child("Turn");
       string turn = turnNode.attribute("color").value();
-      if( turn == "W" )
-        currentTurn_ = whiteTurn_;
-      else if( turn == "B" )
-        currentTurn_ = blackTurn_;
-      else
-        cout << "Error initializing starting team turn." << endl;
     }
 
     void InitState::setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet )
@@ -137,7 +98,7 @@ namespace Chess
       if(pieceToSet)
       {
         pieceToSet->setLocation(rowToSet, colToSet);
-        board_->setPiece(pieceToSet, rowToSet, colToSet);
+        gameState_.board.setPiece(pieceToSet, rowToSet, colToSet);
       }
     }
 
@@ -163,14 +124,6 @@ namespace Chess
       winnerNode.attribute("color").set_value("");
 
       doc.save_file(FilePaths::gameStateFile);
-    }
-
-    void InitState::resetInputListFile()
-    {
-      if( std::remove(FilePaths::userInputList) )
-      {
-        cout << "InitState::resetInputListFile: Failed to remove InputList.txt" << endl;
-      }
     }
 
   }

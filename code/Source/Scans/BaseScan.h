@@ -13,16 +13,15 @@ namespace Chess
   {
   public:
     //-- types
-    typedef shared_ptr<Board>      BoardPtr;
     typedef shared_ptr<ScanResult> ScanResultPtr;
 
     //-- construction
-    inline BaseScan( BoardPtr board )
+    inline BaseScan( Board& board )
       : board_(board),
         result_(new ScanResult())
     { }
 
-    inline BaseScan( BoardPtr board, int sourceRow, int sourceCol, int destRow, int destCol )
+    inline BaseScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
       : board_(board),
         sourceRow_(sourceRow),
         sourceCol_(sourceCol),
@@ -37,7 +36,7 @@ namespace Chess
   protected:
     //-- protected members
     ScanResultPtr result_;
-    BoardPtr      board_;
+    Board&        board_;
     int           sourceRow_;
     int           sourceCol_;
     int           destRow_;

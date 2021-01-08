@@ -13,10 +13,9 @@ namespace Chess
   {
   public:
     //-- types
-    typedef shared_ptr<Board> BoardPtr;
     
     //-- construction
-    SingleAxisScan( BoardPtr board );
+    SingleAxisScan( Board& board );
 
     //-- Scanner interface
     virtual ScanResultPtr execute( );

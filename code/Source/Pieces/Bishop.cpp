@@ -10,12 +10,12 @@
 namespace Chess
 {
     
-  Bishop::Bishop( const string name, BoardPtr board, int initRow, int initCol )
+  Bishop::Bishop( const string name, Board& board, int initRow, int initCol )
     : Pieces(name, "B", initRow, initCol),
       scanner_(new DualAxisScan(board))
   { }
 
-  Bishop::Bishop( const string name, BoardPtr board )
+  Bishop::Bishop( const string name, Board& board )
     : Pieces(name, "B"),
       scanner_(new DualAxisScan(board))
   { }

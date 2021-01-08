@@ -6,6 +6,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <bits/stdc++.h>
 
 #include "Tools/debugging/DebugConsole.h"
 

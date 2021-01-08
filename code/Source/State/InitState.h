@@ -3,9 +3,7 @@
 
 #include "Chess.h"
 #include "State/BaseState.h"
-#include "Board.h"
-#include "Interface.h"
-#include "BaseTurn.h"
+#include "GameState.h"
 
 
 namespace Chess
@@ -18,24 +16,10 @@ namespace Chess
     {
     public:
       //-- types
-      typedef shared_ptr<Interface> InterfacePtr;
-      typedef shared_ptr<Board>     BoardPtr;
-      typedef shared_ptr<BaseTurn>  BaseTurnPtr;
 
       //-- construction
-      inline InitState ( 
-        const char * configFileName,
-        InterfacePtr interface,
-        BoardPtr board,
-        BaseTurnPtr whiteTurn,
-        BaseTurnPtr blackTurn,
-        BaseTurnPtr & currentTurn )
-        : configFileName_(configFileName), 
-          interface_(interface),
-          board_(board),
-          whiteTurn_(whiteTurn),
-          blackTurn_(blackTurn),
-          currentTurn_(currentTurn)
+      inline InitState( GameState& gameState )
+        : gameState_(gameState)
       { }
 
       //-- BaseState interface
@@ -46,15 +30,9 @@ namespace Chess
       void setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet );
       void parseInitialStateFile( );
       void initializeGameStateFile();
-      void resetInputListFile();
 
       //-- protected members
-      const char *  configFileName_;
-      InterfacePtr  interface_;
-      BoardPtr      board_;
-      BaseTurnPtr   whiteTurn_;
-      BaseTurnPtr   blackTurn_;
-      BaseTurnPtr & currentTurn_;
+      GameState& gameState_;
     };
 
   }

@@ -4,8 +4,8 @@
 namespace Chess
 {
 
-  CompoundAxisScan::CompoundAxisScan( BoardPtr board )
-    : Scanner(board )
+  CompoundAxisScan::CompoundAxisScan( Board& board )
+    : Scanner(board)
   { }
 
   void CompoundAxisScan::identifyScan( int sourceRow, int sourceCol, int destRow, int destCol )

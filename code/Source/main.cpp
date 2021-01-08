@@ -43,41 +43,41 @@ string convertToString(string xmlFile) {
 
 invocation_response my_handler(invocation_request const& request)
 {
-  copyFile("/var/task/config/GameState.xml", "/tmp/GameState.xml");
-  string xmlData = convertToString(FilePaths::gameStateFile);
+  // copyFile("/var/task/config/GameState.xml", "/tmp/GameState.xml");
+  // string xmlData = convertToString(FilePaths::gameStateFile);
 
-  std::ofstream out("/tmp/output.txt");
-  out << xmlData;
-  out.close();
+  // std::ofstream out("/tmp/output.txt");
+  // out << xmlData;
+  // out.close();
 
 
-  Aws::SDKOptions options;
-  Aws::InitAPI(options);
-  {
-    Aws::Client::ClientConfiguration clientConfig;
-    clientConfig.region = "localhost";
-    clientConfig.endpointOverride = "http://localhost:8000";
-    Aws::DynamoDB::DynamoDBClient dynamoClient(clientConfig);
+  // Aws::SDKOptions options;
+  // Aws::InitAPI(options);
+  // {
+  //   Aws::Client::ClientConfiguration clientConfig;
+  //   clientConfig.region = "localhost";
+  //   clientConfig.endpointOverride = "http://localhost:8000";
+  //   Aws::DynamoDB::DynamoDBClient dynamoClient(clientConfig);
 
-    Aws::DynamoDB::Model::PutItemRequest pir;
-    pir.SetTableName("GameStates");
+  //   Aws::DynamoDB::Model::PutItemRequest pir;
+  //   pir.SetTableName("GameStates");
 
-    Aws::DynamoDB::Model::AttributeValue av;
-    av.SetS("69");
-    pir.AddItem("id", av);
+  //   Aws::DynamoDB::Model::AttributeValue av;
+  //   av.SetS("69");
+  //   pir.AddItem("id", av);
 
-    Aws::DynamoDB::Model::AttributeValue val1;
-    val1.SetS(xmlData);
-    pir.AddItem("state", val1);
+  //   Aws::DynamoDB::Model::AttributeValue val1;
+  //   val1.SetS(xmlData);
+  //   pir.AddItem("state", val1);
 
-    const Aws::DynamoDB::Model::PutItemOutcome result = dynamoClient.PutItem(pir);
-    if (!result.IsSuccess())
-    {
-        std::cout << result.GetError().GetMessage() << std::endl;
-    }
-    std::cout << "Done!" << std::endl;
-  }
-  Aws::ShutdownAPI(options);
+  //   const Aws::DynamoDB::Model::PutItemOutcome result = dynamoClient.PutItem(pir);
+  //   if (!result.IsSuccess())
+  //   {
+  //       std::cout << result.GetError().GetMessage() << std::endl;
+  //   }
+  //   std::cout << "Done!" << std::endl;
+  // }
+  // Aws::ShutdownAPI(options);
 
 
   std::cout << "request.payload: " << request.payload << std::endl;
@@ -86,7 +86,7 @@ invocation_response my_handler(invocation_request const& request)
   state << request.payload;
   state.close();
 
-  // new Chess::GameProtocolDriver();
+  new Chess::GameProtocolDriver();
 
   ifstream payloadFile("/tmp/output.txt");
   std::string result((std::istreambuf_iterator<char>(payloadFile)),

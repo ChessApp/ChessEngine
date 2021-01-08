@@ -1,9 +1,7 @@
 #ifndef CHESS_GAMEPROTOCOLDRIVER_H_
 #define CHESS_GAMEPROTOCOLDRIVER_H_
 
-#include "BaseTurn.h"
-#include "Board.h"
-#include "Interface.h"
+#include "GameState.h"
 #include "State/BaseState.h"
 
 
@@ -14,27 +12,18 @@ namespace Chess
   {
   public:
     //-- construction
-    GameProtocolDriver( );
-    GameProtocolDriver( char * configFileName );
+    GameProtocolDriver();
 
   protected:
     //-- protected types
-    typedef shared_ptr<Interface>        InterfacePtr;
-    typedef shared_ptr<BaseTurn>         BaseTurnPtr;
     typedef shared_ptr<State::BaseState> StatePtr;
-    typedef shared_ptr<Board>            BoardPtr;
 
     //-- protected methods
-    void createStateMachine( );
-    void createStateMachine( const char * );
-    void runStateMachine( );
+    void createStateMachine();
+    void runStateMachine();
 
     //-- protected members
-    BoardPtr     board_;
-    BaseTurnPtr  currentTurn_;
-    InterfacePtr interface_;
-    BaseTurnPtr  whiteTurn_;
-    BaseTurnPtr  blackTurn_;
+    GameState    gameState_;
     StatePtr     currentState_;
     StatePtr     checkmate_;
     StatePtr     init_;
