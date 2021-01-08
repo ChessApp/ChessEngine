@@ -3,7 +3,6 @@
 
 #include "Chess.h"
 #include "State/BaseState.h"
-#include "GameState.h"
 
 
 namespace Chess
@@ -19,7 +18,7 @@ namespace Chess
 
       //-- construction
       inline InitState( GameState& gameState )
-        : gameState_(gameState)
+        : BaseState(gameState)
       { }
 
       //-- BaseState interface
@@ -29,10 +28,8 @@ namespace Chess
       //-- protected methods
       void setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet );
       void parseInitialStateFile( );
-      void initializeGameStateFile();
 
       //-- protected members
-      GameState& gameState_;
     };
 
   }

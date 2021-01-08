@@ -41,7 +41,8 @@ namespace Chess
 
       gameState.whiteClientId = whiteId->second.GetS();
       gameState.blackClientId = blackId->second.GetS();
-      writeToFile(FilePaths::gameStateFile, state->second.GetS());
+      gameState.gameStateString = state->second.GetS();
+      writeToFile(FilePaths::gameStateFile, gameState.gameStateString);
     }
 
     void parseClientRequest( GameState& gameState )
@@ -142,7 +143,6 @@ namespace Chess
         }
       }
 
-      cout << "5" << endl;
       // Set which team is initially starting the game based on the
       // config file.
       pugi::xml_node turnNode = root.child("Turn");
@@ -157,30 +157,6 @@ namespace Chess
         gameState_.board.setPiece(pieceToSet, rowToSet, colToSet);
         gameState_.activePieces.insert({pieceToSet->getId(), pieceToSet});
       }
-    }
-
-    void InitState::initializeGameStateFile()
-    {
-      // Setup the xml document structure and load the state initialization file
-      pugi::xml_document doc;
-      pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile);
-
-      // Grab the root node
-      pugi::xml_node root = doc.child("root");
-
-      pugi::xml_node flagsNode    = root.child("Flags");
-      pugi::xml_node messagesNode = root.child("Messages");
-      pugi::xml_node turnNode     = root.child("Turn");
-      pugi::xml_node winnerNode   = root.child("Winner");
-
-
-      flagsNode.attribute("invalidMove").set_value(0);
-      messagesNode.attribute("invalidMove").set_value("");
-      turnNode.attribute("checkStatus").set_value(0);
-      winnerNode.attribute("status").set_value(0);
-      winnerNode.attribute("color").set_value("");
-
-      doc.save_file(FilePaths::gameStateFile);
     }
 
   }

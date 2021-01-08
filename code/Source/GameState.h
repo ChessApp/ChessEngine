@@ -42,6 +42,7 @@ namespace Chess
     MoveRequest                       moveRequest;
     Board                             board;
     string                            moveString;
+    string                            gameStateString;
 
     void print();
 

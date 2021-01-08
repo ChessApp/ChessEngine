@@ -2,6 +2,7 @@
 #define CHESS_STATE_BASESTATE_H_
 
 #include "Chess.h"
+#include "GameState.h"
 #include "Pieces/Pieces.h"
 
 
@@ -18,7 +19,8 @@ namespace Chess
       typedef shared_ptr<BaseState> StatePtr;
       
       //-- construction
-      inline BaseState ( )
+      inline BaseState( GameState& gameState )
+        : gameState_(gameState)
       { }
 
       //-- interface methods
@@ -31,6 +33,7 @@ namespace Chess
 
     protected:
       //-- protected types
+      GameState& gameState_;
       StatePtr nextState_ ;
       StatePtr returnState_ ;
       PiecePtr whiteKing_ ;

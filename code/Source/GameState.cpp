@@ -36,6 +36,7 @@ namespace Chess
     cout << "whiteClientId: " << whiteClientId << endl;
     cout << "blackClientId: " << blackClientId << endl;
     cout << "moveString: " << moveString << endl;
+    cout << "gameStateString: " << gameStateString << endl;
     cout << "moveRequest: {" << moveRequest.front().first << ", " 
          << moveRequest.front().second << "} -> {" << moveRequest.back().first
          << ", " << moveRequest.back().second << "}" << endl;
