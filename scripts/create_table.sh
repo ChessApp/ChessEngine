@@ -1,8 +1,8 @@
 #!/bin/bash
 
 TABLE_NAME="GameStates"
-ATTRIBUTE_DEFINITIONS="AttributeName=id,AttributeType=S"
-KEY_SCHEMA="AttributeName=id,KeyType=HASH"
+ATTRIBUTE_DEFINITIONS="AttributeName=gameId,AttributeType=S"
+KEY_SCHEMA="AttributeName=gameId,KeyType=HASH"
 PROVISIONED_THROUGHPUT="ReadCapacityUnits=5,WriteCapacityUnits=5"
 REGION="localhost"
 ENDPOINT_URL="http://${REGION}:8000"

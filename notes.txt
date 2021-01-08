@@ -1,0 +1,2 @@
+- if local db is saying the table was not found, make sure the credentials match between the aws lambda container and the db container
+- can also just used the -sharedDb flag for the db container
