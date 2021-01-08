@@ -45,7 +45,8 @@ namespace Chess
       }
       else
       {
-        throw;
+        std::cout << result.GetError().GetMessage() << std::endl;
+        throw result.GetError().GetMessage();
       }
     }
 

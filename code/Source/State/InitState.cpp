@@ -2,6 +2,8 @@
 
 #include <cstdio>
 
+#include "Agents/DynamoDBAgent.h"
+
 #include "Tools/pugixml/pugixml.hpp"
 
 #include "Pieces/Pieces.h"
@@ -20,11 +22,51 @@ namespace Chess
   namespace State
   {
 
+    void writeToFile( const char * filePath, string content )
+    {
+      ofstream outFile(filePath);
+      outFile << content;
+      outFile.close();
+    }
+
+    void parseGameInfo( GameState& gameState )
+    {
+      Chess::Agents::DynamoDBAgent db("GameStates", "localhost", "http://localhost:8000");
+      auto info = db.getItem("gameId", gameState.gameId);
+
+      auto whiteId = info.find("whiteId");
+      auto blackId = info.find("blackId");
+      auto state   = info.find("state");
+      if( whiteId == info.end() || blackId == info.end() || state == info.end() ) throw "DynamoDB game info missing field(s)";
+
+      gameState.whiteClientId = whiteId->second.GetS();
+      gameState.blackClientId = blackId->second.GetS();
+      writeToFile(FilePaths::gameStateFile, state->second.GetS());
+    }
+
+    void parseClientRequest( GameState& gameState )
+    {
+      // Setup the xml document structure and load the state initialization file
+      pugi::xml_document doc;
+      pugi::xml_parse_result result = doc.load_file(FilePaths::userInputFile);
+      pugi::xml_node request = doc.child("request");
+
+      gameState.gameId          = request.attribute("gameId").value();
+      gameState.currentClientId = request.attribute("clientId").value();
+      string moveString         = request.attribute("move").value();
+      gameState.moveString      = moveString;
+      gameState.setMoveRequest(moveString);
+    }
+
     BaseState::StatePtr InitState::execute( )
     {
       DEBUG_CONSOLE_1ARG("State: INIT");
 
-      
+      parseClientRequest(gameState_);
+      parseGameInfo(gameState_);
+      parseInitialStateFile();
+
+      gameState_.print();
 
       return nextState_;
     }
@@ -39,8 +81,18 @@ namespace Chess
       pugi::xml_node root      = doc.child("root");
       pugi::xml_node boardNode = root.child("Board");
 
+      for( int j = 0; j < 8; j++ )
+      {
+        for( int i = 0; i < 8; i++ )
+        {
+          PiecePtr np( new NullPiece(".. ") );
+          gameState_.board.setPiece(np, j, i);
+        }  
+      }
+
       // Iterate through all of the children of the board node (each square/piece)
-      for( pugi::xml_node_iterator i = boardNode.begin(); i != boardNode.end(); ++i )
+      int pieceId = 0;
+      for( pugi::xml_node_iterator i = boardNode.begin(); i != boardNode.end(); ++i, ++pieceId )
       {
         string type   = i->attribute("type").value();
         string color  = i->attribute("color").value();
@@ -77,20 +129,24 @@ namespace Chess
         else if( type == "K" )
         {
           p.reset( new Chess::King(symbol, gameState_.board) );
+          if( color == "W" ) gameState_.whiteKingId = pieceId;
+          else gameState_.blackKingId = pieceId;
         }
 
         // Don't bother setting Null Pieces - every square is initialized
         // with a Null Piece set for it.
         if( type != "" )
         {
+          p->setId(pieceId);
           setPiece(p,row,col);
         }
       }
 
+      cout << "5" << endl;
       // Set which team is initially starting the game based on the
       // config file.
       pugi::xml_node turnNode = root.child("Turn");
-      string turn = turnNode.attribute("color").value();
+      gameState_.setAttacker(turnNode.attribute("color").value());
     }
 
     void InitState::setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet )
@@ -99,6 +155,7 @@ namespace Chess
       {
         pieceToSet->setLocation(rowToSet, colToSet);
         gameState_.board.setPiece(pieceToSet, rowToSet, colToSet);
+        gameState_.activePieces.insert({pieceToSet->getId(), pieceToSet});
       }
     }
 

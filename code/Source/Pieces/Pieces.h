@@ -41,6 +41,8 @@ namespace Chess
     void     setActiveListIndex( int index ) { activeListIndex_ = index; }
     int      getActiveListIndex( ) const { return activeListIndex_; }
     void     clrActiveListIndex( ) { activeListIndex_ = 0; }
+    void     setId( int id ) { id_ = id; }
+    int      getId() const { return id_; }
 
     //-- miscellaneous public methods
     bool pieceMoved( int destRow, int destCol );
@@ -63,6 +65,7 @@ namespace Chess
     string    type;
     Pieces *  king_;
     int       activeListIndex_;
+    int       id_;
   };
 
 }

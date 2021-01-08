@@ -15,9 +15,9 @@ namespace Chess
     //-- types
     enum Attacker
     {
-      errorAttacker,
       whiteAttacker,
-      blackAttacker
+      blackAttacker,
+      errorAttacker
     };
 
     typedef Pieces::PiecePtr      PiecePtr;
@@ -27,6 +27,7 @@ namespace Chess
 
     //-- public methods
     void setMoveRequest( string mr );
+    void setAttacker( string color );
 
     //-- public members
     std::unordered_map<int, PiecePtr> activePieces;
@@ -40,6 +41,7 @@ namespace Chess
     int                               capturedPieceId = 0;
     MoveRequest                       moveRequest;
     Board                             board;
+    string                            moveString;
 
     void print();
 

@@ -64,16 +64,27 @@ namespace Chess
 
   void GameProtocolDriver::runStateMachine( )
   {
-    currentState_ = init_->execute();
+    try
+    {
+      currentState_ = init_->execute();
 
-    // while( currentState_ != init_ )
-    // {
-    //   DEBUG_CONSOLE_PRINT_BOARD(interface_);
-    //   currentState_ = currentState_->execute();
-    // }
+      // while( currentState_ != init_ )
+      // {
+      //   DEBUG_CONSOLE_PRINT_BOARD(interface_);
+      //   currentState_ = currentState_->execute();
+      // }
 
-    // currentState_->execute();
-    std::cout << "State machine done." << std::endl;
+      // currentState_->execute();
+      std::cout << "State machine done." << std::endl;
+    }
+    catch( string error )
+    {
+      cout << "[ERROR] " << error << endl;
+    }
+    catch(...)
+    {
+      cout << "caught unknown exception" << endl;
+    }
   }
 
 }
