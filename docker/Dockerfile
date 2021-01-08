@@ -26,3 +26,5 @@ RUN git clone https://github.com/awslabs/aws-lambda-cpp.git && \
       -DCMAKE_INSTALL_PREFIX=/out \
       -DCMAKE_CXX_COMPILER=g++ && \
     make && make install
+
+WORKDIR /chessengine

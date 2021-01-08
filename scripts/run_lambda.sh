@@ -1,7 +1,9 @@
 #!/bin/bash
 
-KEY=$(sed -n 1p ../secrets/aws_credentials.secret)
-SECRET=$(sed -n 2p ../secrets/aws_credentials.secret)
+echo "Running lambda container..."
+
+KEY=$(sed -n 1p secrets/aws_credentials.secret)
+SECRET=$(sed -n 2p secrets/aws_credentials.secret)
 
 docker run \
   --rm -it \
@@ -10,7 +12,7 @@ docker run \
   -e AWS_ACCESS_KEY_ID=$KEY \
   -e AWS_SECRET_ACCESS_KEY=$SECRET \
   -p 9001:9001 \
-  -v $(pwd)/mount:/var/task \
+  -v $(pwd)/docker/mount:/var/task \
   lambci/lambda:provided \
   handler
 

@@ -1,3 +1,4 @@
 #!/bin/bash
 
-docker build -t chess-engine/build:v1.1 .
+IMAGE_VERSION=$(cat image.version)
+docker build -t chess-engine/build:$IMAGE_VERSION .
