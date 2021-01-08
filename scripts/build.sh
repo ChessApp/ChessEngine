@@ -1,8 +1,9 @@
 #!/bin/bash
+set -e
 
 (
   mkdir -p code/build && cd code/build && \
-  cmake3 .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/out && \
+  cmake3 ../Source -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/out && \
   make && make aws-lambda-package-chessengine
 )
 
