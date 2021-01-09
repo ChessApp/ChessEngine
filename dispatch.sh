@@ -3,7 +3,8 @@
 # Terminate the process if any errors are detected
 set -e
 
-BUILD_IMAGE="chessengine/build:$(cat docker/image.version)"
+BUILD_IMAGE="chessengine/build:$(cat docker/build/image.version)"
+PYTHON_IMAGE="chessengine/python:$(cat docker/python/image.version)"
 
 source ./scripts/parse_input.sh $@
 
@@ -22,6 +23,17 @@ fi
 
 if [ $CREATE_DB_TABLE_OPTION == true ]; then
   scripts/create_table.sh
+fi
+
+if [ $UPDATE_DB_TABLE_OPTION == true ]; then
+  # Mount .aws credential dir in order to access python dynamodb module
+  docker run \
+    --network host \
+    --rm -it \
+    -v $(pwd):/$CURRENT_DIR \
+    -v ~/.aws:/root/.aws:ro \
+    $PYTHON_IMAGE \
+    python3 scripts/putitem.py
 fi
 
 if [ $BUILD_OPTION == true ]; then

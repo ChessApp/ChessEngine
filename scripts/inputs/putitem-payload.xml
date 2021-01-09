@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<root>
+  <Flags serverFresh="0" clientFresh="1" invalidMove="0" />
+  <Input content="" />
+  <Turn color="W" checkStatus="0" />
+  <Winner status="0" color="" />
+  <Messages invalidMove="" />
+  <Board>
+    <Square symbol="WR " row="7" col="7" type="R" color="W" />
+    <Square symbol="WN " row="7" col="6" type="KN" color="W" />
+    <Square symbol="WB " row="7" col="5" type="B" color="W" />
+    <Square symbol="WK " row="7" col="4" type="K" color="W" />
+    <Square symbol="WQ " row="7" col="3" type="Q" color="W" />
+    <Square symbol="WB " row="7" col="2" type="B" color="W" />
+    <Square symbol="WN " row="7" col="1" type="KN" color="W" />
+    <Square symbol="WR " row="7" col="0" type="R" color="W" />
+    <Square symbol="WP " row="6" col="7" type="P" color="W" />
+    <Square symbol="WP " row="6" col="6" type="P" color="W" />
+    <Square symbol="WP " row="6" col="5" type="P" color="W" />
+    <Square symbol="WP " row="6" col="4" type="P" color="W" />
+    <Square symbol="WP " row="6" col="3" type="P" color="W" />
+    <Square symbol="WP " row="6" col="2" type="P" color="W" />
+    <Square symbol="WP " row="6" col="1" type="P" color="W" />
+    <Square symbol="WP " row="6" col="0" type="P" color="W" />
+    
+    <Square symbol="BP " row="1" col="7" type="P" color="B" />
+    <Square symbol="BP " row="1" col="6" type="P" color="B" />
+    <Square symbol="BP " row="1" col="5" type="P" color="B" />
+    <Square symbol="BP " row="1" col="4" type="P" color="B" />
+    <Square symbol="BP " row="1" col="3" type="P" color="B" />
+    <Square symbol="BP " row="1" col="2" type="P" color="B" />
+    <Square symbol="BP " row="1" col="1" type="P" color="B" />
+    <Square symbol="BP " row="1" col="0" type="P" color="B" />
+    <Square symbol="BR " row="0" col="7" type="R" color="B" />
+    <Square symbol="BN " row="0" col="6" type="KN" color="B" />
+    <Square symbol="BB " row="0" col="5" type="B" color="B" />
+    <Square symbol="BK " row="0" col="4" type="K" color="B" />
+    <Square symbol="BQ " row="0" col="3" type="Q" color="B" />
+    <Square symbol="BB " row="0" col="2" type="B" color="B" />
+    <Square symbol="BN " row="0" col="1" type="KN" color="B" />
+    <Square symbol="BR " row="0" col="0" type="R" color="B" />
+  </Board>
+</root>
