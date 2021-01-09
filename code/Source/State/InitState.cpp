@@ -129,6 +129,11 @@ namespace Chess
       // config file.
       pugi::xml_node turnNode = root.child("Turn");
       gameState_.setAttacker(turnNode.attribute("color").value());
+      pugi::xml_node messagesNode = root.child("Messages");
+
+      // Reset the messages for now. This move attempt has a clean slate and will
+      // be evaluated for any possible crimes...
+      messagesNode.attribute("invalidMove").set_value("");
       root.remove_child(boardNode);
       doc.save_file(FilePaths::gameStateFile.c_str());
     }

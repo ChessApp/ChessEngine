@@ -1,40 +1,36 @@
-// #ifndef CHESS_STATE_RELEVANCYSTATE_H_
-// #define CHESS_STATE_RELEVANCYSTATE_H_
+#ifndef CHESS_STATE_RELEVANCYSTATE_H_
+#define CHESS_STATE_RELEVANCYSTATE_H_
 
-// #include "Chess.h"
-// #include "State/BaseState.h"
-// #include "Interface.h"
+#include "Chess.h"
+#include "State/BaseState.h"
 
 
-// namespace Chess
-// {
-//   namespace State
-//   {
+namespace Chess
+{
+  namespace State
+  {
 
-//     class RelevancyState
-//       : public BaseState
-//     {
-//     public:
-//       //-- types
-//       typedef shared_ptr<Interface> InterfacePtr;
+    class RelevancyState
+      : public BaseState
+    {
+    public:
+      //-- types
 
-//       //-- construction
-//       inline RelevancyState( InterfacePtr interface ) 
-//         : interface_(interface)
-//       { }
+      //-- construction
+      inline RelevancyState( GameState& gameState ) 
+        : BaseState(gameState)
+      { }
 
-//       //-- BaseState interface
-//       virtual StatePtr execute( );
+      //-- BaseState interface
+      virtual StatePtr execute( );
       
-//     protected:
-//       //-- protected methods
-//       void updateGameState();
+    protected:
+      //-- protected methods
 
-//       //-- protected members
-//       InterfacePtr interface_;
-//     };
+      //-- protected members
+    };
 
-//   }
-// }
+  }
+}
 
-// #endif /* CHESS_STATE_RELEVANCYSTATE_H_ */
+#endif /* CHESS_STATE_RELEVANCYSTATE_H_ */

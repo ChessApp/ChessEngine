@@ -44,6 +44,7 @@ namespace Chess
     Board                             board;
     string                            moveString;
     string                            gameStateString;
+    string                            errorMessage;
 
     void print();
 

@@ -33,9 +33,8 @@ namespace Chess
   {
     using namespace State;
 
-    init_.reset(               new InitState(gameState_) );
-    // input_.reset(              new InputState(interface_, board_, currentTurn_) );
-    // relevancy_.reset(          new RelevancyState(interface_) );
+    init_      = std::make_shared<InitState>(gameState_);
+    relevancy_ = std::make_shared<RelevancyState>(gameState_);
     // moveValidity_.reset(       new MoveValidityState(interface_, board_) );
     // pathscan_.reset(           new PathScanState(interface_, board_) );
     // move_.reset(               new MoveState(interface_, board_, currentTurn_) );
@@ -49,9 +48,9 @@ namespace Chess
     // checkmate_.reset(          new CheckmateState(interface_, currentTurn_) );
     finish_ = std::make_shared<FinishState>(gameState_);
 
-    init_->setTransitionStates(               finish_,               finish_ );
+    init_->setTransitionStates(               relevancy_,               finish_ );
     // input_->setTransitionStates(              relevancy_,           checkmate_ );
-    // relevancy_->setTransitionStates(          moveValidity_,        checkmate_ );
+    relevancy_->setTransitionStates(          finish_,        finish_ );
     // moveValidity_->setTransitionStates(       pathscan_,            checkmate_ );
     // pathscan_->setTransitionStates(           move_,                checkmate_ );
     // move_->setTransitionStates(               defensiveCheckScan_,  checkmate_ );

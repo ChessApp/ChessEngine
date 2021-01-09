@@ -35,6 +35,8 @@ namespace Chess
 
       pugi::xml_node turnNode = root.child("Turn");
       turnNode.attribute("color").set_value(gameState.serializeAttacker().c_str());
+      pugi::xml_node messagesNode = root.child("Messages");
+      messagesNode.attribute("invalidMove").set_value(gameState.errorMessage.c_str());
       doc.save_file(FilePaths::gameStateFile.c_str());
     }
 
