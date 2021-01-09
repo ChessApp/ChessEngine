@@ -39,6 +39,7 @@ namespace Chess
     StatePtr     pinScan_;
     StatePtr     blockScan_;
     StatePtr     escapeRoute_;
+    StatePtr     finish_;
   };
 
 }

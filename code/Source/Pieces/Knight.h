@@ -19,7 +19,6 @@ namespace Chess
   {
   public:
     //-- construction
-    Knight ( const string name, int initRow, int initCol );
     Knight ( const string name );
 
     //-- Piece interface

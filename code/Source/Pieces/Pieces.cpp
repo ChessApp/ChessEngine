@@ -3,6 +3,7 @@
 // sets their initial data for the beginning of 
 // the game.
 #include "Pieces/Pieces.h"
+#include <string>
 
 
 namespace Chess
@@ -15,35 +16,10 @@ namespace Chess
       prev_in_check(false), 
       pinned(false), 
       captured(false),
-      color(name[0])
-  {
-    if (color == 'W')
-      opponent = 'B';
-
-    if (color == 'B')
-      opponent = 'W';
-
-    row = 0;
-    col = 0;
-  }
-
-  Pieces::Pieces( string name, string type, int initRow, int initCol )
-    : name(name), 
-      type(type), 
-      in_check(false),
-      prev_in_check(false), 
-      pinned(false), 
-      captured(false),
-      color(name[0])
-  {
-    if (color == 'W')
-      opponent = 'B';
-
-    if (color == 'B')
-      opponent = 'W';
-
-    setLocation( initRow, initCol );
-  }
+      color(name.substr(0, 1)),
+      row(0),
+      col(0)
+  { }
 
   bool Pieces::pieceMoved( int destRow, int destCol )
   {
@@ -67,7 +43,7 @@ namespace Chess
     return type;
   }
 
-  char Pieces::getColor( )
+  string Pieces::getColor( )
   {
     return color;
   }

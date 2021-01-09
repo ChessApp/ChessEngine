@@ -19,7 +19,6 @@ namespace Chess
   {
   public:
     //-- construction
-    WhitePawn( const string name, int initRow, int initCol );
     WhitePawn( const string name );
 
     //-- Pieces interface

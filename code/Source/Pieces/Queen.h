@@ -22,7 +22,6 @@ namespace Chess
     //-- types
 
     //-- construction
-    Queen( const string name, Board& board, int initRow, int initCol );
     Queen( const string name, Board& board );
 
     //-- Piece interface

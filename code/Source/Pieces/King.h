@@ -22,7 +22,6 @@ namespace Chess
     //-- types
     
     //-- construction
-    King( const string name, Board& board, int initRow, int initCol );
     King( const string name, Board& board );
 
     //-- Piece interface

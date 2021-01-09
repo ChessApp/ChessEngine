@@ -8,10 +8,6 @@
 namespace Chess
 {
 
-  BlackPawn::BlackPawn( const string name, int initRow, int initCol )
-    : Pieces(name, "P", initRow, initCol)
-  { }
-
   BlackPawn::BlackPawn( const string name )
     : Pieces(name, "P")
   { }

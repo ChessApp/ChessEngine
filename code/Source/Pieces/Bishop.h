@@ -22,7 +22,6 @@ namespace Chess
     //-- types
 
     //-- construction
-    Bishop( const string name, Board& board, int initRow, int initCol );
     Bishop( const string name, Board& board );
 
     //-- Piece interface

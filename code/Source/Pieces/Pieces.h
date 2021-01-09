@@ -30,7 +30,7 @@ namespace Chess
     void     setKing( Pieces * king ) { king_ = king; }
     Pieces * getKing( )               { return king_; }
     string   getType( );
-    char     getColor( );
+    string   getColor( );
     string   getName( );
     void     setLocation( int row, int col );
     int      getCol( )    { return col; }
@@ -57,8 +57,7 @@ namespace Chess
     bool      prev_in_check;
     bool      pinned;
     bool      captured;
-    char      color;
-    char      opponent;
+    string    color;
     int       col;
     int       row;
     string    name;

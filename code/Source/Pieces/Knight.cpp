@@ -7,10 +7,6 @@
 
 namespace Chess
 {
-    
-  Knight::Knight( const string name, int initRow, int initCol )
-    : Pieces(name, "KN", initRow, initCol)
-  { }
 
   Knight::Knight( const string name )
     : Pieces( name, "KN" )

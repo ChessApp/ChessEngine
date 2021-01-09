@@ -10,11 +10,6 @@
 namespace Chess
 {
 
-  Queen::Queen( const string name, Board& board, int initRow, int initCol )
-    : Pieces(name, "Q", initRow, initCol),
-      scanner_(new CompoundAxisScan(board))
-  { }
-
   Queen::Queen( const string name, Board& board )
     : Pieces( name, "Q" ),
       scanner_(new CompoundAxisScan(board))

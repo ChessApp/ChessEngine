@@ -16,6 +16,7 @@
 #include "State/BlockScanState.h"
 #include "State/EscapeRouteState.h"
 #include "State/CheckmateState.h"
+#include "State/FinishState.h"
 #include "Interface.h"
 
 
@@ -46,8 +47,9 @@ namespace Chess
     // blockScan_.reset(          new BlockScanState(currentTurn_, whiteTurn_, blackTurn_) );
     // escapeRoute_.reset(        new EscapeRouteState(interface_, board_, currentTurn_) );
     // checkmate_.reset(          new CheckmateState(interface_, currentTurn_) );
+    finish_ = std::make_shared<FinishState>(gameState_);
 
-    // init_->setTransitionStates(               input_,               checkmate_ );
+    init_->setTransitionStates(               finish_,               finish_ );
     // input_->setTransitionStates(              relevancy_,           checkmate_ );
     // relevancy_->setTransitionStates(          moveValidity_,        checkmate_ );
     // moveValidity_->setTransitionStates(       pathscan_,            checkmate_ );

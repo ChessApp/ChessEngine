@@ -22,7 +22,6 @@ namespace Chess
     //-- types
     
     //-- construction
-    Rook( const string name, Board& board, int initRow, int initCol );
     Rook( const string name, Board& board );
 
     //-- Piece interface

@@ -22,7 +22,7 @@ namespace Chess
   namespace State
   {
 
-    void parseGameInfo( GameState& gameState )
+    void deserializeGameInfo( GameState& gameState )
     {
       Chess::Agents::DynamoDBAgent db("GameStates", "localhost", "http://localhost:8000");
       auto info = db.getItem("gameId", gameState.gameId);
@@ -38,7 +38,7 @@ namespace Chess
       writeToFile(FilePaths::gameStateFile, gameState.gameStateString);
     }
 
-    void parseClientRequest( GameState& gameState )
+    void deserializeClientRequest( GameState& gameState )
     {
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
@@ -52,18 +52,18 @@ namespace Chess
       gameState.setMoveRequest(moveString);
     }
 
-    BaseState::StatePtr InitState::execute( )
+    BaseState::StatePtr InitState::execute()
     {
       DEBUG_CONSOLE_1ARG("State: INIT");
 
-      parseClientRequest(gameState_);
-      parseGameInfo(gameState_);
-      parseInitialStateFile();
+      deserializeClientRequest(gameState_);
+      deserializeGameInfo(gameState_);
+      deserializeGameStateFile();
 
       return nextState_;
     }
 
-    void InitState::parseInitialStateFile()
+    void InitState::deserializeGameStateFile()
     {
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
@@ -85,7 +85,7 @@ namespace Chess
 
         // Create pieces on the heap based on the configuration
         // read from the xml file
-        PiecePtr p;
+        InitState::PiecePtr p;
         if( type == "P" )
         {
           if( color == "W" )
@@ -129,6 +129,8 @@ namespace Chess
       // config file.
       pugi::xml_node turnNode = root.child("Turn");
       gameState_.setAttacker(turnNode.attribute("color").value());
+      root.remove_child(boardNode);
+      doc.save_file(FilePaths::gameStateFile);
     }
 
     void InitState::setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet )
