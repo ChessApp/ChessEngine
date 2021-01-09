@@ -25,9 +25,9 @@ namespace Chess
 {
   namespace FilePaths
   {
-    static const char * gameStateFile("/tmp/GameState.xml");
-    static const char * userInputFile("/tmp/UserInput.txt");
-    static const char * userInputList("/chessengine/build/InputList.txt");
+    static const string gameStateFile("/tmp/GameState.xml");
+    static const string userInputFile("/tmp/UserInput.txt");
+    static const string userInputList("/chessengine/build/InputList.txt");
   }
 
   void writeToFile( const string& filePath, string content );

@@ -42,7 +42,7 @@ namespace Chess
     {
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
-      pugi::xml_parse_result result = doc.load_file(FilePaths::userInputFile);
+      pugi::xml_parse_result result = doc.load_file(FilePaths::userInputFile.c_str());
       pugi::xml_node request = doc.child("request");
 
       gameState.gameId          = request.attribute("gameId").value();
@@ -67,7 +67,7 @@ namespace Chess
     {
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
-      pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile);
+      pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile.c_str());
 
       // Grab the root node
       pugi::xml_node root      = doc.child("root");
@@ -130,7 +130,7 @@ namespace Chess
       pugi::xml_node turnNode = root.child("Turn");
       gameState_.setAttacker(turnNode.attribute("color").value());
       root.remove_child(boardNode);
-      doc.save_file(FilePaths::gameStateFile);
+      doc.save_file(FilePaths::gameStateFile.c_str());
     }
 
     void InitState::setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet )

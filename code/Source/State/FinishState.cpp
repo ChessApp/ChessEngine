@@ -12,7 +12,7 @@ namespace Chess
     {
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
-      pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile);
+      pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile.c_str());
 
       // Grab the root node
       pugi::xml_node root = doc.child("root");
@@ -32,7 +32,10 @@ namespace Chess
         pugi::xml_attribute symbolAttr = squareNode.append_attribute("symbol");
         symbolAttr.set_value(piece->getName().c_str());
       }
-      doc.save_file(FilePaths::gameStateFile);
+
+      pugi::xml_node turnNode = root.child("Turn");
+      turnNode.attribute("color").set_value(gameState.serializeAttacker().c_str());
+      doc.save_file(FilePaths::gameStateFile.c_str());
     }
 
     BaseState::StatePtr FinishState::execute()

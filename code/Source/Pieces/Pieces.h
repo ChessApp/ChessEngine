@@ -27,8 +27,6 @@ namespace Chess
     virtual bool validDirection( int destRow, int destCol ) { return false; }
 
     //-- accessors
-    void     setKing( Pieces * king ) { king_ = king; }
-    Pieces * getKing( )               { return king_; }
     string   getType( );
     string   getColor( );
     string   getName( );
@@ -38,9 +36,6 @@ namespace Chess
     void     setPinned( ) { pinned = true; }
     void     clrPinned( ) { pinned = false; }
     bool     getPinnedStatus( ) { return pinned; }
-    void     setActiveListIndex( int index ) { activeListIndex_ = index; }
-    int      getActiveListIndex( ) const { return activeListIndex_; }
-    void     clrActiveListIndex( ) { activeListIndex_ = 0; }
     void     setId( int id ) { id_ = id; }
     int      getId() const { return id_; }
 
@@ -62,8 +57,6 @@ namespace Chess
     int       row;
     string    name;
     string    type;
-    Pieces *  king_;
-    int       activeListIndex_;
     int       id_;
   };
 

@@ -73,5 +73,16 @@ namespace Chess
     else if( color == "B" ) attacker = blackAttacker;
     else cout << "Game state does not have an attacker configured!" << endl;
   }
+
+  const string GameState::serializeAttacker()
+  {
+    switch(attacker)
+    {
+      case whiteAttacker: return "W";
+      case blackAttacker: return "B";
+
+      default: throw string("GameState::serializeAttacker -> Attacker field not set properly!");
+    }
+  }
  
 }
