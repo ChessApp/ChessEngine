@@ -10,13 +10,27 @@
 
 #include "Tools/debugging/DebugConsole.h"
 
-using namespace std;
+using std::cout;
+using std::cerr;
+using std::endl;
+using std::ofstream;
+using std::ifstream;
+using std::string;
+using std::vector;
+using std::pair;
+using std::shared_ptr;
+using std::ostringstream;
 
-namespace FilePaths
+namespace Chess
 {
-  static const char * gameStateFile("/tmp/GameState.xml");
-  static const char * userInputFile("/tmp/UserInput.txt");
-  static const char * userInputList("/chessengine/build/InputList.txt");
+  namespace FilePaths
+  {
+    static const char * gameStateFile("/tmp/GameState.xml");
+    static const char * userInputFile("/tmp/UserInput.txt");
+    static const char * userInputList("/chessengine/build/InputList.txt");
+  }
+
+  void writeToFile( const char * filePath, string content );
 }
 
 #endif /* CHESS_H_ */

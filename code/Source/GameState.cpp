@@ -42,7 +42,7 @@ namespace Chess
     {
       cout << "{" << coordinate.first << ", " << coordinate.second << "} ";
     }
-    cout << endl;
+    cout << endl << endl;
     cout << "activePieces..." << endl;
     for( auto piece : activePieces )
     {

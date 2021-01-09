@@ -31,7 +31,7 @@ string convertToString(string xmlFile) {
 
 invocation_response my_handler(invocation_request const& request)
 {
-  ofstream state(FilePaths::userInputFile);
+  ofstream state(Chess::FilePaths::userInputFile);
   state << request.payload;
   state.close();
 
