@@ -22,13 +22,6 @@ namespace Chess
   namespace State
   {
 
-    void writeToFile( const char * filePath, string content )
-    {
-      ofstream outFile(filePath);
-      outFile << content;
-      outFile.close();
-    }
-
     void parseGameInfo( GameState& gameState )
     {
       Chess::Agents::DynamoDBAgent db("GameStates", "localhost", "http://localhost:8000");

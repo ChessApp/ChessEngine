@@ -31,18 +31,11 @@ string convertToString(string xmlFile) {
 
 invocation_response my_handler(invocation_request const& request)
 {
-  ofstream state(Chess::FilePaths::userInputFile);
-  state << request.payload;
-  state.close();
+  Chess::writeToFile(Chess::FilePaths::userInputFile, request.payload);
 
   new Chess::GameProtocolDriver();
 
-  ifstream payloadFile("/tmp/output.txt");
-  std::string result((std::istreambuf_iterator<char>(payloadFile)),
-               std::istreambuf_iterator<char>());
-  result = result.append("\n");
-  cout << "result: " << result << endl;
-  return invocation_response::success(result, "application/xml");
+  return invocation_response::success(Chess::readFromFile(Chess::FilePaths::gameStateFile), "application/xml");
 }
 
 

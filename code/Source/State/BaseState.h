@@ -34,14 +34,14 @@ namespace Chess
     protected:
       //-- protected types
       GameState& gameState_;
-      StatePtr nextState_ ;
-      StatePtr returnState_ ;
-      PiecePtr whiteKing_ ;
-      PiecePtr blackKing_ ;
-      bool     active_ ;
-      int      runs_ ;
-      int      returns_ ;
-      int      nexts_ ;
+      StatePtr   nextState_ ;
+      StatePtr   returnState_ ;
+      PiecePtr   whiteKing_ ;
+      PiecePtr   blackKing_ ;
+      bool       active_ ;
+      int        runs_ ;
+      int        returns_ ;
+      int        nexts_ ;
     };
 
   }

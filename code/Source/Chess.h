@@ -31,6 +31,7 @@ namespace Chess
   }
 
   void writeToFile( const char * filePath, string content );
+  const string readFromFile( const string& filePath );
 }
 
 #endif /* CHESS_H_ */
