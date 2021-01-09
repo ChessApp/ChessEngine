@@ -14,23 +14,12 @@ namespace Chess
       scanner_(new SingleAxisScan(board))
   { }
 
-  bool Rook::validDirection ( int destRow, int destCol )
+  bool Rook::validDirection( int destRow, int destCol )
   {
-    if ( pieceMoved( destRow, destCol ) )
-    {
-      if ( row == destRow || col == destCol )
-      {
-        return true ;
-      }
-      else
-      {
-        return false ;
-      }
-    }
-    else
-    {
-      return false ;
-    }  
+    pieceMoved(destRow, destCol);
+    if( row == destRow || col == destCol ) return true;
+
+    throw string("Rook::validDirection -> The selected piece is not capable of moving the request direction!");
   }
 
   bool Rook::pathScan ( int destRow, int destCol )

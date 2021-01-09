@@ -33,9 +33,9 @@ namespace Chess
   {
     using namespace State;
 
-    init_      = std::make_shared<InitState>(gameState_);
-    relevancy_ = std::make_shared<RelevancyState>(gameState_);
-    // moveValidity_.reset(       new MoveValidityState(interface_, board_) );
+    init_         = std::make_shared<InitState>(gameState_);
+    relevancy_    = std::make_shared<RelevancyState>(gameState_);
+    moveValidity_ = std::make_shared<MoveValidityState>(gameState_);
     // pathscan_.reset(           new PathScanState(interface_, board_) );
     // move_.reset(               new MoveState(interface_, board_, currentTurn_) );
     // defensiveCheckScan_.reset( new DefensiveCheckScanState(board_, currentTurn_) );
@@ -50,8 +50,8 @@ namespace Chess
 
     init_->setTransitionStates(               relevancy_,               finish_ );
     // input_->setTransitionStates(              relevancy_,           checkmate_ );
-    relevancy_->setTransitionStates(          finish_,        finish_ );
-    // moveValidity_->setTransitionStates(       pathscan_,            checkmate_ );
+    relevancy_->setTransitionStates(          moveValidity_,        finish_ );
+    moveValidity_->setTransitionStates(       finish_,            finish_ );
     // pathscan_->setTransitionStates(           move_,                checkmate_ );
     // move_->setTransitionStates(               defensiveCheckScan_,  checkmate_ );
     // defensiveCheckScan_->setTransitionStates( offensiveCheckScan_,  returnPiece_ );
@@ -72,13 +72,14 @@ namespace Chess
       while( currentState_ != nullptr )
       {
         currentState_ = currentState_->execute();
-        gameState_.print();
       }
+      gameState_.print();
       std::cout << "State machine done." << std::endl;
     }
     catch( string error )
     {
       cout << "[ERROR] " << error << endl;
+      gameState_.print();
     }
     catch(...)
     {

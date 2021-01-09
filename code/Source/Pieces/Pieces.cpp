@@ -26,7 +26,7 @@ namespace Chess
     if( (destRow != row) || (destCol != col) )
       return true;
     else
-      return false;
+      throw string("Pieces::pieceMoved -> Piece cannot be moved to the square it is already on!");
   }
 
   bool Pieces::destinationOnBoard( int destRow, int destCol )
