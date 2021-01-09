@@ -67,8 +67,6 @@ namespace Chess
       parseGameInfo(gameState_);
       parseInitialStateFile();
 
-      gameState_.print();
-
       return nextState_;
     }
 
@@ -81,15 +79,6 @@ namespace Chess
       // Grab the root node
       pugi::xml_node root      = doc.child("root");
       pugi::xml_node boardNode = root.child("Board");
-
-      for( int j = 0; j < 8; j++ )
-      {
-        for( int i = 0; i < 8; i++ )
-        {
-          PiecePtr np( new NullPiece(".. ") );
-          gameState_.board.setPiece(np, j, i);
-        }  
-      }
 
       // Iterate through all of the children of the board node (each square/piece)
       int pieceId = 0;

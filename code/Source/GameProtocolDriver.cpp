@@ -66,15 +66,13 @@ namespace Chess
   {
     try
     {
-      currentState_ = init_->execute();
+      currentState_ = init_;
 
-      // while( currentState_ != init_ )
-      // {
-      //   DEBUG_CONSOLE_PRINT_BOARD(interface_);
-      //   currentState_ = currentState_->execute();
-      // }
-
-      // currentState_->execute();
+      while( currentState_ != nullptr )
+      {
+        currentState_ = currentState_->execute();
+        gameState_.print();
+      }
       std::cout << "State machine done." << std::endl;
     }
     catch( string error )

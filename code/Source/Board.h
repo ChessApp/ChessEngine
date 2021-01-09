@@ -16,10 +16,9 @@ namespace Chess
     typedef vector<PiecePtr>   PieceList;
 
     //-- construction
-    Board( );
+    Board();
 
     //-- public methods
-    void     init( PieceList & nullPieceList );
     void     setPiece( PiecePtr setPiece, int row, int col );
     void     clrPiece( int row, int col );
     PiecePtr getPiece( int row, int col );
@@ -27,7 +26,7 @@ namespace Chess
 
   protected:
     //-- protected members
-    PiecePtr board[8][8];
+    vector<vector<PiecePtr>> board_;
   };
 
 }

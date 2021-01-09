@@ -37,9 +37,12 @@ namespace Chess
     cout << "blackClientId: " << blackClientId << endl;
     cout << "moveString: " << moveString << endl;
     cout << "gameStateString: " << gameStateString << endl;
-    cout << "moveRequest: {" << moveRequest.front().first << ", " 
-         << moveRequest.front().second << "} -> {" << moveRequest.back().first
-         << ", " << moveRequest.back().second << "}" << endl;
+    cout << "moveRequest:" << endl;
+    for( auto coordinate : moveRequest )
+    {
+      cout << "{" << coordinate.first << ", " << coordinate.second << "} ";
+    }
+    cout << endl;
     cout << "activePieces..." << endl;
     for( auto piece : activePieces )
     {

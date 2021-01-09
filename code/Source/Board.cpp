@@ -1,37 +1,40 @@
 #include "Board.h"
 
+#include <memory>
+
+#include "Pieces/NullPiece.h"
+
 
 namespace Chess
 {
 
-  Board::Board( )
+  Board::Board()
+    : board_(8, vector<PiecePtr>(8, std::make_shared<Pieces>(NullPiece(".. "))))
   { }
 
-  void Board::init( PieceList & nullPieceList )
-  { }
 
   void Board::setPiece( PiecePtr setPiece, int row, int col )
   {
-    board[row][col] = setPiece;
+    board_[row][col] = setPiece;
   }
 
   void Board::clrPiece( int row, int col )
   {
-    PiecePtr pieceToClr = board[row][col];
+    PiecePtr pieceToClr = board_[row][col];
 
     if( pieceToClr != NULL )
-      board[row][col] = NULL;
+      board_[row][col] = NULL;
   }
 
   Board::PiecePtr Board::getPiece( int row, int col )
   {
-    return board[row][col];
+    return board_[row][col];
   }
 
   string Board::getPieceName ( int row, int col )
   {
-    if( board[row][col] != NULL )
-      return (board[row][col])->getName();
+    if( board_[row][col] != NULL )
+      return (board_[row][col])->getName();
     else
       return ".. ";
   }
