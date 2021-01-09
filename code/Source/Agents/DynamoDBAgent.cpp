@@ -46,7 +46,7 @@ namespace Chess
       else
       {
         std::cout << result.GetError().GetMessage() << std::endl;
-        throw result.GetError().GetMessage();
+        throw string(result.GetError().GetMessage());
       }
     }
 
@@ -72,7 +72,7 @@ namespace Chess
       const Aws::DynamoDB::Model::PutItemOutcome result = dynamoClient.PutItem(req);
       if( !result.IsSuccess() )
       {
-        throw;
+        throw string(result.GetError().GetMessage());
       }
     }
 

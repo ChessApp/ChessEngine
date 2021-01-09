@@ -16,15 +16,15 @@ namespace Chess
 
   void GameState::setMoveRequest( string mr )
   {
-    if( mr.size() != 5 ) throw "Invalid client input move string!";
+    if( mr.size() != 5 ) throw string("Invalid client input move string!");
 
     moveRequest.push_back({charToRowLocation(mr[1]), charToColLocation(mr[0])});
     moveRequest.push_back({charToRowLocation(mr[4]), charToColLocation(mr[3])});
 
     for( auto p : moveRequest )
     {
-      if( p.first < 0  || p.first > 7 ) throw "Invalid client input move string!";
-      if( p.second < 0 || p.second > 7 ) throw "Invalid client input move string!";
+      if( p.first < 0  || p.first > 7 ) throw string("Invalid client input move string!");
+      if( p.second < 0 || p.second > 7 ) throw string("Invalid client input move string!");
     }
   }
 
@@ -50,7 +50,7 @@ namespace Chess
     cout << "whiteKingId: " << whiteKingId << endl;
     cout << "blackKingId: " << blackKingId << endl;
     cout << "capturedPieceId: " << capturedPieceId << endl;
-
+    cout << endl;
     cout << "Board: " << endl;
     for( int row = 0; row < 8; row++ )
     {

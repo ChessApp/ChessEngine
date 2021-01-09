@@ -2,8 +2,8 @@
 
 echo "Running lambda container..."
 
-KEY=$(sed -n 1p secrets/aws_credentials.secret)
-SECRET=$(sed -n 2p secrets/aws_credentials.secret)
+KEY=$(sed 's/aws_access_key_id = //' ~/.aws/credentials | sed -n 2p)
+SECRET=$(sed 's/aws_secret_access_key = //' ~/.aws/credentials | sed -n 3p)
 
 docker run \
   --rm -it \
