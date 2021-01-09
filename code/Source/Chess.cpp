@@ -4,7 +4,7 @@
 namespace Chess
 {
 
-  void writeToFile( const char * filePath, string content )
+  void writeToFile( const string& filePath, string content )
   {
     ofstream outFile(filePath);
     outFile << content;

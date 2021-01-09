@@ -30,7 +30,7 @@ namespace Chess
     static const char * userInputList("/chessengine/build/InputList.txt");
   }
 
-  void writeToFile( const char * filePath, string content );
+  void writeToFile( const string& filePath, string content );
   const string readFromFile( const string& filePath );
 }
 
