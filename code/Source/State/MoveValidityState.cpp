@@ -8,7 +8,7 @@ namespace Chess
   namespace State
   {
 
-    BaseState::StatePtr MoveValidityState::execute( )
+    BaseState::StatePtr MoveValidityState::executeImpl()
     {
       DEBUG_CONSOLE_1ARG("State: MOVE VALIDITY");
 
@@ -16,14 +16,7 @@ namespace Chess
       auto destination = gameState_.moveRequest.back();
 
       PiecePtr currentPiece = gameState_.board.getPiece(source.first, source.second);
-      try
-      {
-        currentPiece->validDirection(destination.first, destination.second);
-      }
-      catch( string error )
-      {
-        return returnState_;
-      }
+      currentPiece->validDirection(destination.first, destination.second);
 
       return nextState_;
     }

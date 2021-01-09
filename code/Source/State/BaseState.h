@@ -19,12 +19,16 @@ namespace Chess
       typedef shared_ptr<BaseState> StatePtr;
       
       //-- construction
-      inline BaseState( GameState& gameState )
-        : gameState_(gameState)
+      inline BaseState( const string name, GameState& gameState )
+        : name_(name),
+          gameState_(gameState)
       { }
 
+      //-- public methods
+      StatePtr execute();
+
       //-- interface methods
-      virtual StatePtr execute( ) = 0;
+      virtual StatePtr executeImpl() = 0;
 
       //-- accessors
       void setTransitionStates( StatePtr nextState, StatePtr returnState );
@@ -33,6 +37,7 @@ namespace Chess
 
     protected:
       //-- protected types
+      string     name_;
       GameState& gameState_;
       StatePtr   nextState_ ;
       StatePtr   returnState_ ;

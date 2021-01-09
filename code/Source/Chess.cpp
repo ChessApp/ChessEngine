@@ -4,6 +4,12 @@
 namespace Chess
 {
 
+  Exception::Exception( string message, string function, string state )
+    : message_(message),
+      function_(function),
+      state_(state)
+  { }
+
   void writeToFile( const string& filePath, string content )
   {
     ofstream outFile(filePath);

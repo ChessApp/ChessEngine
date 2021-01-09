@@ -18,11 +18,11 @@ namespace Chess
 
       //-- construction
       inline MoveValidityState( GameState& gameState ) 
-        : BaseState(gameState)
+        : BaseState("MoveValidityState", gameState)
       { }
 
       //-- BaseState interface
-      virtual StatePtr execute( );
+      virtual StatePtr executeImpl() override;
       
     protected:
       //-- protected methods

@@ -30,6 +30,24 @@ namespace Chess
     static const string userInputList("/chessengine/build/InputList.txt");
   }
 
+  class Exception
+  {
+  public:
+    Exception( string message, string function = "", string state = "" );
+
+    const string getState()    { return state_; }
+    const string getFunction() { return function_; }
+    const string getMessage()  { return message_; }
+
+    void setState( string state )       { state_ = state; }
+    void setFunction( string function ) { function_ = function; }
+
+  private:
+    string state_;
+    string function_;
+    string message_;
+  };
+
   void writeToFile( const string& filePath, string content );
   const string readFromFile( const string& filePath );
 }

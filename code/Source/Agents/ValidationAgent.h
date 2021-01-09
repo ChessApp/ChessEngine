@@ -1,5 +1,5 @@
-#ifndef CHESS_VALIDATOR_H_
-#define CHESS_VALIDATOR_H_
+#ifndef CHESS_VALIDATIONAGENT_H_
+#define CHESS_VALIDATIONAGENT_H_
 
 #include "Chess.h"
 #include "GameState.h"
@@ -8,7 +8,7 @@
 
 namespace Chess
 {
-  namespace Validator
+  namespace ValidationAgent
   {
 
     void differentSquare( const GameState::MoveRequest& moveRequest );
@@ -17,4 +17,4 @@ namespace Chess
   }
 }
 
-#endif /* CHESS_VALIDATOR_H_ */
+#endif /* CHESS_VALIDATIONAGENT_H_ */

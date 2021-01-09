@@ -2,7 +2,7 @@
 
 #include "Tools/pugixml/pugixml.hpp"
 
-#include "Agents/Validator.h"
+#include "Agents/ValidationAgent.h"
 
 
 namespace Chess
@@ -10,21 +10,13 @@ namespace Chess
   namespace State
   {
 
-    BaseState::StatePtr RelevancyState::execute( )
+    BaseState::StatePtr RelevancyState::executeImpl()
     {
       DEBUG_CONSOLE_1ARG("State: RELEVANCY");
 
-      try
-      {
-        Validator::differentSquare(gameState_.moveRequest);
-        Validator::destinationSquareAvailable(gameState_.moveRequest, gameState_.board);
-      }
-      catch( string error )
-      {
-        cout << "[ERROR] " << error << endl;
-        gameState_.errorMessage = error;
-        return returnState_;
-      }
+      ValidationAgent::differentSquare(gameState_.moveRequest);
+      ValidationAgent::destinationSquareAvailable(gameState_.moveRequest, gameState_.board);
+
       return nextState_;
     }
 

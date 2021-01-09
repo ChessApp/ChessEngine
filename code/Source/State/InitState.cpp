@@ -52,7 +52,7 @@ namespace Chess
       gameState.setMoveRequest(moveString);
     }
 
-    BaseState::StatePtr InitState::execute()
+    BaseState::StatePtr InitState::executeImpl()
     {
       DEBUG_CONSOLE_1ARG("State: INIT");
 

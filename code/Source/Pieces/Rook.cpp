@@ -19,7 +19,7 @@ namespace Chess
     pieceMoved(destRow, destCol);
     if( row == destRow || col == destCol ) return true;
 
-    throw string("Rook::validDirection -> The selected piece is not capable of moving the request direction!");
+    throw string("Rook::validDirection -> The selected piece is not capable of moving the requested direction!");
   }
 
   bool Rook::pathScan ( int destRow, int destCol )

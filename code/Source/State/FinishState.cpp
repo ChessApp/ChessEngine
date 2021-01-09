@@ -40,7 +40,7 @@ namespace Chess
       doc.save_file(FilePaths::gameStateFile.c_str());
     }
 
-    BaseState::StatePtr FinishState::execute()
+    BaseState::StatePtr FinishState::executeImpl()
     {
       DEBUG_CONSOLE_1ARG("State: FINISH");
       serializeGameStateFile(gameState_);

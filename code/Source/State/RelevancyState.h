@@ -18,11 +18,11 @@ namespace Chess
 
       //-- construction
       inline RelevancyState( GameState& gameState ) 
-        : BaseState(gameState)
+        : BaseState("RelevancyState", gameState)
       { }
 
       //-- BaseState interface
-      virtual StatePtr execute( );
+      virtual StatePtr executeImpl() override;
       
     protected:
       //-- protected methods
