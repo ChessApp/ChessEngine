@@ -6,23 +6,23 @@ namespace Chess
 
   Scanner::ScanResultPtr Scanner::LeftScan::execute( )
   {
-    result_->detectedPiece = board_.getPiece(sourceRow_, sourceCol_);
-    int i = sourceCol_ - 1;
+    result_->detectedPiece = board_.getPiece(source_);
+    int i = source_.second - 1;
 
-    while( i >= destCol_ )
+    while( i >= destination_.second )
     {
-      result_->detectedPiece = board_.getPiece(sourceRow_, i);
-      if( board_.getPiece(sourceRow_, i) != NULL && board_.getPieceName(sourceRow_, i) != ".. " )
+      result_->detectedPiece = board_.getPiece({source_.first, i});
+      if( board_.getPiece({source_.first, i}) != NULL && board_.getPiece({source_.first, i})->getName() != ".. " )
       {
         result_->detection = true; 
-        result_->row = sourceRow_;
+        result_->row = source_.first;
         result_->col = i;
-        result_->detectedPiece = board_.getPiece( sourceRow_, i );
+        result_->detectedPiece = board_.getPiece({source_.first, i});
         break;
       }
       else
       {
-        result_->addSquare( sourceRow_, i );
+        result_->addSquare(source_.first, i);
       }
       i--;
     }
@@ -31,23 +31,23 @@ namespace Chess
 
   Scanner::ScanResultPtr Scanner::RightScan::execute( )
   {
-    result_->detectedPiece = board_.getPiece(sourceRow_, sourceCol_);
-    int i = sourceCol_ + 1;
+    result_->detectedPiece = board_.getPiece(source_);
+    int i = source_.second + 1;
 
-    while( i <= destCol_ )
+    while( i <= destination_.second )
     {
-      result_->detectedPiece = board_.getPiece(sourceRow_, i);
-      if( board_.getPiece(sourceRow_, i) != NULL && board_.getPieceName(sourceRow_, i) != ".. " )
+      result_->detectedPiece = board_.getPiece({source_.first, i});
+      if( board_.getPiece({source_.first, i}) != NULL && board_.getPiece({source_.first, i})->getName() != ".. " )
       {
         result_->detection = true;
-        result_->row = sourceRow_;
+        result_->row = source_.first;
         result_->col = i;
-        result_->detectedPiece = board_.getPiece( sourceRow_, i );
+        result_->detectedPiece = board_.getPiece({source_.first, i});
         break;
       }
       else
       {
-        result_->addSquare(sourceRow_, i);
+        result_->addSquare(source_.first, i);
       }
       i++;
     }
@@ -56,23 +56,23 @@ namespace Chess
 
   Scanner::ScanResultPtr Scanner::UpScan::execute ( )
   {
-    result_->detectedPiece = board_.getPiece(sourceRow_, sourceCol_);
-    int j = sourceRow_ - 1;
+    result_->detectedPiece = board_.getPiece(source_);
+    int j = source_.first - 1;
 
-    while( j >= destRow_ )
+    while( j >= destination_.first )
     {
-      result_->detectedPiece = board_.getPiece(j, sourceCol_);
-      if( board_.getPiece(j, sourceCol_) != NULL && board_.getPieceName(j, sourceCol_) != ".. " )
+      result_->detectedPiece = board_.getPiece({j, source_.second});
+      if( board_.getPiece({j, source_.second}) != NULL && board_.getPiece({j, source_.second})->getName() != ".. " )
       {
         result_->detection = true;
         result_->row = j;
-        result_->col = sourceCol_;
-        result_->detectedPiece = board_.getPiece( j, sourceCol_ );
+        result_->col = source_.second;
+        result_->detectedPiece = board_.getPiece({j, source_.second});
         break ;
       }
       else
       {
-        result_->addSquare( j, sourceCol_ );
+        result_->addSquare(j, source_.second);
       }
       j--;
     }
@@ -81,23 +81,23 @@ namespace Chess
 
   Scanner::ScanResultPtr Scanner::DownScan::execute( )
   {
-    result_->detectedPiece = board_.getPiece(sourceRow_, sourceCol_);
-    int j = sourceRow_ + 1;
+    result_->detectedPiece = board_.getPiece(source_);
+    int j = source_.first + 1;
 
-    while( j <= destRow_ )
+    while( j <= destination_.first )
     {
-      result_->detectedPiece = board_.getPiece(j, sourceCol_);
-      if( board_.getPiece(j, sourceCol_) != NULL && board_.getPieceName(j, sourceCol_) != ".. " )
+      result_->detectedPiece = board_.getPiece({j, source_.second});
+      if( board_.getPiece({j, source_.second}) != NULL && board_.getPiece({j, source_.second})->getName() != ".. " )
       {
         result_->detection = true;
         result_->row = j;
-        result_->col = sourceCol_;
-        result_->detectedPiece = board_.getPiece(j, sourceCol_);
+        result_->col = source_.second;
+        result_->detectedPiece = board_.getPiece({j, source_.second});
         break ;
       }
       else
       {
-        result_->addSquare( j, sourceCol_ );
+        result_->addSquare( j, source_.second );
       }
       j++;
     }
@@ -106,19 +106,19 @@ namespace Chess
 
   Scanner::ScanResultPtr Scanner::UpLeftScan::execute( )
   {
-    result_->detectedPiece = board_.getPiece(sourceRow_, sourceCol_);
-    int i = sourceCol_ - 1;
-    int j = sourceRow_ - 1;
+    result_->detectedPiece = board_.getPiece(source_);
+    int i = source_.second - 1;
+    int j = source_.first - 1;
 
-    while( i >= destCol_ && j >= destRow_ )
+    while( i >= destination_.second && j >= destination_.first )
     {
-      result_->detectedPiece = board_.getPiece(j, i);
-      if( board_.getPiece(j, i) != NULL && board_.getPieceName(j, i) != ".. " )
+      result_->detectedPiece = board_.getPiece({j, i});
+      if( board_.getPiece({j, i}) != NULL && board_.getPiece({j, i})->getName() != ".. " )
       {
         result_->detection = true;
         result_->row = j;
         result_->col = i;
-        result_->detectedPiece = board_.getPiece(j, i);
+        result_->detectedPiece = board_.getPiece({j, i});
         break;
       }
       else
@@ -133,19 +133,19 @@ namespace Chess
 
   Scanner::ScanResultPtr Scanner::UpRightScan::execute( )
   {
-    result_->detectedPiece = board_.getPiece(sourceRow_, sourceCol_);
-    int i = sourceCol_ + 1;
-    int j = sourceRow_ - 1;
+    result_->detectedPiece = board_.getPiece(source_);
+    int i = source_.second + 1;
+    int j = source_.first - 1;
 
-    while ( i <= destCol_ && j >= destRow_ )
+    while ( i <= destination_.second && j >= destination_.first )
     {
-      result_->detectedPiece = board_.getPiece(j, i);
-      if( board_.getPiece(j, i) != NULL && board_.getPieceName(j, i) != ".. " )
+      result_->detectedPiece = board_.getPiece({j, i});
+      if( board_.getPiece({j, i}) != NULL && board_.getPiece({j, i})->getName() != ".. " )
       {
         result_->detection = true;
         result_->row = j;
         result_->col = i;
-        result_->detectedPiece = board_.getPiece(j, i);
+        result_->detectedPiece = board_.getPiece({j, i});
         break;
       }
       else
@@ -160,19 +160,19 @@ namespace Chess
 
   Scanner::ScanResultPtr Scanner::DownLeftScan::execute( )
   {
-    result_->detectedPiece = board_.getPiece(sourceRow_, sourceCol_);
-    int i = sourceCol_ - 1;
-    int j = sourceRow_ + 1;
+    result_->detectedPiece = board_.getPiece(source_);
+    int i = source_.second - 1;
+    int j = source_.first + 1;
 
-    while( i >= destCol_ && j <= destRow_ )
+    while( i >= destination_.second && j <= destination_.first )
     {
-      result_->detectedPiece = board_.getPiece(j, i);
-      if( board_.getPiece(j, i) != NULL && board_.getPieceName(j, i) != ".. " )
+      result_->detectedPiece = board_.getPiece({j, i});
+      if( board_.getPiece({j, i}) != NULL && board_.getPiece({j, i})->getName() != ".. " )
       {
         result_->detection = true;
         result_->row = j;
         result_->col = i;
-        result_->detectedPiece = board_.getPiece(j, i);
+        result_->detectedPiece = board_.getPiece({j, i});
         break ;
       }
       else
@@ -187,19 +187,19 @@ namespace Chess
 
   Scanner::ScanResultPtr Scanner::DownRightScan::execute( )
   {
-    result_->detectedPiece = board_.getPiece(sourceRow_, sourceCol_);
-    int i = sourceCol_ + 1;
-    int j = sourceRow_ + 1;
+    result_->detectedPiece = board_.getPiece(source_);
+    int i = source_.second + 1;
+    int j = source_.first + 1;
 
-    while( i <= destCol_ && j <= destRow_ )
+    while( i <= destination_.second && j <= destination_.first )
     {
-      result_->detectedPiece = board_.getPiece(j, i);
-      if( board_.getPiece(j, i) != NULL && board_.getPieceName(j, i) != ".. " )
+      result_->detectedPiece = board_.getPiece({j, i});
+      if( board_.getPiece({j, i}) != NULL && board_.getPiece({j, i})->getName() != ".. " )
       {
         result_->detection = true;
         result_->row = j;
         result_->col = i;
-        result_->detectedPiece = board_.getPiece(j, i);
+        result_->detectedPiece = board_.getPiece({j, i});
         break ;
       }
       else

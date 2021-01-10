@@ -15,13 +15,13 @@ namespace Chess
       scanner_(new CompoundAxisScan(board))
   { }
 
-  bool Queen::validDirection( int destRow, int destCol )
+  bool Queen::validDirection( const pair<int,int>& destination )
   {
-    if( pieceMoved(destRow, destCol) )
+    if( pieceMoved(destination) )
     {
-      if( (row == destRow) || (col == destCol) )
+      if( (location_.first == destination.first) || (location_.second == destination.second) )
         return true;
-      else if( abs(row - destRow) == abs(col - destCol) )
+      else if( abs(location_.first - destination.first) == abs(location_.second - destination.second) )
         return true;
       else
         return false;
@@ -33,16 +33,16 @@ namespace Chess
     
   }
 
-  bool Queen::pathScan( int destRow, int destCol )
+  bool Queen::pathScan( const pair<int,int>& destination )
   {
-    scanner_->identifyScan(row, col, destRow, destCol);
+    scanner_->identifyScan(location_, destination);
     Scanner::ScanResultPtr scanResult = scanner_->execute();
     PiecePtr detectedPiece  = scanResult->detectedPiece;
     
     if( detectedPiece->getColor( ) == getColor( ) )
       return false;
-    else if( detectedPiece->getRow( ) != destRow || 
-             detectedPiece->getCol( ) != destCol )
+    else if( detectedPiece->getRow( ) != destination.first || 
+             detectedPiece->getCol( ) != destination.second )
       return false;
     else
       return true;

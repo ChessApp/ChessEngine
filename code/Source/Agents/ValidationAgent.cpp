@@ -13,8 +13,8 @@ namespace Chess
 
     void destinationSquareAvailable( const GameState::MoveRequest& moveRequest, Board& board )
     {
-      GameState::PiecePtr currentPiece = board.getPiece(moveRequest.front().first, moveRequest.front().second);
-      GameState::PiecePtr destPiece = board.getPiece(moveRequest.back().first, moveRequest.back().second);
+      GameState::PiecePtr currentPiece = board.getPiece(moveRequest.front());
+      GameState::PiecePtr destPiece = board.getPiece(moveRequest.back());
 
       if( currentPiece->getColor() == destPiece->getColor() )
         throw Exception("Destination square already occupied by the same team!", "ValidationAgent::destinationSquareAvailable");

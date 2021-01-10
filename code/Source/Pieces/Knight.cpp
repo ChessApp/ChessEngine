@@ -12,10 +12,10 @@ namespace Chess
     : Pieces( name, "KN" )
   { }
 
-  bool Knight::validDirection( int destRow, int destCol )
+  bool Knight::validDirection( const pair<int,int>& destination )
   {
-    int rowDiff = abs(destRow - row);
-    int colDiff = abs(destCol - col);
+    int rowDiff = abs(destination.first - location_.first);
+    int colDiff = abs(destination.second - location_.second);
 
     if( (rowDiff == 2) && (colDiff == 1) )
       return true;
@@ -25,7 +25,7 @@ namespace Chess
       return false;
   }
 
-  bool Knight::pathScan( int destRow, int destCol )
+  bool Knight::pathScan( const pair<int,int>& destination )
   {
     return true;
   }

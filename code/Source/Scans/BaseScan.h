@@ -21,26 +21,22 @@ namespace Chess
         result_(new ScanResult())
     { }
 
-    inline BaseScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
+    inline BaseScan( Board& board, const pair<int,int>& source, const pair<int,int>& destination )
       : board_(board),
-        sourceRow_(sourceRow),
-        sourceCol_(sourceCol),
-        destRow_(destRow),
-        destCol_(destCol),
+        source_(source),
+        destination_(destination),
         result_(new ScanResult())
     { }
 
     //-- interface methods
-    virtual ScanResultPtr execute( ) = 0;
+    virtual ScanResultPtr execute() = 0;
 
   protected:
     //-- protected members
     ScanResultPtr result_;
     Board&        board_;
-    int           sourceRow_;
-    int           sourceCol_;
-    int           destRow_;
-    int           destCol_;
+    pair<int,int> source_;
+    pair<int,int> destination_;
   };
 
 }

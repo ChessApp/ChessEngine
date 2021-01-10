@@ -121,7 +121,7 @@ namespace Chess
         if( type != "" )
         {
           p->setId(pieceId);
-          setPiece(p,row,col);
+          setPiece(p, {row, col});
         }
       }
 
@@ -138,12 +138,12 @@ namespace Chess
       doc.save_file(FilePaths::gameStateFile.c_str());
     }
 
-    void InitState::setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet )
+    void InitState::setPiece( PiecePtr pieceToSet, const pair<int,int>& location )
     {
       if(pieceToSet)
       {
-        pieceToSet->setLocation(rowToSet, colToSet);
-        gameState_.board.setPiece(pieceToSet, rowToSet, colToSet);
+        pieceToSet->setLocation(location);
+        gameState_.board.setPiece(pieceToSet, location);
         gameState_.activePieces.insert({pieceToSet->getId(), pieceToSet});
       }
     }

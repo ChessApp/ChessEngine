@@ -27,7 +27,7 @@ namespace Chess
     protected:
       //-- protected methods
       void deserializeGameStateFile();
-      void setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet );
+      void setPiece( PiecePtr pieceToSet, const pair<int, int>& location );
 
       //-- protected members
     };

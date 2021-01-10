@@ -19,14 +19,15 @@ namespace Chess
     Board();
 
     //-- public methods
-    void     setPiece( PiecePtr setPiece, int row, int col );
-    void     clrPiece( int row, int col );
-    PiecePtr getPiece( int row, int col );
-    string   getPieceName( int row, int col );
+    void     setPiece( PiecePtr piece, const pair<int,int>& destination );
+    void     clrPiece( const pair<int,int>& location );
+    PiecePtr getPiece( const pair<int,int>& location );
 
-  protected:
+  private:
+    //-- protected methods
+
     //-- protected members
-    vector<vector<PiecePtr>> board_;
+    std::unordered_map<string, PiecePtr> board_;
   };
 
 }

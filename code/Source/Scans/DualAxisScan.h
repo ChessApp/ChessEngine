@@ -16,7 +16,7 @@ namespace Chess
     DualAxisScan( Board& board );
 
     //-- Scanner interface
-    virtual void identifyScan( int sourceRow, int sourceCol, int destRow, int destCol );
+    virtual void identifyScan( const pair<int,int>& source, const pair<int,int>& destination );
     virtual ScanResultPtr execute( );
   };
 

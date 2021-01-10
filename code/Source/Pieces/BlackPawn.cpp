@@ -12,17 +12,17 @@ namespace Chess
     : Pieces(name, "P")
   { }
 
-  bool BlackPawn::validDirection( int destRow, int destCol )
+  bool BlackPawn::validDirection( const pair<int,int>& destination )
   {
-    if( pieceMoved(destRow, destCol) )
+    if( pieceMoved(destination) )
     {
-      if( (destCol == col) && (destRow == row + 2) && (row == 1) )
+      if( (destination.second == location_.second) && (destination.first == location_.first + 2) && (location_.first == 1) )
         return true;
       //move forward one square if that square is empty.
-      else if( (destCol == col) && (destRow == row + 1) )
+      else if( (destination.second == location_.second) && (destination.first == location_.first + 1) )
         return true;
       //move diagonally as long as there is an opposing piece to capture
-      else if( ((destCol == col + 1) || (destCol == col - 1)) && (destRow == row + 1) )
+      else if( ((destination.second == location_.second + 1) || (destination.second == location_.second - 1)) && (destination.first == location_.first + 1) )
         return true;
       else
         return false;
@@ -33,7 +33,7 @@ namespace Chess
     }  
   }
 
-  bool BlackPawn::pathScan( int destRow, int destCol )
+  bool BlackPawn::pathScan( const pair<int,int>& destination )
   {
     return true;
   }

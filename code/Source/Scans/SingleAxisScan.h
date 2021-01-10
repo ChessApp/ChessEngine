@@ -19,7 +19,7 @@ namespace Chess
 
     //-- Scanner interface
     virtual ScanResultPtr execute( );
-    virtual void identifyScan( int sourceRow, int sourceCol, int destRow, int destCol );
+    virtual void identifyScan( const pair<int,int>& source, const pair<int,int>& destination );
   };
 
 }

@@ -15,11 +15,11 @@ namespace Chess
       scanner_(new DualAxisScan(board))
   { }
 
-  bool Bishop::validDirection( int destRow, int destCol )
+  bool Bishop::validDirection( const pair<int,int>& destination )
   {
-    if( pieceMoved(destRow, destCol) )
+    if( pieceMoved(destination) )
     {
-      if( abs(row - destRow) == abs(col - destCol) )
+      if( abs(location_.first - destination.first) == abs(location_.second - destination.second) )
         return true;
       else
         return false;
@@ -30,16 +30,16 @@ namespace Chess
     }   
   }
 
-  bool Bishop::pathScan( int destRow, int destCol )
+  bool Bishop::pathScan( const pair<int,int>& destination )
   {
-    scanner_->identifyScan(row, col, destRow, destCol);
+    scanner_->identifyScan(location_, destination);
     Scanner::ScanResultPtr scanResult = scanner_->execute();
     PiecePtr detectedPiece  = scanResult->detectedPiece;
     
     if( detectedPiece->getColor() == getColor() )
       return false ;
-    else if ( detectedPiece->getRow() != destRow || 
-              detectedPiece->getCol() != destCol )
+    else if ( detectedPiece->getRow() != destination.first || 
+              detectedPiece->getCol() != destination.second )
       return false ;
     else
       return true ;

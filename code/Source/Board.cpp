@@ -8,35 +8,43 @@
 namespace Chess
 {
 
+  namespace
+  {
+    static const int min = 0;
+    static const int max = 7;
+
+    string locationToHash( const pair<int,int>& location )
+    {
+      if( location.first < min || location.first > max )
+        throw Exception("Location is out of bounds!", "Board::locationToHash");
+      if( location.second < min || location.second > max )
+        throw Exception("Location is out of bounds!", "Board::locationToHash");
+
+      return std::to_string(location.first) + std::to_string(location.second);
+    }
+  }
+
   Board::Board()
-    : board_(8, vector<PiecePtr>(8, std::make_shared<Pieces>(NullPiece(".. "))))
-  { }
-
-
-  void Board::setPiece( PiecePtr setPiece, int row, int col )
   {
-    board_[row][col] = setPiece;
+
   }
 
-  void Board::clrPiece( int row, int col )
+  void Board::setPiece( PiecePtr piece, const pair<int,int>& destination )
   {
-    PiecePtr pieceToClr = board_[row][col];
-
-    if( pieceToClr != NULL )
-      board_[row][col] = NULL;
+    board_.insert({locationToHash(destination), piece});
   }
 
-  Board::PiecePtr Board::getPiece( int row, int col )
+  void Board::clrPiece( const pair<int,int>& location )
   {
-    return board_[row][col];
+    board_.erase(locationToHash(location));
   }
 
-  string Board::getPieceName ( int row, int col )
+  Board::PiecePtr Board::getPiece( const pair<int,int>& location )
   {
-    if( board_[row][col] != NULL )
-      return (board_[row][col])->getName();
-    else
-      return ".. ";
+    
+    auto square = board_.find(locationToHash(location));
+    if( square != board_.end() ) return square->second;
+    else return std::make_shared<NullPiece>(".. ");
   }
  
 }

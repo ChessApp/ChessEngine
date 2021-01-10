@@ -24,8 +24,8 @@ namespace Chess
     {
     public:
       //-- construction
-      inline LeftScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
-        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
+      inline LeftScan( Board& board, const pair<int,int>& source, const pair<int,int>& destination )
+        : BaseScan( board, source, destination )
       { }
 
       //-- BaseScan interface
@@ -37,8 +37,8 @@ namespace Chess
     {
     public:
       //-- construction
-      inline RightScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
-        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
+      inline RightScan( Board& board, const pair<int,int>& source, const pair<int,int>& destination )
+        : BaseScan( board, source, destination )
       { }
 
       //-- BaseScan interface
@@ -50,8 +50,8 @@ namespace Chess
     {
     public:
       //-- construction
-      inline UpScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
-        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
+      inline UpScan( Board& board, const pair<int,int>& source, const pair<int,int>& destination )
+        : BaseScan( board, source, destination )
       { }
 
       //-- BaseScan interface
@@ -63,8 +63,8 @@ namespace Chess
     {
     public:
       //-- construction
-      inline DownScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
-        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
+      inline DownScan( Board& board, const pair<int,int>& source, const pair<int,int>& destination )
+        : BaseScan( board, source, destination )
       { }
 
       //-- BaseScan interface
@@ -76,8 +76,8 @@ namespace Chess
     {
     public:
       //-- construction
-      inline UpLeftScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
-        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
+      inline UpLeftScan( Board& board, const pair<int,int>& source, const pair<int,int>& destination )
+        : BaseScan( board, source, destination )
       { }
 
       //-- BaseScan interface
@@ -89,8 +89,8 @@ namespace Chess
     {
     public:
       //-- construction
-      inline UpRightScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
-        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
+      inline UpRightScan( Board& board, const pair<int,int>& source, const pair<int,int>& destination )
+        : BaseScan( board, source, destination )
       { }
 
       //-- BaseScan interface
@@ -102,8 +102,8 @@ namespace Chess
     {
     public:
       //-- construction
-      inline DownLeftScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
-        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
+      inline DownLeftScan( Board& board, const pair<int,int>& source, const pair<int,int>& destination )
+        : BaseScan( board, source, destination )
       { }
 
       //-- BaseScan interface
@@ -115,8 +115,8 @@ namespace Chess
     {
     public:
       //-- construction
-      inline DownRightScan( Board& board, int sourceRow, int sourceCol, int destRow, int destCol )
-        : BaseScan( board, sourceRow, sourceCol, destRow, destCol )
+      inline DownRightScan( Board& board, const pair<int,int>& source, const pair<int,int>& destination )
+        : BaseScan( board, source, destination )
       { }
 
       //-- BaseScan interface
@@ -130,7 +130,7 @@ namespace Chess
 
     //-- interface methods
     virtual ScanResultPtr execute( ) = 0;
-    virtual void          identifyScan( int sourceRow, int sourceCol, int destRow, int destCol ) = 0;
+    virtual void          identifyScan( const pair<int,int>& source, const pair<int,int>& destination ) = 0;
 
   protected:
     //-- protected members

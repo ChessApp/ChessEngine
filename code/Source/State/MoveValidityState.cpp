@@ -15,8 +15,8 @@ namespace Chess
       auto source      = gameState_.moveRequest.front();
       auto destination = gameState_.moveRequest.back();
 
-      PiecePtr currentPiece = gameState_.board.getPiece(source.first, source.second);
-      currentPiece->validDirection(destination.first, destination.second);
+      PiecePtr currentPiece = gameState_.board.getPiece(source);
+      currentPiece->validDirection(destination);
 
       return nextState_;
     }

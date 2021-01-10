@@ -15,20 +15,19 @@ namespace Chess
       scanner_(new CompoundAxisScan(board))
   { }
 
-  bool King::validDirection( int destRow, int destCol )
+  bool King::validDirection( const pair<int,int>& destination )
   {
-    if( abs(destCol - col) <= 1 &&
-        abs(destRow - row) <= 1 &&
-        pieceMoved(destRow, destCol) &&
-        destinationOnBoard(destRow, destCol) )
+    if( abs(destination.second - location_.second) <= 1 &&
+        abs(destination.first - location_.first) <= 1 &&
+        pieceMoved(destination) )
       return true;
     else
       return false;
   }
 
-  bool King::pathScan( int destRow, int destCol )
+  bool King::pathScan( const pair<int,int>& destination )
   {
-    scanner_->identifyScan(row, col, destRow, destCol);
+    scanner_->identifyScan(location_, destination);
     Scanner::ScanResultPtr scanResult = scanner_->execute();
     PiecePtr detectedPiece = scanResult->detectedPiece;
     if( detectedPiece->getColor() == getColor() )

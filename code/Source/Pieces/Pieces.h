@@ -20,44 +20,41 @@ namespace Chess
     
     //-- construction
     Pieces( const string name, string type );
-    Pieces( const string name, string type, int initRow, int initCol );
 
     //-- interface methods
-    virtual bool pathScan( int destRow, int destCol )       { return false; }
-    virtual bool validDirection( int destRow, int destCol ) { return false; }
+    virtual bool pathScan( const pair<int,int>& destination )       { return false; }
+    virtual bool validDirection( const pair<int,int>& destination ) { return false; }
 
     //-- accessors
     string   getType( );
     string   getColor( );
     string   getName( );
-    void     setLocation( int row, int col );
-    int      getCol( )    { return col; }
-    int      getRow( )    { return row; }
-    void     setPinned( ) { pinned = true; }
-    void     clrPinned( ) { pinned = false; }
-    bool     getPinnedStatus( ) { return pinned; }
+    void     setLocation( const pair<int,int>& location );
+    int      getCol( )    { return location_.second; }
+    int      getRow( )    { return location_.first; }
+    void     setPinned( ) { pinned_ = true; }
+    void     clrPinned( ) { pinned_ = false; }
+    bool     getPinnedStatus( ) { return pinned_; }
     void     setId( int id ) { id_ = id; }
     int      getId() const { return id_; }
 
     //-- miscellaneous public methods
-    bool pieceMoved( int destRow, int destCol );
-    bool destinationOnBoard( int destRow, int destCol );
+    bool pieceMoved( const pair<int,int>& destination );
 
   protected:
     //-- protected methods
     void clrLocation( );
 
     //-- protected members
-    bool      in_check;
-    bool      prev_in_check;
-    bool      pinned;
-    bool      captured;
-    string    color;
-    int       col;
-    int       row;
-    string    name;
-    string    type;
-    int       id_;
+    bool          in_check_;
+    bool          prev_in_check_;
+    bool          pinned_;
+    bool          captured_;
+    string        color_;
+    pair<int,int> location_;
+    string        name_;
+    string        type_;
+    int           id_;
   };
 
 }

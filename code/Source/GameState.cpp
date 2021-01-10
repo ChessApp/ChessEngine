@@ -59,7 +59,7 @@ namespace Chess
     {
       for( int col = 0; col < 7; col++ )
       {
-        cout << board.getPiece(row, col)->getName();
+        cout << board.getPiece({row, col})->getName();
       }
       cout << endl;
     }

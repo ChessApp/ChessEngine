@@ -22,8 +22,8 @@ namespace Chess
     BlackPawn( const string name );
 
     //-- Piece interface
-    virtual bool pathScan( int destRow, int destCol );  
-    virtual bool validDirection( int destRow, int destCol );   
+    virtual bool pathScan( const pair<int,int>& destination );  
+    virtual bool validDirection( const pair<int,int>& destination );   
   };
 
 }
