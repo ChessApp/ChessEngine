@@ -44,8 +44,12 @@ namespace Chess
     string message_;
   };
 
-  void writeToFile( const string& filePath, string content );
-  const string readFromFile( const string& filePath );
+  namespace FileSystem
+  {
+    void writeToFile( const string& filePath, string content );
+    const string readFromFile( const string& filePath );
+  }
+
 }
 
 #endif /* CHESS_H_ */

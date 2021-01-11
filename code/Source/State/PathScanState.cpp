@@ -16,16 +16,16 @@ namespace Chess
       Pieces::PiecePtr currentPiece = gameState_.board.getPiece(source);
       Pieces::PiecePtr detectedPiece = result->detectedPiece;
       
+      if( detectedPiece->getType() == "" )
+        return;
       if( detectedPiece->getColor() == currentPiece->getColor() )
-        throw Exception("The destination specified is blocked by a " + detectedPiece->getType() + " on the same team!", "Pieces::pathScan");
+        throw Exception("The destination specified is blocked by a " + detectedPiece->getType() + " on the same team!", "PathScanState::evaluateScanResult");
       if( detectedPiece->getRow() != destination.first || detectedPiece->getCol() != destination.second )
-        throw Exception("The destination specified is blocked by a " + detectedPiece->getType() + " on the other team!", "Pieces::pathScan");
+        throw Exception("The destination specified is blocked by a " + detectedPiece->getType() + " on the other team!", "PathScanState::evaluateScanResult");
     }
 
     BaseState::StatePtr PathScanState::executeImpl()
     {
-      DEBUG_CONSOLE_1ARG("State: PATH SCAN");
-      
       PiecePtr piece = gameState_.board.getPiece(gameState_.moveRequest.front());
       if( piece->requiresPathScan() )
       {

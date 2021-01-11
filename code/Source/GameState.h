@@ -39,7 +39,7 @@ namespace Chess
     string                            blackClientId;
     int                               whiteKingId;
     int                               blackKingId;
-    int                               capturedPieceId = 0;
+    int                               capturedPieceId = -1;
     MoveRequest                       moveRequest;
     Board                             board;
     string                            moveString;

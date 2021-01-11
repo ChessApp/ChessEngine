@@ -7,7 +7,8 @@ namespace Chess
 
     void handle( Exception& exception, GameState& gameState )
     {
-      cout << "---- ERROR ----" << endl
+      PLOG_ERROR << endl 
+           << "---- ERROR ----" << endl
            << " State: "    << exception.getState() << endl
            << " Function: " << exception.getFunction() << endl
            << " Message: "  << exception.getMessage()  << endl;

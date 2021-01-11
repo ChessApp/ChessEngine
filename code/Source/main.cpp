@@ -35,11 +35,11 @@ string convertToString(string xmlFile) {
 
 invocation_response my_handler(invocation_request const& request)
 {
-  Chess::writeToFile(Chess::FilePaths::userInputFile, request.payload);
+  Chess::FileSystem::writeToFile(Chess::FilePaths::userInputFile, request.payload);
 
   new Chess::GameProtocolDriver();
 
-  return invocation_response::success(Chess::readFromFile(Chess::FilePaths::gameStateFile), "application/xml");
+  return invocation_response::success(Chess::FileSystem::readFromFile(Chess::FilePaths::gameStateFile), "application/xml");
 }
 
 

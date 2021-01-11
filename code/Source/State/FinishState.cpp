@@ -2,6 +2,8 @@
 
 #include "Tools/pugixml/pugixml.hpp"
 
+#include "Agents/DynamoDBAgent.h"
+
 
 namespace Chess
 {
@@ -38,12 +40,27 @@ namespace Chess
       pugi::xml_node messagesNode = root.child("Messages");
       messagesNode.attribute("invalidMove").set_value(gameState.errorMessage.c_str());
       doc.save_file(FilePaths::gameStateFile.c_str());
+
+      gameState.gameStateString = FileSystem::readFromFile(FilePaths::gameStateFile);
+    }
+
+    void serializeGameInfo( GameState& gameState )
+    {
+      typedef vector<pair<string, string>> ItemList;
+      ItemList item;
+      item.push_back({"gameId",  gameState.gameId});
+      item.push_back({"whiteId", gameState.whiteClientId});
+      item.push_back({"blackId", gameState.blackClientId});
+      item.push_back({"state",   gameState.gameStateString});
+
+      Chess::Agents::DynamoDBAgent db("GameStates", "localhost", "http://localhost:8000");
+      db.putItem(item);
     }
 
     BaseState::StatePtr FinishState::executeImpl()
     {
-      DEBUG_CONSOLE_1ARG("State: FINISH");
       serializeGameStateFile(gameState_);
+      serializeGameInfo(gameState_);
       return nextState_;
     }
 

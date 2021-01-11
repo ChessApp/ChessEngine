@@ -19,7 +19,8 @@ namespace Chess
       pinned_(false), 
       captured_(false),
       color_(name.substr(0, 1)),
-      location_({0,0})
+      location_({0,0}),
+      id_(-1)
   { }
 
   bool Pieces::pieceMoved( const pair<int,int>& destination )

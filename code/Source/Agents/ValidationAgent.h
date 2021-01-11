@@ -13,6 +13,7 @@ namespace Chess
 
     void differentSquare( const GameState::MoveRequest& moveRequest );
     void destinationSquareAvailable( const GameState::MoveRequest& moveRequest, Board& board );
+    void pieceOwner( GameState& gameState );
 
   }
 }

@@ -16,6 +16,7 @@ namespace Chess
     {
       try
       {
+        PLOG_DEBUG << "State: " << name_;
         return executeImpl();
       }
       catch( Exception& e )

@@ -37,7 +37,7 @@ namespace Chess
     relevancy_    = std::make_shared<RelevancyState>(gameState_);
     moveValidity_ = std::make_shared<MoveValidityState>(gameState_);
     pathScan_     = std::make_shared<PathScanState>(gameState_);
-    // move_.reset(               new MoveState(interface_, board_, currentTurn_) );
+    move_         = std::make_shared<MoveState>(gameState_);
     // defensiveCheckScan_.reset( new DefensiveCheckScanState(board_, currentTurn_) );
     // returnPiece_.reset(        new ReturnPieceState(interface_, board_, currentTurn_) );
     // offensiveCheckScan_.reset( new OffensiveCheckScanState(board_, currentTurn_) );
@@ -51,8 +51,8 @@ namespace Chess
     init_->setTransitionStates(               relevancy_,           finish_ );
     relevancy_->setTransitionStates(          moveValidity_,        finish_ );
     moveValidity_->setTransitionStates(       pathScan_,            finish_ );
-    pathScan_->setTransitionStates(           finish_,              finish_ );
-    // move_->setTransitionStates(               defensiveCheckScan_,  checkmate_ );
+    pathScan_->setTransitionStates(           move_,              finish_ );
+    move_->setTransitionStates(               finish_,  finish_ );
     // defensiveCheckScan_->setTransitionStates( offensiveCheckScan_,  returnPiece_ );
     // returnPiece_->setTransitionStates(        checkmate_,           checkmate_ );
     // offensiveCheckScan_->setTransitionStates( pinScan_,             switchTurn_ );
@@ -72,18 +72,17 @@ namespace Chess
       {
         currentState_ = currentState_->execute();
       }
-      gameState_.print();
-      std::cout << "State machine done." << std::endl;
+      PLOG_INFO << "State machine done.";
     }
     catch( string error )
     {
       cout << "[ERROR] " << error << endl;
-      gameState_.print();
     }
     catch(...)
     {
       cout << "caught unknown exception" << endl;
     }
+    gameState_.print();
   }
 
 }

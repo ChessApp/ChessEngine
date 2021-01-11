@@ -10,8 +10,6 @@ namespace Chess
 
     BaseState::StatePtr MoveValidityState::executeImpl()
     {
-      DEBUG_CONSOLE_1ARG("State: MOVE VALIDITY");
-
       auto source      = gameState_.moveRequest.front();
       auto destination = gameState_.moveRequest.back();
 

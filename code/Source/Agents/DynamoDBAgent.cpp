@@ -45,8 +45,7 @@ namespace Chess
       }
       else
       {
-        std::cout << result.GetError().GetMessage() << std::endl;
-        throw string(result.GetError().GetMessage());
+        throw Exception(result.GetError().GetMessage(), "DynamoDBAgent::getItem");
       }
     }
 
@@ -72,7 +71,7 @@ namespace Chess
       const Aws::DynamoDB::Model::PutItemOutcome result = dynamoClient.PutItem(req);
       if( !result.IsSuccess() )
       {
-        throw string(result.GetError().GetMessage());
+        throw Exception(result.GetError().GetMessage(), "DynamoDBAgent::putItem");
       }
     }
 

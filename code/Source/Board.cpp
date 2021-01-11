@@ -31,20 +31,31 @@ namespace Chess
 
   void Board::setPiece( PiecePtr piece, const pair<int,int>& destination )
   {
-    board_.insert({locationToHash(destination), piece});
+    // First wipe the old key/value pair in the map - the piece will no longer exist at that key.
+    clrPiece(piece);
+
+    piece->setLocation(destination);
+    auto destinationSquare = board_.find(locationToHash(destination));
+    if( destinationSquare == board_.end() )
+      board_.insert({locationToHash(destination), piece});
+    else
+      destinationSquare->second = piece;
   }
 
-  void Board::clrPiece( const pair<int,int>& location )
+  void Board::clrPiece( PiecePtr piece )
   {
-    board_.erase(locationToHash(location));
+    auto square = board_.find(locationToHash(piece->getLocation()));
+    if( square == board_.end() ) return;
+    board_.erase(square);
   }
 
   Board::PiecePtr Board::getPiece( const pair<int,int>& location )
   {
-    
     auto square = board_.find(locationToHash(location));
-    if( square != board_.end() ) return square->second;
-    else return std::make_shared<NullPiece>(".. ");
+    if( square != board_.end() )
+      return square->second;
+    else
+      return std::make_shared<NullPiece>(".. ");
   }
  
 }

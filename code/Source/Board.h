@@ -20,7 +20,7 @@ namespace Chess
 
     //-- public methods
     void     setPiece( PiecePtr piece, const pair<int,int>& destination );
-    void     clrPiece( const pair<int,int>& location );
+    void     clrPiece( PiecePtr piece );
     PiecePtr getPiece( const pair<int,int>& location );
 
   private:

@@ -10,14 +10,14 @@ namespace Chess
       state_(state)
   { }
 
-  void writeToFile( const string& filePath, string content )
+  void FileSystem::writeToFile( const string& filePath, string content )
   {
     ofstream outFile(filePath);
     outFile << content;
     outFile.close();
   }
 
-  const string readFromFile( const string& filePath )
+  const string FileSystem::readFromFile( const string& filePath )
   {
     ifstream readFile(filePath);
     std::string result((std::istreambuf_iterator<char>(readFile)),

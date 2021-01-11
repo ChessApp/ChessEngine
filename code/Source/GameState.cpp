@@ -30,14 +30,15 @@ namespace Chess
 
   void GameState::print()
   {
-    cout << "--- GameState ---" << endl;
-    cout << "gameId: " << gameId << endl;
-    cout << "currentClientId: " << currentClientId << endl;
-    cout << "whiteClientId: " << whiteClientId << endl;
-    cout << "blackClientId: " << blackClientId << endl;
-    cout << "moveString: " << moveString << endl;
-    cout << "gameStateString: " << gameStateString << endl;
-    cout << "moveRequest:" << endl;
+    PLOG_VERBOSE << endl
+    << "--- GameState ---" << endl
+    << "gameId: " << gameId << endl
+    << "currentClientId: " << currentClientId << endl
+    << "whiteClientId: " << whiteClientId << endl
+    << "blackClientId: " << blackClientId << endl
+    << "moveString: " << moveString << endl
+    << "gameStateString: " << endl << gameStateString << endl
+    << "moveRequest:" << endl;
     for( auto coordinate : moveRequest )
     {
       cout << "{" << coordinate.first << ", " << coordinate.second << "} ";
@@ -57,7 +58,7 @@ namespace Chess
     cout << "Board: " << endl;
     for( int row = 0; row < 8; row++ )
     {
-      for( int col = 0; col < 7; col++ )
+      for( int col = 0; col < 8; col++ )
       {
         cout << board.getPiece({row, col})->getName();
       }
@@ -71,7 +72,7 @@ namespace Chess
   {
     if( color == "W" ) attacker = whiteAttacker;
     else if( color == "B" ) attacker = blackAttacker;
-    else cout << "Game state does not have an attacker configured!" << endl;
+    else throw Exception("Attacker is not configured!", "GameState::setAttacker");
   }
 
   const string GameState::serializeAttacker()
@@ -81,7 +82,7 @@ namespace Chess
       case whiteAttacker: return "W";
       case blackAttacker: return "B";
 
-      default: throw string("GameState::serializeAttacker -> Attacker field not set properly!");
+      default: throw Exception("Attacker field not set properly!", "GameState::serializeAttacker");
     }
   }
  

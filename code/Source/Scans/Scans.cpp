@@ -56,7 +56,7 @@ namespace Chess
       return result_;
     }
 
-    ScanResultPtr UpScan::execute ( )
+    ScanResultPtr UpScan::execute( )
     {
       result_->detectedPiece = board_.getPiece(source_);
       int j = source_.first - 1;

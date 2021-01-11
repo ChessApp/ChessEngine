@@ -12,10 +12,9 @@ namespace Chess
 
     BaseState::StatePtr RelevancyState::executeImpl()
     {
-      DEBUG_CONSOLE_1ARG("State: RELEVANCY");
-
       ValidationAgent::differentSquare(gameState_.moveRequest);
       ValidationAgent::destinationSquareAvailable(gameState_.moveRequest, gameState_.board);
+      ValidationAgent::pieceOwner(gameState_);
 
       return nextState_;
     }

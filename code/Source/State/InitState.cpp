@@ -30,12 +30,13 @@ namespace Chess
       auto whiteId = info.find("whiteId");
       auto blackId = info.find("blackId");
       auto state   = info.find("state");
-      if( whiteId == info.end() || blackId == info.end() || state == info.end() ) throw string("DynamoDB game info missing field(s)");
+      if( whiteId == info.end() || blackId == info.end() || state == info.end() )
+        throw Exception("DynamoDB game info missing field(s)", "InitState::deserializeGameInfo");
 
       gameState.whiteClientId = whiteId->second.GetS();
       gameState.blackClientId = blackId->second.GetS();
       gameState.gameStateString = state->second.GetS();
-      writeToFile(FilePaths::gameStateFile, gameState.gameStateString);
+      FileSystem::writeToFile(FilePaths::gameStateFile, gameState.gameStateString);
     }
 
     void deserializeClientRequest( GameState& gameState )
@@ -54,9 +55,6 @@ namespace Chess
 
     BaseState::StatePtr InitState::executeImpl()
     {
-      
-      PLOG_VERBOSE << "STATE: Init";
-
       deserializeClientRequest(gameState_);
       deserializeGameInfo(gameState_);
       deserializeGameStateFile();

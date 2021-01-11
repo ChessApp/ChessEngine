@@ -37,6 +37,7 @@ namespace Chess
     bool     getPinnedStatus() { return pinned_; }
     void     setId( int id ) { id_ = id; }
     int      getId() const { return id_; }
+    const pair<int,int> getLocation() const { return location_; }
 
     //-- miscellaneous public methods
     bool pieceMoved( const pair<int,int>& destination );

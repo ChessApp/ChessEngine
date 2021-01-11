@@ -5,6 +5,8 @@ namespace Chess
   namespace ValidationAgent
   {
 
+    static const string wrongTeamMessage = "That piece cannot be moved because it does not pledge allegiance to the attacking team!";
+
     void differentSquare( const GameState::MoveRequest& moveRequest )
     {
       if( moveRequest.front() == moveRequest.back() )
@@ -18,6 +20,26 @@ namespace Chess
 
       if( currentPiece->getColor() == destPiece->getColor() )
         throw Exception("Destination square already occupied by the same team!", "ValidationAgent::destinationSquareAvailable");
+    }
+
+
+    void pieceOwner( GameState& gameState )
+    {
+      switch(gameState.attacker)
+      {
+        case GameState::whiteAttacker:
+          if( gameState.board.getPiece(gameState.moveRequest.front())->getColor() != "W" )
+            throw Exception(wrongTeamMessage, "ValidationAgent::pieceOwner");
+          break;
+
+        case GameState::blackAttacker:
+          if( gameState.board.getPiece(gameState.moveRequest.front())->getColor() != "B" )
+            throw Exception(wrongTeamMessage, "ValidationAgent::pieceOwner");
+          break;
+
+        default:
+          throw Exception("Attacker not properly set in GameState!", "ValidationAgent::pieceOwner");
+      }
     }
 
   }
