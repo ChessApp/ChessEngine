@@ -1,12 +1,8 @@
 #ifndef CHESS_H_
 #define CHESS_H_
 
-#include <vector>
-#include <memory>
-#include <string>
-#include <iostream>
-#include <fstream>
 #include <bits/stdc++.h>
+#include <plog/Log.h>
 
 #include "Tools/debugging/DebugConsole.h"
 

@@ -27,4 +27,10 @@ RUN git clone https://github.com/awslabs/aws-lambda-cpp.git && \
       -DCMAKE_CXX_COMPILER=g++ && \
     make && make install
 
+RUN git clone https://github.com/SergiusTheBest/plog.git && \
+    mkdir -p plog/build && cd plog/build && \
+    cmake3 .. \
+      -DCMAKE_INSTALL_INCLUDEDIR=/out/include && \
+    make && make install
+
 WORKDIR /chessengine

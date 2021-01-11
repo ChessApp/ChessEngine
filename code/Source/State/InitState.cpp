@@ -54,11 +54,14 @@ namespace Chess
 
     BaseState::StatePtr InitState::executeImpl()
     {
-      DEBUG_CONSOLE_1ARG("State: INIT");
+      
+      PLOG_VERBOSE << "STATE: Init";
 
       deserializeClientRequest(gameState_);
       deserializeGameInfo(gameState_);
       deserializeGameStateFile();
+
+      gameState_.print();
 
       return nextState_;
     }
