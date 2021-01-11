@@ -95,11 +95,11 @@ namespace Chess
         }
         else if( type == "B" )
         {
-          p.reset( new Chess::Bishop(symbol, gameState_.board) );
+          p.reset( new Chess::Bishop(symbol) );
         }
         else if( type == "R" )
         {
-          p.reset( new Chess::Rook(symbol, gameState_.board) );
+          p.reset( new Chess::Rook(symbol) );
         }
         else if( type == "KN" )
         {
@@ -107,11 +107,11 @@ namespace Chess
         }
         else if( type == "Q" )
         {
-          p.reset( new Chess::Queen(symbol, gameState_.board) );
+          p.reset( new Chess::Queen(symbol) );
         }
         else if( type == "K" )
         {
-          p.reset( new Chess::King(symbol, gameState_.board) );
+          p.reset( new Chess::King(symbol) );
           if( color == "W" ) gameState_.whiteKingId = pieceId;
           else gameState_.blackKingId = pieceId;
         }

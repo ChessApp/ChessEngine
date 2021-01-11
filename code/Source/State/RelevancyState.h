@@ -18,7 +18,7 @@ namespace Chess
 
       //-- construction
       inline RelevancyState( GameState& gameState ) 
-        : BaseState("RelevancyState", gameState)
+        : BaseState(gameState, "RelevancyState")
       { }
 
       //-- BaseState interface

@@ -3,15 +3,17 @@
 // sets their initial data for the beginning of 
 // the game.
 #include "Pieces/Pieces.h"
-#include <string>
+#include "GameState.h"
 
 
 namespace Chess
 {
 
-  Pieces::Pieces( string name, string type )
-    : name_(name), 
-      type_(type), 
+  const string Pieces::invalidDirectionMessage_ = "The selected piece is not capable of moving the requested direction!";
+
+  Pieces::Pieces( const string& name, string type )
+    : name_(name),
+      type_(type),
       in_check_(false),
       prev_in_check_(false), 
       pinned_(false), 

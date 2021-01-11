@@ -8,7 +8,7 @@
 namespace Chess
 {
 
-  BlackPawn::BlackPawn( const string name )
+  BlackPawn::BlackPawn( const string& name )
     : Pieces(name, "P")
   { }
 
@@ -31,11 +31,6 @@ namespace Chess
     {
       return false;
     }  
-  }
-
-  bool BlackPawn::pathScan( const pair<int,int>& destination )
-  {
-    return true;
   }
 
 }

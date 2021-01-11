@@ -18,7 +18,7 @@ namespace Chess
 
       //-- construction
       inline InitState( GameState& gameState )
-        : BaseState("InitState", gameState)
+        : BaseState(gameState, "InitState")
       { }
 
       //-- BaseState interface

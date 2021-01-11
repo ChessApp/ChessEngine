@@ -1,22 +1,17 @@
-#ifndef CHESS_SCANNER_H_
-#define CHESS_SCANNER_H_
+#ifndef CHESS_SCANS_H_
+#define CHESS_SCANS_H_
 
 #include "Chess.h"
-#include "Pieces/Pieces.h"
-#include "Pieces/NullPiece.h"
 #include "Board.h"
-#include "Interface.h"
 #include "Scans/BaseScan.h"
 #include "Scans/ScanResult.h"
 
 
 namespace Chess
 {
-
-  class Scanner
+  namespace Scans
   {
-  public:
-    //-- types
+
     typedef shared_ptr<ScanResult> ScanResultPtr;
 
     class LeftScan
@@ -29,7 +24,7 @@ namespace Chess
       { }
 
       //-- BaseScan interface
-      virtual ScanResultPtr execute( );
+      virtual ScanResultPtr execute();
     };
 
     class RightScan
@@ -123,21 +118,7 @@ namespace Chess
       virtual ScanResultPtr execute( );
     }; 
 
-    //-- construction
-    inline Scanner( Board& board )
-      : board_(board)
-    { }
-
-    //-- interface methods
-    virtual ScanResultPtr execute( ) = 0;
-    virtual void          identifyScan( const pair<int,int>& source, const pair<int,int>& destination ) = 0;
-
-  protected:
-    //-- protected members
-    Board&      board_ ;
-    BaseScan * scan_ ;
-  };
-
+  }
 }
 
-#endif /* CHESS_SCANNER_H_ */
+#endif /* CHESS_SCANS_H_ */

@@ -3,6 +3,7 @@
 
 #include "Chess.h"
 #include "Scans/Scanner.h"
+#include "Board.h"
 
 
 namespace Chess
@@ -17,7 +18,7 @@ namespace Chess
 
     //-- Scanner interface
     virtual void identifyScan( const pair<int,int>& source, const pair<int,int>& destination );
-    virtual ScanResultPtr execute( );
+    virtual ScanResultPtr execute();
   };
 
 }

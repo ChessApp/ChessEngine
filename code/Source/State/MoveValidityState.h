@@ -18,7 +18,7 @@ namespace Chess
 
       //-- construction
       inline MoveValidityState( GameState& gameState ) 
-        : BaseState("MoveValidityState", gameState)
+        : BaseState(gameState, "MoveValidityState")
       { }
 
       //-- BaseState interface

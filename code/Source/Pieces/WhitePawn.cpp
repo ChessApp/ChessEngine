@@ -8,7 +8,7 @@
 namespace Chess
 {
 
-  WhitePawn::WhitePawn( const string name )
+  WhitePawn::WhitePawn( const string& name )
     : Pieces(name, "P")
   { }
 
@@ -32,11 +32,6 @@ namespace Chess
       return false ;
     }
 
-  }
-
-  bool WhitePawn::pathScan( const pair<int,int>& destination )
-  {
-    return true ;
   }
 
 }

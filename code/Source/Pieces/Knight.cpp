@@ -8,7 +8,7 @@
 namespace Chess
 {
 
-  Knight::Knight( const string name )
+  Knight::Knight( const string& name )
     : Pieces( name, "KN" )
   { }
 
@@ -21,13 +21,8 @@ namespace Chess
       return true;
     else if( (rowDiff == 1) && (colDiff == 2) )
       return true;
-    else
-      return false;
-  }
 
-  bool Knight::pathScan( const pair<int,int>& destination )
-  {
-    return true;
+    throw Exception(invalidDirectionMessage_, "Knight::validDirection");
   }
 
 }

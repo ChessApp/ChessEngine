@@ -19,11 +19,11 @@ namespace Chess
   {
   public:
     //-- construction
-    WhitePawn( const string name );
+    WhitePawn( const string& name );
 
     //-- Pieces interface
-    virtual bool pathScan( const pair<int,int>& destination ) ; 
-    virtual bool validDirection( const pair<int,int>& destination ) ;
+    virtual bool validDirection( const pair<int,int>& destination );
+    virtual bool requiresPathScan() const override { return true; }
   };
 
 }

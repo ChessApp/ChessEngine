@@ -9,7 +9,6 @@
 
 #include "Chess.h"
 #include "Pieces/Pieces.h"
-#include "Scans/Scanner.h"
 
 
 namespace Chess
@@ -22,18 +21,16 @@ namespace Chess
     //-- types
 
     //-- construction
-    Queen( const string name, Board& board );
+    Queen( const string& name );
 
     //-- Piece interface
-    virtual bool pathScan( const pair<int,int>& destination );
     virtual bool validDirection( const pair<int,int>& destination );
+    virtual bool requiresPathScan() const override { return true; }
 
   protected:
     //-- protected types
-    typedef shared_ptr<Scanner> ScannerPtr;
 
     //-- protected members
-    ScannerPtr scanner_;
   };
 
 }

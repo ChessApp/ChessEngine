@@ -19,7 +19,7 @@ namespace Chess
 
       //-- construction
       inline FinishState( GameState& gameState )
-        : BaseState("FinishState", gameState)
+        : BaseState(gameState, "FinishState")
       { }
 
       //-- BaseState interface

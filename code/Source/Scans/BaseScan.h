@@ -4,6 +4,7 @@
 #include "Chess.h"
 #include "Board.h"
 #include "Scans/ScanResult.h"
+#include "Board.h"
 
 
 namespace Chess

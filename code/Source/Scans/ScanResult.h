@@ -2,7 +2,6 @@
 #define CHESS_SCANRESULT_H_
 
 #include "Chess.h"
-#include "Pieces/Pieces.h"
 
 
 namespace Chess

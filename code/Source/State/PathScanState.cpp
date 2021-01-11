@@ -1,42 +1,68 @@
-// #include "State/PathScanState.h"
+#include "State/PathScanState.h"
 
-// #include "Tools/pugixml/pugixml.hpp"
+#include "Scans/Scans.h"
+#include "Pieces/Pieces.h"
 
 
-// namespace Chess
-// {
-//   namespace State
-//   {
+namespace Chess
+{
+  namespace State
+  {
 
-//     BaseState::StatePtr PathScanState::execute( )
-//     {
-//       DEBUG_CONSOLE_1ARG("State: PATH SCAN");
+    void PathScanState::evaluateScanResult( Scans::ScanResultPtr& result )
+    {
+      pair<int,int> destination = gameState_.moveRequest.back();
+      pair<int,int> source      = gameState_.moveRequest.front();
+      Pieces::PiecePtr currentPiece = gameState_.board.getPiece(source);
+      Pieces::PiecePtr detectedPiece = result->detectedPiece;
       
-//       PiecePtr currentPiece = board_->getPiece(interface_->sourceRow, interface_->sourceCol);
-//       if( currentPiece->pathScan(interface_->destRow, interface_->destCol) )
-//       {
-//         return nextState_;
-//       }
-//       else
-//       {
-//         updateGameState();
-//         return returnState_;
-//       }
-//     }
+      if( detectedPiece->getColor() == currentPiece->getColor() )
+        throw Exception("The destination specified is blocked by a " + detectedPiece->getType() + " on the same team!", "Pieces::pathScan");
+      if( detectedPiece->getRow() != destination.first || detectedPiece->getCol() != destination.second )
+        throw Exception("The destination specified is blocked by a " + detectedPiece->getType() + " on the other team!", "Pieces::pathScan");
+    }
 
-//     void PathScanState::updateGameState()
-//     {
-//       // Setup the xml document structure and load the state initialization file
-//       pugi::xml_document doc;
-//       pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile);
+    BaseState::StatePtr PathScanState::executeImpl()
+    {
+      DEBUG_CONSOLE_1ARG("State: PATH SCAN");
+      
+      PiecePtr piece = gameState_.board.getPiece(gameState_.moveRequest.front());
+      if( piece->requiresPathScan() )
+      {
+        Scans::ScanResultPtr result = identifyScan()->execute();
+        evaluateScanResult(result);
+      }
+      return nextState_;
+    }
 
-//       // Grab the root node
-//       pugi::xml_node root = doc.child("root");
+    shared_ptr<BaseScan> PathScanState::identifyScan()
+    {
+      pair<int,int> destination = gameState_.moveRequest.back();
+      pair<int,int> source      = gameState_.moveRequest.front();
+      int rowDiff = destination.first - source.first;
+      int colDiff = destination.second - source.second;
 
-//       pugi::xml_node messageNode  = root.child("Messages");
-//       messageNode.attribute("invalidMove").set_value("The move you entered was not valid - there is another piece obstructing your path. Please enter a valid move in the format provided.");
-//       doc.save_file(FilePaths::gameStateFile);
-//     }
+      using namespace Scans;
 
-//   }
-// }
+      if( rowDiff > 0 && colDiff == 0 )
+        return std::make_shared<DownScan>(gameState_.board, source, destination);
+      else if( rowDiff < 0 && colDiff == 0 )
+        return std::make_shared<UpScan>(gameState_.board, source, destination);
+      else if( colDiff > 0 && rowDiff == 0 )
+        return std::make_shared<RightScan>(gameState_.board, source, destination);
+      else if( colDiff < 0 && rowDiff == 0 )
+        return std::make_shared<LeftScan>(gameState_.board, source, destination);
+      else if( rowDiff > 0 && colDiff < 0 )
+        return std::make_shared<DownLeftScan>(gameState_.board, source, destination);
+      else if( rowDiff > 0 && colDiff > 0 )
+        return std::make_shared<DownRightScan>(gameState_.board, source, destination);
+      else if( rowDiff < 0 && colDiff > 0 )
+        return std::make_shared<UpRightScan>(gameState_.board, source, destination);
+      else if( rowDiff < 0 && colDiff < 0 )
+        return std::make_shared<UpLeftScan>(gameState_.board, source, destination);
+      else
+        throw Exception("Scan could not be identified because destination is invalid!", "PathScanState::identifyScan");
+    }
+
+  }
+}

@@ -19,7 +19,7 @@ namespace Chess
       typedef shared_ptr<BaseState> StatePtr;
       
       //-- construction
-      inline BaseState( const string name, GameState& gameState )
+      inline BaseState( GameState& gameState, const string& name = "" )
         : name_(name),
           gameState_(gameState)
       { }

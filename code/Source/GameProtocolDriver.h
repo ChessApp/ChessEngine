@@ -30,7 +30,7 @@ namespace Chess
     StatePtr     input_;
     StatePtr     relevancy_;
     StatePtr     moveValidity_;
-    StatePtr     pathscan_;
+    StatePtr     pathScan_;
     StatePtr     move_;
     StatePtr     defensiveCheckScan_;
     StatePtr     offensiveCheckScan_;

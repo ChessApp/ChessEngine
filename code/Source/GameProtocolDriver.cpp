@@ -36,7 +36,7 @@ namespace Chess
     init_         = std::make_shared<InitState>(gameState_);
     relevancy_    = std::make_shared<RelevancyState>(gameState_);
     moveValidity_ = std::make_shared<MoveValidityState>(gameState_);
-    // pathscan_.reset(           new PathScanState(interface_, board_) );
+    pathScan_     = std::make_shared<PathScanState>(gameState_);
     // move_.reset(               new MoveState(interface_, board_, currentTurn_) );
     // defensiveCheckScan_.reset( new DefensiveCheckScanState(board_, currentTurn_) );
     // returnPiece_.reset(        new ReturnPieceState(interface_, board_, currentTurn_) );
@@ -48,11 +48,10 @@ namespace Chess
     // checkmate_.reset(          new CheckmateState(interface_, currentTurn_) );
     finish_ = std::make_shared<FinishState>(gameState_);
 
-    init_->setTransitionStates(               relevancy_,               finish_ );
-    // input_->setTransitionStates(              relevancy_,           checkmate_ );
+    init_->setTransitionStates(               relevancy_,           finish_ );
     relevancy_->setTransitionStates(          moveValidity_,        finish_ );
-    moveValidity_->setTransitionStates(       finish_,            finish_ );
-    // pathscan_->setTransitionStates(           move_,                checkmate_ );
+    moveValidity_->setTransitionStates(       pathScan_,            finish_ );
+    pathScan_->setTransitionStates(           finish_,              finish_ );
     // move_->setTransitionStates(               defensiveCheckScan_,  checkmate_ );
     // defensiveCheckScan_->setTransitionStates( offensiveCheckScan_,  returnPiece_ );
     // returnPiece_->setTransitionStates(        checkmate_,           checkmate_ );
