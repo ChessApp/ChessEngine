@@ -12,8 +12,9 @@ namespace Chess
     : Pieces(name, "R")
   { }
 
-  bool Rook::validDirection( const pair<int,int>& destination )
+  bool Rook::validDirection( PiecePtr& pieceAtDestination )
   {
+    const pair<int,int>& destination = pieceAtDestination->getLocation();
     pieceMoved(destination);
     if( location_.first == destination.first || location_.second == destination.second ) return true;
 

@@ -8,8 +8,9 @@ namespace Chess
     : Pieces(name, "Q")
   { }
 
-  bool Queen::validDirection( const pair<int,int>& destination )
+  bool Queen::validDirection( PiecePtr& pieceAtDestination )
   {
+    const pair<int,int>& destination = pieceAtDestination->getLocation();
     pieceMoved(destination);
     if( (location_.first == destination.first) || (location_.second == destination.second) )
       return true;

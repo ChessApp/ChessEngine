@@ -55,7 +55,7 @@ namespace Chess
     if( square != board_.end() )
       return square->second;
     else
-      return std::make_shared<NullPiece>(".. ");
+      return std::make_shared<NullPiece>(".. ", location);
   }
  
 }

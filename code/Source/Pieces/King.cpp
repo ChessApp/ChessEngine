@@ -12,8 +12,9 @@ namespace Chess
     : Pieces(name, "K")
   { }
 
-  bool King::validDirection( const pair<int,int>& destination )
+  bool King::validDirection( PiecePtr& pieceAtDestination )
   {
+    const pair<int,int>& destination = pieceAtDestination->getLocation();
     if( abs(destination.second - location_.second) <= 1 &&
         abs(destination.first - location_.first) <= 1 &&
         pieceMoved(destination) )

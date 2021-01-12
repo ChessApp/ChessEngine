@@ -8,8 +8,9 @@ namespace Chess
     : Pieces( name, "KN" )
   { }
 
-  bool Knight::validDirection( const pair<int,int>& destination )
+  bool Knight::validDirection( PiecePtr& pieceAtDestination )
   {
+    const pair<int,int>& destination = pieceAtDestination->getLocation();
     int rowDiff = abs(destination.first - location_.first);
     int colDiff = abs(destination.second - location_.second);
 

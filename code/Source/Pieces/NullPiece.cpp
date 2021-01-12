@@ -8,11 +8,11 @@
 namespace Chess
 {
    
-  NullPiece::NullPiece( const string& name )
-    : Pieces(name, "")
+  NullPiece::NullPiece( const string& name, const pair<int,int>& location )
+    : Pieces(name, "", location)
   { }
 
-  bool NullPiece::validDirection(int destRow, int destCol )
+  bool NullPiece::validDirection( PiecePtr& )
   {
     return false;
   }

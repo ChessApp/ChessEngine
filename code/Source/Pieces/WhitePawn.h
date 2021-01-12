@@ -22,7 +22,7 @@ namespace Chess
     WhitePawn( const string& name );
 
     //-- Pieces interface
-    virtual bool validDirection( const pair<int,int>& destination );
+    virtual bool validDirection( PiecePtr& );
     virtual bool requiresPathScan() const override { return true; }
   };
 

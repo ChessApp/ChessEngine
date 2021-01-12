@@ -1,8 +1,3 @@
-// This header file houses all of the data
-// that composes the Pieces 
-// class. This class serves to characterize
-// each piece with specific data, which is 
-// analyzed by the Mastermind files.
 #ifndef CHESS_PIECES_H_
 #define CHESS_PIECES_H_
 
@@ -19,10 +14,10 @@ namespace Chess
     typedef shared_ptr<Pieces>  PiecePtr;
     
     //-- construction
-    Pieces( const string& name, string type );
+    Pieces( const string& name, string type, const pair<int,int>& location = {0,0} );
 
     //-- interface methods
-    virtual bool validDirection( const pair<int,int>& destination ) { return false; }
+    virtual bool validDirection( PiecePtr& ) { return false; }
     virtual bool requiresPathScan() const = 0;
 
     //-- accessors

@@ -13,10 +13,10 @@ namespace Chess
   {
   public:
     //-- construction
-    NullPiece( const string& name );
+    NullPiece( const string& name, const pair<int,int>& location = {0,0} );
 
     //-- Piece interface
-    virtual bool validDirection( int destRow, int destCol );
+    virtual bool validDirection( PiecePtr& );
     virtual bool requiresPathScan() const override { return false; }
   };
 
