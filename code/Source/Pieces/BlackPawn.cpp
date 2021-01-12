@@ -1,7 +1,3 @@
-// This source file houses the Pieces constructor, 
-// which instantiates all of the piece objects and
-// sets their initial data for the beginning of 
-// the game.
 #include "Pieces/BlackPawn.h"
 
 
@@ -25,11 +21,11 @@ namespace Chess
       else if( ((destination.second == location_.second + 1) || (destination.second == location_.second - 1)) && (destination.first == location_.first + 1) )
         return true;
       else
-        return false;
+        throw Exception(invalidDirectionMessage_, "BlackPawn::validDirection");
     }
     else
     {
-      return false;
+      throw Exception(invalidDirectionMessage_, "BlackPawn::validDirection");
     }  
   }
 
