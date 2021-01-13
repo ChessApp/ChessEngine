@@ -1,7 +1,5 @@
 #include "GameProtocolDriver.h"
 
-#include <cstring>
-
 #include "State/InitState.h"
 #include "State/InputState.h"
 #include "State/RelevancyState.h"
@@ -33,13 +31,13 @@ namespace Chess
   {
     using namespace State;
 
-    init_         = std::make_shared<InitState>(gameState_);
-    relevancy_    = std::make_shared<RelevancyState>(gameState_);
-    moveValidity_ = std::make_shared<MoveValidityState>(gameState_);
-    pathScan_     = std::make_shared<PathScanState>(gameState_);
-    move_         = std::make_shared<MoveState>(gameState_);
-    // defensiveCheckScan_.reset( new DefensiveCheckScanState(board_, currentTurn_) );
-    // returnPiece_.reset(        new ReturnPieceState(interface_, board_, currentTurn_) );
+    init_               = std::make_shared<InitState>(gameState_);
+    relevancy_          = std::make_shared<RelevancyState>(gameState_);
+    moveValidity_       = std::make_shared<MoveValidityState>(gameState_);
+    pathScan_           = std::make_shared<PathScanState>(gameState_);
+    move_               = std::make_shared<MoveState>(gameState_);
+    defensiveCheckScan_ = std::make_shared<DefensiveCheckScanState>(gameState_);
+    returnPiece_        = std::make_shared<ReturnPieceState>(gameState_);
     // offensiveCheckScan_.reset( new OffensiveCheckScanState(board_, currentTurn_) );
     // switchTurn_.reset(         new SwitchTurnState(interface_, whiteTurn_, blackTurn_, currentTurn_) );
     // pinScan_.reset(            new PinScanState(board_, currentTurn_) );
@@ -52,9 +50,9 @@ namespace Chess
     relevancy_->setTransitionStates(          moveValidity_,        finish_ );
     moveValidity_->setTransitionStates(       pathScan_,            finish_ );
     pathScan_->setTransitionStates(           move_,              finish_ );
-    move_->setTransitionStates(               finish_,  finish_ );
-    // defensiveCheckScan_->setTransitionStates( offensiveCheckScan_,  returnPiece_ );
-    // returnPiece_->setTransitionStates(        checkmate_,           checkmate_ );
+    move_->setTransitionStates(               defensiveCheckScan_,  finish_ );
+    defensiveCheckScan_->setTransitionStates( finish_,  returnPiece_ );
+    returnPiece_->setTransitionStates(        finish_,           finish_ );
     // offensiveCheckScan_->setTransitionStates( pinScan_,             switchTurn_ );
     // pinScan_->setTransitionStates(            blockScan_,           switchTurn_ );
     // blockScan_->setTransitionStates(          escapeRoute_,         switchTurn_ );
@@ -64,14 +62,12 @@ namespace Chess
 
   void GameProtocolDriver::runStateMachine( )
   {
+    currentState_ = init_
     try
     {
-      currentState_ = init_;
-
       while( currentState_ != nullptr )
-      {
         currentState_ = currentState_->execute();
-      }
+
       PLOG_INFO << "State machine done.";
     }
     catch( string error )

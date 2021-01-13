@@ -12,6 +12,11 @@ namespace Chess
 
     void serializeGameStateFile( GameState& gameState )
     {
+      // Remove the captured piece from the active list
+      auto capturedPiece = gameState.activePieces.find(gameState.capturedPieceId);
+      if( capturedPiece != gameState.activePieces.end() )
+        gameState.activePieces.erase(capturedPiece);
+
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
       pugi::xml_parse_result result = doc.load_file(FilePaths::gameStateFile.c_str());

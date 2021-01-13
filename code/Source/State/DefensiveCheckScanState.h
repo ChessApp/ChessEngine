@@ -1,50 +1,46 @@
-// #ifndef CHESS_STATE_DEFENSIVECHECKSCANSTATE_H_
-// #define CHESS_STATE_DEFENSIVECHECKSCANSTATE_H_
+#ifndef CHESS_STATE_DEFENSIVECHECKSCANSTATE_H_
+#define CHESS_STATE_DEFENSIVECHECKSCANSTATE_H_
 
-// #include "Chess.h"
-// #include "State/BaseState.h"
-// #include "BaseTurn.h"
-// #include "Scans/BaseScan.h"
-// #include "Scans/Scanner.h"
-// #include "Board.h"
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "GameState.h"
+#include "Scans/BaseScan.h"
+#include "Pieces/Pieces.h"
 
 
-// namespace Chess
-// {
-//   namespace State
-//   {
+namespace Chess
+{
+  namespace State
+  {
 
-//     class DefensiveCheckScanState
-//       : public BaseState
-//     {
-//     public:
-//       //-- types
-//       typedef shared_ptr<Board>     BoardPtr;
-//       typedef shared_ptr<BaseTurn>  BaseTurnPtr;
-//       typedef shared_ptr<BaseScan>  BaseScanPtr;
+    class DefensiveCheckScanState
+      : public BaseState
+    {
+    public:
+      //-- types
+      typedef shared_ptr<BaseScan> BaseScanPtr;
+      typedef shared_ptr<Pieces>   PiecePtr;
 
-//       //-- construction
-//       inline DefensiveCheckScanState( BoardPtr board, BaseTurnPtr & currentTurn ) 
-//         : board_(board),
-//           currentTurn_(currentTurn)
-//       { }
+      //-- construction
+      inline DefensiveCheckScanState( GameState& gameState ) 
+        : BaseState(gameState, "DefensiveCheckScanState"),
+          status_(false)
+      { }
 
-//       //-- BaseState interface
-//       virtual StatePtr execute( );
+      //-- BaseState interface
+      virtual StatePtr executeImpl();
       
-//     protected:
-//       //-- protected methods
-//       void updateGameState();
-//       void configureScans( PiecePtr kingToScan );
+    protected:
+      //-- protected methods
+      void updateGameState();
+      void configureScans( PiecePtr kingToScan );
 
-//       //-- protected members
-//       BoardPtr             board_;
-//       BaseTurnPtr &        currentTurn_;
-//       vector<BaseScanPtr>  scanList_;
-//       bool                 status_;
-//     };
+      //-- protected members
+      vector<BaseScanPtr>  scanList_;
+      bool                 status_;
+    };
 
-//   }
-// }
+  }
+}
 
-// #endif /* CHESS_STATE_DEFENSIVECHECKSCANSTATE_H_ */
+#endif /* CHESS_STATE_DEFENSIVECHECKSCANSTATE_H_ */

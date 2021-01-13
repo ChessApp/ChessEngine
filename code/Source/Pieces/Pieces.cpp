@@ -14,7 +14,7 @@ namespace Chess
       prev_in_check_(false), 
       pinned_(false), 
       captured_(false),
-      color_(name.substr(0, 1)),
+      color_(name.substr(0,1) == "." ? "" : name.substr(0, 1)), // short-term hack to set nullpiece color as empty string
       location_(location),
       id_(-1)
   { }

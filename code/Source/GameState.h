@@ -28,7 +28,9 @@ namespace Chess
     //-- public methods
     void setMoveRequest( string mr );
     void setAttacker( string color );
-    const string serializeAttacker(); 
+    PiecePtr getDefensiveKing();
+    PiecePtr getOffensiveKing();
+    const string serializeAttacker();
 
     //-- public members
     std::unordered_map<int, PiecePtr> activePieces;

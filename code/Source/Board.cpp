@@ -29,11 +29,15 @@ namespace Chess
 
   }
 
-  void Board::setPiece( PiecePtr piece, const pair<int,int>& destination )
+  void Board::movePiece( PiecePtr piece, const pair<int,int>& destination )
   {
     // First wipe the old key/value pair in the map - the piece will no longer exist at that key.
     clrPiece(piece);
+    setPiece(piece, destination);
+  }
 
+  void Board::setPiece( PiecePtr piece, const pair<int,int>& destination )
+  {
     piece->setLocation(destination);
     auto destinationSquare = board_.find(locationToHash(destination));
     if( destinationSquare == board_.end() )

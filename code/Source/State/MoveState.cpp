@@ -21,7 +21,7 @@ namespace Chess
       PiecePtr pieceAtDestination = gameState_.board.getPiece(destination);
       gameState_.capturedPieceId = pieceAtDestination->getId();
 
-      gameState_.board.setPiece(pieceToSet, destination);
+      gameState_.board.movePiece(pieceToSet, destination);
     }
 
   }

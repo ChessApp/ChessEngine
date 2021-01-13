@@ -19,6 +19,7 @@ namespace Chess
     Board();
 
     //-- public methods
+    void     movePiece( PiecePtr piece, const pair<int,int>& destination );
     void     setPiece( PiecePtr piece, const pair<int,int>& destination );
     void     clrPiece( PiecePtr piece );
     PiecePtr getPiece( const pair<int,int>& location );

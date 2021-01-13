@@ -75,6 +75,22 @@ namespace Chess
     else throw Exception("Attacker is not configured!", "GameState::setAttacker");
   }
 
+  GameState::PiecePtr GameState::getDefensiveKing()
+  {
+    if( attacker == whiteAttacker )
+      return activePieces.find(whiteKingId)->second;
+    else
+      return activePieces.find(blackKingId)->second;
+  }
+
+  GameState::PiecePtr GameState::getOffensiveKing()
+  {
+    if( attacker == whiteAttacker )
+      return activePieces.find(blackKingId)->second;
+    else
+      return activePieces.find(whiteKingId)->second;
+  }
+
   const string GameState::serializeAttacker()
   {
     switch(attacker)

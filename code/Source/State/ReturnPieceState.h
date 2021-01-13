@@ -1,48 +1,38 @@
-// #ifndef CHESS_STATE_RETURNPIECESTATE_H_
-// #define CHESS_STATE_RETURNPIECESTATE_H_
+#ifndef CHESS_STATE_RETURNPIECESTATE_H_
+#define CHESS_STATE_RETURNPIECESTATE_H_
 
-// #include "Chess.h"
-// #include "State/BaseState.h"
-// #include "Interface.h"
-// #include "Board.h"
-// #include "BaseTurn.h"
+#include "Chess.h"
+#include "State/BaseState.h"
+#include "GameState.h"
 
 
-// namespace Chess
-// {
-//   namespace State
-//   {
+namespace Chess
+{
+  namespace State
+  {
 
-//     class ReturnPieceState
-//       : public BaseState
-//     {
-//     public:
-//       //-- types
-//       typedef shared_ptr<Interface> InterfacePtr;
-//       typedef shared_ptr<Board>     BoardPtr;
-//       typedef shared_ptr<BaseTurn>  BaseTurnPtr;
+    class ReturnPieceState
+      : public BaseState
+    {
+    public:
+      //-- types
 
-//       //-- construction
-//       inline ReturnPieceState( InterfacePtr interface, BoardPtr board, BaseTurnPtr & currentTurn ) 
-//         : interface_(interface),
-//           board_(board),
-//           currentTurn_(currentTurn)
-//       { }
+      //-- construction
+      inline ReturnPieceState( GameState& gameState ) 
+        : BaseState(gameState, "ReturnPieceState")
+      { }
 
-//       //-- BaseState interface
-//       virtual StatePtr execute( );
+      //-- BaseState interface
+      virtual StatePtr executeImpl();
 
-//     protected:
-//       //-- protected methods
-//       void returnPiece( PiecePtr pieceToReturn, int rowToReturn, int colToReturn );
+    protected:
+      //-- protected methods
+      void returnPiece( PiecePtr pieceToReturn, const pair<int,int>& returnLocation );
 
-//       //-- protected members
-//       InterfacePtr  interface_;
-//       BoardPtr      board_;
-//       BaseTurnPtr & currentTurn_;
-//     };
+      //-- protected members
+    };
 
-//   }
-// }
+  }
+}
 
-// #endif /* CHESS_STATE_RETURNPIECESTATE_H_ */
+#endif /* CHESS_STATE_RETURNPIECESTATE_H_ */
