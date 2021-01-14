@@ -62,7 +62,7 @@ namespace Chess
 
   void GameProtocolDriver::runStateMachine( )
   {
-    currentState_ = init_
+    currentState_ = init_;
     try
     {
       while( currentState_ != nullptr )
