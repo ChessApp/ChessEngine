@@ -15,10 +15,12 @@ namespace Chess
   bool Rook::validDirection( PiecePtr& pieceAtDestination )
   {
     const pair<int,int>& destination = pieceAtDestination->getLocation();
-    pieceMoved(destination);
-    if( location_.first == destination.first || location_.second == destination.second ) return true;
+    if( !pieceMoved(destination) )
+      return false;
+    if( location_.first == destination.first || location_.second == destination.second )
+      return true;
 
-    throw Exception(invalidDirectionMessage_, "Rook::validDirection");
+    return false;
   }
 
 }

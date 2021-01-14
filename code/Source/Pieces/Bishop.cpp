@@ -11,10 +11,11 @@ namespace Chess
   bool Bishop::validDirection( PiecePtr& pieceAtDestination )
   {
     const pair<int,int>& destination = pieceAtDestination->getLocation();
-    pieceMoved(destination);
+    if( !pieceMoved(destination) )
+      return false;
     if( abs(location_.first - destination.first) != abs(location_.second - destination.second) )
-      throw Exception(invalidDirectionMessage_, "Bishop::validDirection");
-    
+      return false;
+
     return true;
   }
 

@@ -11,7 +11,7 @@ namespace Chess
   {
   public:
     //-- types
-    typedef shared_ptr<Pieces>  PiecePtr;
+    typedef shared_ptr<Pieces> PiecePtr;
     
     //-- construction
     Pieces( const string& name, string type, const pair<int,int>& location = {0,0} );

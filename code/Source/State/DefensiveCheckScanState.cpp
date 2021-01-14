@@ -4,6 +4,7 @@
 
 #include "Pieces/Pieces.h"
 #include "Scans/Scans.h"
+#include "Scans/BaseScan.h"
 
 
 namespace Chess
@@ -11,51 +12,42 @@ namespace Chess
   namespace State
   {
 
-    BaseState::StatePtr DefensiveCheckScanState::executeImpl()
+    typedef shared_ptr<BaseScan> BaseScanPtr;
+    typedef vector<BaseScanPtr>  ScanList;
+    typedef shared_ptr<Pieces>   PiecePtr;
+
+    void configureScans( ScanList& scanList, Board& board, const GameState::Coordinates& scanSource )
     {
-      PiecePtr kingToScan = gameState_.getDefensiveKing();
-      configureScans(kingToScan);
-      Scans::ScanResultPtr scanResult;
-      PiecePtr detectedPiece;
-      BaseScanPtr currentScan;
-
-      while( scanList_.size() )
-      {
-        currentScan = scanList_.back();
-        scanList_.pop_back();
-        scanResult = currentScan->execute();
-        detectedPiece = scanResult->detectedPiece;
-        try
-        {
-          detectedPiece->validDirection(kingToScan);
-        }
-        catch(...)
-        {
-          continue;
-        }
-        if( detectedPiece->getColor() != kingToScan->getColor() )
-        {
-          status_ = true;
-          break;
-        }
-      }
-
-      if(status_)
-        throw Exception("This move will put you in check!", "DefensiveCheckScanState::executeImpl");
-
-      return nextState_;
+      scanList.push_back( std::make_shared<Scans::LeftScan>(      board, scanSource, pair<int,int>{scanSource.first, 0} ) );
+      scanList.push_back( std::make_shared<Scans::RightScan>(     board, scanSource, pair<int,int>{scanSource.first, 7} ) );
+      scanList.push_back( std::make_shared<Scans::UpScan>(        board, scanSource, pair<int,int>{0, scanSource.second} ) );
+      scanList.push_back( std::make_shared<Scans::DownScan>(      board, scanSource, pair<int,int>{7, scanSource.second} ) );
+      scanList.push_back( std::make_shared<Scans::UpLeftScan>(    board, scanSource, pair<int,int>{0, 0} ) );
+      scanList.push_back( std::make_shared<Scans::DownLeftScan>(  board, scanSource, pair<int,int>{7, 0} ) );
+      scanList.push_back( std::make_shared<Scans::UpRightScan>(   board, scanSource, pair<int,int>{0, 7} ) );
+      scanList.push_back( std::make_shared<Scans::DownRightScan>( board, scanSource, pair<int,int>{7, 7} ) );
     }
 
-    void DefensiveCheckScanState::configureScans( PiecePtr kingToScan )
+    void executeScans( ScanList& scanList, PiecePtr& kingToScan )
     {
-      scanList_.push_back( BaseScanPtr( new Scans::LeftScan(      gameState_.board, kingToScan->getLocation(), {kingToScan->getRow( ), 0} ) ) );
-      scanList_.push_back( BaseScanPtr( new Scans::RightScan(     gameState_.board, kingToScan->getLocation(), {kingToScan->getRow( ), 7} ) ) );
-      scanList_.push_back( BaseScanPtr( new Scans::UpScan(        gameState_.board, kingToScan->getLocation(), {0, kingToScan->getCol( )} ) ) );
-      scanList_.push_back( BaseScanPtr( new Scans::DownScan(      gameState_.board, kingToScan->getLocation(), {7, kingToScan->getCol( )} ) ) );
-      scanList_.push_back( BaseScanPtr( new Scans::UpLeftScan(    gameState_.board, kingToScan->getLocation(), {0, 0} ) ) );
-      scanList_.push_back( BaseScanPtr( new Scans::DownLeftScan(  gameState_.board, kingToScan->getLocation(), {7, 0} ) ) );
-      scanList_.push_back( BaseScanPtr( new Scans::UpRightScan(   gameState_.board, kingToScan->getLocation(), {0, 7} ) ) );
-      scanList_.push_back( BaseScanPtr( new Scans::DownRightScan( gameState_.board, kingToScan->getLocation(), {7, 7} ) ) );
+      for( auto scan : scanList )
+      {
+        PiecePtr detectedPiece = scan->execute()->detectedPiece;
+        if( !detectedPiece->validDirection(kingToScan) )
+          continue;
+        if( detectedPiece->getColor() != kingToScan->getColor() )
+          throw Exception("This move will put you in check!", "DefensiveCheckScanState::executeImpl");
+      }
+    }
+
+    BaseState::StatePtr DefensiveCheckScanState::executeImpl()
+    {
+      PiecePtr kingToScan = gameState_.getKingOfAttacker();
+      ScanList scanList;
+      configureScans(scanList, gameState_.board, kingToScan->getLocation());
+      executeScans(scanList, kingToScan);
+
+      return nextState_;
     }
 
   }

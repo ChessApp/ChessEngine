@@ -14,12 +14,14 @@ namespace Chess
     int rowDiff = abs(destination.first - location_.first);
     int colDiff = abs(destination.second - location_.second);
 
+    if( !pieceMoved(destination) )
+      return false;
     if( (rowDiff == 2) && (colDiff == 1) )
       return true;
-    else if( (rowDiff == 1) && (colDiff == 2) )
+    if( (rowDiff == 1) && (colDiff == 2) )
       return true;
 
-    throw Exception(invalidDirectionMessage_, "Knight::validDirection");
+    return false;
   }
 
 }

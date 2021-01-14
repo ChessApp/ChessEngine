@@ -22,9 +22,9 @@ namespace Chess
   bool Pieces::pieceMoved( const pair<int,int>& destination )
   {
     if( location_ == destination )
-      throw Exception("Piece cannot be moved to the square it is already on!", "Pieces::pieceMoved");
-    
-    return true;
+      return false;
+    else
+      return true;
   }
 
   string Pieces::getType( )

@@ -21,15 +21,16 @@ namespace Chess
     };
 
     typedef Pieces::PiecePtr      PiecePtr;
-    typedef vector<pair<int,int>> MoveRequest;
+    typedef pair<int,int>         Coordinates;
+    typedef vector<Coordinates>   MoveRequest;
 
     //-- construction
 
     //-- public methods
     void setMoveRequest( string mr );
     void setAttacker( string color );
-    PiecePtr getDefensiveKing();
-    PiecePtr getOffensiveKing();
+    PiecePtr getKingOfAttacker();
+    PiecePtr getKingUnderAttack();
     const string serializeAttacker();
 
     //-- public members
