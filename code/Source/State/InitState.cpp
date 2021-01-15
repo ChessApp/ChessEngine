@@ -24,7 +24,7 @@ namespace Chess
 
     void deserializeGameInfo( GameState& gameState )
     {
-      Chess::Agents::DynamoDBAgent db("GameStates", "localhost", "http://localhost:8000");
+      Agents::DynamoDBAgent db("GameStates", "localhost", "http://localhost:8000");
       auto info = db.getItem("gameId", gameState.gameId);
 
       auto whiteId = info.find("whiteId");

@@ -53,7 +53,7 @@ namespace Chess
     cout << "attacker: " << attacker << endl;
     cout << "whiteKingId: " << whiteKingId << endl;
     cout << "blackKingId: " << blackKingId << endl;
-    cout << "capturedPieceId: " << capturedPieceId << endl;
+    cout << "capturedPieceId: " << capturedPieceId_ << endl;
     cout << endl;
     cout << "Board: " << endl;
     for( int row = 0; row < 8; row++ )
@@ -89,6 +89,16 @@ namespace Chess
       return activePieces.find(blackKingId)->second;
     else
       return activePieces.find(whiteKingId)->second;
+  }
+
+  void GameState::setCapturedPieceId( int id )
+  {
+    capturedPieceId_ = id;
+  }
+
+  void GameState::clearCapturedPieceId()
+  {
+    capturedPieceId_ = -1;
   }
 
   const string GameState::serializeAttacker()

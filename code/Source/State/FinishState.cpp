@@ -13,7 +13,7 @@ namespace Chess
     void serializeGameStateFile( GameState& gameState )
     {
       // Remove the captured piece from the active list
-      auto capturedPiece = gameState.activePieces.find(gameState.capturedPieceId);
+      auto capturedPiece = gameState.activePieces.find(gameState.getCapturedPieceId());
       if( capturedPiece != gameState.activePieces.end() )
         gameState.activePieces.erase(capturedPiece);
 
@@ -58,7 +58,7 @@ namespace Chess
       item.push_back({"blackId", gameState.blackClientId});
       item.push_back({"state",   gameState.gameStateString});
 
-      Chess::Agents::DynamoDBAgent db("GameStates", "localhost", "http://localhost:8000");
+      Agents::DynamoDBAgent db("GameStates", "localhost", "http://localhost:8000");
       db.putItem(item);
     }
 

@@ -19,7 +19,7 @@ namespace Chess
     void MoveState::movePiece( PiecePtr pieceToSet, const pair<int,int>& destination )
     {
       PiecePtr pieceAtDestination = gameState_.board.getPiece(destination);
-      gameState_.capturedPieceId = pieceAtDestination->getId();
+      gameState_.setCapturedPieceId( pieceAtDestination->getId() );
 
       gameState_.board.movePiece(pieceToSet, destination);
     }

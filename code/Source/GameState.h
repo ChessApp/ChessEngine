@@ -31,7 +31,11 @@ namespace Chess
     void setAttacker( string color );
     PiecePtr getKingOfAttacker();
     PiecePtr getKingUnderAttack();
+    inline int getCapturedPieceId() const { return capturedPieceId_; }
+    void setCapturedPieceId( int id );
+    void clearCapturedPieceId();
     const string serializeAttacker();
+    void print();
 
     //-- public members
     std::unordered_map<int, PiecePtr> activePieces;
@@ -42,17 +46,15 @@ namespace Chess
     string                            blackClientId;
     int                               whiteKingId;
     int                               blackKingId;
-    int                               capturedPieceId = -1;
     MoveRequest                       moveRequest;
     Board                             board;
     string                            moveString;
     string                            gameStateString;
     string                            errorMessage;
 
-    void print();
-
   protected:
     //-- protected members
+    int capturedPieceId_ = -1;
   };
 
 }
