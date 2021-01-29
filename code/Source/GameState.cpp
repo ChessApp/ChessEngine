@@ -55,6 +55,18 @@ namespace Chess
     cout << "blackKingId: " << blackKingId << endl;
     cout << "capturedPieceId: " << capturedPieceId_ << endl;
     cout << endl;
+    cout << "potentialPins:" << endl;
+    for( auto p : potentialPins )
+    {
+      cout << "name: " << p->getPiece()->getName() << " loc: {" << p->getPiece()->getRow() << "," << p->getPiece()->getCol() << "}" << endl;
+    }
+    cout << endl;
+    cout << "pinnedPieces:" << endl;
+    for( auto p : pinnedPieces )
+    {
+      cout << "name: " << p.second->getName() << " loc: {" << p.second->getRow() << "," << p.second->getCol() << "}" << endl;
+    }
+    cout << endl;
     cout << "Board: " << endl;
     for( int row = 0; row < 8; row++ )
     {
