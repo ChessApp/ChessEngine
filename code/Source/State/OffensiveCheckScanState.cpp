@@ -1,64 +1,63 @@
-// #include "State/OffensiveCheckScanState.h"
+#include "State/OffensiveCheckScanState.h"
+
+#include "Pieces/Pieces.h"
+#include "Scans/Scans.h"
+#include "Scans/BaseScan.h"
 
 
-// namespace Chess
-// {
-//   namespace State
-//   {
+namespace Chess
+{
+  namespace State
+  {
 
-//     BaseState::StatePtr OffensiveCheckScanState::execute( )
-//     {
-//       typedef shared_ptr<PotentialPin>  PotentialPinPtr;
-//       typedef vector<PotentialPinPtr>   PotentialPinList;
-//       typedef vector<PiecePtr>          PieceList;
+    typedef shared_ptr<BaseScan> BaseScanPtr;
+    typedef vector<BaseScanPtr>  ScanList;
+    typedef shared_ptr<Pieces>   PiecePtr;
 
-//       DEBUG_CONSOLE_1ARG("State: OFFENSIVE CHECK SCAN");
-      
-//       status_ = false;
-//       PotentialPinList & potentialPinList = currentTurn_->getPotentialPinList();
-//       PieceList & causingCheckList = currentTurn_->getCausingCheckList();
-//       PiecePtr kingToScan = currentTurn_->getOffensiveKing();
-//       configureScans(kingToScan);
-//       Scanner::ScanResultPtr scanResult;
-//       PiecePtr detectedPiece;
-//       BaseScanPtr currentScan;
-      
-//       while( scanList_.size() )
-//       {
-//         currentScan = scanList_.back();
-//         scanList_.pop_back();
-//         scanResult = currentScan->execute();
-//         detectedPiece = scanResult->detectedPiece;
-        
-//         if( detectedPiece->getColor() == kingToScan->getColor() )
-//         {
-//           potentialPinList.push_back( PotentialPinPtr( new PotentialPin(detectedPiece, currentScan) ) );
-//         }
-//         else if( detectedPiece->validDirection(kingToScan->getRow(), kingToScan->getCol()) )
-//         {
-//           causingCheckList.push_back(detectedPiece); 
-//           currentTurn_->addCheckScanData(scanResult);       
-//           status_ = true; 
-//         }
-//       }
-      
-//       if(status_)
-//         return nextState_;
-//       else
-//         return returnState_;
-//     }
+    namespace
+    {
+      void configureScans( ScanList& scanList, Board& board, const GameState::Coordinates& scanSource )
+      {
+        scanList.push_back( std::make_shared<Scans::LeftScan>(      board, scanSource, pair<int,int>{scanSource.first, 0} ) );
+        scanList.push_back( std::make_shared<Scans::RightScan>(     board, scanSource, pair<int,int>{scanSource.first, 7} ) );
+        scanList.push_back( std::make_shared<Scans::UpScan>(        board, scanSource, pair<int,int>{0, scanSource.second} ) );
+        scanList.push_back( std::make_shared<Scans::DownScan>(      board, scanSource, pair<int,int>{7, scanSource.second} ) );
+        scanList.push_back( std::make_shared<Scans::UpLeftScan>(    board, scanSource, pair<int,int>{0, 0} ) );
+        scanList.push_back( std::make_shared<Scans::DownLeftScan>(  board, scanSource, pair<int,int>{7, 0} ) );
+        scanList.push_back( std::make_shared<Scans::UpRightScan>(   board, scanSource, pair<int,int>{0, 7} ) );
+        scanList.push_back( std::make_shared<Scans::DownRightScan>( board, scanSource, pair<int,int>{7, 7} ) );
+      }
 
-//     void OffensiveCheckScanState::configureScans( PiecePtr kingToScan )
-//     {
-//       scanList_.push_back( BaseScanPtr( new Scanner::LeftScan(      board_, kingToScan->getRow( ), kingToScan->getCol( ), kingToScan->getRow( ), 0 ) ) );
-//       scanList_.push_back( BaseScanPtr( new Scanner::RightScan(     board_, kingToScan->getRow( ), kingToScan->getCol( ), kingToScan->getRow( ), 7 ) ) );
-//       scanList_.push_back( BaseScanPtr( new Scanner::UpScan(        board_, kingToScan->getRow( ), kingToScan->getCol( ), 0, kingToScan->getCol( ) ) ) );
-//       scanList_.push_back( BaseScanPtr( new Scanner::DownScan(      board_, kingToScan->getRow( ), kingToScan->getCol( ), 7, kingToScan->getCol( ) ) ) );
-//       scanList_.push_back( BaseScanPtr( new Scanner::UpLeftScan(    board_, kingToScan->getRow( ), kingToScan->getCol( ), 0, 0 ) ) );
-//       scanList_.push_back( BaseScanPtr( new Scanner::DownLeftScan(  board_, kingToScan->getRow( ), kingToScan->getCol( ), 7, 0 ) ) );
-//       scanList_.push_back( BaseScanPtr( new Scanner::UpRightScan(   board_, kingToScan->getRow( ), kingToScan->getCol( ), 0, 7 ) ) );
-//       scanList_.push_back( BaseScanPtr( new Scanner::DownRightScan( board_, kingToScan->getRow( ), kingToScan->getCol( ), 7, 7 ) ) );
-//     }
+      bool executeScans( GameState& gameState, ScanList& scanList, PiecePtr& kingToScan )
+      {
+        bool inCheck = false;
+        for( auto scan : scanList )
+        {
+          PiecePtr detectedPiece = scan->execute()->detectedPiece;
+          if( detectedPiece->getColor() == kingToScan->getColor() )
+          {
+            gameState.potentialPins.push_back( std::make_shared<PotentialPin>(detectedPiece, scan) );
+          }
+          else if( detectedPiece->validDirection(kingToScan) )
+          {
+            inCheck = true;
+            gameState.checkInducers.push_back(detectedPiece);
+          }
+        }
+        return inCheck;
+      }
+    }
 
-//   }
-// }
+    BaseState::StatePtr OffensiveCheckScanState::executeImpl()
+    {
+      PiecePtr kingToScan = gameState_.getKingUnderAttack();
+      ScanList scanList;
+      configureScans(scanList, gameState_.board, kingToScan->getLocation());
+      if( executeScans(gameState_, scanList, kingToScan) )
+        return nextState_;
+      else
+        return returnState_;
+    }
+
+  }
+}

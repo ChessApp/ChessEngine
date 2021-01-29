@@ -1,52 +1,36 @@
-// #ifndef CHESS_STATE_OFFENSIVECHECKSCANSTATE_H_
-// #define CHESS_STATE_OFFENSIVECHECKSCANSTATE_H_
+#ifndef CHESS_STATE_OFFENSIVECHECKSCANSTATE_H_
+#define CHESS_STATE_OFFENSIVECHECKSCANSTATE_H_
 
-// #include "Chess.h"
-// #include "State/BaseState.h"
-// #include "PotentialPin.h"
-// #include "BaseTurn.h"
-// #include "Scans/BaseScan.h"
-// #include "Scans/Scanner.h"
-// #include "Board.h"
+#include "Chess.h"
+#include "State/BaseState.h"
 
 
-// namespace Chess
-// {
-//   namespace State
-//   {
+namespace Chess
+{
+  namespace State
+  {
 
-//     class OffensiveCheckScanState
-//       : public BaseState
-//     {
-//     public:
-//       //-- types
-//       typedef shared_ptr<Board>     BoardPtr;
-//       typedef shared_ptr<BaseTurn>  BaseTurnPtr;
-//       typedef shared_ptr<BaseScan>  BaseScanPtr;
+    class OffensiveCheckScanState
+      : public BaseState
+    {
+    public:
+      //-- types
 
-//       //-- construction
-//       inline OffensiveCheckScanState( 
-//         BoardPtr board, 
-//         BaseTurnPtr & currentTurn ) 
-//         : board_(board),
-//           currentTurn_(currentTurn)
-//       { }
+      //-- construction
+      inline OffensiveCheckScanState( GameState& gameState ) 
+        : BaseState(gameState, "OffensiveCheckScanState")
+      { }
 
-//       //-- BaseState interface
-//       virtual StatePtr execute( );
+      //-- BaseState interface
+      virtual StatePtr executeImpl();
       
-//     protected:
-//       //-- protected methods
-//       void configureScans( PiecePtr kingToScan );
+    protected:
+      //-- protected methods
 
-//       //-- protected members
-//       BoardPtr            board_;
-//       BaseTurnPtr &       currentTurn_;
-//       vector<BaseScanPtr> scanList_;
-//       bool                status_;
-//     };
+      //-- protected members
+    };
 
-//   }
-// }
+  }
+}
 
-// #endif /* CHESS_STATE_OFFENSIVECHECKSCANSTATE_H_ */
+#endif /* CHESS_STATE_OFFENSIVECHECKSCANSTATE_H_ */

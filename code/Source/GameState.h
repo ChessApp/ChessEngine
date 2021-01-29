@@ -3,6 +3,7 @@
 
 #include "Chess.h"
 #include "Board.h"
+#include "PotentialPin.h"
 #include "Pieces/Pieces.h"
 
 
@@ -23,6 +24,7 @@ namespace Chess
     typedef Pieces::PiecePtr      PiecePtr;
     typedef pair<int,int>         Coordinates;
     typedef vector<Coordinates>   MoveRequest;
+    typedef shared_ptr<PotentialPin> PotentialPinPtr;
 
     //-- construction
 
@@ -39,6 +41,8 @@ namespace Chess
 
     //-- public members
     std::unordered_map<int, PiecePtr> activePieces;
+    vector<PotentialPinPtr>           potentialPins;
+    vector<PiecePtr>                  checkInducers;
     Attacker                          attacker;
     string                            gameId;
     string                            currentClientId;
