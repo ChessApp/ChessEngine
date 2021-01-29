@@ -1,67 +1,50 @@
-// #include "State/PinScanState.h"
+#include "State/PinScanState.h"
 
-// #include "PotentialPin.h"
-// #include "Pieces/NullPiece.h"
-// #include "Scans/BaseScan.h"
-// #include "Scans/Scanner.h"
+#include "PotentialPin.h"
+#include "Scans/BaseScan.h"
 
 
-// namespace Chess
-// {
-//   namespace State
-//   {
+namespace Chess
+{
+  namespace State
+  {
 
-//     BaseState::StatePtr PinScanState::execute( )
-//     {
-//       //-- local types
-//       typedef shared_ptr<PotentialPin>    PotentialPinPtr;
-//       typedef vector<PotentialPinPtr>     PotentialPinList;
-//       typedef vector<BaseState::PiecePtr> PieceList;
-//       typedef shared_ptr<BaseScan>        BaseScanPtr;
+    BaseState::StatePtr PinScanState::executeImpl()
+    {
+      //-- local types
+      typedef shared_ptr<PotentialPin>    PotentialPinPtr;
+      typedef vector<PotentialPinPtr>     PotentialPinList;
+      typedef vector<BaseState::PiecePtr> PieceList;
+      typedef shared_ptr<BaseScan>        BaseScanPtr;
 
-//       DEBUG_CONSOLE_1ARG("State: PIN SCAN");
+      PiecePtr kingToScan = gameState_.getKingUnderAttack();
 
-//       PiecePtr kingToScan = currentTurn_->getOffensiveKing();
-//       PotentialPinList & potentialPinList = currentTurn_->getPotentialPinList();
-//       PieceList & pinList = currentTurn_->getPinList();
+      for( auto potentialPin : gameState_.potentialPins )
+      {
+        PiecePtr pinnedPiece = potentialPin->getPiece();
+        BaseScanPtr scanToExecute = potentialPin->getScanToExecute();
 
-//       while( potentialPinList.size() )
-//       {
-//         PotentialPinPtr potentialPin = potentialPinList.back();
-//         PiecePtr pinnedPiece = potentialPin->getPotentialPin();
-//         BaseScanPtr scanToExecute = potentialPin->getScanToExecute();
+        gameState_.board.clrPiece(pinnedPiece);
+        PiecePtr detectedPiece = scanToExecute->execute()->detectedPiece;
 
-//         removePiece(pinnedPiece);
-//         Scanner::ScanResultPtr scanResult = scanToExecute->execute();
-//         PiecePtr detectedPiece = scanResult->detectedPiece;
+        if( detectedPiece->validDirection(kingToScan) )
+        {
+          // Only pieces from the offensive team can pin a defending piece.
+          if( detectedPiece->getColor() != kingToScan->getColor() )
+          {
+            gameState_.pinnedPieces.insert({pinnedPiece->getId(), pinnedPiece});
+            pinnedPiece->setPinned();
+          }
+        }
 
-//         if( detectedPiece->validDirection(kingToScan->getRow(), kingToScan->getCol()) )
-//         {
-//           // Only pieces from the offensive team can pin a defending piece.
-//           if( detectedPiece->getColor() != kingToScan->getColor() )
-//           {
-//             pinList.push_back(pinnedPiece);
-//             pinnedPiece->setPinned();
-//           }
-//         }
+        gameState_.board.setPiece(pinnedPiece, pinnedPiece->getLocation());
+      }
 
-//         returnPiece(pinnedPiece);
-//         potentialPinList.pop_back();
-//       }
+      if( gameState_.pinnedPieces.size() > 0 )
+        return nextState_;
+      else
+        return returnState_;
+    }
 
-//       return nextState_;
-//     }
-
-//     void PinScanState::removePiece( PiecePtr pieceToRemove )
-//     {
-//       PiecePtr np( new NullPiece(".. ") );
-//       board_->setPiece(np, pieceToRemove->getRow(), pieceToRemove->getCol());
-//     }
-
-//     void PinScanState::returnPiece( PiecePtr pieceToReturn )
-//     {
-//       board_->setPiece(pieceToReturn, pieceToReturn->getRow(), pieceToReturn->getCol());
-//     }
-
-//   }
-// }
+  }
+}

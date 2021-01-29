@@ -1,47 +1,36 @@
-// #ifndef CHESS_STATE_PINSCANSTATE_H_
-// #define CHESS_STATE_PINSCANSTATE_H_
+#ifndef CHESS_STATE_PINSCANSTATE_H_
+#define CHESS_STATE_PINSCANSTATE_H_
 
-// #include "Chess.h"
-// #include "State/BaseState.h"
-// #include "BaseTurn.h"
-// #include "Board.h"
+#include "Chess.h"
+#include "State/BaseState.h"
 
 
-// namespace Chess
-// {
-//   namespace State
-//   {
+namespace Chess
+{
+  namespace State
+  {
 
-//     class PinScanState
-//       : public BaseState
-//     {
-//     public:
-//       //-- types
-//       typedef shared_ptr<Board>     BoardPtr;
-//       typedef shared_ptr<BaseTurn>  BaseTurnPtr;
+    class PinScanState
+      : public BaseState
+    {
+    public:
+      //-- types
 
-//       //-- construction
-//       inline PinScanState( 
-//         BoardPtr board, 
-//         BaseTurnPtr & currentTurn ) 
-//         : board_(board),
-//           currentTurn_(currentTurn)
-//       { }
+      //-- construction
+      inline PinScanState( GameState& gameState )
+        : BaseState(gameState, "PinScanState")
+      { }
 
-//       //-- BaseState interface
-//       virtual StatePtr execute( );
+      //-- BaseState interface
+      virtual StatePtr executeImpl();
       
-//     protected:
-//       //-- protected methods
-//       void removePiece( PiecePtr pieceToRemove );
-//       void returnPiece( PiecePtr pieceToReturn );
+    protected:
+      //-- protected methods
 
-//       //-- protected members
-//       BoardPtr      board_;
-//       BaseTurnPtr & currentTurn_;
-//     };
+      //-- protected members
+    };
 
-//   }
-// }
+  }
+}
 
-// #endif /* CHESS_STATE_PINSCANSTATE_H_ */
+#endif /* CHESS_STATE_PINSCANSTATE_H_ */

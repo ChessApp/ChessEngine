@@ -42,6 +42,7 @@ namespace Chess
     //-- public members
     std::unordered_map<int, PiecePtr> activePieces;
     vector<PotentialPinPtr>           potentialPins;
+    std::unordered_map<int, PiecePtr> pinnedPieces;
     vector<PiecePtr>                  checkInducers;
     Attacker                          attacker;
     string                            gameId;

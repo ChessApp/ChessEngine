@@ -40,7 +40,7 @@ namespace Chess
     returnPiece_        = std::make_shared<ReturnPieceState>(gameState_);
     offensiveCheckScan_ = std::make_shared<OffensiveCheckScanState>(gameState_);
     switchTurn_         = std::make_shared<SwitchTurnState>(gameState_);
-    // pinScan_.reset(            new PinScanState(board_, currentTurn_) );
+    pinScan_            = std::make_shared<PinScanState>(gameState_);
     // blockScan_.reset(          new BlockScanState(currentTurn_, whiteTurn_, blackTurn_) );
     // escapeRoute_.reset(        new EscapeRouteState(interface_, board_, currentTurn_) );
     // checkmate_.reset(          new CheckmateState(interface_, currentTurn_) );
@@ -53,8 +53,8 @@ namespace Chess
     move_->setTransitionStates(               defensiveCheckScan_,  finish_ );
     defensiveCheckScan_->setTransitionStates( offensiveCheckScan_,  returnPiece_ );
     returnPiece_->setTransitionStates(        finish_,              finish_ );
-    offensiveCheckScan_->setTransitionStates( finish_,              switchTurn_ );
-    // pinScan_->setTransitionStates(            blockScan_,           switchTurn_ );
+    offensiveCheckScan_->setTransitionStates( pinScan_,             switchTurn_ );
+    pinScan_->setTransitionStates(            finish_,              switchTurn_ );
     // blockScan_->setTransitionStates(          escapeRoute_,         switchTurn_ );
     // escapeRoute_->setTransitionStates(        checkmate_,           switchTurn_ );
     switchTurn_->setTransitionStates(         finish_,              finish_ );

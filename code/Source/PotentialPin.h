@@ -17,18 +17,18 @@ namespace Chess
     typedef shared_ptr<BaseScan> BaseScanPtr;
     
     //-- construction
-    inline PotentialPin( PiecePtr potentialPin, BaseScanPtr scanToExecute )
-      : potentialPin_(potentialPin),
+    inline PotentialPin( PiecePtr piece, BaseScanPtr scanToExecute )
+      : piece_(piece),
         scanToExecute_(scanToExecute)
     { }
 
     //-- public methods
-    PiecePtr    getPotentialPin( )  const { return potentialPin_; }
-    BaseScanPtr getScanToExecute( ) const { return scanToExecute_; }
+    PiecePtr    getPiece()         const { return piece_; }
+    BaseScanPtr getScanToExecute() const { return scanToExecute_; }
 
   protected:
     //-- protected members
-    PiecePtr    potentialPin_;
+    PiecePtr    piece_;
     BaseScanPtr scanToExecute_;
   };
 
