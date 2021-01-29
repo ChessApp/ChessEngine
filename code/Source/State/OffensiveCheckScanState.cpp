@@ -30,7 +30,6 @@ namespace Chess
 
       bool executeScans( GameState& gameState, ScanList& scanList, PiecePtr& kingToScan )
       {
-        bool inCheck = false;
         for( auto scan : scanList )
         {
           PiecePtr detectedPiece = scan->execute()->detectedPiece;
@@ -40,11 +39,10 @@ namespace Chess
           }
           else if( detectedPiece->validDirection(kingToScan) )
           {
-            inCheck = true;
             gameState.checkInducers.push_back(detectedPiece);
           }
         }
-        return inCheck;
+        return gameState.checkInducers.size() > 0 ? true : false;
       }
     }
 

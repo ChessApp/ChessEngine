@@ -1,52 +1,36 @@
-// #ifndef CHESS_STATE_SWITCHTURNSTATE_H_
-// #define CHESS_STATE_SWITCHTURNSTATE_H_
+#ifndef CHESS_STATE_SWITCHTURNSTATE_H_
+#define CHESS_STATE_SWITCHTURNSTATE_H_
 
-// #include "Chess.h"
-// #include "State/BaseState.h"
-// #include "BaseTurn.h"
-// #include "Interface.h"
+#include "Chess.h"
+#include "State/BaseState.h"
 
 
-// namespace Chess
-// {
-//   namespace State
-//   {
+namespace Chess
+{
+  namespace State
+  {
 
-//     class SwitchTurnState
-//       : public BaseState
-//     {
-//     public:
-//       //-- types
-//       typedef shared_ptr<Interface> InterfacePtr;
-//       typedef shared_ptr<BaseTurn>  BaseTurnPtr;
+    class SwitchTurnState
+      : public BaseState
+    {
+    public:
+      //-- types
 
-//       //-- construction
-//       inline SwitchTurnState( 
-//         InterfacePtr interface,
-//         BaseTurnPtr whiteTurn,
-//         BaseTurnPtr blackTurn,
-//         BaseTurnPtr & currentTurn ) 
-//         : interface_(interface),
-//           whiteTurn_(whiteTurn),
-//           blackTurn_(blackTurn),
-//           currentTurn_(currentTurn)      
-//       { }
+      //-- construction
+      inline SwitchTurnState( GameState& gameState )
+        : BaseState(gameState, "SwitchTurnState")  
+      { }
 
-//       //-- BaseState interface
-//       virtual StatePtr execute( );
+      //-- BaseState interface
+      virtual StatePtr executeImpl();
       
-//     protected:
-//       //-- protected methods
-//       void updateGameState();
+    protected:
+      //-- protected methods
 
-//       //-- protected members
-//       InterfacePtr  interface_;
-//       BaseTurnPtr   whiteTurn_;
-//       BaseTurnPtr   blackTurn_;
-//       BaseTurnPtr & currentTurn_;
-//     };
+      //-- protected members
+    };
 
-//   }
-// }
+  }
+}
 
-// #endif /* CHESS_STATE_SWITCHTURNSTATE_H_ */
+#endif /* CHESS_STATE_SWITCHTURNSTATE_H_ */

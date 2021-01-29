@@ -39,7 +39,7 @@ namespace Chess
     defensiveCheckScan_ = std::make_shared<DefensiveCheckScanState>(gameState_);
     returnPiece_        = std::make_shared<ReturnPieceState>(gameState_);
     offensiveCheckScan_ = std::make_shared<OffensiveCheckScanState>(gameState_);
-    // switchTurn_.reset(         new SwitchTurnState(interface_, whiteTurn_, blackTurn_, currentTurn_) );
+    switchTurn_         = std::make_shared<SwitchTurnState>(gameState_);
     // pinScan_.reset(            new PinScanState(board_, currentTurn_) );
     // blockScan_.reset(          new BlockScanState(currentTurn_, whiteTurn_, blackTurn_) );
     // escapeRoute_.reset(        new EscapeRouteState(interface_, board_, currentTurn_) );
@@ -53,11 +53,11 @@ namespace Chess
     move_->setTransitionStates(               defensiveCheckScan_,  finish_ );
     defensiveCheckScan_->setTransitionStates( offensiveCheckScan_,  returnPiece_ );
     returnPiece_->setTransitionStates(        finish_,              finish_ );
-    offensiveCheckScan_->setTransitionStates( finish_,              finish_ );
+    offensiveCheckScan_->setTransitionStates( finish_,              switchTurn_ );
     // pinScan_->setTransitionStates(            blockScan_,           switchTurn_ );
     // blockScan_->setTransitionStates(          escapeRoute_,         switchTurn_ );
     // escapeRoute_->setTransitionStates(        checkmate_,           switchTurn_ );
-    // switchTurn_->setTransitionStates(         checkmate_,           checkmate_ );
+    switchTurn_->setTransitionStates(         finish_,              finish_ );
   }
 
   void GameProtocolDriver::runStateMachine( )
