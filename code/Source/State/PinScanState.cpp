@@ -40,11 +40,7 @@ namespace Chess
 
     BaseState::StatePtr PinScanState::executeImpl()
     {
-      //-- local types
-      typedef shared_ptr<PotentialPin>    PotentialPinPtr;
-      typedef vector<PotentialPinPtr>     PotentialPinList;
-      typedef vector<BaseState::PiecePtr> PieceList;
-      typedef shared_ptr<BaseScan>        BaseScanPtr;
+      typedef shared_ptr<BaseScan> BaseScanPtr;
 
       PiecePtr kingToScan = gameState_.getKingUnderAttack();
 
