@@ -12,6 +12,15 @@ namespace Chess
   {
   public:
     //-- types
+    class BoardException
+      : public Exception
+    {
+    public:
+      inline BoardException( string message, string function = "", string state = "" )
+        : Exception(message, function, state)
+      { }
+    };
+
     typedef shared_ptr<Pieces> PiecePtr;
     typedef vector<PiecePtr>   PieceList;
 

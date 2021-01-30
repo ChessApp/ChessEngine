@@ -4,39 +4,13 @@
 #include "Scans/BaseScan.h"
 #include "Board.h"
 #include "Pieces/Pieces.h"
+#include "State/Utility/TemporaryPieceRemover.h"
 
 
 namespace Chess
 {
   namespace State
   {
-
-    namespace
-    {
-      // RAII-style class for removing a piece from the board and
-      // then returning it when the object goes out of scope.
-      class TemporaryPieceRemover
-      {
-      public:
-        typedef shared_ptr<Pieces> PiecePtr;
-
-        TemporaryPieceRemover( Board& board, PiecePtr& piece )
-          : board(board),
-            piece(piece)
-        {
-          this->board.clrPiece(this->piece);
-        }
-
-        ~TemporaryPieceRemover()
-        {
-          this->board.setPiece(this->piece, this->piece->getLocation());
-        }
-
-      private:
-        Board&    board;
-        PiecePtr& piece;
-      };
-    }
 
     BaseState::StatePtr PinScanState::executeImpl()
     {
@@ -50,7 +24,7 @@ namespace Chess
         BaseScanPtr scanToExecute = potentialPin->getScanToExecute();
 
         // RAII-style removal of potentially-pinned piece from board.
-        TemporaryPieceRemover remover(gameState_.board, pinnedPiece);
+        Utility::TemporaryPieceRemover remover(gameState_.board, pinnedPiece);
 
         PiecePtr detectedPiece = scanToExecute->execute()->detectedPiece;
         if( detectedPiece->validDirection(kingToScan) )
@@ -63,11 +37,7 @@ namespace Chess
           }
         }
       }
-
-      if( gameState_.pinnedPieces.size() > 0 )
-        return nextState_;
-      else
-        return returnState_;
+      return nextState_;
     }
 
   }

@@ -1,41 +1,34 @@
-// #ifndef CHESS_STATE_BLOCKSCANSTATE_H_
-// #define CHESS_STATE_BLOCKSCANSTATE_H_
+#ifndef CHESS_STATE_BLOCKSCANSTATE_H_
+#define CHESS_STATE_BLOCKSCANSTATE_H_
 
-// #include "Chess.h"
-// #include "State/BaseState.h"
-// #include "BaseTurn.h"
+#include "Chess.h"
+#include "State/BaseState.h"
 
 
-// namespace Chess
-// {
-//   namespace State
-//   {
+namespace Chess
+{
+  namespace State
+  {
 
-//     class BlockScanState
-//       : public BaseState
-//     {
-//     public:
-//       //-- types
-//       typedef shared_ptr<BaseTurn> BaseTurnPtr;
+    class BlockScanState
+      : public BaseState
+    {
+    public:
+      //-- types
 
-//       //-- construction
-//       inline BlockScanState( BaseTurnPtr & currentTurn, BaseTurnPtr whiteTurn, BaseTurnPtr blackTurn ) 
-//         : currentTurn_(currentTurn),
-//           whiteTurn_(whiteTurn),
-//           blackTurn_(blackTurn)
-//       { }
+      //-- construction
+      inline BlockScanState( GameState& gameState ) 
+        : BaseState(gameState, "BlockScanState")
+      { }
 
-//       //-- BaseState interface
-//       StatePtr execute( );
+      //-- BaseState interface
+      StatePtr executeImpl();
 
-//     protected:
-//       //-- protected members
-//       BaseTurnPtr & currentTurn_;
-//       BaseTurnPtr   whiteTurn_;
-//       BaseTurnPtr   blackTurn_;
-//     };
+    protected:
+      //-- protected members
+    };
 
-//   }
-// }
+  }
+}
 
-// #endif /* CHESS_STATE_BLOCKSCANSTATE_H_ */
+#endif /* CHESS_STATE_BLOCKSCANSTATE_H_ */

@@ -1,58 +1,36 @@
-// #ifndef CHESS_STATE_ESCAPEROUTESTATE_H_
-// #define CHESS_STATE_ESCAPEROUTESTATE_H_
+#ifndef CHESS_STATE_ESCAPEROUTESTATE_H_
+#define CHESS_STATE_ESCAPEROUTESTATE_H_
 
-// #include "Chess.h"
-// #include "State/BaseState.h"
-// #include "BaseTurn.h"
-// #include "Scans/BaseScan.h"
-// #include "Scans/Scanner.h"
-// #include "Interface.h"
-// #include "Board.h"
+#include "Chess.h"
+#include "State/BaseState.h"
 
 
-// namespace Chess
-// {
-//   namespace State
-//   {
+namespace Chess
+{
+  namespace State
+  {
 
-//     class EscapeRouteState
-//       : public BaseState
-//     {
-//     public:
-//       //-- types
-//       typedef shared_ptr<Interface> InterfacePtr;
-//       typedef shared_ptr<Board>     BoardPtr;
-//       typedef shared_ptr<BaseTurn>  BaseTurnPtr;
-//       typedef shared_ptr<BaseScan>  BaseScanPtr;
+    class EscapeRouteState
+      : public BaseState
+    {
+    public:
+      //-- types
 
-//       //-- construction
-//       inline EscapeRouteState( 
-//         InterfacePtr interface, 
-//         BoardPtr board, 
-//         BaseTurnPtr & currentTurn ) 
-//         : interface_(interface),
-//           board_(board),
-//           currentTurn_(currentTurn)
-//       { }
+      //-- construction
+      inline EscapeRouteState( GameState& gameState )
+        : BaseState(gameState, "EscapeRouteState")
+      { }
 
-//       //-- BaseState interface
-//       virtual StatePtr execute( );
+      //-- BaseState interface
+      virtual StatePtr executeImpl();
 
-//     protected:
-//       //-- protected methods
-//       void setPiece( PiecePtr pieceToSet, int rowToSet, int colToSet );
-//       void returnPiece( PiecePtr pieceToReturn, int rowToReturn, int colToReturn, PiecePtr originalPiece );
-//       void configureScans( PiecePtr kingToScan );
-//       bool executeScans( PiecePtr kingToEscape );
+    protected:
+      //-- protected methods
 
-//       //-- protected members
-//       InterfacePtr         interface_;
-//       BoardPtr             board_;
-//       BaseTurnPtr &        currentTurn_;
-//       vector<BaseScanPtr>  scanList_;
-//     };
+      //-- protected members
+    };
 
-//   }
-// }
+  }
+}
 
-// #endif /* CHESS_STATE_ESCAPEROUTESTATE_H_ */
+#endif /* CHESS_STATE_ESCAPEROUTESTATE_H_ */

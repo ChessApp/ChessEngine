@@ -5,6 +5,7 @@
 #include "Board.h"
 #include "PotentialPin.h"
 #include "Pieces/Pieces.h"
+#include "Scans/ScanResult.h"
 
 
 namespace Chess
@@ -21,10 +22,11 @@ namespace Chess
       errorAttacker
     };
 
-    typedef Pieces::PiecePtr      PiecePtr;
-    typedef pair<int,int>         Coordinates;
-    typedef vector<Coordinates>   MoveRequest;
+    typedef Pieces::PiecePtr         PiecePtr;
+    typedef pair<int,int>            Coordinates;
+    typedef vector<Coordinates>      MoveRequest;
     typedef shared_ptr<PotentialPin> PotentialPinPtr;
+    typedef shared_ptr<ScanResult>   ScanResultPtr;
 
     //-- construction
 
@@ -44,6 +46,7 @@ namespace Chess
     vector<PotentialPinPtr>           potentialPins;
     std::unordered_map<int, PiecePtr> pinnedPieces;
     vector<PiecePtr>                  checkInducers;
+    vector<ScanResultPtr>             checkPaths;
     Attacker                          attacker;
     string                            gameId;
     string                            currentClientId;

@@ -10,9 +10,10 @@ namespace Chess
   namespace State
   {
 
-    typedef shared_ptr<BaseScan> BaseScanPtr;
-    typedef vector<BaseScanPtr>  ScanList;
-    typedef shared_ptr<Pieces>   PiecePtr;
+    typedef shared_ptr<BaseScan>   BaseScanPtr;
+    typedef vector<BaseScanPtr>    ScanList;
+    typedef shared_ptr<Pieces>     PiecePtr;
+    typedef shared_ptr<ScanResult> ScanResultPtr;
 
     namespace
     {
@@ -32,13 +33,15 @@ namespace Chess
       {
         for( auto scan : scanList )
         {
-          PiecePtr detectedPiece = scan->execute()->detectedPiece;
+          ScanResultPtr scanResult = scan->execute();
+          PiecePtr detectedPiece = scanResult->detectedPiece;
           if( detectedPiece->getColor() == kingToScan->getColor() )
           {
             gameState.potentialPins.push_back( std::make_shared<PotentialPin>(detectedPiece, scan) );
           }
           else if( detectedPiece->validDirection(kingToScan) )
           {
+            gameState.checkPaths.push_back(scanResult);
             gameState.checkInducers.push_back(detectedPiece);
           }
         }

@@ -1,60 +1,67 @@
-// #include "State/BlockScanState.h"
+#include "State/BlockScanState.h"
+#include "State/Utility/PathScan.h"
 
 
-// namespace Chess
-// {
-//   namespace State
-//   {
+namespace Chess
+{
+  namespace State
+  {
 
-//     BaseState::StatePtr BlockScanState::execute( )
-//     {
-//       DEBUG_CONSOLE_1ARG("State: BLOCK SCAN");
+    BaseState::StatePtr BlockScanState::executeImpl()
+    {
+      for( auto s : gameState_.checkPaths )
+      {
+        for( auto threatPiece : gameState_.checkInducers )
+        {
+          for( auto defendingPiecePair : gameState_.activePieces )
+          {
+            int defendingPieceId = defendingPiecePair.first;
+            PiecePtr defendingPiece = defendingPiecePair.second;
 
-//       BaseTurnPtr defender;
-//       if( currentTurn_->getTurn() == 'W' )
-//         defender = blackTurn_;
-//       else
-//         defender = whiteTurn_;
+            // Pieces must be on the defending team to be eligible.
+            if( defendingPiece->getColor() != gameState_.getKingUnderAttack()->getColor() )
+              continue;
 
-//       BaseTurn::ScanResultList & checkScans = currentTurn_->getCheckScanData();
-//       for( BaseTurn::ScanResultList::iterator s = checkScans.begin(); s != checkScans.end(); ++s )
-//       {
-//         for( int i = 0; i < currentTurn_->getCausingCheckListSize(); i++ )
-//         {
-//           PiecePtr threatPiece = currentTurn_->getCausingCheckPiece(i);
-//           BaseTurn::PieceList & activeList = defender->getActiveList();
-          
-//           for( BaseTurn::PieceList::iterator defendingPiece = activeList.begin(); defendingPiece != activeList.end(); ++defendingPiece )
-//           {
-//             // A King cannot block itself. Ignore the king as a potential defending piece.
-//             if( (*defendingPiece)->getType() != "K" )
-//             {
-//               // Check if the defending piece can move anywhere on the attack path to block it.
-//               for( int it = 0; it < (*s)->getRowList().size(); it++ )
-//               {
-//                 int row = (*s)->getRowList()[it];
-//                 int col = (*s)->getColList()[it];
+            // A King cannot block itself. Ignore the king as a potential defending piece.
+            if( defendingPiece->getType() != "K" )
+            {
+              // Check if the defending piece can move anywhere on the attack path to block it.
+              for( int it = 0; it < s->getRowList().size(); it++ )
+              {
+                int row = s->getRowList()[it];
+                int col = s->getColList()[it];
+                PiecePtr p = gameState_.board.getPiece({row, col});
+                // Defending piece must be able to move to the square, cannot be blocked, and also cannot be pinned.
+                if( defendingPiece->validDirection(p) &&
+                    Utility::PathScan::execute(gameState_.board, defendingPiece, {row, col}) &&
+                    !defendingPiece->getPinnedStatus() )
+                {
+                  PLOG_DEBUG << "Type: " << defendingPiece->getType()
+                             << " Color: " << defendingPiece->getColor()
+                             << " can neutralize threat from"
+                             << " Row: " << row
+                             << " Col: " << col;
+                  return returnState_;
+                }
+              }
+              // Check if the defending piece can attack the threat piece.
+              if( defendingPiece->validDirection(threatPiece) &&
+                  Utility::PathScan::execute(gameState_.board, defendingPiece, threatPiece->getLocation()) &&
+                  !defendingPiece->getPinnedStatus() )
+              {
+                PLOG_DEBUG << "Type: " << defendingPiece->getType()
+                           << " Color: " << defendingPiece->getColor()
+                           << " can neutralize threat from"
+                           << " Row: " << defendingPiece->getRow()
+                           << " Col: " << defendingPiece->getCol();
+                return returnState_;
+              }
+            }
+          }
+        }
+      }      
+      return nextState_;
+    }
 
-//                 // Defending piece must be able to move to the square, cannot be blocked, and also cannot be pinned.
-//                 if( (*defendingPiece)->validDirection(row, col) && (*defendingPiece)->pathScan(row, col) && !(*defendingPiece)->getPinnedStatus() )
-//                 {
-//                   cout << "Type: " << (*defendingPiece)->getType() << " Color: " << (*defendingPiece)->getColor() << " DestRow: " << row << " DestCol: " << col << endl;
-//                   return returnState_;
-//                 }
-//               }
-//               // Check if the defending piece can attack the threat piece.
-//               if( (*defendingPiece)->validDirection(threatPiece->getRow(), threatPiece->getCol()) && (*defendingPiece)->pathScan(threatPiece->getRow(), threatPiece->getCol()) && !(*defendingPiece)->getPinnedStatus() )
-//               {
-//                 cout << "Type: " << (*defendingPiece)->getType() << " Color: " << (*defendingPiece)->getColor() << " can neutralize threat from" << " Row: " << (*defendingPiece)->getRow() << " Col: " << (*defendingPiece)->getCol() << endl;
-//                 return returnState_;
-//               }
-//             }
-//           }
-//         }
-//       }      
-
-//       return nextState_;
-//     }
-
-//   }
-// }
+  }
+}

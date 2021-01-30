@@ -30,8 +30,6 @@ namespace Chess
       
     protected:
       //-- protected methods
-      shared_ptr<BaseScan> identifyScan();
-      void evaluateScanResult(Scans::ScanResultPtr&);
 
       //-- protected members
     };

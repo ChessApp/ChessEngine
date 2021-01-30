@@ -3,6 +3,7 @@
 #include "Pieces/Pieces.h"
 #include "Scans/Scans.h"
 #include "Scans/BaseScan.h"
+#include "Board.h"
 
 
 namespace Chess

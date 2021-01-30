@@ -16,9 +16,9 @@ namespace Chess
     string locationToHash( const pair<int,int>& location )
     {
       if( location.first < min || location.first > max )
-        throw Exception("Location is out of bounds!", "Board::locationToHash");
+        throw Board::BoardException("Location is out of bounds!", "Board::locationToHash");
       if( location.second < min || location.second > max )
-        throw Exception("Location is out of bounds!", "Board::locationToHash");
+        throw Board::BoardException("Location is out of bounds!", "Board::locationToHash");
 
       return std::to_string(location.first) + std::to_string(location.second);
     }
