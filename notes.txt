@@ -1,2 +1,10 @@
 - if local db is saying the table was not found, make sure the credentials match between the aws lambda container and the db container
 - can also just used the -sharedDb flag for the db container
+
+- $ ./dispatch.sh -db           --> run the database instance
+- $ ./dispatch.sh -ct           --> create a table in the database instance
+- $ ./dispatch.sh -ut           --> Use this to update the table with whatever game state you want in scripts/input/putitem-payload.xml
+- $ ./dispatch.sh -r            --> build and run the game engine
+- $ ./scripts/invoke_lambda.sh  --> invoke the api to actually trigger the executable (sends scripts/input/invoke_payload.xml in the form of an http request)
+
+- scripts/putitem.py is hard-coded to determine the game and team ids, which must match the arguments in invoke_payload.xml
