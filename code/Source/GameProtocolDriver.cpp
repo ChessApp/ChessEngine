@@ -15,7 +15,6 @@
 #include "State/EscapeRouteState.h"
 #include "State/CheckmateState.h"
 #include "State/FinishState.h"
-#include "Interface.h"
 
 
 namespace Chess
@@ -43,8 +42,8 @@ namespace Chess
     pinScan_            = std::make_shared<PinScanState>(gameState_);
     blockScan_          = std::make_shared<BlockScanState>(gameState_);
     escapeRoute_        = std::make_shared<EscapeRouteState>(gameState_);
-    // checkmate_.reset(          new CheckmateState(interface_, currentTurn_) );
-    finish_ = std::make_shared<FinishState>(gameState_);
+    checkmate_          = std::make_shared<CheckmateState>(gameState_);
+    finish_             = std::make_shared<FinishState>(gameState_);
 
     init_->setTransitionStates(               relevancy_,           finish_ );
     relevancy_->setTransitionStates(          moveValidity_,        finish_ );
@@ -56,7 +55,8 @@ namespace Chess
     offensiveCheckScan_->setTransitionStates( pinScan_,             switchTurn_ );
     pinScan_->setTransitionStates(            blockScan_,           blockScan_ );
     blockScan_->setTransitionStates(          escapeRoute_,         switchTurn_ );
-    escapeRoute_->setTransitionStates(        finish_,              switchTurn_ );
+    escapeRoute_->setTransitionStates(        checkmate_,           switchTurn_ );
+    checkmate_->setTransitionStates(          finish_,              finish_);
     switchTurn_->setTransitionStates(         finish_,              finish_ );
   }
 
@@ -72,11 +72,11 @@ namespace Chess
     }
     catch( string error )
     {
-      cout << "[ERROR] " << error << endl;
+      PLOG_ERROR << "[ERROR] " << error << endl;
     }
     catch(...)
     {
-      cout << "caught unknown exception" << endl;
+      PLOG_ERROR << "caught unknown exception" << endl;
     }
     gameState_.print();
   }

@@ -44,7 +44,6 @@ namespace Chess
     void clrLocation();
 
     //-- protected members
-    static const string invalidDirectionMessage_;
     bool                in_check_;
     bool                prev_in_check_;
     bool                pinned_;

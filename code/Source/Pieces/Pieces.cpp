@@ -5,8 +5,6 @@
 namespace Chess
 {
 
-  const string Pieces::invalidDirectionMessage_ = "The selected piece is not capable of moving the requested direction!";
-
   Pieces::Pieces( const string& name, string type, const pair<int,int>& location )
     : name_(name),
       type_(type),

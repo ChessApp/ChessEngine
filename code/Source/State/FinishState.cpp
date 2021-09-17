@@ -44,6 +44,10 @@ namespace Chess
       turnNode.attribute("color").set_value(gameState.serializeAttacker().c_str());
       pugi::xml_node messagesNode = root.child("Messages");
       messagesNode.attribute("invalidMove").set_value(gameState.errorMessage.c_str());
+      pugi::xml_node winnerNode = root.child("Winner");
+      winnerNode.attribute("status").set_value(gameState.checkmate);
+      winnerNode.attribute("color").set_value(gameState.serializeAttacker().c_str());
+
       doc.save_file(FilePaths::gameStateFile.c_str());
 
       gameState.gameStateString = FileSystem::readFromFile(FilePaths::gameStateFile);

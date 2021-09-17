@@ -8,6 +8,8 @@ namespace Chess
   namespace State
   {
 
+    const string invalidDirectionMessage = "The selected piece is not capable of moving to the requested destination!";
+
     BaseState::StatePtr MoveValidityState::executeImpl()
     {
       auto source      = gameState_.moveRequest.front();
@@ -15,7 +17,8 @@ namespace Chess
 
       PiecePtr currentPiece = gameState_.board.getPiece(source);
       PiecePtr pieceAtDestination = gameState_.board.getPiece(destination);
-      currentPiece->validDirection(pieceAtDestination);
+      if( !currentPiece->validDirection(pieceAtDestination) )
+        throw Exception(invalidDirectionMessage, "MoveValidityState::executeImpl");
 
       return nextState_;
     }
