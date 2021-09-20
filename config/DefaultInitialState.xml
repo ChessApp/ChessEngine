@@ -40,4 +40,6 @@
     <Square symbol="BN " row="0" col="1" type="KN" color="B" />
     <Square symbol="BR " row="0" col="0" type="R" color="B" />
   </Board>
+  <Requests>
+  </Requests>
 </root>

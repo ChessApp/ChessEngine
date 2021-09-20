@@ -48,6 +48,16 @@ namespace Chess
       winnerNode.attribute("status").set_value(gameState.checkmate);
       winnerNode.attribute("color").set_value(gameState.serializeAttacker().c_str());
 
+      // Update the api request history
+      pugi::xml_node requestsNode = root.child("Requests");
+      pugi::xml_node requestNode = requestsNode.append_child("request");
+      pugi::xml_attribute gameIdAttr = requestNode.append_attribute("gameId");
+      gameIdAttr.set_value(gameState.gameId.c_str());
+      pugi::xml_attribute clientIdAttr = requestNode.append_attribute("clientId");
+      clientIdAttr.set_value(gameState.currentClientId.c_str());
+      pugi::xml_attribute moveAttr = requestNode.append_attribute("move");
+      moveAttr.set_value(gameState.moveString.c_str());
+
       doc.save_file(FilePaths::gameStateFile.c_str());
 
       gameState.gameStateString = FileSystem::readFromFile(FilePaths::gameStateFile);
