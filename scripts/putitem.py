@@ -10,7 +10,7 @@ def putitem(gameStateXml, dynamodb=None):
   response = table.put_item(
     Item=
     {
-      'gameId': "420",
+      'gameId': "69",
       'whiteId': "1",
       'blackId': "2",
       'state': gameStateXml,

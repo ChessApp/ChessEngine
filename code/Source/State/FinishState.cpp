@@ -50,7 +50,7 @@ namespace Chess
 
       // Update the api request history
       pugi::xml_node requestsNode = root.child("Requests");
-      pugi::xml_node requestNode = requestsNode.append_child("request");
+      pugi::xml_node requestNode = requestsNode.append_child("Request");
       pugi::xml_attribute gameIdAttr = requestNode.append_attribute("gameId");
       gameIdAttr.set_value(gameState.gameId.c_str());
       pugi::xml_attribute clientIdAttr = requestNode.append_attribute("clientId");

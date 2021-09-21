@@ -44,7 +44,7 @@ namespace Chess
       // Setup the xml document structure and load the state initialization file
       pugi::xml_document doc;
       pugi::xml_parse_result result = doc.load_file(FilePaths::userInputFile.c_str());
-      pugi::xml_node request = doc.child("request");
+      pugi::xml_node request = doc.child("Request");
 
       gameState.gameId          = request.attribute("gameId").value();
       gameState.currentClientId = request.attribute("clientId").value();
