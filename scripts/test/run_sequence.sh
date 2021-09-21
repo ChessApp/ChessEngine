@@ -1,4 +1,5 @@
 #!/bin/bash
+
 XML_HEADER="<?xml version="1.0"?>"
 if [[ $1 == '' ]]; then
   SEQUENCE_FILE="request_sequence.xml"
@@ -17,9 +18,11 @@ done < $SEQUENCE_FILE
 
 
 if [[ $2 != '' ]]; then
-  if cmp -- "$2" "outputs/invoke_lambda.json"; then
-    echo "$SEQUENCE_FILE passed!"
+  if cmp -- "$2" "outputs/invoke_lambda.json" > /dev/null; then
+    exit 0
   else
-    echo "$SEQUENCE_FILE failed!"
+    exit 1
   fi
 fi
+
+exit 0
