@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<root>
+	<Flags serverFresh="0" clientFresh="1" invalidMove="0" />
+	<Input content="" />
+	<Turn color="W" checkStatus="0" />
+	<Winner status="true" color="W" />
+	<Messages invalidMove="" />
+	<Requests>
+		<Request gameId="69" clientId="1" move="E2,E4" />
+		<Request gameId="69" clientId="2" move="E7,E5" />
+		<Request gameId="69" clientId="1" move="F1,C4" />
+		<Request gameId="69" clientId="2" move="A7,A6" />
+		<Request gameId="69" clientId="1" move="D1,F3" />
+		<Request gameId="69" clientId="2" move="A6,A5" />
+		<Request gameId="69" clientId="1" move="F3,F7" />
+	</Requests>
+	<Board>
+		<Square type="P" color="B" row="1" col="2" symbol="BP " />
+		<Square type="P" color="B" row="1" col="3" symbol="BP " />
+		<Square type="P" color="B" row="3" col="4" symbol="BP " />
+		<Square type="P" color="B" row="1" col="7" symbol="BP " />
+		<Square type="P" color="B" row="1" col="6" symbol="BP " />
+		<Square type="P" color="B" row="1" col="1" symbol="BP " />
+		<Square type="P" color="B" row="3" col="0" symbol="BP " />
+		<Square type="R" color="B" row="0" col="7" symbol="BR " />
+		<Square type="KN" color="B" row="0" col="6" symbol="BN " />
+		<Square type="K" color="B" row="0" col="4" symbol="BK " />
+		<Square type="B" color="B" row="0" col="5" symbol="BB " />
+		<Square type="Q" color="B" row="0" col="3" symbol="BQ " />
+		<Square type="B" color="B" row="0" col="2" symbol="BB " />
+		<Square type="R" color="B" row="0" col="0" symbol="BR " />
+		<Square type="KN" color="B" row="0" col="1" symbol="BN " />
+		<Square type="P" color="W" row="6" col="1" symbol="WP " />
+		<Square type="P" color="W" row="6" col="0" symbol="WP " />
+		<Square type="P" color="W" row="6" col="2" symbol="WP " />
+		<Square type="P" color="W" row="6" col="3" symbol="WP " />
+		<Square type="P" color="W" row="6" col="5" symbol="WP " />
+		<Square type="P" color="W" row="4" col="4" symbol="WP " />
+		<Square type="P" color="W" row="6" col="6" symbol="WP " />
+		<Square type="P" color="W" row="6" col="7" symbol="WP " />
+		<Square type="R" color="W" row="7" col="0" symbol="WR " />
+		<Square type="KN" color="W" row="7" col="1" symbol="WN " />
+		<Square type="Q" color="W" row="1" col="5" symbol="WQ " />
+		<Square type="B" color="W" row="7" col="2" symbol="WB " />
+		<Square type="K" color="W" row="7" col="4" symbol="WK " />
+		<Square type="B" color="W" row="4" col="2" symbol="WB " />
+		<Square type="R" color="W" row="7" col="7" symbol="WR " />
+		<Square type="KN" color="W" row="7" col="6" symbol="WN " />
+	</Board>
+</root>
+

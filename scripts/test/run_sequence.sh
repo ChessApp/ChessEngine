@@ -1,13 +1,25 @@
 #!/bin/bash
 XML_HEADER="<?xml version="1.0"?>"
-SEQUENCE_FILE="request_sequence.xml"
+if [[ $1 == '' ]]; then
+  SEQUENCE_FILE="request_sequence.xml"
+else
+  SEQUENCE_FILE=$1
+fi
 
 while IFS= read -r LINE; do
   PAYLOAD=$XML_HEADER$LINE
-  echo "$PAYLOAD"
   aws lambda invoke \
     --endpoint http://localhost:9001 \
     --no-sign-request \
     --function-name chessengine \
     --payload "$PAYLOAD" outputs/invoke_lambda.json
 done < $SEQUENCE_FILE
+
+
+if [[ $2 != '' ]]; then
+  if cmp -- "$2" "outputs/invoke_lambda.json"; then
+    echo "$SEQUENCE_FILE passed!"
+  else
+    echo "$SEQUENCE_FILE failed!"
+  fi
+fi

@@ -1,0 +1,7 @@
+<Request gameId="69" clientId="1" move="E2,E4" />
+<Request gameId="69" clientId="2" move="E7,E5" />
+<Request gameId="69" clientId="1" move="F1,C4" />
+<Request gameId="69" clientId="2" move="A7,A6" />
+<Request gameId="69" clientId="1" move="D1,F3" />
+<Request gameId="69" clientId="2" move="A6,A5" />
+<Request gameId="69" clientId="1" move="F3,F7" />
