@@ -30,7 +30,7 @@ namespace Chess
 
   void GameState::print()
   {
-    PLOG_VERBOSE << endl
+    PLOG_DEBUG << endl
     << "--- GameState ---" << endl
     << "gameId: " << gameId << endl
     << "currentClientId: " << currentClientId << endl
@@ -41,33 +41,30 @@ namespace Chess
     << "moveRequest:" << endl;
     for( auto coordinate : moveRequest )
     {
-      cout << "{" << coordinate.first << ", " << coordinate.second << "} ";
+      PLOG_DEBUG << "{" << coordinate.first << ", " << coordinate.second << "} ";
     }
-    cout << endl << endl;
-    cout << "activePieces..." << endl;
+    PLOG_DEBUG << "activePieces..." << endl;
     for( auto piece : activePieces )
     {
-      cout << "id: " << piece.first << " name: " << piece.second->getName() << " row: " << piece.second->getRow() << " col: " << piece.second->getCol() << endl;
+      PLOG_DEBUG << "id: " << piece.first << " name: " << piece.second->getName() << " row: " << piece.second->getRow() << " col: " << piece.second->getCol() << endl;
     }
-    cout << endl;
-    cout << "attacker: " << static_cast<int>(attacker) << endl;
-    cout << "whiteKingId: " << whiteKingId << endl;
-    cout << "blackKingId: " << blackKingId << endl;
-    cout << "capturedPieceId: " << capturedPieceId_ << endl;
-    cout << endl;
-    cout << "potentialPins:" << endl;
+    PLOG_DEBUG << "attacker: " << static_cast<int>(attacker) << endl;
+    PLOG_DEBUG << "whiteKingId: " << whiteKingId << endl;
+    PLOG_DEBUG << "blackKingId: " << blackKingId << endl;
+    PLOG_DEBUG << "capturedPieceId: " << capturedPieceId_ << endl;
+    PLOG_DEBUG << "potentialPins:" << endl;
     for( auto p : potentialPins )
     {
-      cout << "name: " << p->getPiece()->getName() << " loc: {" << p->getPiece()->getRow() << "," << p->getPiece()->getCol() << "}" << endl;
+      PLOG_DEBUG << "name: " << p->getPiece()->getName() << " loc: {" << p->getPiece()->getRow() << "," << p->getPiece()->getCol() << "}" << endl;
     }
-    cout << endl;
-    cout << "pinnedPieces:" << endl;
+    PLOG_DEBUG << "checkmate: " << checkmate << endl;
+    PLOG_DEBUG << "pinnedPieces:" << endl;
     for( auto p : pinnedPieces )
     {
-      cout << "name: " << p.second->getName() << " loc: {" << p.second->getRow() << "," << p.second->getCol() << "}" << endl;
+      PLOG_DEBUG << "name: " << p.second->getName() << " loc: {" << p.second->getRow() << "," << p.second->getCol() << "}" << endl;
     }
     cout << endl;
-    cout << "Board: " << endl;
+    PLOG_DEBUG << "Board: " << endl;
     for( int row = 0; row < 8; row++ )
     {
       for( int col = 0; col < 8; col++ )
@@ -77,7 +74,7 @@ namespace Chess
       cout << endl;
     }
     cout << endl;
-    cout << "--- GameState ---" << endl;
+    PLOG_DEBUG << "--- GameState ---" << endl;
   }
 
   void GameState::setAttacker( string color )
