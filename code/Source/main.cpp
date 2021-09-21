@@ -24,7 +24,7 @@ int main( int argc, char ** argv )
 {
   // Initialize logging system
   static plog::ColorConsoleAppender<plog::TxtFormatter> colorConsoleAppender;
-  plog::init(plog::debug, &colorConsoleAppender);
+  plog::init(plog::info, &colorConsoleAppender);
 
   run_handler(my_handler);
   return 0;

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<root>
+	<Flags serverFresh="0" clientFresh="1" invalidMove="0" />
+	<Input content="" />
+	<Turn color="W" checkStatus="0" />
+	<Winner status="true" color="W" />
+	<Messages invalidMove="" />
+	<Requests>
+		<Request gameId="69" clientId="1" move="F4,E5" />
+	</Requests>
+	<Board>
+		<Square type="K" color="B" row="0" col="4" symbol="BK " />
+		<Square type="Q" color="B" row="0" col="3" symbol="BQ " />
+		<Square type="K" color="W" row="7" col="4" symbol="WK " />
+		<Square type="Q" color="W" row="3" col="4" symbol="WQ " />
+		<Square type="KN" color="B" row="0" col="1" symbol="BN " />
+		<Square type="KN" color="W" row="7" col="6" symbol="WN " />
+		<Square type="KN" color="W" row="7" col="1" symbol="WN " />
+		<Square type="B" color="W" row="7" col="5" symbol="WB " />
+		<Square type="B" color="W" row="7" col="2" symbol="WB " />
+		<Square type="P" color="B" row="1" col="5" symbol="BP " />
+		<Square type="P" color="B" row="1" col="3" symbol="BP " />
+		<Square type="P" color="B" row="0" col="5" symbol="BP " />
+		<Square type="R" color="W" row="4" col="4" symbol="WR " />
+		<Square type="R" color="W" row="0" col="2" symbol="WR " />
+		<Square type="R" color="B" row="0" col="7" symbol="BR " />
+	</Board>
+</root>
+

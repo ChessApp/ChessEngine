@@ -18,7 +18,7 @@ done < $SEQUENCE_FILE
 
 
 if [[ $2 != '' ]]; then
-  if cmp -- "$2" "outputs/invoke_lambda.json" > /dev/null; then
+  if cmp -- "$2" "outputs/invoke_lambda.json"; then
     exit 0
   else
     exit 1

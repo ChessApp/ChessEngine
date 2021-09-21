@@ -37,7 +37,7 @@ namespace Chess
           {
             if( kingToEscape->getColor() != detectedPiece->getColor() )
             {
-              cout << "[***DEBUG CONSOLE***] " << "Escape attempt soiled by: " << detectedPiece->getType() << " at [" << detectedPiece->getRow() << "," << detectedPiece->getCol() << "]" << endl;
+              PLOG_DEBUG << "Escape attempt soiled by: " << detectedPiece->getType() << " at [" << detectedPiece->getRow() << "," << detectedPiece->getCol() << "]" << endl;
               return false;
             }
           }

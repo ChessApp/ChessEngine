@@ -3,7 +3,7 @@
 	<Flags serverFresh="0" clientFresh="1" invalidMove="0" />
 	<Input content="" />
 	<Turn color="W" checkStatus="0" />
-	<Winner status="true" color="W" />
+	<Winner status="false" color="W" />
 	<Messages invalidMove="The path to the desired destination is not valid!" />
 	<Requests>
 		<Request gameId="69" clientId="1" move="D1,F3" />

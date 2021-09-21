@@ -59,7 +59,7 @@ namespace Chess
     string                            moveString;
     string                            gameStateString;
     string                            errorMessage;
-    bool                              checkmate;
+    bool                              checkmate = false;
 
   protected:
     //-- protected members
