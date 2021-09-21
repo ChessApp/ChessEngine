@@ -1,0 +1,1 @@
+Tests the classic 4-move checkmate. This is a good smoke test for moving pieces and verifying we can get into the checkmate state.

@@ -1,0 +1,35 @@
+Tests the scenario when the white queen checks the black king. The black team has a queen that would have been able to block the check, except the queen is pinned by a white rook. This move should result in checkmate against the black team.
+
+
+2021-09-21 22:03:41.696 INFO  [14] [Chess::State::BaseState::execute@19] State: InitState
+
+.. BN WR BQ BK BP .. BR 
+.. .. .. BP .. BP .. .. 
+.. .. .. .. .. .. .. .. 
+.. .. .. .. .. .. .. .. 
+.. .. .. .. WR WQ .. .. 
+.. .. .. .. .. .. .. .. 
+.. .. .. .. .. .. .. .. 
+.. WN WB .. WK WB WN .. 
+
+2021-09-21 22:03:41.705 INFO  [14] [Chess::State::BaseState::execute@19] State: RelevancyState
+2021-09-21 22:03:41.706 INFO  [14] [Chess::State::BaseState::execute@19] State: MoveValidityState
+2021-09-21 22:03:41.706 INFO  [14] [Chess::State::BaseState::execute@19] State: PathScanState
+2021-09-21 22:03:41.706 INFO  [14] [Chess::State::BaseState::execute@19] State: MoveState
+2021-09-21 22:03:41.706 INFO  [14] [Chess::State::BaseState::execute@19] State: DefensiveCheckScanState
+2021-09-21 22:03:41.706 INFO  [14] [Chess::State::BaseState::execute@19] State: OffensiveCheckScanState
+2021-09-21 22:03:41.706 INFO  [14] [Chess::State::BaseState::execute@19] State: PinScanState
+2021-09-21 22:03:41.706 INFO  [14] [Chess::State::BaseState::execute@19] State: BlockScanState
+2021-09-21 22:03:41.706 INFO  [14] [Chess::State::BaseState::execute@19] State: EscapeRouteState
+2021-09-21 22:03:41.707 INFO  [14] [Chess::State::BaseState::execute@19] State: CheckmateState
+2021-09-21 22:03:41.707 INFO  [14] [Chess::State::BaseState::execute@19] State: FinishState
+2021-09-21 22:03:41.729 INFO  [14] [Chess::GameProtocolDriver::runStateMachine@71] State machine done.
+
+.. BN WR BQ BK BP .. BR 
+.. .. .. BP .. BP .. .. 
+.. .. .. .. .. .. .. .. 
+.. .. .. .. WQ .. .. .. 
+.. .. .. .. WR .. .. .. 
+.. .. .. .. .. .. .. .. 
+.. .. .. .. .. .. .. .. 
+.. WN WB .. WK WB WN .. 

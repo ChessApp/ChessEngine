@@ -1,0 +1,1 @@
+Tests the scenario when a white queen attempts to move beyond a piece on the same team. This should result in an error message, and the turn should remain white's.

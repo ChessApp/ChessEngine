@@ -1,0 +1,34 @@
+Tests the scenario when the white queen checks the black king, but the black team has a rook which can capture the queen and suppress the attack.
+
+
+2021-09-21 21:59:11.134 INFO  [14] [Chess::State::BaseState::execute@19] State: InitState
+
+.. BN WR BQ BK BP .. BR 
+.. .. .. BP .. BP .. .. 
+.. .. .. .. .. .. .. .. 
+BR .. .. .. .. .. .. .. 
+.. .. .. .. WR WQ .. .. 
+.. .. .. .. .. .. .. .. 
+.. .. .. .. .. .. .. .. 
+.. WN WB .. WK WB WN .. 
+
+2021-09-21 21:59:11.149 INFO  [14] [Chess::State::BaseState::execute@19] State: RelevancyState
+2021-09-21 21:59:11.149 INFO  [14] [Chess::State::BaseState::execute@19] State: MoveValidityState
+2021-09-21 21:59:11.149 INFO  [14] [Chess::State::BaseState::execute@19] State: PathScanState
+2021-09-21 21:59:11.149 INFO  [14] [Chess::State::BaseState::execute@19] State: MoveState
+2021-09-21 21:59:11.149 INFO  [14] [Chess::State::BaseState::execute@19] State: DefensiveCheckScanState
+2021-09-21 21:59:11.149 INFO  [14] [Chess::State::BaseState::execute@19] State: OffensiveCheckScanState
+2021-09-21 21:59:11.149 INFO  [14] [Chess::State::BaseState::execute@19] State: PinScanState
+2021-09-21 21:59:11.149 INFO  [14] [Chess::State::BaseState::execute@19] State: BlockScanState
+2021-09-21 21:59:11.149 INFO  [14] [Chess::State::BaseState::execute@19] State: SwitchTurnState
+2021-09-21 21:59:11.149 INFO  [14] [Chess::State::BaseState::execute@19] State: FinishState
+2021-09-21 21:59:11.167 INFO  [14] [Chess::GameProtocolDriver::runStateMachine@71] State machine done.
+
+.. BN WR BQ BK BP .. BR 
+.. .. .. BP .. BP .. .. 
+.. .. .. .. .. .. .. .. 
+BR .. .. .. WQ .. .. .. 
+.. .. .. .. WR .. .. .. 
+.. .. .. .. .. .. .. .. 
+.. .. .. .. .. .. .. .. 
+.. WN WB .. WK WB WN .. 
