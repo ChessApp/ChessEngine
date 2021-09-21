@@ -50,7 +50,7 @@ namespace Chess
       cout << "id: " << piece.first << " name: " << piece.second->getName() << " row: " << piece.second->getRow() << " col: " << piece.second->getCol() << endl;
     }
     cout << endl;
-    cout << "attacker: " << attacker << endl;
+    cout << "attacker: " << static_cast<int>(attacker) << endl;
     cout << "whiteKingId: " << whiteKingId << endl;
     cout << "blackKingId: " << blackKingId << endl;
     cout << "capturedPieceId: " << capturedPieceId_ << endl;
@@ -82,14 +82,14 @@ namespace Chess
 
   void GameState::setAttacker( string color )
   {
-    if( color == "W" ) attacker = whiteAttacker;
-    else if( color == "B" ) attacker = blackAttacker;
+    if( color == "W" ) attacker = Attacker::white;
+    else if( color == "B" ) attacker = Attacker::black;
     else throw Exception("Attacker is not configured!", "GameState::setAttacker");
   }
 
   GameState::PiecePtr GameState::getKingOfAttacker()
   {
-    if( attacker == whiteAttacker )
+    if( attacker == Attacker::white )
       return activePieces.find(whiteKingId)->second;
     else
       return activePieces.find(blackKingId)->second;
@@ -97,7 +97,7 @@ namespace Chess
 
   GameState::PiecePtr GameState::getKingUnderAttack()
   {
-    if( attacker == whiteAttacker )
+    if( attacker == Attacker::white )
       return activePieces.find(blackKingId)->second;
     else
       return activePieces.find(whiteKingId)->second;
@@ -117,8 +117,8 @@ namespace Chess
   {
     switch(attacker)
     {
-      case whiteAttacker: return "W";
-      case blackAttacker: return "B";
+      case Attacker::white: return "W";
+      case Attacker::black: return "B";
 
       default: throw Exception("Attacker field not set properly!", "GameState::serializeAttacker");
     }

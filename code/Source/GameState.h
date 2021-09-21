@@ -15,11 +15,11 @@ namespace Chess
   {
   public:
     //-- types
-    enum Attacker
+    enum class Attacker
     {
-      whiteAttacker,
-      blackAttacker,
-      errorAttacker
+      white,
+      black,
+      error
     };
 
     typedef Pieces::PiecePtr         PiecePtr;
