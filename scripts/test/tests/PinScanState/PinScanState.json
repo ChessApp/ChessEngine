@@ -17,13 +17,12 @@
 		<Square type="KN" color="W" row="7" col="6" symbol="WN " />
 		<Square type="KN" color="W" row="7" col="1" symbol="WN " />
 		<Square type="B" color="W" row="7" col="5" symbol="WB " />
-		<Square type="B" color="W" row="7" col="2" symbol="WB " />
 		<Square type="P" color="B" row="1" col="5" symbol="BP " />
 		<Square type="P" color="B" row="1" col="3" symbol="BP " />
-		<Square type="P" color="B" row="0" col="5" symbol="BP " />
 		<Square type="R" color="W" row="4" col="4" symbol="WR " />
 		<Square type="R" color="W" row="0" col="2" symbol="WR " />
-		<Square type="R" color="B" row="0" col="7" symbol="BR " />
+		<Square type="R" color="B" row="0" col="5" symbol="BR " />
+		<Square type="B" color="W" row="7" col="2" symbol="WB " />
 	</Board>
 </root>
 
