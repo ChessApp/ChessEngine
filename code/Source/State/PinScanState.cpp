@@ -16,17 +16,17 @@ namespace Chess
     {
       typedef shared_ptr<BaseScan> BaseScanPtr;
 
-      PiecePtr kingToScan = gameState_.getKingUnderAttack();
+      auto kingToScan = gameState_.getKingUnderAttack();
 
       for( auto potentialPin : gameState_.potentialPins )
       {
-        PiecePtr pinnedPiece = potentialPin->getPiece();
+        auto pinnedPiece = potentialPin->getPiece();
         BaseScanPtr scanToExecute = potentialPin->getScanToExecute();
 
         // RAII-style removal of potentially-pinned piece from board.
         Utility::TemporaryPieceRemover remover(gameState_.board, pinnedPiece);
 
-        PiecePtr detectedPiece = scanToExecute->execute()->detectedPiece;
+        auto detectedPiece = scanToExecute->execute()->detectedPiece;
         if( detectedPiece->validDirection(kingToScan) )
         {
           // Only pieces from the offensive team can pin a defending piece.

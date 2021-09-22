@@ -16,7 +16,7 @@ namespace Chess
           for( auto defendingPiecePair : gameState_.activePieces )
           {
             int defendingPieceId = defendingPiecePair.first;
-            PiecePtr defendingPiece = defendingPiecePair.second;
+            auto defendingPiece = defendingPiecePair.second;
 
             // Pieces must be on the defending team to be eligible.
             if( defendingPiece->getColor() != gameState_.getKingUnderAttack()->getColor() )
@@ -30,7 +30,7 @@ namespace Chess
               {
                 int row = s->getRowList()[it];
                 int col = s->getColList()[it];
-                PiecePtr p = gameState_.board.getPiece({row, col});
+                auto p = gameState_.board.getPiece({row, col});
                 // Defending piece must be able to move to the square, cannot be blocked, and also cannot be pinned.
                 if( defendingPiece->validDirection(p) &&
                     Utility::PathScan::execute(gameState_.board, defendingPiece, {row, col}) &&

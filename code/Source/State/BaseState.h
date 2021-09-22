@@ -3,7 +3,6 @@
 
 #include "Chess.h"
 #include "GameState.h"
-#include "Pieces/Pieces.h"
 
 
 namespace Chess
@@ -15,7 +14,6 @@ namespace Chess
     {
     public:
       //-- types
-      typedef shared_ptr<Pieces>    PiecePtr;
       typedef shared_ptr<BaseState> StatePtr;
       
       //-- construction
@@ -32,8 +30,6 @@ namespace Chess
 
       //-- accessors
       void setTransitionStates( StatePtr nextState, StatePtr returnState );
-      void setWhiteKing( PiecePtr whiteKing ) { whiteKing_ = whiteKing; }
-      void setBlackKing( PiecePtr blackKing ) { blackKing_ = blackKing; }
 
     protected:
       //-- protected types
@@ -41,8 +37,6 @@ namespace Chess
       GameState& gameState_;
       StatePtr   nextState_ ;
       StatePtr   returnState_ ;
-      PiecePtr   whiteKing_ ;
-      PiecePtr   blackKing_ ;
       bool       active_ ;
       int        runs_ ;
       int        returns_ ;

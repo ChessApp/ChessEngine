@@ -4,6 +4,7 @@
 #include "Chess.h"
 #include "State/BaseState.h"
 #include "GameState.h"
+#include "Pieces/Pieces.h"
 
 
 namespace Chess
@@ -26,6 +27,9 @@ namespace Chess
       virtual StatePtr executeImpl();
 
     protected:
+      //-- protected types
+      typedef shared_ptr<Pieces> PiecePtr;
+
       //-- protected methods
       void returnPiece( PiecePtr pieceToReturn, const pair<int,int>& returnLocation );
 

@@ -15,8 +15,8 @@ namespace Chess
       auto source      = gameState_.moveRequest.front();
       auto destination = gameState_.moveRequest.back();
 
-      PiecePtr currentPiece = gameState_.board.getPiece(source);
-      PiecePtr pieceAtDestination = gameState_.board.getPiece(destination);
+      auto currentPiece = gameState_.board.getPiece(source);
+      auto pieceAtDestination = gameState_.board.getPiece(destination);
       if( !currentPiece->validDirection(pieceAtDestination) )
         throw Exception(invalidDirectionMessage, "MoveValidityState::executeImpl");
 

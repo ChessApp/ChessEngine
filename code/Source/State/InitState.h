@@ -3,6 +3,7 @@
 
 #include "Chess.h"
 #include "State/BaseState.h"
+#include "Pieces/Pieces.h"
 
 
 namespace Chess
@@ -25,6 +26,9 @@ namespace Chess
       virtual StatePtr executeImpl() override;
 
     protected:
+      //-- protected types
+      typedef shared_ptr<Pieces> PiecePtr;
+
       //-- protected methods
       void deserializeGameStateFile();
       void setPiece( PiecePtr pieceToSet, const pair<int, int>& location );

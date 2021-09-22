@@ -1,7 +1,6 @@
 #include "GameProtocolDriver.h"
 
 #include "State/InitState.h"
-#include "State/InputState.h"
 #include "State/RelevancyState.h"
 #include "State/MoveValidityState.h"
 #include "State/PathScanState.h"

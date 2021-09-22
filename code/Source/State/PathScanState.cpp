@@ -12,7 +12,7 @@ namespace Chess
 
     BaseState::StatePtr PathScanState::executeImpl()
     {
-      PiecePtr piece = gameState_.board.getPiece(gameState_.moveRequest.front());
+      auto piece = gameState_.board.getPiece(gameState_.moveRequest.front());
       if( !Utility::PathScan::execute(gameState_.board, piece, gameState_.moveRequest.back()) )
         throw Exception("The path to the desired destination is not valid!", "PathScanState::executeImpl");
       return nextState_;
