@@ -7,7 +7,6 @@
   <Messages invalidMove="" />
   <Board>
     <Piece type="P" color="B" row="1" col="3" symbol="BP "></Piece>
-    <!-- <Piece type="P" color="B" row="1" col="5" symbol="BP "></Piece> -->
 
     <Piece type="R" color="W" row="7" col="4" symbol="WR "></Piece>
     <Piece type="R" color="W" row="0" col="2" symbol="WR "></Piece>
@@ -15,7 +14,6 @@
     <Piece type="R" color="B" row="2" col="0" symbol="BR "></Piece>
     
     <Piece type="B" color="W" row="7" col="2" symbol="WB "></Piece>
-    <!-- <Piece type="B" color="W" row="7" col="5" symbol="WB "></Piece> -->
 
     <Piece type="KN" color="W" row="7" col="1" symbol="WN "></Piece>
     <Piece type="KN" color="W" row="7" col="6" symbol="WN "></Piece>
