@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<root>
+  <Flags serverFresh="0" clientFresh="1" invalidMove="0" />
+  <Input content="" />
+  <Turn color="W" checkStatus="0" />
+  <Winner status="0" color="" />
+  <Messages invalidMove="" />
+  <Board>
+    <Piece type="P" color="B" row="1" col="3" symbol="BP "></Piece>
+    <!-- <Piece type="P" color="B" row="1" col="5" symbol="BP "></Piece> -->
+
+    <Piece type="R" color="W" row="7" col="4" symbol="WR "></Piece>
+    <Piece type="R" color="W" row="0" col="2" symbol="WR "></Piece>
+    <Piece type="R" color="B" row="0" col="5" symbol="BR "></Piece>
+    <Piece type="R" color="B" row="2" col="0" symbol="BR "></Piece>
+    
+    <Piece type="B" color="W" row="7" col="2" symbol="WB "></Piece>
+    <!-- <Piece type="B" color="W" row="7" col="5" symbol="WB "></Piece> -->
+
+    <Piece type="KN" color="W" row="7" col="1" symbol="WN "></Piece>
+    <Piece type="KN" color="W" row="7" col="6" symbol="WN "></Piece>
+    <Piece type="KN" color="B" row="0" col="1" symbol="BN "></Piece>
+
+    <Piece type="B" color="W" row="6" col="4" symbol="WB "></Piece>
+    <Piece type="K" color="W" row="7" col="3" symbol="WK "></Piece>
+
+    <Piece type="Q" color="B" row="0" col="3" symbol="BQ "></Piece>
+    <Piece type="K" color="B" row="0" col="4" symbol="BK "></Piece>
+  </Board>
+  <Requests>
+  </Requests>
+</root>

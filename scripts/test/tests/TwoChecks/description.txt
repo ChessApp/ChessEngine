@@ -1,0 +1,35 @@
+Tests the scenario when the white bishop moves into a position which induces check on the black king, while also exposing a new line of check by the white rook, which had previously been blocked by said bishop.
+
+
+2021-09-23 03:11:42.317 INFO  [14] [Chess::State::BaseState::execute@19] State: InitState
+
+.. BN WR BQ BK BR .. .. 
+.. .. .. BP .. .. .. .. 
+BR .. .. .. .. .. .. .. 
+.. .. .. .. .. .. .. .. 
+.. .. .. .. .. .. .. .. 
+.. .. .. .. .. .. .. .. 
+.. .. .. .. WB .. .. .. 
+.. WN WB WK WR .. WN .. 
+
+2021-09-23 03:11:42.330 INFO  [14] [Chess::State::BaseState::execute@19] State: RelevancyState
+2021-09-23 03:11:42.330 INFO  [14] [Chess::State::BaseState::execute@19] State: MoveValidityState
+2021-09-23 03:11:42.330 INFO  [14] [Chess::State::BaseState::execute@19] State: PathScanState
+2021-09-23 03:11:42.330 INFO  [14] [Chess::State::BaseState::execute@19] State: MoveState
+2021-09-23 03:11:42.330 INFO  [14] [Chess::State::BaseState::execute@19] State: DefensiveCheckScanState
+2021-09-23 03:11:42.330 INFO  [14] [Chess::State::BaseState::execute@19] State: OffensiveCheckScanState
+2021-09-23 03:11:42.330 INFO  [14] [Chess::State::BaseState::execute@19] State: PinScanState
+2021-09-23 03:11:42.330 INFO  [14] [Chess::State::BaseState::execute@19] State: BlockScanState
+2021-09-23 03:11:42.330 INFO  [14] [Chess::State::BaseState::execute@19] State: EscapeRouteState
+2021-09-23 03:11:42.330 INFO  [14] [Chess::State::BaseState::execute@19] State: CheckmateState
+2021-09-23 03:11:42.330 INFO  [14] [Chess::State::BaseState::execute@19] State: FinishState
+2021-09-23 03:11:42.350 INFO  [14] [Chess::GameProtocolDriver::runStateMachine@70] State machine done.
+
+.. BN WR BQ BK BR .. .. 
+.. .. .. BP .. .. .. .. 
+BR .. .. .. .. .. .. .. 
+.. .. .. .. .. .. .. WB 
+.. .. .. .. .. .. .. .. 
+.. .. .. .. .. .. .. .. 
+.. .. .. .. .. .. .. .. 
+.. WN WB WK WR .. WN ..
